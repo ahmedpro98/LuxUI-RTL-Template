@@ -176,8 +176,8 @@ const FeaturedTestimonials: React.FC = () => {
                 }
               }}
               className={`transition-all duration-300 rounded-full ${index === activeIndex
-                  ? 'w-6 h-2 bg-gold' // Elongated active indicator
-                  : 'w-2 h-2 bg-gray-300'
+                ? 'w-6 h-2 bg-gold' // Elongated active indicator
+                : 'w-2 h-2 bg-gray-300'
                 }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />

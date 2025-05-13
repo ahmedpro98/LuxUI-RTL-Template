@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import ContactForm from '../components/ContactForm';
@@ -15,13 +14,13 @@ const Contact = () => {
       {/* Header */}
       <section className="bg-charcoal text-white py-20">
         <div className="container-custom mx-auto">
-          <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
+          <div className={`max-w-3xl ${isRTL ? 'text-right mr-auto' : 'text-left'}`}>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
               {t('contact')}
             </h1>
             <p className="text-xl text-gray-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               {isRTL
-                ? 'نحن هنا للإجابة على جميع استفساراتك وتقديم الدعم الذي تحتاجه'
+                ? 'نسعد بتواصلكم معنا للاستفسار عن منتجاتنا أو خدماتنا. فريقنا جاهز للرد على استفساراتكم.'
                 : 'We\'re here to answer all your queries and provide the support you need'}
             </p>
           </div>
@@ -63,13 +62,13 @@ const Contact = () => {
                       />
                     </svg>
                   </div>
-                  <div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>
                     <h3 className="text-lg font-semibold text-charcoal mb-1">
                       {isRTL ? 'العنوان' : 'Address'}
                     </h3>
                     <p className="text-gray-600">
                       {isRTL
-                        ? 'شارع الملك فهد، حي العليا، الرياض، المملكة العربية السعودية'
+                        ? 'شارع الملك فيصل، جدة، المملكة العربية السعودية'
                         : 'King Fahd Road, Olaya District, Riyadh, Saudi Arabia'}
                     </p>
                   </div>
@@ -93,9 +92,9 @@ const Contact = () => {
                       />
                     </svg>
                   </div>
-                  <div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>
                     <h3 className="text-lg font-semibold text-charcoal mb-1">
-                      {isRTL ? 'الهاتف' : 'Phone'}
+                      {isRTL ? 'رقم الهاتف' : 'Phone'}
                     </h3>
                     <p className="text-gray-600">
                       {isRTL ? 'المبيعات' : 'Sales'}: +966 50 000 0000
@@ -124,7 +123,7 @@ const Contact = () => {
                       />
                     </svg>
                   </div>
-                  <div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>
                     <h3 className="text-lg font-semibold text-charcoal mb-1">
                       {isRTL ? 'البريد الإلكتروني' : 'Email'}
                     </h3>
@@ -155,7 +154,7 @@ const Contact = () => {
                       />
                     </svg>
                   </div>
-                  <div>
+                  <div className={isRTL ? 'text-right' : 'text-left'}>
                     <h3 className="text-lg font-semibold text-charcoal mb-1">
                       {isRTL ? 'ساعات العمل' : 'Working Hours'}
                     </h3>
@@ -174,11 +173,11 @@ const Contact = () => {
               </div>
 
               {/* Social Media */}
-              <div className="mt-12">
+              <div className={`mt-12 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <h3 className="text-lg font-semibold text-charcoal mb-4">
                   {isRTL ? 'تابعنا على' : 'Follow Us On'}
                 </h3>
-                <div className="flex space-x-4">
+                <div className={`flex ${isRTL ? 'justify-start space-x-reverse' : 'space-x-4'} space-x-4`}>
                   <a href="#" className="text-charcoal hover:text-gold transition-colors duration-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -240,7 +239,7 @@ const Contact = () => {
               {/* Replace with actual map embed code */}
               <div className="w-full h-full bg-gray-200 flex items-center justify-center">
                 <p className="text-gray-500">
-                  {isRTL ? ' لاتنسي وضع خريطة ا جوجل هنا' : 'Google Map Goes Here'}
+                  {isRTL ? 'لاتنسي وضع خريطة جوجل هنا' : 'Google Map Goes Here'}
                 </p>
               </div>
             </div>

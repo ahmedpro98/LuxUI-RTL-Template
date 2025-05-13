@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -96,7 +95,7 @@ const Navbar: React.FC = () => {
               <div className="p-4">
                 <div className="flex items-center gap-2 mb-6">
                   <img
-                    src="public/Logo_and_identity/logo.png"
+                    src="/Logo_and_identity/logo.png"
                     alt={isRTL ? 'هبات أيست' : 'Hebat East'}
                     className="w-8 h-8 object-contain"
                   />

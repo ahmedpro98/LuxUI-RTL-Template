@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
@@ -39,8 +38,10 @@ const ContactForm: React.FC = () => {
     }, 1000);
   };
 
+  const formDirection = isRTL ? 'rtl text-right' : 'ltr text-left';
+
   return (
-    <form onSubmit={handleSubmit} className={`max-w-lg mx-auto ${isRTL ? 'text-right' : 'text-left'}`}>
+    <form onSubmit={handleSubmit} className={`max-w-lg mx-auto ${formDirection}`} dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="mb-4">
         <label htmlFor="name" className="block text-charcoal mb-2">
           {t('form-name')}
@@ -53,6 +54,7 @@ const ContactForm: React.FC = () => {
           onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
+          dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
       <div className="mb-4">
@@ -67,6 +69,7 @@ const ContactForm: React.FC = () => {
           onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
+          dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
       <div className="mb-4">
@@ -81,6 +84,7 @@ const ContactForm: React.FC = () => {
           onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
+          dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
       <div className="mb-6">
@@ -95,6 +99,7 @@ const ContactForm: React.FC = () => {
           rows={5}
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
+          dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
       <button

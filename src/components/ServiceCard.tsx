@@ -1,7 +1,5 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
-import LazyImage from './LazyImage';
 
 interface ServiceCardProps {
   title: string;
@@ -43,14 +41,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, isR
   return (
     <div
       ref={cardRef}
-      className={`bg-white p-5 md:p-6 rounded-lg shadow-lg elegant-shadow hover:shadow-xl transition-all duration-500 h-full transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      className={`bg-white p-5 md:p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-500 h-full transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       style={{ transitionDelay: '100ms' }}
       itemScope
       itemType="https://schema.org/Service"
     >
       <div className={`flex flex-col ${isRTL ? 'items-end text-right' : 'items-start text-left'}`}>
-        <div className="mb-3 md:mb-4 text-gold transform transition-transform duration-300 hover:scale-110">
+        <div className="mb-4 text-gold bg-gold/10 p-3 rounded-full transform transition-transform duration-300 hover:scale-110">
           {icon}
         </div>
         <h3

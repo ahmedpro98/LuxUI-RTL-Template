@@ -69,11 +69,12 @@
 
   /* RTL support */
   [dir="rtl"] {
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'Cairo', sans-serif;
   }
 
+  /* ltr font family */
   [dir="ltr"] {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   [dir="rtl"] [lang="en"],
@@ -319,13 +320,13 @@
 
 /* Language-specific typography adjustments */
 .ar {
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Cairo', sans-serif;
   line-height: 1.7;
 }
 
 .en {
-  font-family: 'Playfair Display', serif;
-  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
 }
 
 /* Mobile navigation improvements */

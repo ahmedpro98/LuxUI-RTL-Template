@@ -35,9 +35,8 @@ const BackToTopButton: React.FC = () => {
     return (
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 ${isRTL ? 'left-6' : 'right-6'} z-40 bg-gold hover:bg-gold-dark text-white p-2 sm:p-3 rounded-full shadow-lg transform transition-all duration-500 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0 pointer-events-none'
-        }`}
+        className={`fixed bottom-6 ${isRTL ? 'left-6' : 'right-6'} z-40 bg-gold hover:bg-gold-dark text-white p-2 sm:p-3 rounded-full shadow-lg transform transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0 pointer-events-none'
+          }`}
         aria-label="العودة إلى الأعلى"
         title="العودة إلى الأعلى"
       >
@@ -48,9 +47,8 @@ const BackToTopButton: React.FC = () => {
     return (
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 ${isRTL ? 'left-6' : 'right-6'} z-40 p-2 sm:p-3 rounded-full shadow-lg transform transition-all duration-500 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0 pointer-events-none'
-        } bg-gradient-to-r from-gold to-amber-500 text-white`}
+        className={`fixed bottom-6 ${isRTL ? 'left-6' : 'right-6'} z-40 p-2 sm:p-3 rounded-full shadow-lg transform transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0 pointer-events-none'
+          } bg-gradient-to-r from-gold to-amber-500 text-white`}
         aria-label="Back to top"
         title="Back to top"
       >
