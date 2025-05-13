@@ -1,0 +1,381 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 33% 97%;
+    /* cream */
+    --foreground: 0 0% 13%;
+    /* charcoal */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+
+    --primary: 46 64% 52%;
+    /* gold */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 13%;
+    /* charcoal */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 46 30% 95%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 46 64% 52%;
+    /* gold */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 46 64% 52%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+
+    scroll-behavior: smooth;
+    @apply bg-background text-foreground;
+  }
+
+  ::selection {
+    background-color: #cda625ef;
+    color: #fff;
+  }
+
+  img {
+    @apply transition-opacity duration-500;
+  }
+
+  img.lazy-load {
+    @apply opacity-0;
+  }
+
+  img.lazy-loaded {
+    @apply opacity-100;
+  }
+
+  /* RTL support */
+  [dir="rtl"] {
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  [dir="ltr"] {
+    font-family: 'Playfair Display', serif;
+  }
+
+  [dir="rtl"] [lang="en"],
+  [dir="ltr"] [lang="ar"] {
+    display: none;
+  }
+
+  /* Smooth page transitions */
+  #root>main {
+    @apply transition-opacity duration-500;
+  }
+}
+
+@layer components {
+  .gold-gradient {
+    @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 relative;
+  }
+
+  .section-title::after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-1 w-16 gold-gradient;
+  }
+
+  [dir="rtl"] .section-title::after {
+    @apply right-0 left-auto;
+  }
+
+  .elegant-shadow {
+    box-shadow: 0 4px 30px rgba(212, 175, 55, 0.1);
+  }
+
+  .btn-primary {
+    @apply bg-gold text-white px-6 py-3 rounded hover:bg-gold-dark transition-colors duration-300;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .appear-animate {
+    @apply opacity-0 translate-y-4;
+    animation: appear 0.8s forwards;
+  }
+
+  @keyframes appear {
+    to {
+      @apply opacity-100 translate-y-0;
+    }
+  }
+
+  /* Enhanced hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+  }
+
+  /* Improved image container */
+  .image-container {
+    @apply overflow-hidden rounded-lg;
+  }
+
+  .image-container img {
+    @apply w-full h-full object-cover transition-transform duration-500 hover:scale-105;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .section-title {
+      @apply text-2xl mb-4;
+    }
+
+    .container-custom {
+      @apply px-4;
+    }
+  }
+
+  /* Tablet optimizations */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .container-custom {
+      @apply px-6;
+    }
+  }
+
+  /* Improved form controls for mobile */
+  input,
+  textarea,
+  select {
+    caret-color: rgba(208, 187, 70, 0.887);
+    @apply w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-gold focus:border-transparent;
+  }
+
+  /* Better mobile spacing */
+  .mobile-py {
+    @apply py-10 md:py-16 lg:py-20;
+  }
+
+  .mobile-px {
+    @apply px-4 md:px-6;
+  }
+
+  /* Card styles for consistent UI */
+  .content-card {
+    @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+  }
+
+  /* Scroll-based animations - Updated with smoother timing */
+  .animate-reveal {
+    animation: reveal 0.8s ease-out forwards;
+  }
+
+  /* Smoother reveal animation with longer duration */
+  .animate-reveal-smooth {
+    animation: reveal-smooth 1.2s ease-out forwards;
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Smoother animation with better easing */
+  @keyframes reveal-smooth {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    50% {
+      opacity: 0.7;
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Transition delays for animation sequences */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Smoother fade in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  70% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Smoother slide in animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease forwards;
+}
+
+/* More robust fade-in animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Language-specific typography adjustments */
+.ar {
+  font-family: 'Tajawal', sans-serif;
+  line-height: 1.7;
+}
+
+.en {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.5;
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 768px) {
+  .mobile-menu-item {
+    @apply block w-full text-center py-3 border-b border-gray-100;
+  }
+}
+
+/* Improved button accessibility for mobile */
+@media (max-width: 640px) {
+
+  button,
+  .button,
+  a.button,
+  .btn,
+  a.btn {
+    @apply min-h-[44px] min-w-[44px];
+    /* For better touch targets */
+  }
+}
+
+
+
+
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-in-out forwards;
+  opacity: 0;
+  /* For slow motion fade  */
+}
+
+/* Beautiful gradient backgrounds for English back-to-top button */
+.back-to-top-gradient {
+  background: linear-gradient(135deg, #9b87f5 0%, #7E69AB 50%, #1EAEDB 100%);
+  box-shadow: 0 4px 15px rgba(123, 105, 215, 0.4);
+}
+
+.back-to-top-gradient:hover {
+  background: linear-gradient(135deg, #8B5CF6 0%, #D946EF 50%, #F97316 100%);
+}
