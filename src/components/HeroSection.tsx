@@ -21,7 +21,7 @@ const HeroSection: React.FC = () => {
   return (
     <section className="min-h-[90vh] md:min-h-screen flex items-center relative overflow-hidden">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 bg-cover overlay bg-center bg-no-repeat" style={{ backgroundImage: 'url(public/Logo_and_identity/landpage.jpg)' }}>
+      <div className="absolute inset-0 bg-cover overlay bg-center bg-no-repeat" style={{ backgroundImage: 'url(/public/Logo_and_identity/landpage.jpg)' }}>
         <div className="absolute inset-0 bg-black opacity-25"></div>
       </div>
 

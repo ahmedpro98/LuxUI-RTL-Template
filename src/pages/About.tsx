@@ -46,7 +46,7 @@ const About = () => {
             </div>
             <div className={`${isRTL ? 'order-1' : 'order-2'} animate-fade-in`} style={{ animationDelay: '0.3s' }}>
               <img
-                src="public/Logo_and_identity/test.jpg"
+                src="/public/Logo_and_identity/test.jpg"
                 alt="Our Story"
                 className="rounded-lg shadow-xl w-full h-auto arab"
               />
@@ -174,7 +174,7 @@ const About = () => {
             <div className="bg-white rounded-lg overflow-hidden shadow-lg elegant-shadow animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <div className="h-64 overflow-hidden">
                 <img
-                  src="public/team/profile-test.png"
+                  src="/public/team/profile-test.png"
                   alt="Team Member"
                   className="w-full h-full object-cover"
                 />
@@ -198,7 +198,7 @@ const About = () => {
             <div className="bg-white rounded-lg overflow-hidden shadow-lg elegant-shadow animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <div className="h-64 overflow-hidden">
                 <img
-                  src="public/team/profile-test.png"
+                  src="/public/team/profile-test.png"
                   alt="Team Member"
                   className="w-full h-full object-cover"
                 />
@@ -222,7 +222,7 @@ const About = () => {
             <div className="bg-white rounded-lg overflow-hidden shadow-lg elegant-shadow animate-fade-in" style={{ animationDelay: '0.5s' }}>
               <div className="h-64 overflow-hidden">
                 <img
-                  src="public/team/profile-test.png"
+                  src="/public/team/profile-test.png"
                   alt="Team Member"
                   className="w-full h-full object-cover"
                 />

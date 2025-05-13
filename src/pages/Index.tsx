@@ -119,7 +119,8 @@ const Index = () => {
               <div className="relative group">
                 {/* Self Image */}
                 <LazyImage
-                  src="public/Logo_and_identity/main.jpg"
+                  src='public/Logo_and_identity/main.jpg'
+
                   alt="Luxury Chandelier"
                   className="rounded-lg shadow-xl w-full h-auto transform group-hover:scale-105 transition-transform duration-700"
                 />

@@ -24,7 +24,7 @@ const Gallery = () => {
     {
       id: 1,
       category: 'modern',
-      imageUrl: 'public/gallery/4-modern.jpg',
+      imageUrl: '/public/gallery/4-modern.jpg',
       titleEN: 'Cylindrical chandelier',
       titleAR: 'اكواب اسطوانية',
       locationEN: 'Luxury Villa, Riyadh',
@@ -33,7 +33,7 @@ const Gallery = () => {
     {
       id: 2,
       category: 'classic',
-      imageUrl: 'public/gallery/1-Classic.jpg',
+      imageUrl: '/public/gallery/1-Classic.jpg',
       titleEN: 'Grand Classic',
       titleAR: 'كلاسيكي فخم',
       locationEN: 'Royal Palace, Jeddah',
@@ -42,7 +42,7 @@ const Gallery = () => {
     {
       id: 3,
       category: 'crystal',
-      imageUrl: 'public/gallery/2-ring.jpeg',
+      imageUrl: '/public/gallery/2-ring.jpeg',
       titleEN: 'Modern Ring',
       titleAR: 'تصميم دائري عصري',
       locationEN: 'Grand Hotel, Riyadh',
@@ -51,7 +51,7 @@ const Gallery = () => {
     {
       id: 4,
       category: 'modern',
-      imageUrl: 'public/gallery/3-modern.jpeg',
+      imageUrl: '/public/gallery/3-modern.jpeg',
       titleEN: 'modern chandelier',
       titleAR: ' ثريا هندسية ',
       locationEN: 'Modern office, Dammam',
@@ -60,7 +60,7 @@ const Gallery = () => {
     {
       id: 5,
       category: 'custom',
-      imageUrl: 'public/gallery/2-modern.jpg',
+      imageUrl: '/public/gallery/2-modern.jpg',
       titleEN: 'Bespoke Design',
       titleAR: 'تصميم مخصص',
       locationEN: 'Private Residence, Riyadh',
@@ -69,7 +69,7 @@ const Gallery = () => {
     {
       id: 6,
       category: 'crystal',
-      imageUrl: 'public/gallery/3-ring.jpg',
+      imageUrl: '/public/gallery/3-ring.jpg',
       titleEN: 'ring luxurious',
       titleAR: 'تصميم دائري فاخر',
       locationEN: 'Luxury Mall, Khobar',
@@ -78,7 +78,7 @@ const Gallery = () => {
     {
       id: 7,
       category: 'classic',
-      imageUrl: 'public/gallery/2-Classic.jpg',
+      imageUrl: '/public/gallery/2-Classic.jpg',
       titleEN: 'Islamic chandelier',
       titleAR: 'نجفة اسلامية',
       locationEN: 'Heritage Hotel, Riyadh',
@@ -87,7 +87,7 @@ const Gallery = () => {
     {
       id: 8,
       category: 'modern',
-      imageUrl: 'public/gallery/liner.jpg',
+      imageUrl: '/public/gallery/liner.jpg',
       titleEN: 'liner Chandelier',
       titleAR: 'ثرايا خطية',
       locationEN: 'Conference hall, Jeddah',
@@ -96,7 +96,7 @@ const Gallery = () => {
     {
       id: 9,
       category: 'custom',
-      imageUrl: 'public/gallery/1-modern.jpg',
+      imageUrl: '/public/gallery/1-modern.jpg',
       titleEN: 'Modern lamb',
       titleAR: 'داليات مودرن',
       locationEN: 'Art Gallery, Dubai',
@@ -105,7 +105,7 @@ const Gallery = () => {
     {
       id: 10,
       category: 'crystal',
-      imageUrl: 'public/gallery/1-ring.jpg',
+      imageUrl: '/public/gallery/1-ring.jpg',
       titleEN: 'Multi-Tier ring',
       titleAR: 'تصميم دائري متعدد ',
       locationEN: 'Luxury mall, Riyadh',
@@ -114,7 +114,7 @@ const Gallery = () => {
     {
       id: 11,
       category: 'classic',
-      imageUrl: 'public/gallery/3-Classic.jpg',
+      imageUrl: '/public/gallery/3-Classic.jpg',
       titleEN: 'Modern metal roof',
       titleAR: 'سقف معدني',
       locationEN: 'Luxury hotel bar, Jeddah',
@@ -123,7 +123,7 @@ const Gallery = () => {
     {
       id: 1,
       category: 'custom',
-      imageUrl: 'public/gallery/halal-Mosque.jpg',
+      imageUrl: '/public/gallery/halal-Mosque.jpg',
       hoverImageUrl: '/public/gallery/hover-hala.jpg',
       titleEN: 'Hilal Mosque',
       titleAR: 'هلال جامع',
