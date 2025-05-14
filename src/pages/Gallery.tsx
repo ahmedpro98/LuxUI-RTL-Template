@@ -51,7 +51,7 @@ const Gallery = () => {
     {
       id: 4,
       category: 'modern',
-      imageUrl: '/gallery/3-modern.jpeg',
+      imageUrl: '/gallery/3-modern.jpg',
       titleEN: 'modern chandelier',
       titleAR: ' ثريا هندسية ',
       locationEN: 'Modern office, Dammam',
