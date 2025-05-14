@@ -13,15 +13,15 @@ const collectionItems = [
     titleAr: "نجفة شلالية",
     titleEn: "Waterfall Chandelier",
     price: "54,500 SAR",
-    image: "public/gallery/Waterfall2.jpg",
-    hoverImage: "public/gallery/Waterfall1.jpg"
+    image: "/gallery/Waterfall2.jpg",
+    hoverImage: "/gallery/Waterfall1.jpg"
   },
   {
     id: 2,
     titleAr: "نجفة حلقية",
     titleEn: "Modern Ring Chandelier",
     price: "18,750 SAR",
-    image: "public/gallery/2-ring.jpeg", hoverImage: "public/gallery/1-ring.jpeg"
+    image: "/gallery/2-ring.jpeg", hoverImage: "/gallery/1-ring.jpeg"
 
   },
   {
@@ -29,7 +29,7 @@ const collectionItems = [
     titleAr: "فانوس اسلامي فاخر",
     titleEn: "Islamic Lanterns",
     price: "1999 SAR",
-    image: "public/gallery/Lantern-left.jpg", hoverImage: "public/gallery/Lantern-right.jpg"
+    image: "/gallery/Lantern-left.jpg", hoverImage: "/gallery/Lantern-right.jpg"
 
   },
   {
@@ -37,7 +37,7 @@ const collectionItems = [
     titleAr: "هلال جامع",
     titleEn: "Hilal Mosque",
     price: "7,800 SAR",
-    image: "public/gallery/halal-Mosque.jpg", hoverImage: "public/gallery/hover-hala.jpg"
+    image: "/gallery/halal-Mosque.jpg", hoverImage: "/gallery/hover-hala.jpg"
 
   }
 

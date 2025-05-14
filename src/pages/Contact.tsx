@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import ContactForm from '../components/ContactForm';
+import React, { useEffect } from 'react';
 
 const Contact = () => {
   const { t, isRTL } = useLanguage();
@@ -249,5 +249,6 @@ const Contact = () => {
     </div>
   );
 };
+
 
 export default Contact;
