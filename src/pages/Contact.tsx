@@ -1,6 +1,19 @@
-import { useLanguage } from '../context/LanguageContext';
-import ContactForm from '../components/ContactForm';
-import React, { useEffect } from 'react';
+
+import React, { useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext";
+import { MapPin, Phone, Mail } from "lucide-react";
+import ContactForm from "../components/ContactForm";
+
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!2d3624.3691382716795!2d39.13120681500179!3d21.560906785711793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3cd054224e0b3%3A0xe74edafd7cdb457c!2z2KfZhNmF2Ykg2KfZhNmF2LrYqSDYs9in2YTYudmK2Kkg2KfZhNmF2YjZhNmK2Kcg2KfZhNmF2YjYsdin2YjZhA!5e0!3m2!1sar!2ssa!4v1713869536471!5m2!1sar!2ssa";
+
+// هوية الألوان: الخلفية تدرج كريمي-أوف وايت وملمس ذهبي للفخامة
+const background = "bg-gradient-to-br from-[#F5F5F0] via-[#FBF9F4] to-[#EFEDE7]";
+const cardBg = "bg-white/95 shadow-xl elegant-shadow";
+const accentGold = "text-[#D4AF37]";
+const border = "border border-[#eee6ce]";
+const titleColor = "#232321"; // فحمي
+const labelColor = "#D4AF37";
 
 const Contact = () => {
   const { t, isRTL } = useLanguage();
@@ -10,245 +23,162 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className="pt-24">
+    <div className={`pt-24 min-h-screen ${background} animate-fade-in`}>
       {/* Header */}
-      <section className="bg-charcoal text-white py-20">
-        <div className="container-custom mx-auto">
-          <div className={`max-w-3xl ${isRTL ? 'text-right mr-auto' : 'text-left'}`}>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-              {t('contact')}
-            </h1>
-            <p className="text-xl text-gray-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              {isRTL
-                ? 'نسعد بتواصلكم معنا للاستفسار عن منتجاتنا أو خدماتنا. فريقنا جاهز للرد على استفساراتكم.'
-                : 'We\'re here to answer all your queries and provide the support you need'}
-            </p>
-          </div>
+      <section className="py-10 mb-4">
+        <div className="container-custom mx-auto text-center">
+          <h1
+            className="text-4xl md:text-5xl font-playfair font-bold mb-2 tracking-tight"
+            style={{
+              color: "#D4AF37",
+              letterSpacing: "0.01em",
+              fontFamily: isRTL ? "'Cairo', sans-serif" : "'Playfair Display', serif",
+            }}
+          >
+            {isRTL ? "تواصل معنا" : "Contact Us"}
+          </h1>
+          <p className="text-lg md:text-2xl font-light" style={{ color: "#444" }}>
+            {isRTL ? "للاستشارات وحلول الإنارة الفاخرة للمشاريع العملاقة." : "For luxury lighting solutions for prestigious projects."}
+          </p>
         </div>
       </section>
 
-      {/* Contact Information & Form */}
-      <section className="py-20">
-        <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div className={`${isRTL ? 'order-2 lg:order-1 text-right' : 'order-1 text-left'} animate-fade-in`} style={{ animationDelay: '0.2s' }}>
-              <h2 className="text-3xl font-bold text-charcoal mb-8">
-                {isRTL ? 'معلومات التواصل' : 'Contact Information'}
-              </h2>
-
-              <div className="space-y-6">
-                {/* Address */}
-                <div className={`flex items-start ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <div className={`mt-1 text-gold ${isRTL ? 'ml-4' : 'mr-4'}`}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>
-                    <h3 className="text-lg font-semibold text-charcoal mb-1">
-                      {isRTL ? 'العنوان' : 'Address'}
-                    </h3>
-                    <p className="text-gray-600">
-                      {isRTL
-                        ? 'شارع الملك فيصل، جدة، المملكة العربية السعودية'
-                        : 'King Fahd Road, Olaya District, Riyadh, Saudi Arabia'}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Phone */}
-                <div className={`flex items-start ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <div className={`mt-1 text-gold ${isRTL ? 'ml-4' : 'mr-4'}`}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 8V5z"
-                      />
-                    </svg>
-                  </div>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>
-                    <h3 className="text-lg font-semibold text-charcoal mb-1">
-                      {isRTL ? 'رقم الهاتف' : 'Phone'}
-                    </h3>
-                    <p className="text-gray-600">
-                      {isRTL ? 'المبيعات' : 'Sales'}: +966 50 000 0000
-                    </p>
-                    <p className="text-gray-600">
-                      {isRTL ? 'خدمة العملاء' : 'Customer Service'}: +966 50 000 0001
-                    </p>
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className={`flex items-start ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <div className={`mt-1 text-gold ${isRTL ? 'ml-4' : 'mr-4'}`}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>
-                    <h3 className="text-lg font-semibold text-charcoal mb-1">
-                      {isRTL ? 'البريد الإلكتروني' : 'Email'}
-                    </h3>
-                    <p className="text-gray-600">
-                      {isRTL ? 'استفسارات عامة' : 'General Inquiries'}: info@hibateast.com
-                    </p>
-                    <p className="text-gray-600">
-                      {isRTL ? 'خدمة العملاء' : 'Customer Support'}: support@hibateast.com
-                    </p>
-                  </div>
-                </div>
-
-                {/* Working Hours */}
-                <div className={`flex items-start ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <div className={`mt-1 text-gold ${isRTL ? 'ml-4' : 'mr-4'}`}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div className={isRTL ? 'text-right' : 'text-left'}>
-                    <h3 className="text-lg font-semibold text-charcoal mb-1">
-                      {isRTL ? 'ساعات العمل' : 'Working Hours'}
-                    </h3>
-                    <p className="text-gray-600">
-                      {isRTL
-                        ? 'الأحد - الخميس: 9:00 صباحًا - 6:00 مساءً'
-                        : 'Sunday - Thursday: 9:00 AM - 6:00 PM'}
-                    </p>
-                    <p className="text-gray-600">
-                      {isRTL
-                        ? 'الجمعة: مغلق | السبت: 10:00 صباحًا - 4:00 مساءً'
-                        : 'Friday: Closed | Saturday: 10:00 AM - 4:00 PM'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Media */}
-              <div className={`mt-12 ${isRTL ? 'text-right' : 'text-left'}`}>
-                <h3 className="text-lg font-semibold text-charcoal mb-4">
-                  {isRTL ? 'تابعنا على' : 'Follow Us On'}
-                </h3>
-                <div className={`flex ${isRTL ? 'justify-start space-x-reverse' : 'space-x-4'} space-x-4`}>
-                  <a href="#" className="text-charcoal hover:text-gold transition-colors duration-300">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                      />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-charcoal hover:text-gold transition-colors duration-300">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
-                      />
-                    </svg>
-                  </a>
-                  <a href="#" className="text-charcoal hover:text-gold transition-colors duration-300">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.223-.57-.372z"
-                      />
-                    </svg>
-                  </a>
-                </div>
+      {/* Content grid: Form & Info */}
+      <section className="container-custom mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch relative z-10 pb-8">
+        {/* Info Card */}
+        <div
+          className={`${cardBg} ${border} rounded-3xl p-8 flex flex-col justify-between gap-12 animate-fade-in`}
+          style={{ backdropFilter: "blur(6px)" }}>
+          <div className="flex flex-col gap-8">
+            {/* Address */}
+            <div className="flex items-start gap-5">
+              <span className="p-2 rounded-full bg-[#F5EFD8] shadow">
+                <MapPin size={26} color="#D4AF37" />
+              </span>
+              <div className={`${isRTL ? "text-right" : "text-left"}`}>
+                <span className="block text-base font-bold mb-1" style={{ color: labelColor }}>
+                  {isRTL ? "العنوان" : "Address"}
+                </span>
+                <span className="text-gray-600">
+                  {isRTL
+                    ? "شارع الملك فيصل، جدة، المملكة العربية السعودية"
+                    : "King Faisal Street, Jeddah, Saudi Arabia"}
+                </span>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className={`${isRTL ? 'order-1 lg:order-2' : 'order-2'} animate-fade-in`} style={{ animationDelay: '0.3s' }}>
-              <div className="bg-white p-8 rounded-lg shadow-lg elegant-shadow">
-                <h2 className="text-3xl font-bold text-charcoal mb-8 text-center">
-                  {isRTL ? 'أرسل لنا رسالة' : 'Send Us a Message'}
-                </h2>
-                <ContactForm />
+            {/* Sales Phone */}
+            <div className="flex items-start gap-5">
+              <span className="p-2 rounded-full bg-[#F5EFD8] shadow">
+                <Phone size={22} color="#D4AF37" />
+              </span>
+              <div className={`${isRTL ? "text-right" : "text-left"}`}>
+                <span className="block text-base font-bold mb-1" style={{ color: labelColor }}>
+                  {isRTL ? "المبيعات" : "Sales"}
+                </span>
+                <a href="tel:+966500000000" className="text-[#232321] hover:text-[#D4AF37] transition font-medium">
+                  +966 50 000 0000
+                </a>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Map Section */}
-      <section className="py-10">
-        <div className="container-custom mx-auto">
-          <div className="bg-white rounded-lg shadow-lg elegant-shadow overflow-hidden animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <div className="h-96 w-full">
-              {/* Replace with actual map embed code */}
-              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                <p className="text-gray-500">
-                  {isRTL ? 'لاتنسي وضع خريطة جوجل هنا' : 'Google Map Goes Here'}
+            {/* Support Phone */}
+            <div className="flex items-start gap-5">
+              <span className="p-2 rounded-full bg-[#F5EFD8] shadow">
+                <Phone size={22} color="#D4AF37" />
+              </span>
+              <div className={`${isRTL ? "text-right" : "text-left"}`}>
+                <span className="block text-base font-bold mb-1" style={{ color: labelColor }}>
+                  {isRTL ? "خدمة العملاء" : "Customer Service"}
+                </span>
+                <a href="tel:+966500000001" className="text-[#232321] hover:text-[#D4AF37] transition font-medium">
+                  +966 50 000 0001
+                </a>
+              </div>
+            </div>
+
+            {/* General Email */}
+            <div className="flex items-start gap-5">
+              <span className="p-2 rounded-full bg-[#F5EFD8] shadow">
+                <Mail size={22} color="#D4AF37" />
+              </span>
+              <div className={`${isRTL ? "text-right" : "text-left"}`}>
+                <span className="block text-base font-bold mb-1" style={{ color: labelColor }}>
+                  {isRTL ? "استفسارات عامة" : "General Inquiries"}
+                </span>
+                <a href="mailto:info@hibateast.com" className="text-[#232321] hover:text-[#D4AF37] transition font-medium">
+                  info@hibateast.com
+                </a>
+              </div>
+            </div>
+
+            {/* Support Email */}
+            <div className="flex items-start gap-5">
+              <span className="p-2 rounded-full bg-[#F5EFD8] shadow">
+                <Mail size={22} color="#D4AF37" />
+              </span>
+              <div className={`${isRTL ? "text-right" : "text-left"}`}>
+                <span className="block text-base font-bold mb-1" style={{ color: labelColor }}>
+                  {isRTL ? "خدمة العملاء" : "Customer Support"}
+                </span>
+                <a href="mailto:support@hibateast.com" className="text-[#232321] hover:text-[#D4AF37] transition font-medium">
+                  support@hibateast.com
+                </a>
+              </div>
+            </div>
+
+            {/* Working Hours */}
+            <div className="flex items-start gap-5">
+              <span className="p-2 rounded-full bg-[#F5EFD8] shadow">
+                🕒
+              </span>
+              <div className={`${isRTL ? "text-right" : "text-left"}`}>
+                <span className="block text-base font-bold mb-1" style={{ color: labelColor }}>
+                  {isRTL ? "ساعات العمل" : "Working Hours"}
+                </span>
+                <p className="text-gray-600">
+                  {isRTL
+                    ? `الأحد - الخميس: 9:00 صباحًا - 6:00 مساءً\nالجمعة: مغلق | السبت: 10:00 صباحًا - 4:00 مساءً`
+                    : `Sun - Thu: 9:00 AM - 6:00 PM\nFriday: Closed | Saturday: 10:00 AM - 4:00 PM`}
                 </p>
               </div>
             </div>
           </div>
+
+        </div>
+
+        {/* Contact Form */}
+        <div className={`${cardBg} ${border} rounded-3xl p-8 flex flex-col justify-center animate-fade-in shadow-2xl`}>
+          <h2
+            className="text-2xl md:text-3xl font-bold mb-6 text-center font-playfair"
+            style={{
+              color: "#232321",
+              fontFamily: isRTL ? "'Cairo', sans-serif" : "'Playfair Display', serif",
+              letterSpacing: "0.005em"
+            }}
+          >
+            {isRTL ? "راسلنا مباشرة" : "Send a Message"}
+          </h2>
+          <ContactForm />
+        </div>
+      </section>
+
+      {/* Google Map section: جدة */}
+      <section className="md:container-custom px-2 pb-10 pt-2 mt-2 animate-fade-in">
+        <div className="rounded-3xl overflow-hidden shadow-xl border border-[#e6e2d1] bg-[#F5F5F0]">
+          <iframe
+            title={isRTL ? "خريطة جوجل جدة" : "Google Map Jeddah"}
+            src={GOOGLE_MAPS_URL}
+            className="w-full h-64 md:h-80"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            style={{ border: "0", filter: "grayscale(0.03) brightness(0.98)" }}
+          />
         </div>
       </section>
     </div>
   );
 };
-
 
 export default Contact;

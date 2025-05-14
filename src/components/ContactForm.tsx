@@ -11,7 +11,6 @@ const ContactForm: React.FC = () => {
     phone: '',
     message: ''
   });
-  const [focusedField, setFocusedField] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -23,6 +22,7 @@ const ContactForm: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
+    // Simulate form submission
     setTimeout(() => {
       toast({
         title: isRTL ? 'تم إرسال الرسالة بنجاح' : 'Message Sent Successfully',
@@ -39,82 +39,69 @@ const ContactForm: React.FC = () => {
   };
 
   const formDirection = isRTL ? 'rtl text-right' : 'ltr text-left';
-  const inputLabelStyle = (field: string) =>
-    `absolute ${isRTL ? 'right-4' : 'left-4'} px-1 transition-all duration-150 pointer-events-none bg-white ${focusedField === field || formData[field as keyof typeof formData]
-      ? '-top-3 text-[13px] text-charcoal'
-      : 'top-3 text-gray-500'
-    }`;
-
-  const inputFieldStyle =
-    'w-full px-4 py-3 text-base border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-red';
 
   return (
-    <form onSubmit={handleSubmit} className={`max-w-lg mx-auto relative ${formDirection}`} dir={isRTL ? 'rtl' : 'ltr'}>
-      {/* Name */}
-      <div className="mb-6 relative">
+    <form onSubmit={handleSubmit} className={`w-full max-w-xl mx-auto ${formDirection}`} dir={isRTL ? 'rtl' : 'ltr'}>
+      <div className="mb-4">
+        <label htmlFor="name" className="block text-charcoal mb-2">
+          {t('form-name')}
+        </label>
         <input
           type="text"
+          id="name"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          onFocus={() => setFocusedField('name')}
-          onBlur={() => setFocusedField(null)}
-          placeholder=" "
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
-          className={inputFieldStyle}
+          dir={isRTL ? 'rtl' : 'ltr'}
         />
-        <label className={inputLabelStyle('name')}>{t('form-name')}</label>
       </div>
-
-      {/* Email */}
-      <div className="mb-6 relative">
+      <div className="mb-4">
+        <label htmlFor="email" className="block text-charcoal mb-2">
+          {t('form-email')}
+        </label>
         <input
           type="email"
+          id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          onFocus={() => setFocusedField('email')}
-          onBlur={() => setFocusedField(null)}
-          placeholder=" "
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
-          className={inputFieldStyle}
+          dir={isRTL ? 'rtl' : 'ltr'}
         />
-        <label className={inputLabelStyle('email')}>{t('form-email')}</label>
       </div>
-
-      {/* Phone */}
-      <div className="mb-6 relative">
+      <div className="mb-4">
+        <label htmlFor="phone" className="block text-charcoal mb-2">
+          {t('form-phone')}
+        </label>
         <input
           type="tel"
+          id="phone"
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          onFocus={() => setFocusedField('phone')}
-          onBlur={() => setFocusedField(null)}
-          placeholder=" "
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
-          className={inputFieldStyle}
+          dir={isRTL ? 'rtl' : 'ltr'}
         />
-        <label className={inputLabelStyle('phone')}>{t('form-phone')}</label>
       </div>
-
-      {/* Message */}
-      <div className="mb-8 relative">
+      <div className="mb-6">
+        <label htmlFor="message" className="block text-charcoal mb-2">
+          {t('form-message')}
+        </label>
         <textarea
+          id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
-          onFocus={() => setFocusedField('message')}
-          onBlur={() => setFocusedField(null)}
-          placeholder=" "
           rows={5}
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
-          className={`${inputFieldStyle} resize-none`}
+          dir={isRTL ? 'rtl' : 'ltr'}
         />
-        <label className={inputLabelStyle('message')}>{t('form-message')}</label>
       </div>
-
-      {/* Submit */}
       <button
         type="submit"
         disabled={loading}
