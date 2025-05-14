@@ -204,7 +204,7 @@ const Index = () => {
               </h2>
               <p className="text-gray-600 mb-6">
                 {isRTL
-                  ? 'نسعد بتواصلكم معنا للاستفسار عن منتجاتنا أو خدماتنا. فريقنا جاهز للرد على استفساراتكم.'
+                  ? ' نسعد بتواصلكم معنا للاستفسار عن منتجاتنا أو خدماتنا. فريقنا جاهز للرد على استفساراتكم.'
                   : 'We would be happy to hear from you regarding our products or services. Our team is ready to answer your inquiries.'}
               </p>
 
