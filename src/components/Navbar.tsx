@@ -3,10 +3,16 @@ import { Link, useLocation } from 'react-router-dom';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '../context/LanguageContext';
 import { useIsMobile } from '../hooks/use-mobile';
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from './ui/sheet';
+import { X, Menu } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(true); // Set to true by default
+  const [sheetOpen, setSheetOpen] = useState(false);
   const { t, isRTL } = useLanguage();
   const location = useLocation();
   const isMobile = useIsMobile();
@@ -34,6 +40,11 @@ const Navbar: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+  }, [location.pathname]);
+
+  // Close sheet when route changes
+  useEffect(() => {
+    setSheetOpen(false);
   }, [location.pathname]);
 
   return (
@@ -69,31 +80,22 @@ const Navbar: React.FC = () => {
         {/* Mobile Navigation with Shadcn Sheet Component */}
         <div className={`lg:hidden flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
           <LanguageSwitcher />
-          <Sheet>
+          <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
             <SheetTrigger asChild>
               <button
-                className={`${isRTL ? 'mr-4' : 'ml-4'} text-charcoal hover:text-gold transition-colors duration-300`}
+                className={`${isRTL ? 'mr-4' : 'ml-4'} text-charcoal hover:text-gold transition-colors duration-300 p-2 rounded-md hover:bg-gray-100`}
                 aria-label="Open menu"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+                <Menu className="w-6 h-6" />
               </button>
             </SheetTrigger>
-            <SheetContent side={isRTL ? "right" : "left"} className="p-0 pt-10 w-64">
-              <div className="p-4">
-                <div className="flex items-center gap-2 mb-6">
+            <SheetContent
+              side={isRTL ? "right" : "left"}
+              className={`p-0 w-72 ${isRTL ? 'text-right' : 'text-left'}`}
+              closeButton={false}
+            >
+              <div className="flex items-center justify-between p-4 border-b">
+                <div className="flex items-center gap-2">
                   <img
                     src="/Logo_and_identity/logo.png"
                     alt={isRTL ? 'هبات أيست' : 'Hebat East'}
@@ -103,20 +105,38 @@ const Navbar: React.FC = () => {
                     {isRTL ? 'هبات أيست' : 'Hebat East'}
                   </h2>
                 </div>
-                <div className={`flex flex-col space-y-2 ${isRTL ? 'items-end text-right' : 'items-start text-left'}`}>
+                <button
+                  onClick={() => setSheetOpen(false)}
+                  className="rounded-full h-8 w-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
+                  aria-label="Close menu"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div className="py-6 px-4">
+                <div className={`flex flex-col space-y-1 ${isRTL ? 'items-end' : 'items-start'}`}>
                   {navItems.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={`block w-full px-4 py-3 rounded-md ${location.pathname === item.path
-                        ? 'bg-gold text-white'
-                        : 'text-charcoal hover:bg-gold-light hover:text-gold'
-                        } transition-colors duration-300`}
+                      className={`block w-full px-4 py-3 rounded-md transition-colors duration-300
+                        ${location.pathname === item.path
+                          ? 'bg-gold text-white hover:bg-gold-dark'
+                          : 'text-charcoal hover:bg-gold/10 hover:text-gold'
+                        }
+                        ${isRTL ? 'text-right' : 'text-left'}
+                      `}
+                      onClick={() => setSheetOpen(false)}
                     >
                       {item.name}
                     </Link>
                   ))}
                 </div>
+              </div>
+
+              <div className={`mt-auto p-4 border-t text-sm text-gray-500 ${isRTL ? 'text-right' : 'text-left'}`}>
+                <p>{isRTL ? 'هبات أيست - خبرة في الإضاءة منذ 1995' : 'Hebat East - Lighting Expertise Since 1995'}</p>
               </div>
             </SheetContent>
           </Sheet>
