@@ -1,5 +1,4 @@
-
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 
 type Language = 'en' | 'ar';
 
@@ -169,8 +168,25 @@ const translations: Record<string, Record<Language, string>> = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
-  const [language, setLanguage] = useState<Language>('ar'); // Default to Arabic
+  const [language, setLanguage] = useState<Language>('ar'); // الافتراضي هو العربية
 
+  // حفظ اللغة المختارة في localStorage
+  useEffect(() => {
+    // تحديث localStorage عندما تتغير اللغة
+    localStorage.setItem('language', language);
+
+    // تعيين اتجاه الصفحة بناءً على اللغة
+    document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', language);
+
+    // إضافة فترة انتقالية لتحسين تجربة المستخدم
+    document.body.style.transition = 'opacity 0.3s ease';
+    document.body.style.opacity = '0.8';
+
+    setTimeout(() => {
+      document.body.style.opacity = '1';
+    }, 300);
+  }, [language]);
   const isRTL = language === 'ar';
 
   const t = (key: string): string => {

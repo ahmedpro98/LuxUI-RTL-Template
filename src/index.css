@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,14 +47,7 @@
   }
 
   body {
-
-    scroll-behavior: smooth;
     @apply bg-background text-foreground;
-  }
-
-  ::selection {
-    background-color: #cda625ef;
-    color: #fff;
   }
 
   img {
@@ -67,14 +62,40 @@
     @apply opacity-100;
   }
 
-  /* RTL support */
+  /* تحسين دعم RTL مع خطوط قياسية - استخدام Cairo فقط للعربية */
   [dir="rtl"] {
     font-family: 'Cairo', sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
   }
 
-  /* ltr font family */
   [dir="ltr"] {
     font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4,
+  [dir="rtl"] h5,
+  [dir="rtl"] h6 {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  [dir="ltr"] h1,
+  [dir="ltr"] h2,
+  [dir="ltr"] h3,
+  [dir="ltr"] h4,
+  [dir="ltr"] h5,
+  [dir="ltr"] h6 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
   }
 
   [dir="rtl"] [lang="en"],
@@ -82,7 +103,7 @@
     display: none;
   }
 
-  /* Smooth page transitions */
+  /* انتقالات صفحة سلسة */
   #root>main {
     @apply transition-opacity duration-500;
   }
@@ -93,8 +114,42 @@
     @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light;
   }
 
+  /* أحجام الخطوط القياسية - تعديلات للعربية والإنجليزية */
+  .heading-1 {
+    @apply text-heading-1;
+  }
+
+  .heading-2 {
+    @apply text-heading-2;
+  }
+
+  .heading-3 {
+    @apply text-heading-3;
+  }
+
+  .heading-4 {
+    @apply text-heading-4;
+  }
+
+  .heading-5 {
+    @apply text-heading-5;
+  }
+
+  .body-large {
+    @apply text-body-large;
+  }
+
+  .body {
+    @apply text-body;
+  }
+
+  .body-small {
+    @apply text-body-small;
+  }
+
+  /* تعديل عناوين الأقسام مع مراعاة الاتجاه */
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-6 relative;
+    @apply text-heading-3 md:text-heading-2 font-bold mb-6 relative;
   }
 
   .section-title::after {
@@ -110,10 +165,12 @@
     box-shadow: 0 4px 30px rgba(212, 175, 55, 0.1);
   }
 
+  /* تحسين أزرار الموقع */
   .btn-primary {
     @apply bg-gold text-white px-6 py-3 rounded hover:bg-gold-dark transition-colors duration-300;
   }
 
+  /* تحسين حاويات المحتوى */
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
@@ -129,7 +186,7 @@
     }
   }
 
-  /* Enhanced hover effects */
+  /* تأثيرات التحويم المحسنة */
   .hover-lift {
     @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
@@ -142,7 +199,7 @@
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
   }
 
-  /* Improved image container */
+  /* تحسين حاويات الصور */
   .image-container {
     @apply overflow-hidden rounded-lg;
   }
@@ -150,88 +207,108 @@
   .image-container img {
     @apply w-full h-full object-cover transition-transform duration-500 hover:scale-105;
   }
+}
 
-  /* Mobile optimizations */
-  @media (max-width: 640px) {
-    .section-title {
-      @apply text-2xl mb-4;
-    }
-
-    .container-custom {
-      @apply px-4;
-    }
+/* تحسينات للجوال */
+@media (max-width: 640px) {
+  .section-title {
+    @apply text-heading-4 mb-4;
   }
 
-  /* Tablet optimizations */
-  @media (min-width: 641px) and (max-width: 1024px) {
-    .container-custom {
-      @apply px-6;
-    }
+  .container-custom {
+    @apply px-4;
   }
 
-  /* Improved form controls for mobile */
-  input,
-  textarea,
-  select {
-    caret-color: rgba(208, 187, 70, 0.887);
-    @apply w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-gold focus:border-transparent;
+  /* تحسين المسافات والهوامش للجوال */
+  [dir="rtl"] {
+    letter-spacing: 0;
   }
 
-  /* Better mobile spacing */
-  .mobile-py {
-    @apply py-10 md:py-16 lg:py-20;
+  /* تعديل حجم الخط للعناوين في الجوال */
+  h1,
+  .h1 {
+    @apply text-2xl;
   }
 
-  .mobile-px {
-    @apply px-4 md:px-6;
-  }
-
-  /* Card styles for consistent UI */
-  .content-card {
-    @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
-  }
-
-  /* Scroll-based animations - Updated with smoother timing */
-  .animate-reveal {
-    animation: reveal 0.8s ease-out forwards;
-  }
-
-  /* Smoother reveal animation with longer duration */
-  .animate-reveal-smooth {
-    animation: reveal-smooth 1.2s ease-out forwards;
-  }
-
-  @keyframes reveal {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Smoother animation with better easing */
-  @keyframes reveal-smooth {
-    0% {
-      opacity: 0;
-      transform: translateY(15px);
-    }
-
-    50% {
-      opacity: 0.7;
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  h2,
+  .h2 {
+    @apply text-xl;
   }
 }
 
-/* Transition delays for animation sequences */
+/* تحسينات للأجهزة اللوحية */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container-custom {
+    @apply px-6;
+  }
+
+  /* تحسين المسافات للأجهزة اللوحية */
+  [dir="rtl"] {
+    letter-spacing: -0.005em;
+  }
+}
+
+/* تحسين عناصر الفورم للجوال */
+input,
+textarea,
+select {
+  @apply w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent;
+}
+
+/* تحسين المسافات في الجوال */
+.mobile-py {
+  @apply py-10 md:py-16 lg:py-20;
+}
+
+.mobile-px {
+  @apply px-4 md:px-6;
+}
+
+/* تصميم البطاقات الموحد */
+.content-card {
+  @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+}
+
+/* تحريكات مبنية على التمرير - تحديثات مع توقيت أكثر سلاسة */
+.animate-reveal {
+  animation: reveal 0.8s ease-out forwards;
+}
+
+/* تحريكات أكثر سلاسة مع مدة أطول */
+.animate-reveal-smooth {
+  animation: reveal-smooth 1.2s ease-out forwards;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* تحريك أكثر سلاسة مع انتقال أفضل */
+@keyframes reveal-smooth {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* تأخيرات للتحريكات المتسلسلة */
 .delay-100 {
   animation-delay: 100ms;
 }
@@ -252,7 +329,7 @@
   animation-delay: 500ms;
 }
 
-/* Smoother fade in animation */
+/* تلاشي أكثر سلاسة */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -271,6 +348,148 @@
 
 .fade-in {
   animation: fadeIn 0.8s ease forwards;
+}
+
+/* تحريكات انزلاق أكثر سلاسة */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease forwards;
+}
+
+/* تحريكات تلاشي أكثر قوة */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* تعديلات الخط حسب اللغة */
+.ar {
+  font-family: 'Cairo', sans-serif;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+.en {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+}
+
+/* تحسينات قائمة الجوال */
+@media (max-width: 768px) {
+  .mobile-menu-item {
+    @apply block w-full text-center py-3 border-b border-gray-100;
+  }
+}
+
+/* تحسين إمكانية الوصول للأزرار في الجوال */
+@media (max-width: 640px) {
+
+  button,
+  .button,
+  a.button,
+  .btn,
+  a.btn {
+    @apply min-h-[44px] min-w-[44px];
+    /* لتحسين أهداف اللمس */
+  }
+
+  /* تحسين أحجام الخط في الجوال للعربية */
+  [dir="rtl"] {
+    font-size: 1.02rem;
+  }
+
+  /* زيادة المسافات بين العناصر في الجوال للعربية */
+  [dir="rtl"] p {
+    margin-bottom: 1.2em;
+  }
+}
+
+/* نموذج الاتصال بتصميم العلامات العائمة */
+.contact-form-custom .input-group {
+  position: relative;
+  margin-bottom: 30px;
+  width: 85%;
+  max-width: 410px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form-custom .main-input {
+  width: 100%;
+  padding: 16px 20px 16px 20px;
+  display: block;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #232321;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+  transition: border 0.35s, box-shadow 0.20s;
+  outline: none;
+  box-shadow: none;
+}
+
+.contact-form-custom .main-input:focus {
+  border: 2px solid #D4AF37;
+  /* الذهبي */
+  background-color: #F5F5F0;
+  /* كريمي خفيف */
+}
+
+.contact-form-custom input::placeholder,
+.contact-form-custom textarea::placeholder {
+  color: transparent;
+  user-select: none;
+  opacity: 0;
+  /* إخفاء الـ Placeholder */
+}
+
+.contact-form-custom .floating-label {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #232321;
+  font-size: 1.08rem;
+  background: #fffbe9;
+  padding: 0 8px;
+  border-radius: 5px;
+  pointer-events: none;
+  transition: all all 0.2s cubic-bezier(.4, 0, .2, 1);
+  z-index: 2;
 }
 
 /* Smoother slide in animations */
@@ -350,6 +569,39 @@
 }
 
 
+.heading-1 {
+  @apply text-heading-1;
+}
+
+.heading-2 {
+  @apply text-heading-2;
+}
+
+.heading-3 {
+  @apply text-heading-3;
+}
+
+.heading-4 {
+  @apply text-heading-4;
+}
+
+.heading-5 {
+  @apply text-heading-5;
+}
+
+.body-large {
+  @apply text-body-large;
+}
+
+.body {
+  @apply text-body;
+}
+
+.body-small {
+  @apply text-body-small;
+}
+
+
 
 
 
@@ -379,4 +631,34 @@
 
 .back-to-top-gradient:hover {
   background: linear-gradient(135deg, #8B5CF6 0%, #D946EF 50%, #F97316 100%);
+}
+
+[dir="ltr"] {
+  font-family: 'Roboto', sans-serif;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.6;
+
+}
+
+[dir="ltr"] h1,
+[dir="ltr"] h2,
+[dir="ltr"] h3,
+[dir="ltr"] h4,
+[dir="ltr"] h5,
+[dir="ltr"] h6 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+
+
 }

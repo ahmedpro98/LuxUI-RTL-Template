@@ -28,7 +28,8 @@ const LanguageSwitcher: React.FC = () => {
       size="sm"
       className="bg-transparent border-gold text-gold hover:bg-gold hover:text-white transition-colors duration-300 transform hover:scale-105 shadow-sm text-sm md:text-base py-1.5 px-3 md:px-4 rounded-md"
       aria-label={ariaLabel}
-      title={language === 'en' ? 'تغيير اللغة إلى العربية' : 'Change language to English'}
+      style={{ fontFamily: language === 'en' ? 'Cairo, sans-serif' : 'Roboto, sans-serif' }}
+
     >
       {buttonText}
     </Button>

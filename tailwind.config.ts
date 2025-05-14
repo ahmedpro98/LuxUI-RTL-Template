@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -77,12 +76,20 @@ export default {
 			},
 			fontFamily: {
 				'playfair': ['Playfair Display', 'serif'],
-				'tajawal': ['Tajawal', 'sans-serif']
+				'tajawal': ['Tajawal', 'sans-serif'],
+				'roboto': ['Roboto', 'sans-serif'],
+				'cairo': ['Cairo', 'sans-serif'],
 			},
-			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+			fontSize: {
+				// Standardized font sizes
+				'heading-1': ['2.5rem', { lineHeight: '1.2', fontWeight: '700' }],
+				'heading-2': ['2rem', { lineHeight: '1.25', fontWeight: '700' }],
+				'heading-3': ['1.75rem', { lineHeight: '1.3', fontWeight: '600' }],
+				'heading-4': ['1.5rem', { lineHeight: '1.35', fontWeight: '600' }],
+				'heading-5': ['1.25rem', { lineHeight: '1.4', fontWeight: '600' }],
+				'body-large': ['1.125rem', { lineHeight: '1.5' }],
+				'body': ['1rem', { lineHeight: '1.5' }],
+				'body-small': ['0.875rem', { lineHeight: '1.5' }],
 			},
 			keyframes: {
 				'accordion-down': {

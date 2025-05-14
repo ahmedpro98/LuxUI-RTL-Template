@@ -65,7 +65,7 @@ const About = () => {
       name: isRTL ? 'م/اشرف محمد السيد' : 'Eng / Ashraf Mohamed El-Sayed ',
       role: isRTL ? 'المدير التنفيذي' : 'CEO & Founder',
       bio: isRTL
-        ? 'خبرة 20 عامًا في مجال الإضاءة الفاخرة والتركيب الداخلي.'
+        ? 'خبرة 20 عامًا في مجال الإضاءة الفاخرة والتركيب الداخلي. وادارة المشروعات الضخمة'
         : '20 years of experience in luxury lighting and interior design.',
       image: "/team/ashraf.jpg"
     },
@@ -255,77 +255,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Values - Enhanced with animations */}
-      <section ref={valuesRef} className="py-20">
-        <div className="container-custom mx-auto">
-          <motion.div
-            initial="hidden"
-            animate={valuesInView ? "visible" : "hidden"}
-            variants={staggerChildren}
-            className={`text-center mb-16`}
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-bold text-charcoal mb-4"
-            >
-              {isRTL ? 'قيمنا' : 'Our Values'}
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-gray-600 max-w-2xl mx-auto"
-            >
-              {isRTL
-                ? 'مبادئ أساسية ترشد كل ما نقوم به'
-                : 'Core principles that guide everything we do'}
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            animate={valuesInView ? "visible" : "hidden"}
-            variants={staggerChildren}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {[
-              {
-                title: isRTL ? 'الجودة' : 'Quality',
-                description: isRTL
-                  ? 'نلتزم بتقديم منتجات وخدمات استثنائية تتجاوز توقعات عملائنا. نستخدم فقط أفضل المواد ونعمل مع أمهر الحرفيين.'
-                  : 'We are committed to delivering exceptional products and services that exceed our customers\' expectations. We use only the finest materials and work with the most skilled artisans.'
-              },
-              {
-                title: isRTL ? 'الابتكار' : 'Innovation',
-                description: isRTL
-                  ? 'نسعى باستمرار إلى تطوير أنفسنا وتقديم تصاميم فريدة وحلول مبتكرة. نجمع بين التقاليد العريقة والتقنيات الحديثة.'
-                  : 'We constantly strive to develop ourselves and offer unique designs and innovative solutions. We combine venerable traditions with modern techniques.'
-              },
-              {
-                title: isRTL ? 'خدمة العملاء' : 'Customer Service',
-                description: isRTL
-                  ? 'نضع عملاءنا في قلب كل ما نقوم به. نستمع ونتفهم احتياجاتهم الفريدة ونسعى جاهدين لتقديم تجربة استثنائية.'
-                  : 'We place our customers at the heart of everything we do. We listen to and understand their unique needs and strive to provide an exceptional experience.'
-              }
-            ].map((value, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className={`${isRTL ? 'text-right' : 'text-left'} bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300`}
-              >
-                <div className="bg-gold w-14 h-14 flex items-center justify-center rounded-full mb-6">
-                  <ValuesIcon index={index} />
-                </div>
-                <h3 className="text-xl font-bold text-charcoal mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* Our Team - Enhanced with motion and interactive hover effects */}
       <section ref={teamRef} className="py-20 bg-gray-50">
