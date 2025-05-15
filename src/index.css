@@ -433,7 +433,7 @@ select {
 
   /* زيادة المسافات بين العناصر في الجوال للعربية */
   [dir="rtl"] p {
-    margin-bottom: 1.2em;
+    margin-bottom: .8em;
   }
 }
 
@@ -661,4 +661,231 @@ select {
   line-height: 1.4;
 
 
+}
+
+/* Extra small screens optimization (phones smaller than 340px) */
+@media (max-width: 340px) {
+
+  /* Typography adjustments */
+  h1,
+  .h1 {
+    font-size: 1.5rem;
+    /* text-2xl */
+  }
+
+  h2,
+  .h2 {
+    font-size: 1.25rem;
+    /* text-xl */
+  }
+
+  h3,
+  .h3 {
+    font-size: 1.125rem;
+    /* text-lg */
+  }
+
+  p,
+  .p {
+    font-size: 0.875rem;
+    /* text-sm */
+  }
+
+  .text-sm {
+    font-size: 0.75rem;
+    /* text-xs */
+  }
+
+  /* Improve container padding for ultra small screens */
+  .container-custom {
+    padding-left: 0.5rem;
+    /* px-2 */
+    padding-right: 0.5rem;
+  }
+
+  /* Reduce spacing */
+  .py-20 {
+    padding-top: 3rem;
+    /* py-12 */
+    padding-bottom: 3rem;
+  }
+
+  .py-16 {
+    padding-top: 2.5rem;
+    /* py-10 */
+    padding-bottom: 2.5rem;
+  }
+
+  .py-12 {
+    padding-top: 2rem;
+    /* py-8 */
+    padding-bottom: 2rem;
+  }
+
+  .py-10 {
+    padding-top: 1.5rem;
+    /* py-6 */
+    padding-bottom: 1.5rem;
+  }
+
+  .py-8 {
+    padding-top: 1rem;
+    /* py-4 */
+    padding-bottom: 1rem;
+  }
+
+  /* Reduce padding for card and content elements */
+  .p-6 {
+    padding: 1rem;
+    /* p-4 */
+  }
+
+  .p-8 {
+    padding: 1.25rem;
+    /* p-5 */
+  }
+
+  /* Adjust button sizes */
+  .px-6 {
+    padding-left: 1rem;
+    /* px-4 */
+    padding-right: 1rem;
+  }
+
+  .px-8 {
+    padding-left: 1.25rem;
+    /* px-5 */
+    padding-right: 1.25rem;
+  }
+
+  /* Fix horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Optimize grid layouts */
+  .grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  /* Optimize flex layouts */
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  /* Adjust gap sizes */
+  .gap-6 {
+    gap: 1rem;
+    /* gap-4 */
+  }
+
+  .gap-8 {
+    gap: 1.25rem;
+    /* gap-5 */
+  }
+
+  /* Fix for navbar on tiny screens */
+  .navbar-container {
+    padding-left: 0.25rem;
+    /* px-1 */
+    padding-right: 0.25rem;
+  }
+
+  .logo-container {
+    width: 7rem;
+    /* w-28 */
+  }
+
+  /* Testimonials and cards adjustments */
+  .testimonial-card,
+  .service-card,
+  .team-card,
+  .product-card {
+    margin-left: 0;
+    /* mx-0 */
+    margin-right: 0;
+  }
+
+  /* Specific section adjustments */
+  .hero-content {
+    padding: 0.75rem;
+    /* p-3 */
+  }
+
+  .hero-heading {
+    font-size: 1.5rem;
+    /* text-2xl */
+    line-height: 1.3;
+  }
+
+  .hero-description {
+    font-size: 0.875rem;
+    /* text-sm */
+    line-height: 1.5;
+  }
+
+  /* Handle RTL specific adjustments */
+  [dir="rtl"] .section-title::after {
+    width: 3rem;
+    /* w-12 */
+  }
+
+  /* Fix embla carousel on small screens */
+  .embla__slide {
+    min-width: 100%;
+  }
+
+  /* Fix for form elements */
+  input,
+  textarea,
+  select {
+    padding-left: 0.75rem;
+    /* px-3 */
+    padding-right: 0.75rem;
+    padding-top: 0.375rem;
+    /* py-1.5 */
+    padding-bottom: 0.375rem;
+    font-size: 0.875rem;
+    /* text-sm */
+  }
+
+  /* Fix social icons spacing */
+  .social-icons {
+    gap: 0.5rem;
+    /* gap-2 */
+  }
+
+  /* Ensure images don't overflow */
+  img {
+    max-width: 100%;
+  }
+
+  /* Fix carousel button positions */
+  .carousel-nav {
+    transform: scale(0.75);
+  }
+}
+
+/* Fix carousel bug with embla */
+.embla__viewport {
+  overflow: hidden;
+}
+
+/* Fix FeaturedTestimonials carousel issues */
+.embla__slide {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .embla__slide {
+    min-width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .embla__slide {
+    min-width: 33.333%;
+  }
 }
