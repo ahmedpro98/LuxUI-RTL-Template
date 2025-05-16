@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         {/* Logo and Description */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-6`}>
           <div className="group">
-            <h2 className="text-heading-4 font-bold text-[#d4af37] transition-all duration-300 group-hover:text-[#c6ad58]">
+            <h2 className="text-heading-4 font-bold text-white text-2xl  transition-all duration-500 group-hover:text-[#c6ad58]">
               {
                 isRTL
                   ? "هبات أيست"

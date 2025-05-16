@@ -2,9 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import TestimonialCard from './TestimonialCard';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useIsMobile } from '../hooks/use-mobile';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
 const FeaturedTestimonials: React.FC = () => {
@@ -16,6 +15,9 @@ const FeaturedTestimonials: React.FC = () => {
   const [visibleCards, setVisibleCards] = useState(3); // Default visible cards for desktop
   const carouselRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+
+  // Add liked testimonials state
+  const [likedTestimonials, setLikedTestimonials] = useState<number[]>([]);
 
   const testimonials = [
     {
@@ -69,6 +71,32 @@ const FeaturedTestimonials: React.FC = () => {
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     }
   ];
+
+  // Handle liking a testimonial
+  const handleLikeTestimonial = (id: number, name: string) => {
+    // Toggle liked status
+    if (likedTestimonials.includes(id)) {
+      setLikedTestimonials(prev => prev.filter(item => item !== id));
+      toast({
+        title: isRTL ? "تم إلغاء الإعجاب" : "Like removed",
+        description: isRTL
+          ? `تم إلغاء إعجابك بشهادة ${name}`
+          : `You removed your like from ${name}'s testimonial`,
+        variant: "default",
+        duration: 2000,
+      });
+    } else {
+      setLikedTestimonials(prev => [...prev, id]);
+      toast({
+        title: isRTL ? "شكراً لإعجابك!" : "Thanks for your like!",
+        description: isRTL
+          ? `لقد أعجبت بشهادة ${name}`
+          : `You liked ${name}'s testimonial`,
+        variant: "default",
+        duration: 2000,
+      });
+    }
+  };
 
   // Determine number of visible cards based on screen width
   useEffect(() => {
@@ -176,13 +204,34 @@ const FeaturedTestimonials: React.FC = () => {
           >
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="w-full flex-shrink-0">
-                <TestimonialCard
-                  name={language === 'ar' ? testimonial.nameAr : testimonial.nameEn}
-                  role={language === 'ar' ? testimonial.roleAr : testimonial.roleEn}
-                  text={language === 'ar' ? testimonial.textAr : testimonial.textEn}
-                  image={testimonial.image}
-                  isRTL={isRTL}
-                />
+                <div className="relative">
+                  <TestimonialCard
+                    name={language === 'ar' ? testimonial.nameAr : testimonial.nameEn}
+                    role={language === 'ar' ? testimonial.roleAr : testimonial.roleEn}
+                    text={language === 'ar' ? testimonial.textAr : testimonial.textEn}
+                    image={testimonial.image}
+                    isRTL={isRTL}
+                  />
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleLikeTestimonial(
+                        testimonial.id,
+                        language === 'ar' ? testimonial.nameAr : testimonial.nameEn
+                      );
+                    }}
+                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white shadow-md transition-all duration-300 hover:bg-red-50"
+                    aria-label={isRTL ? "إعجاب" : "Like"}
+                  >
+                    <Heart
+                      size={16}
+                      className={`transition-colors duration-300 ${likedTestimonials.includes(testimonial.id)
+                          ? "fill-red-500 text-red-500"
+                          : "text-gray-400"
+                        }`}
+                    />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -250,18 +299,6 @@ const FeaturedTestimonials: React.FC = () => {
     );
   };
 
-  // Enhancement: Function to show a "like" toast when clicking on testimonials
-  const handleLikeTestimonial = (name: string) => {
-    toast({
-      title: isRTL ? "شكراً لإعجابك!" : "Thanks for your like!",
-      description: isRTL
-        ? `لقد أعجبت بشهادة ${name}`
-        : `You liked ${name}'s testimonial`,
-      variant: "default",
-      duration: 2000,
-    });
-  };
-
   // Enhanced Desktop Carousel with peek effect
   const DesktopTestimonialCarousel = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -314,7 +351,7 @@ const FeaturedTestimonials: React.FC = () => {
 
     return (
       <div
-        className="relative px-4 overflow-hidden"
+        className="relative px-4 pt-8 pb-16"
         onMouseEnter={() => setAutoplayEnabled(false)}
         onMouseLeave={() => setAutoplayEnabled(true)}
         ref={carouselContainerRef}
@@ -322,7 +359,7 @@ const FeaturedTestimonials: React.FC = () => {
         {/* Main Carousel */}
         <div className="relative overflow-hidden">
           <div
-            className="flex transition-transform duration-600 ease-out"
+            className="flex transition-transform duration-700 ease-out"
             style={{
               transform: `translateX(${isRTL ? activeIndex * (100 / visibleCards) : -activeIndex * (100 / visibleCards)}%)`,
               gap: '1rem', // Consistent gap between cards 
@@ -341,89 +378,107 @@ const FeaturedTestimonials: React.FC = () => {
                     ? 'scale-100 opacity-100'
                     : 'scale-95 opacity-70'
                     }`}
-                  onClick={() => {
-                    if (index >= activeIndex && index < activeIndex + visibleCards) {
-                      handleLikeTestimonial(language === 'ar' ? testimonial.nameAr : testimonial.nameEn);
-                    } else if (index < activeIndex) {
-                      goToPrevSlide();
-                    } else {
-                      goToNextSlide();
-                    }
-                  }}
                 >
-                  <TestimonialCard
-                    name={language === 'ar' ? testimonial.nameAr : testimonial.nameEn}
-                    role={language === 'ar' ? testimonial.roleAr : testimonial.roleEn}
-                    text={language === 'ar' ? testimonial.textAr : testimonial.textEn}
-                    image={testimonial.image}
-                    isRTL={isRTL}
-                  />
+                  <div className="relative">
+                    <TestimonialCard
+                      name={language === 'ar' ? testimonial.nameAr : testimonial.nameEn}
+                      role={language === 'ar' ? testimonial.roleAr : testimonial.roleEn}
+                      text={language === 'ar' ? testimonial.textAr : testimonial.textEn}
+                      image={testimonial.image}
+                      isRTL={isRTL}
+                    />
+                    {/* Heart like button */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleLikeTestimonial(
+                          testimonial.id,
+                          language === 'ar' ? testimonial.nameAr : testimonial.nameEn
+                        );
+                      }}
+                      className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md transition-all duration-300 hover:bg-red-50 transform hover:scale-110"
+                      aria-label={isRTL ? "إعجاب" : "Like"}
+                    >
+                      <Heart
+                        size={20}
+                        className={`transition-colors duration-300 ${likedTestimonials.includes(testimonial.id)
+                            ? "fill-red-500 text-red-500"
+                            : "text-gray-400"
+                          }`}
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Enhanced Navigation Controls */}
-        <div className="flex justify-between w-full absolute top-1/2 -translate-y-1/2 px-2 z-10 pointer-events-none">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              goToPrevSlide();
-              // Pause autoplay briefly
-              setAutoplayEnabled(false);
-              setTimeout(() => setAutoplayEnabled(true), 3000);
-            }}
-            className={`w-12 h-12 rounded-full bg-white/90 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110 ${isRTL ? 'ml-auto' : 'mr-auto'} pointer-events-auto`}
-            disabled={isTransitioning}
-            aria-label={isRTL ? "التالي" : "Previous"}
-          >
-            {isRTL ? <ChevronRight size={24} /> : <ChevronLeft size={24} />}
-          </button>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              goToNextSlide();
-              // Pause autoplay briefly
-              setAutoplayEnabled(false);
-              setTimeout(() => setAutoplayEnabled(true), 3000);
-            }}
-            className={`w-12 h-12 rounded-full bg-white/90 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110 ${isRTL ? 'mr-auto' : 'ml-auto'} pointer-events-auto`}
-            disabled={isTransitioning}
-            aria-label={isRTL ? "السابق" : "Next"}
-          >
-            {isRTL ? <ChevronLeft size={24} /> : <ChevronRight size={24} />}
-          </button>
-        </div>
-
-        {/* Progress Bar Indicator */}
-        <div className="mt-8 w-full max-w-sm mx-auto bg-gray-200 rounded-full h-1.5 overflow-hidden">
-          <div
-            className="bg-gold h-full rounded-full transition-all duration-500 ease-out"
-            style={{ width: `${(activeIndex / (maxPages - 1)) * 100}%` }}
-          ></div>
-        </div>
-
-        {/* Page Dots */}
-        <div className="flex justify-center mt-4 gap-2">
-          {Array.from({ length: maxPages }).map((_, index) => (
+        {/* Enhanced Navigation Controls - NOW OUTSIDE THE CAROUSEL */}
+        <div className="max-w-6xl mx-auto mt-8">
+          <div className="flex justify-between w-full">
             <button
-              key={`page-${index}`}
               onClick={(e) => {
                 e.preventDefault();
-                if (!isTransitioning) {
-                  goToSlide(index);
-                  setAutoplayEnabled(false);
-                  setTimeout(() => setAutoplayEnabled(true), 3000);
-                }
+                goToPrevSlide();
+                // Pause autoplay briefly
+                setAutoplayEnabled(false);
+                setTimeout(() => setAutoplayEnabled(true), 3000);
               }}
-              className={`transition-all duration-300 rounded-full ${index === activeIndex
-                ? 'w-8 h-2 bg-gold' // Elongated active indicator
-                : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
-                }`}
-              aria-label={`Go to page ${index + 1}`}
-            />
-          ))}
+              className={`w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110 ${isRTL ? 'order-2' : 'order-1'}`}
+              disabled={isTransitioning}
+              aria-label={isRTL ? "التالي" : "Previous"}
+            >
+              {isRTL ? <ChevronRight size={28} /> : <ChevronLeft size={28} />}
+            </button>
+
+            {/* Progress Bar Indicator */}
+            <div className="flex-grow max-w-md mx-4 self-center">
+              <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                <div
+                  className="bg-gold h-full rounded-full transition-all duration-500 ease-out"
+                  style={{ width: `${(activeIndex / (maxPages - 1)) * 100}%` }}
+                ></div>
+              </div>
+
+              {/* Page Dots */}
+              <div className="flex justify-center mt-4 gap-2">
+                {Array.from({ length: maxPages }).map((_, index) => (
+                  <button
+                    key={`page-${index}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (!isTransitioning) {
+                        goToSlide(index);
+                        setAutoplayEnabled(false);
+                        setTimeout(() => setAutoplayEnabled(true), 3000);
+                      }
+                    }}
+                    className={`transition-all duration-300 rounded-full ${index === activeIndex
+                      ? 'w-8 h-2 bg-gold' // Elongated active indicator
+                      : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                      }`}
+                    aria-label={`Go to page ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                goToNextSlide();
+                // Pause autoplay briefly
+                setAutoplayEnabled(false);
+                setTimeout(() => setAutoplayEnabled(true), 3000);
+              }}
+              className={`w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110 ${isRTL ? 'order-1' : 'order-2'}`}
+              disabled={isTransitioning}
+              aria-label={isRTL ? "السابق" : "Next"}
+            >
+              {isRTL ? <ChevronLeft size={28} /> : <ChevronRight size={28} />}
+            </button>
+          </div>
         </div>
       </div>
     );

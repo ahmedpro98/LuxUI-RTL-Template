@@ -126,16 +126,17 @@ const Services = () => {
   ];
 
   return (
-    <div className="pt-24">
+    <div className="pt-24 ">
       {/* Header */}
       <section className="bg-gradient-to-r from-charcoal to-charcoal-dark text-white py-16">
-        <div className="container-custom mx-auto">
+        <div className="container-custom mx-auto ">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('services')}</h1>
-            <p className="text-xl text-gray-300">{isRTL ? 'حلول إضاءة فاخرة مصممة لمساحتك' : 'Luxury lighting solutions designed for your space'}</p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-right translate-x-50 mb-10">{t('services')}</h1>
+            <p className="text-xl text-gray-300 text-right translate-x-50">{isRTL ? 'حلول إضاءة فاخرة مصممة لمساحتك' : 'Luxury lighting solutions designed for your space'}</p>
           </div>
         </div>
       </section>
+
 
       {/* Services */}
       <section className="py-16 bg-cream">
@@ -183,6 +184,7 @@ const Services = () => {
           <Link to="/contact" className="inline-block bg-white text-gold px-8 py-4 rounded-md hover:bg-gray-100 font-bold shadow-lg transition-colors">
             {isRTL ? 'احصل على استشارة مجانية' : 'Get Free Consultation'}
           </Link>
+
           {/* <div className="text-center mt-10">
             <Link
               to="/Gallery"

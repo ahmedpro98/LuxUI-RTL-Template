@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { MapPin, Phone, Mail } from "lucide-react";

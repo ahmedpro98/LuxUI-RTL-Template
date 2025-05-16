@@ -52,7 +52,7 @@ const ContactForm: React.FC = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded contact-form-custom  focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
           dir={isRTL ? 'rtl' : 'ltr'}
         />
@@ -67,7 +67,7 @@ const ContactForm: React.FC = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
           dir={isRTL ? 'rtl' : 'ltr'}
         />
