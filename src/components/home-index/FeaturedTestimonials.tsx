@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../context/LanguageContext';
-import TestimonialCard from './TestimonialCard';
-import { useIsMobile } from '../hooks/use-mobile';
+import { useLanguage } from '../../context/LanguageContext';
+import TestimonialCard from './../TestimonialCard';
+import { useIsMobile } from '../../hooks/use-mobile';
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 

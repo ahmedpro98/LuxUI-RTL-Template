@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../context/LanguageContext';
-import { useIsMobile } from '../hooks/use-mobile';
-import LazyImage from './LazyImage';
+import { useLanguage } from '../../context/LanguageContext';
+import { useIsMobile } from '../../hooks/use-mobile';
+import LazyImage from './../LazyImage';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Sample featured collection data

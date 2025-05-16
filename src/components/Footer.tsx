@@ -14,14 +14,17 @@ const Footer: React.FC = () => {
         {/* Logo and Description */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-6`}>
           <div className="group">
-            <h2 className="text-heading-4 font-bold text-white text-2xl  transition-all duration-500 group-hover:text-[#c6ad58]">
+            <h2 className="text-heading-4 font-bold text-white text-2xl  space-y-6 transition-all duration-500 
+                         group-hover:text-gold">
               {
                 isRTL
                   ? "هبات أيست"
                   : "Hebat East"
               }
             </h2>
-            <div className="relative mt-2 h-1 w-8 bg-[#d4af37] rounded-full transition-all duration-700 group-hover:w-32"></div>
+            <div className="relative mt-2 h-1 w-8 bg-[#d4af37] rounded-full transition-all duration-700 group-hover:w-32 
+              bg-gradient-to-r from-gold to-gold-light"></div>
+
           </div>
           <p className="text-base text-white ">
             {isRTL
