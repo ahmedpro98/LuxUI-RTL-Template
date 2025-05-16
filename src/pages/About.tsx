@@ -9,6 +9,11 @@ import {
 } from "@/components/ui/card";
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { useIsMobile } from '../hooks/use-mobile';
+import {
+  Linkedin,
+  Mail,
+  Twitter
+} from 'lucide-react';
 
 // Animation variants
 const fadeInUp = {
@@ -295,7 +300,7 @@ const About = () => {
                   y: -10,
                   transition: { duration: 0.3 }
                 }}
-                className="relative"
+                className="relative group"
                 onMouseEnter={() => setActiveTeamMember(index)}
                 onMouseLeave={() => setActiveTeamMember(null)}
               >
@@ -304,11 +309,25 @@ const About = () => {
                     <LazyImage
                       src={member.image}
                       alt={member.name}
-                      className={`w-full h-full object-cover transition-all duration-700 ${activeTeamMember === index ? 'scale-110' : 'scale-100'}`}
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                     />
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-t from-charcoal to-transparent opacity-0 transition-opacity duration-300 ${activeTeamMember === index ? 'opacity-60' : ''}`}
-                    ></div>
+                    {/* Enhanced hover overlay effect */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gold to-transparent opacity-0 group-hover:opacity-80 transition-all duration-500 flex items-center justify-center">
+                      <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500 flex flex-col items-center">
+                        <div className="flex space-x-4 mb-4">
+                          <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-300">
+                            <Linkedin size={18} />
+                          </button>
+                          <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-300">
+                            <Twitter size={18} />
+                          </button>
+                          <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-300">
+                            <Mail size={18} />
+                          </button>
+                        </div>
+                        <span className="text-white font-medium text-sm">{isRTL ? 'تواصل معنا' : 'Get in touch'}</span>
+                      </div>
+                    </div>
                   </div>
                   <CardContent className={`p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
                     <h3 className="text-xl font-bold text-charcoal mb-1">
