@@ -1,7 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { loadavg } from 'node:os';
+import { motion } from 'framer-motion';
+import LazyImage from '../components/LazyImage';
+
+
 
 const Gallery = () => {
   const { t, isRTL } = useLanguage();
@@ -140,20 +142,58 @@ const Gallery = () => {
     setVisibleItems(prev => Math.min(prev + 6, filteredItems.length));
   };
 
+  // Container and item variants for animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      x: isRTL ? -40 : 40
+    },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 12
+      }
+    }
+  };
+
   return (
     <div className="pt-24">
       {/* Header - Updated title */}
       <section className="bg-charcoal text-white py-20">
         <div className="container-custom mx-auto">
           <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
+            <motion.h1
+              className="text-4xl md:text-5xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               {isRTL ? 'تشكيلة أعمالنا' : 'Our Collection'}
-            </h1>
-            <p className="text-xl text-gray-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            </motion.h1>
+            <motion.p
+              className="text-xl text-gray-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               {isRTL
                 ? 'استكشف مجموعتنا من الثريات الفاخرة ومشاريعنا السابقة'
                 : 'Explore our collection of luxury chandeliers and previous projects'}
-            </p>
+            </motion.p>
           </div>
         </div>
       </section>
@@ -162,86 +202,88 @@ const Gallery = () => {
       <section className="py-20">
         <div className="container-custom mx-auto">
           {/* Categories */}
-          <div className={`flex flex-wrap gap-4 mb-12 ${isRTL ? 'justify-end' : 'justify-start'}`}>
-            {categories.map(category => (
-              <button
+          <motion.div
+            className={`flex flex-wrap gap-4 mb-12 ${isRTL ? 'justify-end' : 'justify-start'}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            {categories.map((category, index) => (
+              <motion.button
                 key={category.id}
                 onClick={() => {
                   setActiveCategory(category.id);
                   setVisibleItems(9);
                 }}
                 className={`px-6 py-2 rounded-full transition-colors duration-300 ${activeCategory === category.id
-                  ? 'bg-gold text-white'
-                  : 'bg-gray-100 text-charcoal hover:bg-gray-200'
+                    ? 'bg-gold text-white'
+                    : 'bg-gray-100 text-charcoal hover:bg-gray-200'
                   }`}
+                initial={{ opacity: 0, x: isRTL ? -20 : 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {isRTL ? category.nameAR : category.nameEN}
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
 
           {/* Gallery Items */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            key={activeCategory} // Re-render animation when category changes
+          >
             {filteredItems.slice(0, visibleItems).map((item, index) => (
-              <div
+              <motion.div
                 key={item.id}
-                className="animate-fade-in"
-                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+                variants={itemVariants}
+                className="bg-white rounded-lg overflow-hidden shadow-lg elegant-shadow group"
               >
-                <div className="bg-white rounded-lg overflow-hidden shadow-lg elegant-shadow group">
-                  <div className="h-64 overflow-hidden">
-                    <div className="relative h-64 overflow-hidden group">
-                      {item.hoverImageUrl ? (
-                        <>
-                          <img
-                            src={item.imageUrl}
-                            alt={isRTL ? item.titleAR : item.titleEN}
-                            className="w-full h-full object-cover transition-opacity duration-700 group-hover:opacity-0 absolute top-0 left-0"
-                          />
-                          <img
-                            src={item.hoverImageUrl}
-                            alt={isRTL ? item.titleAR : item.titleEN}
-                            className="w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:opacity-100 absolute top-0 left-0"
-                          />
-                        </>
-                      ) : (
-                        <img
-                          src={item.imageUrl}
-                          alt={isRTL ? item.titleAR : item.titleEN}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      )}
-                    </div>
-
-                  </div>
-                  <div className={`p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
-                    <h3 className="text-xl font-bold text-charcoal mb-1">
-                      {isRTL ? item.titleAR : item.titleEN}
-                    </h3>
-                    <p className="text-gold">
-                      {isRTL ? item.locationAR : item.locationEN}
-                    </p>
-                  </div>
+                <div className="h-64 overflow-hidden">
+                  <LazyImage
+                    src={item.imageUrl}
+                    alt={isRTL ? item.titleAR : item.titleEN}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                 </div>
-              </div>
+                <div className={`p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+                  <h3 className="text-xl font-bold text-charcoal mb-1">
+                    {isRTL ? item.titleAR : item.titleEN}
+                  </h3>
+                  <p className="text-gold">
+                    {isRTL ? item.locationAR : item.locationEN}
+                  </p>
+                </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Load More Button */}
           {visibleItems < filteredItems.length && (
-            <div className="text-center mt-12">
-              <button
+            <motion.div
+              className="text-center mt-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+            >
+              <motion.button
                 onClick={loadMore}
                 className="inline-block bg-transparent border-2 border-gold text-gold px-6 py-3 rounded-md hover:bg-gold hover:text-white transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {isRTL ? 'عرض المزيد' : 'Load More'}
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           )}
         </div>
       </section>
     </div>
-
   );
 };
 

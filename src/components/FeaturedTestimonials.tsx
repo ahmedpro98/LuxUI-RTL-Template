@@ -27,7 +27,7 @@ const FeaturedTestimonials: React.FC = () => {
       roleAr: "مالك فندق",
       roleEn: "Hotel Owner",
       textAr: "تم تركيب أكثر من 15 ثريا في فندقنا. كانت الجودة استثنائية والخدمة احترافية للغاية. أوصي بشدة بخدماتهم.",
-      textEn: "They installed more than 15 chandeliers in our hotel. The quality was exceptional and the service was highly professional. I strongly recommend their services.",
+      textEn: "They installed more than 15 chandeliers in our hotel. The quality was exceptional and the service was highly professional.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
@@ -37,7 +37,7 @@ const FeaturedTestimonials: React.FC = () => {
       roleAr: "مصممة داخلية",
       roleEn: "Interior Designer",
       textAr: "أتعامل معهم في كل مشاريعي. يقدمون ثريات فاخرة بتصاميم فريدة وخدمة تركيب محترفة. شريك موثوق للمشاريع الراقية.",
-      textEn: "I work with them on all my projects. They provide luxury chandeliers with unique designs and professional installation service. A trusted partner for upscale projects.",
+      textEn: "I work with them on all my projects. They provide luxury chandeliers with unique designs and professional ",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
@@ -47,7 +47,7 @@ const FeaturedTestimonials: React.FC = () => {
       roleAr: "صاحب قصر",
       roleEn: "Palace Owner",
       textAr: "ثريات استثنائية وخدمة لا مثيل لها. قاموا بتصميم وتركيب الثريات في جميع أنحاء القصر بدقة واحترافية عالية.",
-      textEn: "Exceptional chandeliers and unmatched service. They designed and installed chandeliers throughout the palace with precision and high professionalism.",
+      textEn: "Exceptional chandeliers and unmatched service. They designed and installed chandeliers .",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
     },
     {
@@ -57,7 +57,7 @@ const FeaturedTestimonials: React.FC = () => {
       roleAr: "مديرة مركز تجاري",
       roleEn: "Mall Manager",
       textAr: "كان التعاون مع هبات أيست تجربة رائعة. قدموا لنا حلولاً مبتكرة لإضاءة المركز التجاري بأكمله، ونالت إعجاب جميع الزوار.",
-      textEn: "Collaborating with Hebat East was a wonderful experience. They provided innovative lighting solutions for our entire mall that impressed all visitors.",
+      textEn: "Collaborating with Hebat East was a wonderful experience. They provided innovative lighting solutions .",
       image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
@@ -67,7 +67,7 @@ const FeaturedTestimonials: React.FC = () => {
       roleAr: "مطور عقاري",
       roleEn: "Real Estate Developer",
       textAr: "نقدر الاحترافية التي أظهرها فريق هبات أيست في تنفيذ مشروعنا. تم تسليم الثريات في الموعد المحدد وبمستوى جودة يفوق التوقعات.",
-      textEn: "We appreciate the professionalism shown by the Hebat East team in executing our project. The chandeliers were delivered on time and with quality exceeding expectations.",
+      textEn: "We appreciate the professionalism shown by the Hebat East team in executing our project.",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     }
   ];
@@ -226,8 +226,8 @@ const FeaturedTestimonials: React.FC = () => {
                     <Heart
                       size={16}
                       className={`transition-colors duration-300 ${likedTestimonials.includes(testimonial.id)
-                          ? "fill-red-500 text-red-500"
-                          : "text-gray-400"
+                        ? "fill-red-500 text-red-500"
+                        : "text-gray-400"
                         }`}
                     />
                   </button>
@@ -237,63 +237,65 @@ const FeaturedTestimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Improved Controls */}
-        <div className="flex justify-between mt-6 mb-2 px-2">
+        {/* Correctly positioned for RTL/LTR */}
+        <div className="flex justify-center mt-6 mb-2 px-2">
+          {/* Left button correctly positioned for RTL/LTR */}
           <button
             onClick={(e) => {
               e.preventDefault();
               goToPrevSlide();
-              // Pause autoplay briefly
               setAutoplayEnabled(false);
               setTimeout(() => setAutoplayEnabled(true), 3000);
             }}
-            className={`w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white ${isRTL ? 'ml-auto' : 'mr-auto'}`}
+            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white"
             disabled={isTransitioning}
-            aria-label={isRTL ? "التالي" : "Previous"}
+            aria-label={isRTL ? "السابق" : "Previous"}
           >
-            {isRTL ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
+            {/* Always use ChevronLeft for previous button regardless of RTL/LTR */}
+            <ChevronLeft size={20} />
           </button>
+
+          {/* Indicators in the middle */}
+          <div className="flex justify-center items-center mx-auto gap-1.5">
+            {testimonials.map((_, index) => (
+              <button
+                key={`indicator-${index}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (!isTransitioning) {
+                    setIsTransitioning(true);
+                    setActiveIndex(index);
+                    setAutoplayEnabled(false);
+                    setTimeout(() => {
+                      setIsTransitioning(false);
+                      setAutoplayEnabled(true);
+                    }, 500);
+                  }
+                }}
+                className={`transition-all duration-300 rounded-full ${index === activeIndex
+                  ? 'w-6 h-2 bg-gold' // Elongated active indicator
+                  : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                  }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Right button correctly positioned for RTL/LTR */}
           <button
             onClick={(e) => {
               e.preventDefault();
               goToNextSlide();
-              // Pause autoplay briefly
               setAutoplayEnabled(false);
               setTimeout(() => setAutoplayEnabled(true), 3000);
             }}
-            className={`w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white ${isRTL ? 'mr-auto' : 'ml-auto'}`}
+            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white"
             disabled={isTransitioning}
-            aria-label={isRTL ? "السابق" : "Next"}
+            aria-label={isRTL ? "التالي" : "Next"}
           >
-            {isRTL ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
+            {/* Always use ChevronRight for next button regardless of RTL/LTR */}
+            <ChevronRight size={20} />
           </button>
-        </div>
-
-        {/* Enhanced Indicators - Smoother and more elegant */}
-        <div className="flex justify-center mt-2 gap-1.5">
-          {testimonials.map((_, index) => (
-            <button
-              key={`indicator-${index}`}
-              onClick={(e) => {
-                e.preventDefault();
-                if (!isTransitioning) {
-                  setIsTransitioning(true);
-                  setActiveIndex(index);
-                  // Pause autoplay briefly
-                  setAutoplayEnabled(false);
-                  setTimeout(() => {
-                    setIsTransitioning(false);
-                    setAutoplayEnabled(true);
-                  }, 500);
-                }
-              }}
-              className={`transition-all duration-300 rounded-full ${index === activeIndex
-                ? 'w-6 h-2 bg-gold' // Elongated active indicator
-                : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
-                }`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
         </div>
       </div>
     );
@@ -368,7 +370,7 @@ const FeaturedTestimonials: React.FC = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className={`flex-none transition-all duration-500`}
+                className="flex-none transition-all duration-500"
                 style={{
                   width: `calc(${100 / visibleCards}% - ${(visibleCards - 1) / visibleCards}rem)`,
                 }}
@@ -402,8 +404,8 @@ const FeaturedTestimonials: React.FC = () => {
                       <Heart
                         size={20}
                         className={`transition-colors duration-300 ${likedTestimonials.includes(testimonial.id)
-                            ? "fill-red-500 text-red-500"
-                            : "text-gray-400"
+                          ? "fill-red-500 text-red-500"
+                          : "text-gray-400"
                           }`}
                       />
                     </button>
@@ -414,25 +416,26 @@ const FeaturedTestimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Enhanced Navigation Controls - NOW OUTSIDE THE CAROUSEL */}
+        {/* Fixed Navigation Controls - Consistent for RTL/LTR */}
         <div className="max-w-6xl mx-auto mt-8">
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between items-center w-full">
+            {/* Previous button - Always on the left side visually */}
             <button
               onClick={(e) => {
                 e.preventDefault();
                 goToPrevSlide();
-                // Pause autoplay briefly
                 setAutoplayEnabled(false);
                 setTimeout(() => setAutoplayEnabled(true), 3000);
               }}
-              className={`w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110 ${isRTL ? 'order-2' : 'order-1'}`}
+              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
               disabled={isTransitioning}
-              aria-label={isRTL ? "التالي" : "Previous"}
+              aria-label={isRTL ? "السابق" : "Previous"}
             >
-              {isRTL ? <ChevronRight size={28} /> : <ChevronLeft size={28} />}
+              {/* Always use ChevronLeft for previous button */}
+              <ChevronLeft size={28} />
             </button>
 
-            {/* Progress Bar Indicator */}
+            {/* Progress Bar and Indicators in the middle */}
             <div className="flex-grow max-w-md mx-4 self-center">
               <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                 <div
@@ -464,19 +467,20 @@ const FeaturedTestimonials: React.FC = () => {
               </div>
             </div>
 
+            {/* Next button - Always on the right side visually */}
             <button
               onClick={(e) => {
                 e.preventDefault();
                 goToNextSlide();
-                // Pause autoplay briefly
                 setAutoplayEnabled(false);
                 setTimeout(() => setAutoplayEnabled(true), 3000);
               }}
-              className={`w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110 ${isRTL ? 'order-1' : 'order-2'}`}
+              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
               disabled={isTransitioning}
-              aria-label={isRTL ? "السابق" : "Next"}
+              aria-label={isRTL ? "التالي" : "Next"}
             >
-              {isRTL ? <ChevronLeft size={28} /> : <ChevronRight size={28} />}
+              {/* Always use ChevronRight for next button */}
+              <ChevronRight size={28} />
             </button>
           </div>
         </div>

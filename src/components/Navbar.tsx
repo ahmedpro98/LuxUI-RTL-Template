@@ -48,7 +48,8 @@ const Navbar: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 
+  ${(isScrolled || sheetOpen || isMobile) ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container-custom mx-auto flex justify-between items-center">
         <Link to="/" className="text-charcoal hover:text-gold transition-colors duration-300 flex items-center gap-2">
           <img
@@ -136,7 +137,7 @@ const Navbar: React.FC = () => {
               </div>
 
               <div className={`mt-auto p-4 border-t text-sm text-gray-500 ${isRTL ? 'text-right' : 'text-left'}`}>
-                <p>{isRTL ? 'هبات أيست - خبرة في الإضاءة منذ 1995' : 'Hebat East - Lighting Expertise Since 1995'}</p>
+                <p>{isRTL ? 'هبات أيست - خبرة في الإضاءة والتركيبات ' : 'Hebat East - Lighting Expertise '}</p>
               </div>
             </SheetContent>
           </Sheet>
