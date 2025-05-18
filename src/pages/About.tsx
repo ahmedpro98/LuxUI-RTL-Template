@@ -261,7 +261,7 @@ const About = () => {
       </section>
 
 
-      {/* Our Team - Enhanced with motion and interactive hover effects */}
+      {/* Our Team - Enhanced with image zoom effects */}
       <section ref={teamRef} className="py-20 bg-gray-50">
         <div className="container-custom mx-auto">
           <motion.div
@@ -296,10 +296,6 @@ const About = () => {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                whileHover={{
-                  y: -10,
-                  transition: { duration: 0.3 }
-                }}
                 className="relative group"
                 onMouseEnter={() => setActiveTeamMember(index)}
                 onMouseLeave={() => setActiveTeamMember(null)}
@@ -315,15 +311,17 @@ const About = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-gold to-transparent opacity-0 group-hover:opacity-80 transition-all duration-500 flex items-center justify-center">
                       <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500 flex flex-col items-center">
                         <div className="flex space-x-4 mb-4">
-                          <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-300">
-                            <Linkedin size={18} />
-                          </button>
-                          <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-300">
-                            <Twitter size={18} />
-                          </button>
-                          <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-300">
-                            <Mail size={18} />
-                          </button>
+                          <div className="flex items-center justify-between gap-4">
+                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-1000">
+                              <Linkedin size={18} />
+                            </button>
+                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-700">
+                              <Twitter size={18} />
+                            </button>
+                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-700">
+                              <Mail size={18} />
+                            </button>
+                          </div>
                         </div>
                         <span className="text-white font-medium text-sm">{isRTL ? 'تواصل معنا' : 'Get in touch'}</span>
                       </div>

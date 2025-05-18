@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import TestimonialCard from '../components/TestimonialCard';
@@ -82,7 +81,7 @@ const Testimonials = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
               {t('testimonials')}
             </h1>
-            <p className="text-xl text-gray-300 animate-fade-in" style={{animationDelay: '0.2s'}}>
+            <p className="text-xl text-gray-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               {isRTL
                 ? 'اكتشف ما يقوله عملاؤنا عن تجربتهم معنا'
                 : 'Discover what our clients say about their experience with us'}
@@ -96,10 +95,10 @@ const Testimonials = () => {
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {testimonials.map((item, index) => (
-              <div 
+              <div
                 key={item.id}
                 className="animate-fade-in"
-                style={{animationDelay: `${0.1 + index * 0.1}s`}}
+                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 <TestimonialCard
                   name={isRTL ? item.nameAR : item.nameEN}
@@ -121,14 +120,14 @@ const Testimonials = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4 animate-fade-in">
               {isRTL ? 'شاركنا تجربتك' : 'Share Your Experience'}
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
+            <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
               {isRTL
                 ? 'نحن نقدر آراءك. شاركنا تجربتك مع ثرياتنا وخدماتنا.'
                 : 'We value your feedback. Share your experience with our chandeliers and services.'}
             </p>
           </div>
 
-          <div className="max-w-xl mx-auto animate-fade-in" style={{animationDelay: '0.3s'}}>
+          <div className="max-w-xl mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <form className={`bg-white p-8 rounded-lg shadow-lg elegant-shadow ${isRTL ? 'text-right' : 'text-left'}`}>
               <div className="mb-4">
                 <label htmlFor="name" className="block text-charcoal mb-2">

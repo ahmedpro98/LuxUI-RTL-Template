@@ -22,12 +22,16 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
   return (
     <div
-      className="group bg-white p-5 md:p-6 rounded-lg shadow-lg h-full flex flex-col transition-all duration-300 hover:shadow-xl transform md:hover:-translate-y-1 border border-transparent hover:border-gold/20"
+      className="group bg-white p-5 md:p-6 rounded-lg shadow-lg h-full flex flex-col transition-all duration-300 hover:shadow-xl transform 
+      md:hover:-translate-y-1   border border-transparent   hover:border-gold/20 "
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className={`flex flex-col ${isRTL ? 'text-right' : 'text-left'} h-full`}>
-        <div className={`mb-3 md:mb-4 text-gold transition-transform duration-300 md:group-hover:scale-110`}>
+
+        <div className={`mb-3 md:mb-4 text-gold transition-transform duration-300 
+            `}>
+
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-gold">
             <path d="M10.667 13.3334H5.33366C5.33366 13.3334 5.33366 8.00004 10.667 8.00004M10.667 8.00004C10.667 8.00004 10.667 5.33337 8.00033 6.66671C5.33366 8.00004 5.33366 13.3334 5.33366 13.3334C5.33366 17.3334 10.667 17.3334 10.667 13.3334V8.00004ZM26.667 13.3334H21.3337C21.3337 13.3334 21.3337 8.00004 26.667 8.00004M26.667 8.00004C26.667 8.00004 26.667 5.33337 24.0003 6.66671C21.3337 8.00004 21.3337 13.3334 21.3337 13.3334C21.3337 17.3334 26.667 17.3334 26.667 13.3334V8.00004Z" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

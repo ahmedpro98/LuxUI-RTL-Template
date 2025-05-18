@@ -98,6 +98,7 @@ const FeaturedTestimonials: React.FC = () => {
     }
   };
 
+  
   // Determine number of visible cards based on screen width
   useEffect(() => {
     const handleResize = () => {
@@ -237,9 +238,9 @@ const FeaturedTestimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Correctly positioned for RTL/LTR */}
+        {/* Navigation buttons - FIXED: consistently positioned regardless of RTL/LTR */}
         <div className="flex justify-center mt-6 mb-2 px-2">
-          {/* Left button correctly positioned for RTL/LTR */}
+          {/* Previous button */}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -251,7 +252,7 @@ const FeaturedTestimonials: React.FC = () => {
             disabled={isTransitioning}
             aria-label={isRTL ? "السابق" : "Previous"}
           >
-            {/* Always use ChevronLeft for previous button regardless of RTL/LTR */}
+            {/* FIXED: Using ChevronLeft for all languages */}
             <ChevronLeft size={20} />
           </button>
 
@@ -281,7 +282,7 @@ const FeaturedTestimonials: React.FC = () => {
             ))}
           </div>
 
-          {/* Right button correctly positioned for RTL/LTR */}
+          {/* Next button */}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -293,7 +294,7 @@ const FeaturedTestimonials: React.FC = () => {
             disabled={isTransitioning}
             aria-label={isRTL ? "التالي" : "Next"}
           >
-            {/* Always use ChevronRight for next button regardless of RTL/LTR */}
+            {/* FIXED: Using ChevronRight for all languages */}
             <ChevronRight size={20} />
           </button>
         </div>
@@ -416,10 +417,10 @@ const FeaturedTestimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Fixed Navigation Controls - Consistent for RTL/LTR */}
+        {/* Navigation Controls - FIXED: Consistently positioned regardless of RTL/LTR */}
         <div className="max-w-6xl mx-auto mt-8">
           <div className="flex justify-between items-center w-full">
-            {/* Previous button - Always on the left side visually */}
+            {/* Previous button - Always on the left visually */}
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -431,7 +432,7 @@ const FeaturedTestimonials: React.FC = () => {
               disabled={isTransitioning}
               aria-label={isRTL ? "السابق" : "Previous"}
             >
-              {/* Always use ChevronLeft for previous button */}
+              {/* FIXED: Using ChevronLeft for all languages */}
               <ChevronLeft size={28} />
             </button>
 
@@ -467,7 +468,7 @@ const FeaturedTestimonials: React.FC = () => {
               </div>
             </div>
 
-            {/* Next button - Always on the right side visually */}
+            {/* Next button - Always on the right visually */}
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -479,7 +480,7 @@ const FeaturedTestimonials: React.FC = () => {
               disabled={isTransitioning}
               aria-label={isRTL ? "التالي" : "Next"}
             >
-              {/* Always use ChevronRight for next button */}
+              {/* FIXED: Using ChevronRight for all languages */}
               <ChevronRight size={28} />
             </button>
           </div>
