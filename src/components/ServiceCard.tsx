@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useIsMobile } from '../hooks/use-mobile';
+import React from 'react';
 
 interface ServiceCardProps {
   title: string;
@@ -9,45 +8,13 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, isRTL = false }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      }
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
-      }
-    };
-  }, []);
-
   return (
     <div
-      ref={cardRef}
-      className={`bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 h-full transform hover:-translate-y-1 hover:scale-[1.01] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-      style={{ transitionDelay: '100ms' }}
+      className="bg-white p-5 md:p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-500 h-full transform"
       itemScope
       itemType="https://schema.org/Service"
     >
-      <div className={`flex flex-col items-center text-center ${isRTL ? 'rtl' : ''}`}>
+      <div className={`flex flex-col ${isRTL ? 'items-end text-right' : 'items-start text-left'}`}>
         <div className="mb-4 text-gold bg-gold/10 p-3 rounded-full transform transition-transform duration-300 hover:scale-110">
           {icon}
         </div>

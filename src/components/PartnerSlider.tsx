@@ -1,8 +1,6 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import { useLanguage } from '../context/LanguageContext';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import LazyImage from './LazyImage';
 

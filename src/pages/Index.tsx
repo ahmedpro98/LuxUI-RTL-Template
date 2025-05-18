@@ -7,6 +7,9 @@ import AboutSection from '../components/home-index/AboutSection';
 import ServicesSection from '../components/home-index/ServicesSection';
 import ContactSection from '../components/home-index/ContactSection';
 import CtaSection from '../components/home-index/CtaSection';
+import ScrollObserver from '../components/home-index/ScrollObserver';
+
+
 
 const Index = () => {
   useEffect(() => {
@@ -20,27 +23,66 @@ const Index = () => {
       {/* Hero Section */}
       <HeroSection />
 
+
       {/* Featured Collection Section */}
       {/* قسم المعرض */}
-      <FeaturedCollection />
+
+      <ScrollObserver animation="fade-up">
+        <FeaturedCollection />
+      </ScrollObserver>
+
+
 
       {/* قسم الشركاء */}
-      <PartnersSection />
+
+      <ScrollObserver animation="fade-up">
+        <PartnersSection />
+      </ScrollObserver>
+
+
 
       {/* قسم حول الشركة */}
-      <AboutSection />
+
+      <ScrollObserver animation="fade-up">
+        <AboutSection />
+      </ScrollObserver>
+
+
 
       {/* قسم الخدمات */}
-      <ServicesSection />
+
+      <ScrollObserver animation="fade-up">
+        <ServicesSection />
+      </ScrollObserver>
+
+
 
       {/* قسم الشهادات */}
-      <FeaturedTestimonials />
+
+      <ScrollObserver animation="fade-up">
+        <FeaturedTestimonials />
+      </ScrollObserver>
+
+
 
       {/* قسم التواصل */}
-      <ContactSection />
+      {/* Section animation */}
+      <ScrollObserver animation="fade-up">
+        <ContactSection />
+      </ScrollObserver>
+      {/* END */}
+
+
 
       {/* قسم الدعوة للاتصال */}
-      <CtaSection />
+      {/* Section animation */}
+
+      <ScrollObserver animation="fade-up">
+        <CtaSection />
+      </ScrollObserver>
+      {/* END */}
+
+
     </div>
   );
 };

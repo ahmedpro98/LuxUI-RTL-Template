@@ -1,43 +1,24 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { Link } from 'react-router-dom';
 import LazyImage from '../LazyImage';
+import ScrollObserver from './ScrollObserver';
 
 const AboutSection = () => {
     const { t, isRTL } = useLanguage();
-    const aboutRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-reveal-smooth');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe about section
-        if (aboutRef.current) {
-            observer.observe(aboutRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
 
     return (
-        <section className="py-16 md:py-20" ref={aboutRef}>
+        <section className="py-16 md:py-20">
             <div className="container-custom mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
 
                     {/* paragraph */}
-                    <div className={`${isRTL ? 'order-2 text-right' : 'order-1 text-left'} transition-transform duration-700 ease-out`}>
+                    <ScrollObserver
+                        animation={isRTL ? "fade-left" : "fade-right"}
+                        className={`${isRTL ? 'order-2 text-right' : 'order-1 text-left'}`}
+                        threshold={0.15}
+                        delay={105}
+                    >
                         <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-4 md:mb-6">
                             {isRTL ? 'هبات أيست' : 'Hebat East'}
                         </h2>
@@ -49,10 +30,15 @@ const AboutSection = () => {
                         >
                             {isRTL ? 'اقرأ المزيد عنا' : 'Read More About Us'}
                         </Link>
-                    </div>
+                    </ScrollObserver>
 
                     {/* image with square */}
-                    <div className={`${isRTL ? 'order-1' : 'order-2'} relative transition-all duration-700 ease-in-out`}>
+                    <ScrollObserver
+                        animation={isRTL ? "fade-right" : "fade-left"}
+                        className={`${isRTL ? 'order-1' : 'order-2'} relative`}
+                        threshold={0.15}
+                        delay={190}
+                    >
                         <div className="relative group">
                             {/* Self Image */}
                             <LazyImage
@@ -67,7 +53,7 @@ const AboutSection = () => {
                             {/* Up Square */}
                             <div className="absolute -top-3 -left-4 w-14 h-14 md:w-20 md:h-20 border-4 border-gold rounded-lg z-10 overflow-hidden"></div>
                         </div>
-                    </div>
+                    </ScrollObserver>
                 </div>
             </div>
         </section>

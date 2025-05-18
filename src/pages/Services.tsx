@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
+import ScrollObserver from '../components/home-index/ScrollObserver';
 
 const Services = () => {
   const { t, isRTL } = useLanguage();
@@ -64,32 +65,11 @@ const Services = () => {
       descAR: 'نصائح مخصصة لاختيار حلول الإضاءة المثالية التي تعزز مساحتك وتعكس أسلوبك.'
     },
     {
-      icon: serviceIcons[2],
-      titleEN: 'Maintenance & Cleaning',
-      titleAR: 'الصيانة والتنظيف',
-      descEN: 'Expert care to keep your chandeliers pristine and functioning perfectly, extending their life and beauty.',
-      descAR: 'عناية متخصصة للحفاظ على ثرياتك نظيفة وتعمل بشكل مثالي، مما يطيل عمرها وجمالها.'
-    },
-    {
       icon: serviceIcons[3],
       titleEN: 'Custom Design',
       titleAR: 'تصميم مخصص',
       descEN: 'Create unique lighting pieces tailored to your vision and space requirements with our design experts.',
       descAR: 'إنشاء قطع إضاءة فريدة مصممة وفقًا لرؤيتك ومتطلبات المساحة مع خبراء التصميم لدينا.'
-    },
-    {
-      icon: serviceIcons[4],
-      titleEN: 'Energy-Efficient Solutions',
-      titleAR: 'حلول موفرة للطاقة',
-      descEN: 'Upgrade to modern, sustainable lighting systems while maintaining elegant aesthetics.',
-      descAR: 'الترقية إلى أنظمة إضاءة حديثة ومستدامة مع الحفاظ على الجماليات الأنيقة.'
-    },
-    {
-      icon: serviceIcons[5],
-      titleEN: 'Emergency Services',
-      titleAR: 'خدمات الطوارئ',
-      descEN: 'Rapid response for urgent repairs and troubleshooting to restore your lighting quickly.',
-      descAR: 'استجابة سريعة للإصلاحات العاجلة واستكشاف الأخطاء وإصلاحها لاستعادة الإضاءة بسرعة.'
     }
   ];
 
@@ -126,78 +106,95 @@ const Services = () => {
   ];
 
   return (
-    <div className="pt-24 ">
+    <div className="pt-24">
       {/* Header */}
-      <section className="bg-gradient-to-r from-charcoal to-charcoal-dark text-white py-16">
-        <div className="container-custom mx-auto ">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-right translate-x-50 mb-10">{t('services')}</h1>
-            <p className="text-xl text-gray-300 text-right translate-x-50">{isRTL ? 'حلول إضاءة فاخرة مصممة لمساحتك' : 'Luxury lighting solutions designed for your space'}</p>
+      <ScrollObserver animation="fade-up" threshold={0.2}>
+        <section className="bg-gradient-to-r from-charcoal to-charcoal-dark text-white py-20">
+          <div className="container-custom mx-auto">
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-right translate-x-50">{t('services')}</h1>
+              <p className="text-xl text-gray-300 text-right translate-x-50">{isRTL ? 'حلول إضاءة فاخرة مصممة لمساحتك' : 'Luxury lighting solutions designed for your space'}</p>
+            </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </ScrollObserver>
 
       {/* Services */}
-      <section className="py-16 bg-cream">
+      <section className="py-20 bg-cream">
         <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ScrollObserver animation="fade-up" threshold={0.2} delay={100}>
+            <h2 className="text-3xl font-bold text-charcoal mb-10 text-center">
+              {isRTL ? 'خدماتنا' : 'Our Services'}
+            </h2>
+          </ScrollObserver>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center transition-all hover:shadow-xl">
-                <div className="mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-2 text-charcoal">{isRTL ? service.titleAR : service.titleEN}</h3>
-                <p className="text-gray-600">{isRTL ? service.descAR : service.descEN}</p>
-              </div>
+              <ScrollObserver
+                key={idx}
+                animation={idx % 2 === 0 ? "fade-right" : "fade-left"}
+                threshold={0.1}
+                delay={idx * 100}
+              >
+                <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center text-center transition-all hover:shadow-xl h-full">
+                  <div className="mb-5">{service.icon}</div>
+                  <h3 className="text-xl font-bold mb-3 text-charcoal">{isRTL ? service.titleAR : service.titleEN}</h3>
+                  <p className="text-gray-600">{isRTL ? service.descAR : service.descEN}</p>
+                </div>
+              </ScrollObserver>
             ))}
           </div>
         </div>
       </section>
 
       {/* Process */}
-      <section className="py-16 bg-white">
+      <section className="py-24 bg-white">
         <div className="container-custom mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-charcoal mb-4">{isRTL ? 'كيف نعمل' : 'Our Process'}</h2>
-            <p className="text-gray-600 max-w-xl mx-auto">{isRTL ? 'نهج بسيط وفعال لتحقيق نتائج استثنائية' : 'A simple yet effective approach to achieve exceptional results'}</p>
-          </div>
+          <ScrollObserver animation="fade-up" threshold={0.2}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-charcoal mb-4">{isRTL ? 'كيف نعمل' : 'Our Process'}</h2>
+              <p className="text-gray-600 max-w-xl mx-auto">{isRTL ? 'نهج بسيط وفعال لتحقيق نتائج استثنائية' : 'A simple yet effective approach to achieve exceptional results'}</p>
+            </div>
+          </ScrollObserver>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-5xl mx-auto">
             {processSteps.map((step, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#dac379] to-[#CBAF6A] rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg mb-4">
-                  {step.number}
+              <ScrollObserver
+                key={index}
+                animation="scale"
+                threshold={0.2}
+                delay={index * 170}
+              >
+                <div className="flex flex-col items-center text-center p-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#dac379] to-[#CBAF6A] rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg mb-6">
+                    {step.number}
+                  </div>
+                  <h3 className="text-xl font-bold text-charcoal mb-3">{isRTL ? step.titleAR : step.titleEN}</h3>
+                  <p className="text-gray-600">{isRTL ? step.descAR : step.descEN}</p>
                 </div>
-                <h3 className="text-xl font-bold text-charcoal mb-2">{isRTL ? step.titleAR : step.titleEN}</h3>
-                <p className="text-gray-600">{isRTL ? step.descAR : step.descEN}</p>
-              </div>
+              </ScrollObserver>
             ))}
           </div>
-
         </div>
       </section>
 
       {/* CTA Contact */}
-      <section className="py-16 bg-gradient-to-r from-gold-dark to-gold text-white">
-        <div className="container-custom mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">{isRTL ? 'جاهز لإضاءة مساحتك؟' : 'Ready to Illuminate Your Space?'}</h2>
-          <p className="text-white/90 max-w-xl mx-auto mb-8">{isRTL ? 'تواصل معنا اليوم للحصول على استشارة مجانية' : 'Contact us today for a free consultation'}</p>
-          <Link to="/contact" className="inline-block bg-white text-gold px-8 py-4 rounded-md hover:bg-gray-100 font-bold shadow-lg transition-colors">
-            {isRTL ? 'احصل على استشارة مجانية' : 'Get Free Consultation'}
-          </Link>
-
-          {/* <div className="text-center mt-10">
-            <Link
-              to="/Gallery"
-              className="inline-block bg-[#c2a450f0] text-white px-8 py-3 rounded-md hover:bg-gold transition-all duration-300 shadow-md font-semibold"
-            >
-              {isRTL ? 'تصفح مشاريعنا الأن' : 'Browse Our Projects NOW'}
-            </Link>
-          </div> */}
-
-        </div>
-
-      </section>
-    </div>
+      <ScrollObserver animation="fade-up" threshold={0.4}>
+        <section className="py-20 bg-gradient-to-r from-gold-dark to-gold text-white">
+          <div className="container-custom mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">{isRTL ? 'جاهز لإضاءة مساحتك؟' : 'Ready to Illuminate Your Space?'}</h2>
+            <p className="text-white/90 max-w-xl mx-auto mb-10">{isRTL ? 'تواصل معنا اليوم للحصول على استشارة مجانية' : 'Contact us today for a free consultation'}</p>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+              <Link to="/contact" className="inline-block bg-white text-gold px-8 py-4 rounded-md hover:bg-gray-100 font-bold shadow-lg transition-all transform hover:-translate-y-1">
+                {isRTL ? 'احصل على استشارة مجانية' : 'Get Free Consultation'}
+              </Link>
+              <Link to="/projects" className="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-md hover:bg-white hover:text-gold font-bold shadow-lg transition-all transform hover:-translate-y-1">
+                {isRTL ? 'شاهد مشاريعنا الان' : 'Watch Our Projects Now'}
+              </Link>
+            </div>
+          </div>
+        </section>
+      </ScrollObserver>    </div>
   );
 };
 

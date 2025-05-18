@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import LazyImage from '../components/LazyImage';
-import { useInView } from 'react-intersection-observer';
-import { motion } from 'framer-motion';
+import ScrollObserver from '../components/home-index/ScrollObserver';
 import {
   Card,
   CardContent
@@ -15,51 +14,10 @@ import {
   Twitter
 } from 'lucide-react';
 
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 }
-  }
-};
-
-const staggerChildren = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
 const About = () => {
   const { t, isRTL } = useLanguage();
   const isMobile = useIsMobile();
   const [activeTeamMember, setActiveTeamMember] = useState<number | null>(null);
-
-  // Intersection observer refs for different sections
-  const [storyRef, storyInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
-
-  const [missionRef, missionInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
-
-  const [valuesRef, valuesInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const [teamRef, teamInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -119,50 +77,30 @@ const About = () => {
 
   return (
     <div className="pt-24 overflow-x-hidden">
-      {/* Header - Enhanced with motion */}
-      <motion.section
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.2,
-              delayChildren: 0.3
-            }
-          }
-        }}
-        className="bg-charcoal text-white py-20"
-      >
+      {/* Header with ScrollObserver */}
+      <ScrollObserver animation="fade-up" threshold={0} className="bg-charcoal text-white py-20">
         <div className="container-custom mx-auto">
           <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold mb-6"
-            >
-              {t('about')}
-            </motion.h1>
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-gray-300"
-            >
-              {t('section-about-subtitle')}
-            </motion.p>
+            <ScrollObserver animation="fade-up" delay={25} className="mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold">
+                {t('about')}
+              </h1>
+            </ScrollObserver>
+            <ScrollObserver animation="fade-up" delay={50} className="text-xl text-gray-300">
+              <p>
+                {t('section-about-subtitle')}
+              </p>
+            </ScrollObserver>
           </div>
         </div>
-      </motion.section>
+      </ScrollObserver>
 
-      {/* Our Story - Enhanced with scroll animations and better image display */}
-      <section ref={storyRef} className="py-20">
+      {/* Our Story with ScrollObserver */}
+      <section className="py-20">
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial="hidden"
-              animate={storyInView ? "visible" : "hidden"}
-              variants={fadeInUp}
-              className={`${isRTL ? 'order-2 text-right' : 'order-1 text-left'}`}
-            >
+            <ScrollObserver animation="fade-right" threshold={0.3} delay={300}
+              className={`${isRTL ? 'order-2 text-right' : 'order-1 text-left'}`}>
               <h2 className="text-3xl font-bold text-charcoal mb-6">
                 {isRTL ? 'قصتنا' : 'Our Story'}
               </h2>
@@ -176,23 +114,9 @@ const About = () => {
                   ? 'على مدار السنوات، أصبحنا المزود الرئيسي للثريات الفاخرة للفنادق والقصور والمساحات التجارية الراقية في المملكة. نحن نفخر بتقديم الجودة والأناقة في كل تفاصيل عملنا.'
                   : 'Over the years, we have become the premier provider of luxury chandeliers for hotels, palaces, and upscale commercial spaces in the Kingdom. We take pride in delivering quality and elegance in every detail of our work.'}
               </p>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              animate={storyInView ? "visible" : "hidden"}
-              variants={{
-                hidden: { opacity: 0, scale: 0.95 },
-                visible: {
-                  opacity: 1,
-                  scale: 1,
-                  transition: {
-                    duration: 0.8,
-                    delay: 0.3
-                  }
-                }
-              }}
-              className={`${isRTL ? 'order-1' : 'order-2'} rounded-lg overflow-hidden shadow-xl`}
-            >
+            </ScrollObserver>
+            <ScrollObserver animation="fade-left" threshold={0.2} delay={200}
+              className={`${isRTL ? 'order-1' : 'order-2'} rounded-lg overflow-hidden shadow-xl`}>
               <AspectRatio ratio={4 / 3} className="bg-gray-100">
                 <LazyImage
                   src="/Logo_and_identity/about.jpg"
@@ -200,25 +124,20 @@ const About = () => {
                   className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-700"
                 />
               </AspectRatio>
-            </motion.div>
+            </ScrollObserver>
           </div>
         </div>
       </section>
 
-      {/* Our Mission & Vision - Enhanced with animations */}
-      <section ref={missionRef} className="py-20 bg-gray-50">
+      {/* Our Mission & Vision with ScrollObserver */}
+      <section className="py-20 bg-gray-50">
         <div className="container-custom mx-auto">
-          <motion.div
-            initial="hidden"
-            animate={missionInView ? "visible" : "hidden"}
-            variants={staggerChildren}
-            className="grid grid-cols-1 md:grid-cols-2 gap-12"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Mission */}
-            <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.3 } }}>
-              <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-300 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <ScrollObserver animation="fade-up" threshold={0.1} delay={100}>
+              <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <CardContent className="p-8">
-                  <div className="bg-gold text-white w-14 h-14 flex items-center justify-center rounded-full mb-6">
+                  <div className="bg-gold text-white w-14 h-14 flex items-center justify-center rounded-full mb-6 transform transition-transform duration-500 hover:scale-110">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12 2L4 6V12C4 15.31 7.58 20 12 22C16.42 20 20 15.31 20 12V6L12 2Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -233,13 +152,13 @@ const About = () => {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </ScrollObserver>
 
             {/* Vision */}
-            <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.3 } }}>
-              <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-300 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <ScrollObserver animation="fade-up" threshold={0.2} delay={200}>
+              <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <CardContent className="p-8">
-                  <div className="bg-gold text-white w-14 h-14 flex items-center justify-center rounded-full mb-6">
+                  <div className="bg-gold text-white w-14 h-14 flex items-center justify-center rounded-full mb-6 transform transition-transform duration-500 hover:scale-110">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -255,70 +174,58 @@ const About = () => {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
-          </motion.div>
+            </ScrollObserver>
+          </div>
         </div>
       </section>
 
-
-      {/* Our Team - Enhanced with image zoom effects */}
-      <section ref={teamRef} className="py-20 bg-gray-50">
+      {/* Our Team with enhanced animations */}
+      <section className="py-20 bg-gray-50">
         <div className="container-custom mx-auto">
-          <motion.div
-            initial="hidden"
-            animate={teamInView ? "visible" : "hidden"}
-            variants={staggerChildren}
-            className={`text-center mb-16`}
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-bold text-charcoal mb-4"
-            >
+          <ScrollObserver animation="fade-up" threshold={0.1} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
               {isRTL ? 'فريقنا' : 'Our Team'}
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-gray-600 max-w-2xl mx-auto"
-            >
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               {isRTL
                 ? 'تعرف على الخبراء الذين يقفون وراء تصاميمنا وتركيباتنا الاستثنائية'
                 : 'Meet the experts behind our exceptional designs and installations'}
-            </motion.p>
-          </motion.div>
+            </p>
+          </ScrollObserver>
 
-          <motion.div
-            initial="hidden"
-            animate={teamInView ? "visible" : "hidden"}
-            variants={staggerChildren}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <motion.div
+              <ScrollObserver
                 key={index}
-                variants={fadeInUp}
+                animation="fade-up"
+                threshold={0.1}
+                delay={150 * (index + 1)}
                 className="relative group"
-                onMouseEnter={() => setActiveTeamMember(index)}
-                onMouseLeave={() => setActiveTeamMember(null)}
               >
-                <Card className="overflow-hidden h-full">
+                <Card
+                  className="overflow-hidden h-full transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+                  onMouseEnter={() => setActiveTeamMember(index)}
+                  onMouseLeave={() => setActiveTeamMember(null)}
+                >
                   <div className="h-80 overflow-hidden relative">
                     <LazyImage
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-110"
                     />
-                    {/* Enhanced hover overlay effect */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-gold to-transparent opacity-0 group-hover:opacity-80 transition-all duration-500 flex items-center justify-center">
-                      <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500 flex flex-col items-center">
+                    {/* Enhanced hover overlay with smoother transition */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gold/90 via-gold/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out flex items-end justify-center pb-6">
+                      <div className="translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-in-out delay-100 flex flex-col items-center">
                         <div className="flex space-x-4 mb-4">
                           <div className="flex items-center justify-between gap-4">
-                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-1000">
+                            {/* Social icons with staggered animations */}
+                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
                               <Linkedin size={18} />
                             </button>
-                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-700">
+                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
                               <Twitter size={18} />
                             </button>
-                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-colors duration-700">
+                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
                               <Mail size={18} />
                             </button>
                           </div>
@@ -339,11 +246,12 @@ const About = () => {
                     </p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </ScrollObserver>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
+
     </div>
   );
 };

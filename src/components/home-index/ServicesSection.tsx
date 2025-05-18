@@ -1,35 +1,12 @@
-import React, { useRef, useEffect } from 'react';
-import { useLanguage } from '../../context/LanguageContext';
+import React, { useRef } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 import { Link } from 'react-router-dom';
-import ServiceCard from '../ServiceCard';
+import ServiceCard from '@/components/ServiceCard';
+import ScrollObserver from './ScrollObserver';
 
 const ServicesSection = () => {
     const { t, isRTL } = useLanguage();
     const servicesRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-reveal-smooth');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe services section
-        if (servicesRef.current) {
-            observer.observe(servicesRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
 
     // Service icons
     const serviceIcons = {
@@ -54,53 +31,57 @@ const ServicesSection = () => {
     return (
         <section className="py-16 md:py-20 bg-white" ref={servicesRef}>
             <div className="container-custom mx-auto">
-                <div className={`text-center mb-10 md:mb-16 ${isRTL ? 'rtl' : ''}`}>
-                    <h2 className={`text-2xl md:text-3xl font-bold text-charcoal mb-3 md:mb-4`}>
-                        {t('section-services-title')}
-                    </h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
-                        {t('section-services-subtitle')}
-                    </p>
-                </div>
+                <ScrollObserver animation="fade-up" threshold={0.1}>
+                    <div className={`text-center mb-10 md:mb-16 ${isRTL ? 'rtl' : ''}`}>
+                        <h2 className={`text-2xl md:text-3xl font-bold text-charcoal mb-3 md:mb-4`}>
+                            {t('section-services-title')}
+                        </h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto">
+                            {t('section-services-subtitle')}
+                        </p>
+                    </div>
+                </ScrollObserver>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     {/* Service Cards */}
-                    <div>
+                    <ScrollObserver animation="fade-up" delay={100}>
                         <ServiceCard
                             title={t('service-chandelier-title')}
                             description={t('service-chandelier-desc')}
                             icon={serviceIcons.installation}
                             isRTL={isRTL}
                         />
-                    </div>
+                    </ScrollObserver>
 
-                    <div>
+                    <ScrollObserver animation="fade-up" delay={200}>
                         <ServiceCard
                             title={t('service-consultation-title')}
                             description={t('service-consultation-desc')}
                             icon={serviceIcons.consultation}
                             isRTL={isRTL}
                         />
-                    </div>
+                    </ScrollObserver>
 
-                    <div>
+                    <ScrollObserver animation="fade-up" delay={300}>
                         <ServiceCard
                             title={t('service-maintenance-title')}
                             description={t('service-maintenance-desc')}
                             icon={serviceIcons.maintenance}
                             isRTL={isRTL}
                         />
-                    </div>
+                    </ScrollObserver>
                 </div>
 
-                <div className="text-center mt-10">
-                    <Link
-                        to="/services"
-                        className="inline-block bg-transparent border-2 border-gold text-gold px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-gold hover:text-white transition-colors duration-300"
-                    >
-                        {isRTL ? 'عرض جميع الخدمات' : 'View All Services'}
-                    </Link>
-                </div>
+                <ScrollObserver animation="fade-up" delay={400}>
+                    <div className="text-center mt-10">
+                        <Link
+                            to="/services"
+                            className="inline-block bg-transparent border-2 border-gold text-gold px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-gold hover:text-white transition-colors duration-300"
+                        >
+                            {isRTL ? 'عرض جميع الخدمات' : 'View All Services'}
+                        </Link>
+                    </div>
+                </ScrollObserver>
             </div>
         </section>
     );
