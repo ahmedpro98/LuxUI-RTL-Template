@@ -1,0 +1,54 @@
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+[dir="ltr"] h1,
+[dir="ltr"] h2,
+[dir="ltr"] h3,
+[dir="ltr"] h4,
+[dir="ltr"] h5,
+[dir="ltr"] h6 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+}
+
+.heading-1 {
+    @apply text-heading-1;
+}
+
+.heading-2 {
+    @apply text-heading-2;
+}
+
+.heading-3 {
+    @apply text-heading-3;
+}
+
+.heading-4 {
+    @apply text-heading-4;
+}
+
+.heading-5 {
+    @apply text-heading-5;
+}
+
+.body-large {
+    @apply text-body-large;
+}
+
+.body {
+    @apply text-body;
+}
+
+.body-small {
+    @apply text-body-small;
+}
