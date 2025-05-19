@@ -4,7 +4,7 @@ import PartnerSlider from '@/components/PartnerSlider';
 import ScrollObserver from './ScrollObserver';
 
 const PartnersSection = () => {
-    const { t, isRTL } = useLanguage();
+    const { isRTL } = useLanguage();
     const partnersRef = useRef<HTMLDivElement>(null);
 
     return (

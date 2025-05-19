@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 const WhatsAppButton: React.FC = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
 
   const whatsappNumber = "+966500000000"; // ضع رقم واتساب الفعلي هنا
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
@@ -18,7 +18,7 @@ const WhatsAppButton: React.FC = () => {
       rel="noopener noreferrer"
       className={`fixed bottom-6 z-50 bg-green-500 text-white rounded-full p-3 shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center transform hover:scale-110 hover:-translate-y-1 ${isRTL ? 'right-6' : 'left-6'
         }`}
-      aria-label={t('whatsapp-text')}
+      aria-label={isRTL ? 'تواصل معنا عبر واتساب' : 'Contact us via WhatsApp'}
       title={isRTL ? 'تواصل معنا عبر واتساب' : 'Contact us via WhatsApp'}
     >
       <svg

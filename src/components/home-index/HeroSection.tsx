@@ -1,11 +1,10 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import { useIsMobile } from '../../hooks/use-mobile';
 
 const HeroSection: React.FC = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const isMobile = useIsMobile();
 
@@ -32,13 +31,17 @@ const HeroSection: React.FC = () => {
             className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               } ${isMobile ? 'text-center' : ''}`}
           >
-            {t('hero-title')}
+            {isRTL
+              ? 'حلول الإضاءة والثريات الفاخرة'
+              : 'Luxury Chandeliers & Lighting Solutions'}
           </h1>
           <p
             className={`text-lg md:text-xl text-gray-200 mb-6 md:mb-8 transition-all duration-1000 ease-out delay-300 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               } ${isMobile ? 'text-center' : ''}`}
           >
-            {t('hero-subtitle')}
+            {isRTL
+              ? 'ارتقِ بمساحتك مع مجموعتنا الفاخرة من الثريات'
+              : 'Elevate your space with our exquisite chandelier collection'}
           </p>
           <div
             className={`flex flex-wrap gap-3 md:gap-4 ${isMobile ? 'justify-center' : isRTL ? 'justify-end' : 'justify-start'} transition-all duration-1000 ease-out delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -48,13 +51,13 @@ const HeroSection: React.FC = () => {
               to="/gallery"
               className="bg-gold text-white px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-gold-dark transition-all duration-300 inline-block transform hover:scale-105 hover:shadow-lg text-sm md:text-base"
             >
-              {t('cta-view')}
+              {isRTL ? 'شاهد تشكيلتنا الفاخرة' : 'View Our Collection'}
             </Link>
             <Link
               to="/contact"
               className="bg-transparent border-2 border-white text-white px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-white hover:text-charcoal transition-all duration-300 inline-block transform hover:scale-105 hover:shadow-lg text-sm md:text-base"
             >
-              {t('cta-consultation')}
+              {isRTL ? 'احصل على استشارة مجانية' : 'Free Consultation'}
             </Link>
           </div>
         </div>

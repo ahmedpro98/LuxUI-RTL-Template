@@ -5,7 +5,7 @@ import LazyImage from '../LazyImage';
 import ScrollObserver from './ScrollObserver';
 
 const AboutSection = () => {
-    const { t, isRTL } = useLanguage();
+    const { isRTL } = useLanguage();
 
     return (
         <section className="py-16 md:py-20">
@@ -22,8 +22,16 @@ const AboutSection = () => {
                         <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-4 md:mb-6">
                             {isRTL ? 'هبات أيست' : 'Hebat East'}
                         </h2>
-                        <p className="text-gray-600 mb-4 md:mb-6">{t('about-paragraph-1')}</p>
-                        <p className="text-gray-600 mb-4 md:mb-8">{t('about-paragraph-2')}</p>
+                        <p className="text-gray-600 mb-4 md:mb-6">
+                            {isRTL
+                                ? 'متخصصون في النجف المودرن والثريات الفاخرة للمشاريع الكبرى كالفنادق والقصور والقاعات، لنحولها لأيقونات فنية.'
+                                : 'We specialize in modern luxury chandeliers for grand projects – turning hotels, palaces, and halls into artistic icons.'}
+                        </p>
+                        <p className="text-gray-600 mb-4 md:mb-8">
+                            {isRTL
+                                ? 'بخبرة وأناقة، يقدم فريقنا تركيبات مبهرة تجمع بين الفن والابتكار.'
+                                : 'With experience and elegance, our expert team delivers stunning installations that blend art and innovation.'}
+                        </p>
                         <Link
                             to="/about"
                             className="inline-block bg-gold text-white px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-gold-dark transition-colors duration-300"

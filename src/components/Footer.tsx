@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { Facebook, Instagram, Twitter, Linkedin, MapPin, Phone, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -39,13 +39,19 @@ const Footer: React.FC = () => {
             {isRTL ? 'روابط سريعة' : 'Quick Links'}
           </h3>
           <ul className="text-base text-white space-y-2">
-            {['home', 'about', 'services', 'gallery', 'contact'].map((key) => (
-              <li key={key}>
+            {[
+              { key: 'home', label: isRTL ? 'الرئيسية' : 'Home' },
+              { key: 'about', label: isRTL ? 'من نحن' : 'About Us' },
+              { key: 'services', label: isRTL ? 'خدماتنا' : 'Services' },
+              { key: 'gallery', label: isRTL ? 'معرض الأعمال' : 'Gallery' },
+              { key: 'contact', label: isRTL ? 'اتصل بنا' : 'Contact Us' }
+            ].map((item) => (
+              <li key={item.key}>
                 <Link
-                  to={`/${key === 'home' ? '' : key}`}
+                  to={`/${item.key === 'home' ? '' : item.key}`}
                   className="transition-all duration-300 hover:text-[#d4af37] hover:translate-x-1 inline-block"
                 >
-                  {t(key)}
+                  {item.label}
                 </Link>
               </li>
             ))}
@@ -111,9 +117,9 @@ const Footer: React.FC = () => {
 
       {/* Bottom Section */}
       <div className="mt-12 border-t border-charcoal-light pt-6 text-center text-base text-white">
-        <p>© {currentYear} Hebat East. All rights reserved.</p>
+        <p>{isRTL ? `© ${currentYear} هبات أيست. جميع الحقوق محفوظة.` : `© ${currentYear} Hebat East. All rights reserved.`}</p>
         <p className="mt-1 cursor-pointer">
-          {isRTL ? 'بواسطة' : 'Designed by'}{' '}
+          {isRTL ? 'تصميم بواسطة' : 'Designed by'}{' '}
           <span className="text-[#d4af37] font-semibold hover:tracking-wide transition-all duration-200">
             Ahmad Abdulwahid
           </span>

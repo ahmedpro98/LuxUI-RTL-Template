@@ -20,30 +20,29 @@ const collectionItems = [
     titleAr: "نجفة حلقية",
     titleEn: "Modern Ring Chandelier",
     price: "18,750 SAR",
-    image: "/gallery/2-ring.jpeg", hoverImage: "/gallery/1-ring.jpeg"
-
+    image: "/gallery/2-ring.jpeg",
+    hoverImage: "/gallery/1-ring.jpeg"
   },
   {
     id: 3,
     titleAr: "فانوس اسلامي فاخر",
     titleEn: "Islamic Lanterns",
     price: "1999 SAR",
-    image: "/gallery/Lantern-left.jpg", hoverImage: "/gallery/Lantern-right.jpg"
-
+    image: "/gallery/Lantern-left.jpg",
+    hoverImage: "/gallery/Lantern-right.jpg"
   },
   {
     id: 4,
     titleAr: "هلال جامع",
     titleEn: "Hilal Mosque",
     price: "7,800 SAR",
-    image: "/gallery/halal-Mosque.jpg", hoverImage: "/gallery/hover-hala.jpg"
-
+    image: "/gallery/halal-Mosque.jpg",
+    hoverImage: "/gallery/hover-hala.jpg"
   }
-
 ];
 
 const FeaturedCollection: React.FC = () => {
-  const { isRTL, language } = useLanguage();
+  const { isRTL } = useLanguage();
   const isMobile = useIsMobile();
   const [activeIndex, setActiveIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
@@ -142,7 +141,7 @@ const FeaturedCollection: React.FC = () => {
                     <div className="relative h-[300px] overflow-hidden">
                       <LazyImage
                         src={item.image}
-                        alt={language === 'ar' ? item.titleAr : item.titleEn}
+                        alt={isRTL ? item.titleAr : item.titleEn}
                         className="w-full h-full object-cover"
                       />
                       {/* Elegant pattern overlay */}
@@ -151,7 +150,7 @@ const FeaturedCollection: React.FC = () => {
 
                     <div className={`bg-white p-5 h-[120px] flex flex-col justify-center ${isRTL ? 'text-right' : 'text-left'}`}>
                       <h3 className="font-bold text-xl mb-2 text-charcoal">
-                        {language === 'ar' ? item.titleAr : item.titleEn}
+                        {isRTL ? item.titleAr : item.titleEn}
                       </h3>
                       <p className="text-gold font-semibold">{item.price}</p>
                       <div className="mt-3">
@@ -214,13 +213,13 @@ const FeaturedCollection: React.FC = () => {
                 <div className="relative h-48 md:h-56 overflow-hidden">
                   <LazyImage
                     src={item.image}
-                    alt={language === 'ar' ? item.titleAr : item.titleEn}
+                    alt={isRTL ? item.titleAr : item.titleEn}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className={`p-4 ${isRTL ? 'text-right' : 'text-left'}`}>
                   <h3 className="font-bold text-lg mb-1">
-                    {language === 'ar' ? item.titleAr : item.titleEn}
+                    {isRTL ? item.titleAr : item.titleEn}
                   </h3>
                   <p className="text-gold font-semibold">{item.price}</p>
                 </div>
