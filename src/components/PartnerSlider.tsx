@@ -7,6 +7,8 @@ import LazyImage from './LazyImage';
 const PartnerSlider: React.FC = () => {
   const isMobile = useIsMobile();
   const { isRTL } = useLanguage();
+  const [isPaused, setIsPaused] = useState(false);
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
   const partners = [
     {
@@ -16,6 +18,10 @@ const PartnerSlider: React.FC = () => {
     {
       name: "Hilton Hotels & Resorts",
       image: "/Partner/3016a5b5-cfc2-4c0c-b1d1-6a45abd34e26.png"
+    },
+    {
+      name: "Four Seasons",
+      image: "/Partner/868a8435-6fbe-4e97-bd7c-4a4df1efa90d.png"
     },
     {
       name: "Sheraton Hotels & Resorts",
@@ -39,22 +45,71 @@ const PartnerSlider: React.FC = () => {
     }
   ];
 
+  // Duplicate partners for infinite scroll effect
+  const allPartners = [...partners, ...partners];
+
+  // Start/stop animation based on hover
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+  };
+
+  useEffect(() => {
+    const marqueeElement = marqueeRef.current;
+    if (!marqueeElement) return;
+
+    // Animation function for marquee
+    let animationId: number;
+    let position = 0;
+    const speed = 0.5; // Adjust speed (lower = slower)
+
+    const animate = () => {
+      if (!isPaused && marqueeElement) {
+        position += speed;
+
+        // Reset position when first set of logos is fully scrolled
+        if (position >= marqueeElement.clientWidth / 2) {
+          position = 0;
+        }
+
+        marqueeElement.style.transform = `translateX(${isRTL ? position : -position}px)`;
+      }
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+    };
+  }, [isPaused, isRTL]);
+
   return (
     <div className="w-full overflow-hidden py-4">
-      {/* Desktop version: Partners in a row */}
-      <div className="hidden md:flex justify-center items-center gap-10 flex-wrap">
-        {partners.map((partner, index) => (
-          <div
-            key={`partner-desktop-${index}`}
-            className="w-32 h-20 transition-all duration-300 hover:scale-110 filter grayscale hover:grayscale-0 flex items-center justify-center"
-          >
-            <img
-              src={partner.image}
-              alt={partner.name}
-              className="max-w-full max-h-full object-contain"
-            />
-          </div>
-        ))}
+      {/* Desktop version: Marquee with hover pause */}
+      <div className="hidden md:block overflow-hidden relative">
+        <div
+          ref={marqueeRef}
+          className={`flex transition-transform ${isRTL ? 'flex-row-reverse' : ''}`}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {allPartners.map((partner, index) => (
+            <div
+              key={`partner-desktop-${index}`}
+              className="w-64 h-40 mx-5 flex-shrink-0 transition-all duration-500 hover:scale-110 filter grayscale hover:grayscale-0 flex items-center justify-center"
+            >
+              <img
+                src={partner.image}
+                alt={partner.name}
+                className="max-w-full max-h-full object-contain"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Mobile version: Enhanced carousel with shadcn/ui */}
@@ -65,8 +120,8 @@ const PartnerSlider: React.FC = () => {
             align: "center",
             loop: true,
           }}
-          autoPlay={true}
-          interval={4000}
+        // autoPlay={true}
+        // interval={4000}
         >
           <CarouselContent>
             {partners.map((partner, index) => (

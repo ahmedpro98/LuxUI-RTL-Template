@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '../hooks/use-toast';
 
 const ContactForm: React.FC = () => {
   const { t, isRTL } = useLanguage();
@@ -44,7 +44,7 @@ const ContactForm: React.FC = () => {
     <form onSubmit={handleSubmit} className={`w-full max-w-xl mx-auto ${formDirection}`} dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="mb-4">
         <label htmlFor="name" className="block text-charcoal mb-2">
-          {t('form-name')}
+          {isRTL ? 'الاسم' : 'Name'}
         </label>
         <input
           type="text"
@@ -52,14 +52,14 @@ const ContactForm: React.FC = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded contact-form-custom  focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded contact-form-custom focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
           dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
       <div className="mb-4">
         <label htmlFor="email" className="block text-charcoal mb-2">
-          {t('form-email')}
+          {isRTL ? 'البريد الإلكتروني' : 'Email'}
         </label>
         <input
           type="email"
@@ -67,14 +67,14 @@ const ContactForm: React.FC = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
           required
           dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
       <div className="mb-4">
         <label htmlFor="phone" className="block text-charcoal mb-2">
-          {t('form-phone')}
+          {isRTL ? 'رقم الهاتف' : 'Phone'}
         </label>
         <input
           type="tel"
@@ -89,7 +89,7 @@ const ContactForm: React.FC = () => {
       </div>
       <div className="mb-6">
         <label htmlFor="message" className="block text-charcoal mb-2">
-          {t('form-message')}
+          {isRTL ? 'رسالتك' : 'Message'}
         </label>
         <textarea
           id="message"
@@ -116,7 +116,7 @@ const ContactForm: React.FC = () => {
             {isRTL ? 'جارِ الإرسال...' : 'Sending...'}
           </span>
         ) : (
-          t('form-submit')
+          isRTL ? 'إرسال' : 'Submit'
         )}
       </button>
     </form>

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Button } from '@/components/ui/button';
+import { Button } from '../components/ui/button';
 
 interface LanguageSwitcherProps {
   variant?: 'standard' | 'modern' | 'minimal';

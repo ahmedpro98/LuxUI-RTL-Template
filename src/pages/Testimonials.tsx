@@ -5,8 +5,8 @@ import ScrollObserver from '../components/home-index/ScrollObserver';
 import {
   Card,
   CardContent
-} from "@/components/ui/card";
-import { AspectRatio } from '@/components/ui/aspect-ratio';
+} from "../components/ui/card";
+import { AspectRatio } from '../components/ui/aspect-ratio';
 import { useIsMobile } from '../hooks/use-mobile';
 import {
   Quote

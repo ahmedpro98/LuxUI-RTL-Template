@@ -4,7 +4,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import TestimonialCard from './../TestimonialCard';
 import { useIsMobile } from '../../hooks/use-mobile';
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-react';
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "../../hooks/use-toast";
 
 const FeaturedTestimonials: React.FC = () => {
   const { t, isRTL, language } = useLanguage();
@@ -238,9 +238,9 @@ const FeaturedTestimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Navigation buttons - FIXED: consistently positioned regardless of RTL/LTR */}
+        {/* Navigation buttons - Fixed to handle RTL/LTR correctly */}
         <div className="flex justify-center mt-6 mb-2 px-2">
-          {/* Previous button - Always pointing outward */}
+          {/* Previous button */}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -252,7 +252,8 @@ const FeaturedTestimonials: React.FC = () => {
             disabled={isTransitioning}
             aria-label={isRTL ? "السابق" : "Previous"}
           >
-            <ChevronLeft size={20} />
+            {/* FIXED: Using different icons based on language direction to ensure arrows point outward */}
+            {isRTL ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
           </button>
 
           {/* Indicators in the middle */}
@@ -281,7 +282,7 @@ const FeaturedTestimonials: React.FC = () => {
             ))}
           </div>
 
-          {/* Next button - Always pointing outward */}
+          {/* Next button */}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -293,7 +294,8 @@ const FeaturedTestimonials: React.FC = () => {
             disabled={isTransitioning}
             aria-label={isRTL ? "التالي" : "Next"}
           >
-            <ChevronRight size={20} />
+            {/* FIXED: Using different icons based on language direction to ensure arrows point outward */}
+            {isRTL ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
           </button>
         </div>
       </div>
@@ -357,41 +359,10 @@ const FeaturedTestimonials: React.FC = () => {
         onMouseLeave={() => setAutoplayEnabled(true)}
         ref={carouselContainerRef}
       >
-        {/* Main Carousel Container with Absolute Positioned Navigation Buttons */}
+        {/* Main Carousel */}
         <div className="relative overflow-hidden">
-          {/* Previous button - Always to the left visually and pointing outward */}
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              goToPrevSlide();
-              setAutoplayEnabled(false);
-              setTimeout(() => setAutoplayEnabled(true), 3000);
-            }}
-            className="absolute top-1/2 left-0 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
-            disabled={isTransitioning}
-            aria-label={isRTL ? "السابق" : "Previous"}
-          >
-            <ChevronLeft size={28} />
-          </button>
-
-          {/* Next button - Always to the right visually and pointing outward */}
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              goToNextSlide();
-              setAutoplayEnabled(false);
-              setTimeout(() => setAutoplayEnabled(true), 3000);
-            }}
-            className="absolute top-1/2 right-0 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
-            disabled={isTransitioning}
-            aria-label={isRTL ? "التالي" : "Next"}
-          >
-            <ChevronRight size={28} />
-          </button>
-
-          {/* Carousel Content */}
           <div
-            className="flex transition-transform duration-700 ease-out px-16" // Added padding for button space
+            className="flex transition-transform duration-700 ease-out"
             style={{
               transform: `translateX(${isRTL ? activeIndex * (100 / visibleCards) : -activeIndex * (100 / visibleCards)}%)`,
               gap: '1rem', // Consistent gap between cards 
@@ -446,35 +417,71 @@ const FeaturedTestimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Progress indicators */}
-        <div className="max-w-md mx-auto mt-8">
-          <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-            <div
-              className="bg-gold h-full rounded-full transition-all duration-500 ease-out"
-              style={{ width: `${(activeIndex / (maxPages - 1)) * 100}%` }}
-            ></div>
-          </div>
+        <div className="max-w-6xl mx-auto mt-8">
+          <div className="flex justify-between items-center w-full">
+            {/* Previous button - Always on the left visually */}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                goToPrevSlide();
+                setAutoplayEnabled(false);
+                setTimeout(() => setAutoplayEnabled(true), 3000);
+              }}
+              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
+              disabled={isTransitioning}
+              aria-label={isRTL ? "السابق" : "Previous"}
+            >
+              {/* FIXED: Using different icons based on language direction to ensure arrows point outward */}
+              {isRTL ? <ChevronRight size={28} /> : <ChevronLeft size={28} />}
+            </button>
 
-          {/* Page Dots */}
-          <div className="flex justify-center mt-4 gap-2">
-            {Array.from({ length: maxPages }).map((_, index) => (
-              <button
-                key={`page-${index}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (!isTransitioning) {
-                    goToSlide(index);
-                    setAutoplayEnabled(false);
-                    setTimeout(() => setAutoplayEnabled(true), 3000);
-                  }
-                }}
-                className={`transition-all duration-300 rounded-full ${index === activeIndex
-                  ? 'w-8 h-2 bg-gold' // Elongated active indicator
-                  : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
-                  }`}
-                aria-label={`Go to page ${index + 1}`}
-              />
-            ))}
+            {/* Progress Bar and Indicators in the middle */}
+            <div className="flex-grow max-w-md mx-4 self-center">
+              <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                <div
+                  className="bg-gold h-full rounded-full transition-all duration-500 ease-out"
+                  style={{ width: `${(activeIndex / (maxPages - 1)) * 100}%` }}
+                ></div>
+              </div>
+
+              {/* Page Dots */}
+              <div className="flex justify-center mt-4 gap-2">
+                {Array.from({ length: maxPages }).map((_, index) => (
+                  <button
+                    key={`page-${index}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (!isTransitioning) {
+                        goToSlide(index);
+                        setAutoplayEnabled(false);
+                        setTimeout(() => setAutoplayEnabled(true), 3000);
+                      }
+                    }}
+                    className={`transition-all duration-300 rounded-full ${index === activeIndex
+                      ? 'w-8 h-2 bg-gold' // Elongated active indicator
+                      : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                      }`}
+                    aria-label={`Go to page ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Next button - Always on the right visually */}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                goToNextSlide();
+                setAutoplayEnabled(false);
+                setTimeout(() => setAutoplayEnabled(true), 3000);
+              }}
+              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
+              disabled={isTransitioning}
+              aria-label={isRTL ? "التالي" : "Next"}
+            >
+              {/* FIXED: Using different icons based on language direction to ensure arrows point outward */}
+              {isRTL ? <ChevronLeft size={28} /> : <ChevronRight size={28} />}
+            </button>
           </div>
         </div>
       </div>
@@ -485,11 +492,13 @@ const FeaturedTestimonials: React.FC = () => {
     <section className="py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="container-custom mx-auto">
         <div className={`text-center mb-8 md:mb-12 ${isRTL ? 'rtl' : ''}`}>
-          <h2 className={`text-2xl md:text-3xl font-bold text-charcoal mb-3 md:mb-4 animate-fade-in`}>
-            {t('section-testimonials-title')}
+          <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-3 md:mb-4 animate-fade-in">
+            {isRTL ? 'آراء عملائنا' : 'Customer Testimonials'}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in">
-            {t('section-testimonials-subtitle')}
+            {isRTL
+              ? 'تعرف على تجارب بعض عملائنا معنا وكيف ساعدناهم في تحقيق أهدافهم.'
+              : 'Learn about some of our customers’ experiences and how we helped them achieve their goals.'}
           </p>
         </div>
 

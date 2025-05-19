@@ -7,7 +7,7 @@ export default {
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx,js,jsx}",
-		"./styles/**/*.{css}" // علشان يقرأ @apply في ملفات CSS
+		"./styles/**/*.css"
 	],
 	prefix: "",
 	theme: {

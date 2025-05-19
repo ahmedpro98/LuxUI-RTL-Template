@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { useLanguage } from '@/context/LanguageContext';
-import PartnerSlider from '@/components/PartnerSlider';
+import { useLanguage } from '../../context/LanguageContext';
+import PartnerSlider from '../PartnerSlider';
 import ScrollObserver from './ScrollObserver';
 
 const PartnersSection = () => {

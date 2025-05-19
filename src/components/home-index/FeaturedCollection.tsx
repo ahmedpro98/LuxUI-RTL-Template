@@ -4,6 +4,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useIsMobile } from '../../hooks/use-mobile';
 import LazyImage from './../LazyImage';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useToast } from "../../hooks/use-toast";
 
 // Sample featured collection data
 const collectionItems = [
