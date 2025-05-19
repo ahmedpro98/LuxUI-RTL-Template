@@ -98,7 +98,7 @@ const FeaturedTestimonials: React.FC = () => {
     }
   };
 
-  
+
   // Determine number of visible cards based on screen width
   useEffect(() => {
     const handleResize = () => {
@@ -240,7 +240,7 @@ const FeaturedTestimonials: React.FC = () => {
 
         {/* Navigation buttons - FIXED: consistently positioned regardless of RTL/LTR */}
         <div className="flex justify-center mt-6 mb-2 px-2">
-          {/* Previous button */}
+          {/* Previous button - Always pointing outward */}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -252,7 +252,6 @@ const FeaturedTestimonials: React.FC = () => {
             disabled={isTransitioning}
             aria-label={isRTL ? "السابق" : "Previous"}
           >
-            {/* FIXED: Using ChevronLeft for all languages */}
             <ChevronLeft size={20} />
           </button>
 
@@ -282,7 +281,7 @@ const FeaturedTestimonials: React.FC = () => {
             ))}
           </div>
 
-          {/* Next button */}
+          {/* Next button - Always pointing outward */}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -294,7 +293,6 @@ const FeaturedTestimonials: React.FC = () => {
             disabled={isTransitioning}
             aria-label={isRTL ? "التالي" : "Next"}
           >
-            {/* FIXED: Using ChevronRight for all languages */}
             <ChevronRight size={20} />
           </button>
         </div>
@@ -359,10 +357,41 @@ const FeaturedTestimonials: React.FC = () => {
         onMouseLeave={() => setAutoplayEnabled(true)}
         ref={carouselContainerRef}
       >
-        {/* Main Carousel */}
+        {/* Main Carousel Container with Absolute Positioned Navigation Buttons */}
         <div className="relative overflow-hidden">
+          {/* Previous button - Always to the left visually and pointing outward */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              goToPrevSlide();
+              setAutoplayEnabled(false);
+              setTimeout(() => setAutoplayEnabled(true), 3000);
+            }}
+            className="absolute top-1/2 left-0 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
+            disabled={isTransitioning}
+            aria-label={isRTL ? "السابق" : "Previous"}
+          >
+            <ChevronLeft size={28} />
+          </button>
+
+          {/* Next button - Always to the right visually and pointing outward */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              goToNextSlide();
+              setAutoplayEnabled(false);
+              setTimeout(() => setAutoplayEnabled(true), 3000);
+            }}
+            className="absolute top-1/2 right-0 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
+            disabled={isTransitioning}
+            aria-label={isRTL ? "التالي" : "Next"}
+          >
+            <ChevronRight size={28} />
+          </button>
+
+          {/* Carousel Content */}
           <div
-            className="flex transition-transform duration-700 ease-out"
+            className="flex transition-transform duration-700 ease-out px-16" // Added padding for button space
             style={{
               transform: `translateX(${isRTL ? activeIndex * (100 / visibleCards) : -activeIndex * (100 / visibleCards)}%)`,
               gap: '1rem', // Consistent gap between cards 
@@ -417,72 +446,35 @@ const FeaturedTestimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Navigation Controls - FIXED: Consistently positioned regardless of RTL/LTR */}
-        <div className="max-w-6xl mx-auto mt-8">
-          <div className="flex justify-between items-center w-full">
-            {/* Previous button - Always on the left visually */}
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                goToPrevSlide();
-                setAutoplayEnabled(false);
-                setTimeout(() => setAutoplayEnabled(true), 3000);
-              }}
-              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
-              disabled={isTransitioning}
-              aria-label={isRTL ? "السابق" : "Previous"}
-            >
-              {/* FIXED: Using ChevronLeft for all languages */}
-              <ChevronLeft size={28} />
-            </button>
+        {/* Progress indicators */}
+        <div className="max-w-md mx-auto mt-8">
+          <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+            <div
+              className="bg-gold h-full rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${(activeIndex / (maxPages - 1)) * 100}%` }}
+            ></div>
+          </div>
 
-            {/* Progress Bar and Indicators in the middle */}
-            <div className="flex-grow max-w-md mx-4 self-center">
-              <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                <div
-                  className="bg-gold h-full rounded-full transition-all duration-500 ease-out"
-                  style={{ width: `${(activeIndex / (maxPages - 1)) * 100}%` }}
-                ></div>
-              </div>
-
-              {/* Page Dots */}
-              <div className="flex justify-center mt-4 gap-2">
-                {Array.from({ length: maxPages }).map((_, index) => (
-                  <button
-                    key={`page-${index}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (!isTransitioning) {
-                        goToSlide(index);
-                        setAutoplayEnabled(false);
-                        setTimeout(() => setAutoplayEnabled(true), 3000);
-                      }
-                    }}
-                    className={`transition-all duration-300 rounded-full ${index === activeIndex
-                      ? 'w-8 h-2 bg-gold' // Elongated active indicator
-                      : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
-                      }`}
-                    aria-label={`Go to page ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Next button - Always on the right visually */}
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                goToNextSlide();
-                setAutoplayEnabled(false);
-                setTimeout(() => setAutoplayEnabled(true), 3000);
-              }}
-              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
-              disabled={isTransitioning}
-              aria-label={isRTL ? "التالي" : "Next"}
-            >
-              {/* FIXED: Using ChevronRight for all languages */}
-              <ChevronRight size={28} />
-            </button>
+          {/* Page Dots */}
+          <div className="flex justify-center mt-4 gap-2">
+            {Array.from({ length: maxPages }).map((_, index) => (
+              <button
+                key={`page-${index}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (!isTransitioning) {
+                    goToSlide(index);
+                    setAutoplayEnabled(false);
+                    setTimeout(() => setAutoplayEnabled(true), 3000);
+                  }
+                }}
+                className={`transition-all duration-300 rounded-full ${index === activeIndex
+                  ? 'w-8 h-2 bg-gold' // Elongated active indicator
+                  : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                  }`}
+                aria-label={`Go to page ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -46,7 +46,7 @@ const PartnerSlider: React.FC = () => {
         {partners.map((partner, index) => (
           <div
             key={`partner-desktop-${index}`}
-            className="w-32 h-20 transition-all duration-500 hover:scale-110 filter grayscale hover:grayscale-0 flex items-center justify-center"
+            className="w-32 h-20 transition-all duration-300 hover:scale-110 filter grayscale hover:grayscale-0 flex items-center justify-center"
           >
             <img
               src={partner.image}

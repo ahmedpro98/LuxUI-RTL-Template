@@ -24,7 +24,7 @@ const Index = () => {
       <TransitionEffect type="circle" />
 
       <div className="page-content">
-        {/* Hero Section - No animation needed as it's above the fold */}
+        {/* Hero Section*/}
         <HeroSection />
 
         {/* Featured Collection Section with staggered children */}
@@ -41,7 +41,7 @@ const Index = () => {
         </ScrollObserver>
 
         {/* About Section with custom reveal */}
-        <ScrollObserver animation="fade-up" delay={100}>
+        <ScrollObserver animation="fade-up" delay={50}>
           <AboutSection />
         </ScrollObserver>
 
