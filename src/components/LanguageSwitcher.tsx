@@ -132,7 +132,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
       {/* Loading indicator during transition */}
       {isLanguageChanging && (
-        <span className="loading-indicator ml-2">
+        <span className="loading-indicator ml-3">
           <span className="dot"></span>
           <span className="dot"></span>
           <span className="dot"></span>

@@ -8,82 +8,64 @@ import ServicesSection from '../components/home-index/ServicesSection';
 import ContactSection from '../components/home-index/ContactSection';
 import CtaSection from '../components/home-index/CtaSection';
 import ScrollObserver from '../components/home-index/ScrollObserver';
-
-
+import TransitionEffect from '../components/anmition/TransitionEffect';
+import { useLanguage } from '../context/LanguageContext';
 
 const Index = () => {
+  const { language } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div>
+    <>
+      {/* Modern page transition effect */}
+      <TransitionEffect type="circle" />
 
-      {/* قسم الغلاف الرئيسي */}
-      {/* Hero Section */}
-      <HeroSection />
+      <div className="page-content">
+        {/* Hero Section - No animation needed as it's above the fold */}
+        <HeroSection />
 
+        {/* Featured Collection Section with staggered children */}
+        <ScrollObserver animation="fade-up" staggerChildren>
+          <FeaturedCollection />
+        </ScrollObserver>
 
-      {/* Featured Collection Section */}
-      {/* قسم المعرض */}
+        {/* Partners Section - Horizontal slide based on language direction */}
+        <ScrollObserver
+          animation={language === 'ar' ? 'fade-left' : 'fade-right'}
+          className="direction-aware"
+        >
+          <PartnersSection />
+        </ScrollObserver>
 
-      <ScrollObserver animation="fade-up">
-        <FeaturedCollection />
-      </ScrollObserver>
+        {/* About Section with custom reveal */}
+        <ScrollObserver animation="fade-up" delay={100}>
+          <AboutSection />
+        </ScrollObserver>
 
+        {/* Services Section with staggered items */}
+        <ScrollObserver animation="fade-up" staggerChildren>
+          <ServicesSection />
+        </ScrollObserver>
 
+        {/* Testimonials with scale animation */}
+        <ScrollObserver animation="scale" threshold={0.2}>
+          <FeaturedTestimonials />
+        </ScrollObserver>
 
-      {/* قسم الشركاء */}
+        {/* Contact Section */}
+        <ScrollObserver animation="fade-up">
+          <ContactSection />
+        </ScrollObserver>
 
-      <ScrollObserver animation="fade-up">
-        <PartnersSection />
-      </ScrollObserver>
-
-
-
-      {/* قسم حول الشركة */}
-
-      <ScrollObserver animation="fade-up">
-        <AboutSection />
-      </ScrollObserver>
-
-
-
-      {/* قسم الخدمات */}
-
-      <ScrollObserver animation="fade-up">
-        <ServicesSection />
-      </ScrollObserver>
-
-
-
-      {/* قسم الشهادات */}
-
-      <ScrollObserver animation="fade-up">
-        <FeaturedTestimonials />
-      </ScrollObserver>
-
-
-
-      {/* قسم التواصل */}
-      {/* Section animation */}
-      <ScrollObserver animation="fade-up">
-        <ContactSection />
-      </ScrollObserver>
-      {/* END */}
-
-
-
-      {/* قسم الدعوة للاتصال */}
-      {/* Section animation */}
-
-      <ScrollObserver animation="fade-up">
-        <CtaSection />
-      </ScrollObserver>
-      {/* END */}
-
-
-    </div>
+        {/* CTA Section */}
+        <ScrollObserver animation="fade-up" className="text-animate-fade-in">
+          <CtaSection />
+        </ScrollObserver>
+      </div>
+    </>
   );
 };
 

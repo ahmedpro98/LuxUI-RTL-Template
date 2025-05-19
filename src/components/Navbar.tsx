@@ -13,17 +13,17 @@ import { X, Menu } from 'lucide-react';
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(true); // Set to true by default
   const [sheetOpen, setSheetOpen] = useState(false);
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
   const location = useLocation();
   const isMobile = useIsMobile();
 
   const navItems = [
-    { name: t('home'), path: '/' },
-    { name: t('about'), path: '/about' },
-    { name: t('services'), path: '/services' },
-    { name: t('gallery'), path: '/gallery' },
-    { name: t('testimonials'), path: '/testimonials' },
-    { name: t('contact'), path: '/contact' },
+    { name: isRTL ? 'الرئيسية' : 'Home', path: '/' },
+    { name: isRTL ? 'من نحن' : 'About Us', path: '/about' },
+    { name: isRTL ? 'خدماتنا' : 'Our Services', path: '/services' },
+    { name: isRTL ? 'معرض الصور' : 'Gallery', path: '/gallery' },
+    { name: isRTL ? 'آراء العملاء' : 'Testimonials', path: '/testimonials' },
+    { name: isRTL ? 'تواصل معنا' : 'Contact Us', path: '/contact' },
   ];
 
   useEffect(() => {
@@ -48,8 +48,7 @@ const Navbar: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 
-  ${(isScrolled || sheetOpen || isMobile) ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container-custom mx-auto flex justify-between items-center">
         <Link to="/" className="text-charcoal hover:text-gold transition-colors duration-300 flex items-center gap-2">
           <img
@@ -137,7 +136,7 @@ const Navbar: React.FC = () => {
               </div>
 
               <div className={`mt-auto p-4 border-t text-sm text-gray-500 ${isRTL ? 'text-right' : 'text-left'}`}>
-                <p>{isRTL ? 'هبات أيست - خبرة في الإضاءة والتركيبات ' : 'Hebat East - Lighting Expertise '}</p>
+                <p>{isRTL ? 'هبات أيست - خبرة في الإضاءة منذ 1995' : 'Hebat East - Lighting Expertise Since 1995'}</p>
               </div>
             </SheetContent>
           </Sheet>
