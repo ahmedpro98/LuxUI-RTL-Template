@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import { useLanguage } from '../context/LanguageContext';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
-import LazyImage from './LazyImage';
 
 const PartnerSlider: React.FC = () => {
   const isMobile = useIsMobile();
   const { isRTL } = useLanguage();
   const [isPaused, setIsPaused] = useState(false);
   const marqueeRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>();
+  const lastTimeRef = useRef<number>(0);
+  const positionRef = useRef<number>(0);
 
   const partners = [
     {
@@ -45,10 +46,9 @@ const PartnerSlider: React.FC = () => {
     }
   ];
 
-  // Duplicate partners for infinite scroll effect
-  const allPartners = [...partners, ...partners];
+  // Create multiple copies for smoother infinite scroll
+  const allPartners = [...partners, ...partners, ...partners];
 
-  // Start/stop animation based on hover
   const handleMouseEnter = () => {
     setIsPaused(true);
   };
@@ -61,92 +61,99 @@ const PartnerSlider: React.FC = () => {
     const marqueeElement = marqueeRef.current;
     if (!marqueeElement) return;
 
-    // Animation function for marquee
-    let animationId: number;
-    let position = 0;
-    const speed = 0.5; // Adjust speed (lower = slower)
+    const speed = 30; // pixels per second
+    const itemWidth = 264 + 40; // 264px width + 40px margin (20px each side)
+    const totalWidth = partners.length * itemWidth;
 
-    const animate = () => {
+    const animate = (currentTime: number) => {
       if (!isPaused && marqueeElement) {
-        position += speed;
-
-        // Reset position when first set of logos is fully scrolled
-        if (position >= marqueeElement.clientWidth / 2) {
-          position = 0;
+        if (lastTimeRef.current === 0) {
+          lastTimeRef.current = currentTime;
         }
 
-        marqueeElement.style.transform = `translateX(${isRTL ? position : -position}px)`;
+        const deltaTime = currentTime - lastTimeRef.current;
+        lastTimeRef.current = currentTime;
+
+        // Update position based on time passed
+        positionRef.current += (speed * deltaTime) / 1000;
+
+        // Reset position when one full set is scrolled
+        if (positionRef.current >= totalWidth) {
+          positionRef.current = 0;
+        }
+
+        // Apply transform
+        const translateX = isRTL ? positionRef.current : -positionRef.current;
+        marqueeElement.style.transform = `translateX(${translateX}px)`;
+      } else if (isPaused) {
+        // Reset time reference when paused to avoid jumps
+        lastTimeRef.current = 0;
       }
-      animationId = requestAnimationFrame(animate);
+
+      animationRef.current = requestAnimationFrame(animate);
     };
 
-    animationId = requestAnimationFrame(animate);
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      cancelAnimationFrame(animationId);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-  }, [isPaused, isRTL]);
+  }, [isPaused, isRTL, partners.length]);
 
   return (
     <div className="w-full overflow-hidden py-4">
-      {/* Desktop version: Marquee with hover pause */}
-      <div className="hidden md:block overflow-hidden relative">
-        <div
-          ref={marqueeRef}
-          className={`flex transition-transform ${isRTL ? 'flex-row-reverse' : ''}`}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {allPartners.map((partner, index) => (
+      {/* Desktop version: Full width Marquee with smooth hover pause */}
+      <div className="hidden md:block overflow-hidden relative w-full">
+        <div className="relative">
+          <div
+            ref={marqueeRef}
+            className={`flex transition-none ${isRTL ? 'flex-row-reverse' : ''}`}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{
+              width: `${allPartners.length * 264 + allPartners.length * 40}px`
+            }}
+          >
+            {allPartners.map((partner, index) => (
+              <div
+                key={`partner-desktop-${index}`}
+                className="w-64 h-40 mx-5 flex-shrink-0 transition-all duration-300 hover:scale-105 filter grayscale hover:grayscale-0 flex items-center justify-center bg-white rounded-lg"
+              >
+                <img
+                  src={partner.image}
+                  alt={partner.name}
+                  className="max-w-[80%] max-h-[80%] object-contain transition-all duration-300"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Gradient overlays for smooth edges */}
+          <div className={`absolute top-0 ${isRTL ? 'right-0' : 'left-0'} w-20 h-full bg-gradient-to-r ${isRTL ? 'from-transparent to-white' : 'from-white to-transparent'} pointer-events-none z-10`}></div>
+          <div className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} w-20 h-full bg-gradient-to-l ${isRTL ? 'from-transparent to-white' : 'from-white to-transparent'} pointer-events-none z-10`}></div>
+        </div>
+      </div>
+
+      {/* Mobile version: Clean Grid View */}
+      <div className="md:hidden px-4">
+        <div className="grid grid-cols-2 gap-4">
+          {partners.map((partner, index) => (
             <div
-              key={`partner-desktop-${index}`}
-              className="w-64 h-40 mx-5 flex-shrink-0 transition-all duration-500 hover:scale-110 filter grayscale hover:grayscale-0 flex items-center justify-center"
+              key={`partner-mobile-${index}`}
+              className="h-24 bg-white rounded-lg flex items-center justify-center shadow-sm transition-all duration-300 hover:shadow-md hover:scale-105"
             >
               <img
                 src={partner.image}
                 alt={partner.name}
-                className="max-w-full max-h-full object-contain"
+                className="max-w-[70%] max-h-[70%] object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                loading="lazy"
               />
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Mobile version: Enhanced carousel with shadcn/ui */}
-      <div className="md:hidden">
-        <Carousel
-          className="w-full"
-          opts={{
-            align: "center",
-            loop: true,
-          }}
-        // autoPlay={true}
-        // interval={4000}
-        >
-          <CarouselContent>
-            {partners.map((partner, index) => (
-              <CarouselItem key={`partner-mobile-${index}`} className="flex items-center justify-center">
-                <div className="h-28 w-full p-4 flex items-center justify-center bg-white/50 backdrop-blur-sm rounded-lg transition-all duration-500">
-                  <LazyImage
-                    src={partner.image}
-                    alt={partner.name}
-                    className="max-w-full max-h-full object-contain transform transition-all duration-700 hover:scale-105 filter hover:grayscale-0"
-                    placeholderSrc="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlZWVlZWUiLz48L3N2Zz4="
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-          <div className={`flex justify-between absolute inset-x-0 top-1/2 -translate-y-1/2 px-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            <CarouselPrevious
-              className={`h-8 w-8 rounded-full opacity-70 hover:opacity-100 transition-opacity ${isRTL ? '-scale-x-100' : ''}`}
-            />
-            <CarouselNext
-              className={`h-8 w-8 rounded-full opacity-70 hover:opacity-100 transition-opacity ${isRTL ? '-scale-x-100' : ''}`}
-            />
-          </div>
-        </Carousel>
       </div>
     </div>
   );
