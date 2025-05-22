@@ -6,7 +6,7 @@ import LazyImage from '../components/LazyImage';
 
 
 const Gallery = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
   const [visibleItems, setVisibleItems] = useState(9);
 
@@ -216,8 +216,8 @@ const Gallery = () => {
                   setVisibleItems(9);
                 }}
                 className={`px-6 py-2 rounded-full transition-colors duration-300 ${activeCategory === category.id
-                    ? 'bg-gold text-white'
-                    : 'bg-gray-100 text-charcoal hover:bg-gray-200'
+                  ? 'bg-gold text-white'
+                  : 'bg-gray-100 text-charcoal hover:bg-gray-200'
                   }`}
                 initial={{ opacity: 0, x: isRTL ? -20 : 20 }}
                 animate={{ opacity: 1, x: 0 }}

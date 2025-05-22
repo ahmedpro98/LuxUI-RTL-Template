@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 
 const About = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
   const isMobile = useIsMobile();
   const [activeTeamMember, setActiveTeamMember] = useState<number | null>(null);
 
@@ -83,12 +83,12 @@ const About = () => {
           <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
             <ScrollObserver animation="fade-up" delay={25} className="mb-6">
               <h1 className="text-4xl md:text-5xl font-bold">
-                {t('about')}
+                {isRTL ? 'من نحن' : 'About Us'}
               </h1>
             </ScrollObserver>
             <ScrollObserver animation="fade-up" delay={50} className="text-xl text-gray-300">
               <p>
-                {t('section-about-subtitle')}
+                {isRTL ? 'هبات أيست' : 'section-about-subtitle'}
               </p>
             </ScrollObserver>
           </div>

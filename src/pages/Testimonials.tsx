@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 const Testimonials = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -54,10 +54,16 @@ const Testimonials = () => {
         <div className="container-custom mx-auto">
           <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              {t('testimonials')}
+              {isRTL
+                ? " أراء عملائنا"
+                : ' our  clients '}
+
             </h1>
-            <p className="text-xl text-gray-300">
-              {t('section-testimonials-subtitle')}
+            <p>
+              {isRTL
+                ? 'آراء عملائنا الكرام حول تجربتهم مع منتجاتنا وخدماتنا'
+                : 'Opinions of our valued clients about their experience with our products and services'}
+
             </p>
           </div>
         </div>

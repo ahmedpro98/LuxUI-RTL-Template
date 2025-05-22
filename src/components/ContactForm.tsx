@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useToast } from '../hooks/use-toast';
 
 const ContactForm: React.FC = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',

@@ -15,7 +15,7 @@ const titleColor = "#232321"; // فحمي
 const labelColor = "#D4AF37";
 
 const Contact = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);

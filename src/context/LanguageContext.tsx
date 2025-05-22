@@ -10,17 +10,12 @@ interface LanguageContextType {
   isRTL: boolean;
   isLanguageChanging: boolean;
   transitionState: TransitionState;
-  t: (key: string) => string;
 }
 
 interface LanguageProviderProps {
   children: ReactNode;
   transitionDuration?: number;
 }
-
-// Translation dictionary
-const translations: Record<string, Record<Language, string>> = {
-};
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
@@ -29,35 +24,51 @@ export const LanguageProvider = ({
   transitionDuration = 800
 }: LanguageProviderProps) => {
   const [language, setLanguageState] = useState<Language>(() => {
-    // Try to read from localStorage or default to 'ar'
-    const savedLanguage = localStorage.getItem('language');
-    return (savedLanguage === 'en' || savedLanguage === 'ar') ? savedLanguage : 'ar';
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('language');
+      return (savedLanguage === 'en' || savedLanguage === 'ar') ? savedLanguage : 'ar';
+    }
+    return 'ar';
   });
 
   const [previousLanguage, setPreviousLanguage] = useState<Language | null>(null);
   const [transitionState, setTransitionState] = useState<TransitionState>('idle');
 
-  // Derived state for cleaner component usage
   const isLanguageChanging = transitionState !== 'idle';
   const isRTL = language === 'ar';
 
-  // Orchestrated language change function with proper sequencing
+  // Initialize document settings on mount
+  useEffect(() => {
+    // إضافة CSS classes للتحكم في الخطوط والاتجاه
+    document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', language);
+
+    // إضافة language classes للتحكم في الخطوط
+    document.documentElement.classList.add(language);
+    document.documentElement.classList.remove(language === 'ar' ? 'en' : 'ar');
+
+    // إضافة RTL/LTR classes
+    document.documentElement.classList.toggle('rtl', isRTL);
+    document.documentElement.classList.toggle('ltr', !isRTL);
+
+    // إضافة font classes بناءً على اللغة
+    document.documentElement.classList.toggle('font-arabic', isRTL);
+    document.documentElement.classList.toggle('font-english', !isRTL);
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', language);
+    }
+  }, []);
+
   const setLanguage = useCallback((newLanguage: Language) => {
     if (newLanguage !== language && transitionState === 'idle') {
-      // Store previous language for transition effects
       setPreviousLanguage(language);
-
-      // Start transition sequence
       setTransitionState('start');
 
-      // Signal transition beginning to components
       document.documentElement.classList.add('language-transition');
-
-      // Add data attributes to help with CSS selectors
       document.documentElement.setAttribute('data-prev-lang', language);
       document.documentElement.setAttribute('data-new-lang', newLanguage);
 
-      // Small delay before actually changing language to allow CSS transitions to begin
       setTimeout(() => {
         setTransitionState('changing');
         setLanguageState(newLanguage);
@@ -65,43 +76,48 @@ export const LanguageProvider = ({
     }
   }, [language, transitionState]);
 
-  // Apply language changes to the document
   useEffect(() => {
     if (transitionState === 'changing') {
-      // Change language settings
-      document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+      const newIsRTL = language === 'ar';
+
+      // تحديث جميع الخصائص
+      document.documentElement.setAttribute('dir', newIsRTL ? 'rtl' : 'ltr');
       document.documentElement.setAttribute('lang', language);
+
+      // تحديث language classes
       document.documentElement.classList.add(language);
       document.documentElement.classList.remove(language === 'ar' ? 'en' : 'ar');
 
-      // Store language preference
-      localStorage.setItem('language', language);
+      // تحديث RTL/LTR classes
+      document.documentElement.classList.toggle('rtl', newIsRTL);
+      document.documentElement.classList.toggle('ltr', !newIsRTL);
 
-      // Signal transition is completing
+      // تحديث font classes
+      document.documentElement.classList.toggle('font-arabic', newIsRTL);
+      document.documentElement.classList.toggle('font-english', !newIsRTL);
+
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('language', language);
+      }
+
       setTransitionState('complete');
     }
-  }, [language, isRTL, transitionState]);
+  }, [language, transitionState]);
 
-  // Handle transition completion
   useEffect(() => {
     if (transitionState === 'complete') {
-      // Allow time for DOM to update and transitions to complete
       const completeTimeout = setTimeout(() => {
-        // Remove transition classes
         document.documentElement.classList.remove('language-transition');
+        document.documentElement.removeAttribute('data-prev-lang');
+        document.documentElement.removeAttribute('data-new-lang');
 
-        // Reset state to idle
         setTransitionState('idle');
+        setPreviousLanguage(null);
       }, transitionDuration);
 
       return () => clearTimeout(completeTimeout);
     }
   }, [transitionState, transitionDuration]);
-
-  // Translation function
-  const t = (key: string): string => {
-    return translations[key]?.[language] || key;
-  };
 
   return (
     <LanguageContext.Provider value={{
@@ -111,15 +127,8 @@ export const LanguageProvider = ({
       isRTL,
       isLanguageChanging,
       transitionState,
-      t
     }}>
-      <div
-        className={`app-container ${isRTL ? 'rtl' : 'ltr'} ${language} ${isLanguageChanging ? 'transitioning' : ''
-          }`}
-        data-transition-state={transitionState}
-      >
-        {children}
-      </div>
+      {children}
     </LanguageContext.Provider>
   );
 };

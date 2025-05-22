@@ -11,12 +11,13 @@ import {
 import { X, Menu } from 'lucide-react';
 
 const Navbar: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(true); // Set to true by default
+  const [isScrolled, setIsScrolled] = useState(true);
   const [sheetOpen, setSheetOpen] = useState(false);
-  const { isRTL } = useLanguage();
+  const { isRTL } = useLanguage(); // استخدام isRTL فقط
   const location = useLocation();
   const isMobile = useIsMobile();
 
+  // الترجمات محلياً باستخدام isRTL
   const navItems = [
     { name: isRTL ? 'الرئيسية' : 'Home', path: '/' },
     { name: isRTL ? 'من نحن' : 'About Us', path: '/about' },
@@ -31,7 +32,6 @@ const Navbar: React.FC = () => {
       if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
-        // Only remove the background when not at the top of the home page
         setIsScrolled(location.pathname === '/' ? true : false);
       }
     };
@@ -42,7 +42,6 @@ const Navbar: React.FC = () => {
     };
   }, [location.pathname]);
 
-  // Close sheet when route changes
   useEffect(() => {
     setSheetOpen(false);
   }, [location.pathname]);
@@ -50,13 +49,17 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container-custom mx-auto flex justify-between items-center">
-        <Link to="/" className="text-charcoal hover:text-gold transition-colors duration-300 flex items-center gap-2">
+        <Link
+          to="/"
+          className="text-charcoal hover:text-gold transition-colors duration-300 flex items-center gap-2"
+        >
           <img
             src="/Logo_and_identity/logo.png"
             alt={isRTL ? 'هبات أيست' : 'Hebat East'}
             className="w-10 h-10 object-contain"
           />
-          <h1 className={`text-2xl font-bold ${isRTL ? 'font-tajawal' : 'font-playfair'}`}>
+          {/* إضافة classes للتحكم في الخطوط */}
+          <h1 className={`text-2xl font-bold ${isRTL ? 'font-cairo' : 'font-playfair'}`}>
             {isRTL ? 'هبات أيست' : 'Hebat East'}
           </h1>
         </Link>
@@ -67,7 +70,8 @@ const Navbar: React.FC = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`${location.pathname === item.path ? 'text-gold' : 'text-charcoal'} hover:text-gold transition-colors duration-300`}
+              className={`${location.pathname === item.path ? 'text-gold' : 'text-charcoal'
+                } hover:text-gold transition-colors duration-300 ${isRTL ? 'font-tajawal' : 'font-roboto'}`}
             >
               {item.name}
             </Link>
@@ -77,7 +81,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation with Shadcn Sheet Component */}
+        {/* Mobile Navigation */}
         <div className={`lg:hidden flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
           <LanguageSwitcher />
           <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
@@ -101,7 +105,7 @@ const Navbar: React.FC = () => {
                     alt={isRTL ? 'هبات أيست' : 'Hebat East'}
                     className="w-8 h-8 object-contain"
                   />
-                  <h2 className={`text-xl font-bold ${isRTL ? 'font-tajawal' : 'font-playfair'}`}>
+                  <h2 className={`text-xl font-bold ${isRTL ? 'font-cairo' : 'font-playfair'}`}>
                     {isRTL ? 'هبات أيست' : 'Hebat East'}
                   </h2>
                 </div>
@@ -120,7 +124,7 @@ const Navbar: React.FC = () => {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={`block w-full px-4 py-3 rounded-md transition-colors duration-300
+                      className={`block w-full px-4 py-3 rounded-md transition-colors duration-300 ${isRTL ? 'font-tajawal' : 'font-roboto'}
                         ${location.pathname === item.path
                           ? 'bg-gold text-white hover:bg-gold-dark'
                           : 'text-charcoal hover:bg-gold/10 hover:text-gold'
@@ -135,7 +139,7 @@ const Navbar: React.FC = () => {
                 </div>
               </div>
 
-              <div className={`mt-auto p-4 border-t text-sm text-gray-500 ${isRTL ? 'text-right' : 'text-left'}`}>
+              <div className={`mt-auto p-4 border-t text-sm text-gray-500 ${isRTL ? 'text-right font-tajawal' : 'text-left font-roboto'}`}>
                 <p>{isRTL ? 'هبات أيست - خبرة في الإضاءة منذ 1995' : 'Hebat East - Lighting Expertise Since 1995'}</p>
               </div>
             </SheetContent>

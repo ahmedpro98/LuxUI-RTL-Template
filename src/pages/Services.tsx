@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import ScrollObserver from '../components/home-index/ScrollObserver';
 
 const Services = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -112,7 +112,9 @@ const Services = () => {
         <section className="bg-gradient-to-r from-charcoal to-charcoal-dark text-white py-20">
           <div className="container-custom mx-auto">
             <div className="text-center max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-right translate-x-50">{t('services')}</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-right translate-x-50">
+                {isRTL ? 'خدماتنا' : 'Our Services'}
+              </h1>
               <p className="text-xl text-gray-300 text-right translate-x-50">{isRTL ? 'حلول إضاءة فاخرة مصممة لمساحتك' : 'Luxury lighting solutions designed for your space'}</p>
             </div>
           </div>

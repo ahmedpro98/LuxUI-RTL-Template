@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 import { useToast } from "../../hooks/use-toast";
 
 const FeaturedTestimonials: React.FC = () => {
-  const { t, isRTL, language } = useLanguage();
+  const { isRTL, language } = useLanguage();
   const isMobile = useIsMobile();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [dragging, setDragging] = useState(false);
