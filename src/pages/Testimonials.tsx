@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback, useMemo } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import LazyImage from '../components/LazyImage';
 import ScrollObserver from '../components/home-index/ScrollObserver';
@@ -9,25 +9,38 @@ import {
 import { AspectRatio } from '../components/ui/aspect-ratio';
 import { useIsMobile } from '../hooks/use-mobile';
 import {
-  Quote
+  Quote,
+  Play,
+  Star,
+  Users,
+  Award,
+  TrendingUp
 } from 'lucide-react';
 
 const Testimonials = () => {
   const { isRTL } = useLanguage();
   const isMobile = useIsMobile();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  // Use useCallback to prevent unnecessary re-renders
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  const testimonials = [
+  useEffect(() => {
+    // Use requestAnimationFrame to prevent blocking the main thread
+    requestAnimationFrame(scrollToTop);
+  }, [scrollToTop]);
+
+  // Memoize testimonials data to prevent recreation on every render
+  const testimonials = useMemo(() => [
     {
       name: isRTL ? 'محمد الغامدي' : 'Mohammed Al-Ghamdi',
       role: isRTL ? 'مالك القصر الملكي' : 'Royal Palace Owner',
       content: isRTL
         ? 'الثريات التي وفرتها الشركة أضافت لمسة من الفخامة والأناقة إلى قصرنا. جودة المنتجات والتركيب الاحترافي فاقت توقعاتنا.'
         : 'The chandeliers provided by the company added a touch of luxury and elegance to our palace. The quality of the products and professional installation exceeded our expectations.',
-      image: "/testimonials/client1.jpg"
+      image: "/testimonials/client1.jpg",
+      rating: 5
     },
     {
       name: isRTL ? 'سارة العتيبي' : 'Sarah Al-Otaibi',
@@ -35,7 +48,8 @@ const Testimonials = () => {
       content: isRTL
         ? 'تعاملنا معهم في مشروع تجديد الفندق، وكانت تجربة رائعة. الاهتمام بالتفاصيل والمهنية العالية جعلت المشروع يسير بسلاسة تامة.'
         : 'We worked with them on our hotel renovation project, and it was an amazing experience. The attention to detail and high professionalism made the project run very smoothly.',
-      image: "/testimonials/client2.jpg"
+      image: "/testimonials/client2.jpg",
+      rating: 5
     },
     {
       name: isRTL ? 'فهد السعدي' : 'Fahad Al-Saadi',
@@ -43,51 +57,87 @@ const Testimonials = () => {
       content: isRTL
         ? 'اختيار التصاميم المناسبة وتنفيذها بهذه الدقة ساهم في خلق أجواء استثنائية في المجمع. أنصح بشدة بالتعامل معهم.'
         : 'The selection of appropriate designs and their implementation with such precision contributed to creating an exceptional atmosphere in the complex. I highly recommend working with them.',
-      image: "/testimonials/client3.jpg"
+      image: "/testimonials/client3.jpg",
+      rating: 5
     }
-  ];
+  ], [isRTL]);
+
+  // Memoize stats data
+  const stats = useMemo(() => [
+    {
+      value: '500+',
+      label: isRTL ? 'مشروع مكتمل' : 'Completed Projects',
+      icon: Award,
+      color: 'text-blue-400'
+    },
+    {
+      value: '95%',
+      label: isRTL ? 'عملاء راضون' : 'Satisfied Clients',
+      icon: Users,
+      color: 'text-green-400'
+    },
+    {
+      value: '20+',
+      label: isRTL ? 'سنوات خبرة' : 'Years of Experience',
+      icon: TrendingUp,
+      color: 'text-purple-400'
+    },
+    {
+      value: '50+',
+      label: isRTL ? 'تصميم حصري' : 'Exclusive Designs',
+      icon: Star,
+      color: 'text-yellow-400'
+    }
+  ], [isRTL]);
+
+  const renderStars = useCallback((rating) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star
+        key={i}
+        size={16}
+        className={`${i < rating ? 'text-gold fill-current' : 'text-gray-300'}`}
+      />
+    ));
+  }, []);
 
   return (
-    <div className="pt-24 overflow-x-hidden">
-      {/* Header Section */}
-      <section className="bg-charcoal text-white py-20">
-        <div className="container-custom mx-auto">
-          <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              {isRTL
-                ? " أراء عملائنا"
-                : ' our  clients '}
-
+    <div className="pt-16">
+      {/* Header Section - Reduced padding for faster loading */}
+      <section className="bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90 text-white py-12 md:py-16 relative">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="container-custom mx-auto relative z-10">
+          <div className={`max-w-4xl ${isRTL ? 'text-right' : 'text-left'}`}>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+              {isRTL ? "آراء عملائنا" : 'Client Testimonials'}
             </h1>
-            <p>
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
               {isRTL
-                ? 'آراء عملائنا الكرام حول تجربتهم مع منتجاتنا وخدماتنا'
-                : 'Opinions of our valued clients about their experience with our products and services'}
-
+                ? 'آراء عملائنا الكرام حول تجربتهم مع منتجاتنا وخدماتنا المميزة'
+                : 'Discover what our valued clients say about their exceptional experience with our products and services'}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Featured Testimonial */}
-      <section className="py-20">
+      {/* Featured Testimonial - Optimized animation delays */}
+      <section className="py-12 md:py-16">
         <div className="container-custom mx-auto">
-          <ScrollObserver animation="fade-up" threshold={0.1} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
+          <ScrollObserver animation="fade-up" threshold={0.05} delay={100} className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-3">
               {isRTL ? 'ما يقوله عملاؤنا' : 'What Our Clients Say'}
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               {isRTL
-                ? 'آراء عملائنا الكرام حول تجربتهم مع منتجاتنا وخدماتنا'
-                : 'Opinions of our valued clients about their experience with our products and services'}
+                ? 'تجارب حقيقية من عملائنا المميزين'
+                : 'Real experiences from our distinguished clients'}
             </p>
           </ScrollObserver>
 
-          <ScrollObserver animation="fade-up" threshold={0.2} className="mb-20">
-            <Card className="bg-gradient-to-r from-gold/10 to-charcoal/5 overflow-hidden">
+          <ScrollObserver animation="fade-up" threshold={0.1} delay={200} className="mb-16">
+            <Card className="bg-gradient-to-br from-gold/5 via-white to-charcoal/5 shadow-xl border-0">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
                 <div className="lg:col-span-2 h-full">
-                  <AspectRatio ratio={isMobile ? 16 / 9 : 3 / 4} className="h-full">
+                  <AspectRatio ratio={isMobile ? 16 / 9 : 4 / 5} className="h-full">
                     <LazyImage
                       src="/testimonials/featured-client.jpg"
                       alt="Featured Client"
@@ -95,20 +145,23 @@ const Testimonials = () => {
                     />
                   </AspectRatio>
                 </div>
-                <div className="lg:col-span-3 p-8 lg:p-12 flex flex-col justify-center">
-                  <div className={`mb-8 ${isRTL ? 'text-right' : 'text-left'}`}>
-                    <Quote size={48} className="text-gold opacity-50" />
+                <div className="lg:col-span-3 p-6 md:p-8 lg:p-12 flex flex-col justify-center">
+                  <div className={`mb-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    <Quote size={40} className="text-gold/60" />
                   </div>
-                  <p className={`text-xl md:text-2xl text-gray-700 mb-8 ${isRTL ? 'text-right' : 'text-left'}`}>
+                  <p className={`text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 leading-relaxed ${isRTL ? 'text-right' : 'text-left'}`}>
                     {isRTL
-                      ? 'لقد كان التعامل مع الشركة تجربة متميزة من البداية للنهاية. الاحترافية العالية، والاهتمام بأدق التفاصيل، والتصاميم الاستثنائية التي تناسب رؤيتنا تمامًا. الثريات التي تم تركيبها أصبحت محور إعجاب كل من يزور قصرنا.'
-                      : 'Working with the company has been an outstanding experience from start to finish. The high professionalism, attention to the finest details, and exceptional designs that perfectly match our vision. The installed chandeliers have become the focus of admiration for everyone who visits our palace.'}
+                      ? 'لقد كان التعامل مع الشركة تجربة متميزة من البداية للنهاية. الاحترافية العالية، والاهتمام بأدق التفاصيل، والتصاميم الاستثنائية التي تناسب رؤيتنا تمامًا.'
+                      : 'Working with the company has been an outstanding experience from start to finish. The high professionalism, attention to detail, and exceptional designs that perfectly match our vision.'}
                   </p>
+                  <div className={`flex items-center gap-2 mb-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                    {renderStars(5)}
+                  </div>
                   <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
-                    <h3 className="text-xl font-bold text-charcoal">
+                    <h3 className="text-lg md:text-xl font-bold text-charcoal">
                       {isRTL ? 'الأمير عبدالله آل سعود' : 'Prince Abdullah Al Saud'}
                     </h3>
-                    <p className="text-gold">
+                    <p className="text-gold font-medium">
                       {isRTL ? 'قصر الأمراء، الرياض' : 'Princes Palace, Riyadh'}
                     </p>
                   </div>
@@ -119,37 +172,40 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Client Testimonials Grid */}
-      <section className="py-20 bg-gray-50">
+      {/* Client Testimonials Grid - Faster animations */}
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {testimonials.map((testimonial, index) => (
               <ScrollObserver
                 key={index}
-                animation={isRTL ? "fade-left" : "fade-right"}
-                threshold={0.1}
-                delay={150 * (index + 1)}
+                animation="fade-up"
+                threshold={0.05}
+                delay={100 * (index + 1)}
               >
-                <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${isRTL ? 'text-right' : 'text-left'}`}>
-                  <div className="h-48 overflow-hidden">
+                <Card className={`h-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 bg-white border-0 ${isRTL ? 'text-right' : 'text-left'}`}>
+                  <div className="h-40 md:h-48">
                     <LazyImage
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-full h-full object-cover transition-all duration-1000 ease-in-out hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
                   </div>
-                  <CardContent className="p-8 relative">
-                    <div className="absolute -top-6 left-8 bg-gold text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg">
-                      <Quote size={20} />
+                  <CardContent className="p-6 relative">
+                    <div className={`absolute -top-6 w-12 h-12 bg-gold text-white flex items-center justify-center rounded-full shadow-lg ${isRTL ? 'right-6' : 'left-6'}`}>
+                      <Quote size={18} />
                     </div>
-                    <p className="text-gray-600 mb-6 mt-4">
+                    <div className={`flex items-center gap-1 mb-4 mt-2 ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                      {renderStars(testimonial.rating)}
+                    </div>
+                    <p className="text-gray-600 mb-6 leading-relaxed">
                       {testimonial.content}
                     </p>
-                    <div className="border-t border-gray-200 pt-4">
-                      <h3 className="text-lg font-bold text-charcoal">
+                    <div className="border-t border-gray-100 pt-4">
+                      <h3 className="text-lg font-bold text-charcoal mb-1">
                         {testimonial.name}
                       </h3>
-                      <p className="text-gold text-sm">
+                      <p className="text-gold text-sm font-medium">
                         {testimonial.role}
                       </p>
                     </div>
@@ -161,67 +217,70 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Stats Section with Alternate Fade Animations */}
-      <section className="py-20 bg-charcoal text-white">
+      {/* Stats Section - Enhanced with icons and faster animations */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-charcoal via-charcoal/98 to-charcoal text-white">
         <div className="container-custom mx-auto">
-          <ScrollObserver animation="fade-up" threshold={0.1} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <ScrollObserver animation="fade-up" threshold={0.05} delay={100} className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
               {isRTL ? 'بالأرقام' : 'By The Numbers'}
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
               {isRTL
                 ? 'نفخر بما حققناه على مدار السنوات الماضية'
                 : 'We take pride in what we have achieved over the past years'}
             </p>
           </ScrollObserver>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { value: '500+', label: isRTL ? 'مشروع مكتمل' : 'Completed Projects' },
-              { value: '95%', label: isRTL ? 'عملاء راضون' : 'Satisfied Clients' },
-              { value: '20+', label: isRTL ? 'سنوات خبرة' : 'Years of Experience' },
-              { value: '50+', label: isRTL ? 'تصميم حصري' : 'Exclusive Designs' }
-            ].map((stat, index) => (
-              <ScrollObserver
-                key={index}
-                animation={index % 2 === 0 ?
-                  (isRTL ? "fade-left" : "fade-right") :
-                  (isRTL ? "fade-right" : "fade-left")}
-                threshold={0.1}
-                delay={150 * (index + 1)}
-                className="text-center"
-              >
-                <div className="p-8 bg-charcoal border border-gold/20 rounded-lg transform transition-transform hover:scale-105 duration-500">
-                  <h3 className="text-4xl md:text-5xl font-bold text-gold mb-2">{stat.value}</h3>
-                  <p className="text-gray-300">{stat.label}</p>
-                </div>
-              </ScrollObserver>
-            ))}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {stats.map((stat, index) => {
+              const IconComponent = stat.icon;
+              return (
+                <ScrollObserver
+                  key={index}
+                  animation="fade-up"
+                  threshold={0.05}
+                  delay={150 * (index + 1)}
+                  className="text-center"
+                >
+                  <div className="p-6 md:p-8 bg-white/5 backdrop-blur-sm border border-gold/20 rounded-xl transform transition-all duration-300 hover:scale-105 hover:bg-white/10">
+                    <div className="flex justify-center mb-4">
+                      <IconComponent size={32} className={`${stat.color}`} />
+                    </div>
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gold mb-2">
+                      {stat.value}
+                    </h3>
+                    <p className="text-gray-300 text-sm md:text-base">
+                      {stat.label}
+                    </p>
+                  </div>
+                </ScrollObserver>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Testimonial Video Section */}
-      <section className="py-20">
+      {/* Video Section - Optimized layout */}
+      <section className="py-12 md:py-16">
         <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <ScrollObserver
               animation={isRTL ? "fade-left" : "fade-right"}
-              threshold={0.2}
+              threshold={0.1}
+              delay={200}
               className={`${isRTL ? 'order-2' : 'order-1'}`}
             >
-              <div className="relative rounded-lg overflow-hidden shadow-xl">
+              <div className="relative rounded-xl shadow-2xl group">
                 <AspectRatio ratio={16 / 9} className="bg-gray-100">
                   <LazyImage
                     src="/testimonials/video-thumbnail.jpg"
                     alt="Video Testimonial"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <button className="w-20 h-20 rounded-full bg-gold/90 text-white flex items-center justify-center hover:bg-gold transition-all duration-300 transform hover:scale-110">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 3L19 12L5 21V3Z" fill="white" />
-                      </svg>
+                    <button className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gold/90 backdrop-blur-sm text-white flex items-center justify-center hover:bg-gold transition-all duration-300 transform hover:scale-110 group-hover:shadow-2xl">
+                      <Play size={20} className="ml-1" fill="white" />
                     </button>
                   </div>
                 </AspectRatio>
@@ -230,43 +289,56 @@ const Testimonials = () => {
 
             <ScrollObserver
               animation={isRTL ? "fade-right" : "fade-left"}
-              threshold={0.2}
+              threshold={0.1}
+              delay={300}
               className={`${isRTL ? 'order-1 text-right' : 'order-2 text-left'}`}
             >
-              <h2 className="text-3xl font-bold text-charcoal mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-6">
                 {isRTL ? 'شاهد قصص نجاحنا' : 'Watch Our Success Stories'}
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-lg leading-relaxed">
                 {isRTL
                   ? 'استمع إلى تجارب عملائنا مباشرة واكتشف كيف ساهمت حلولنا في تحويل مساحاتهم إلى تحف فنية من خلال الإضاءة الاستثنائية.'
                   : 'Listen to our clients experiences directly and discover how our solutions have helped transform their spaces into works of art through exceptional lighting.'}
               </p>
-              <p className="text-gray-600">
-                {isRTL
-                  ? 'نحن نؤمن بأن القيمة الحقيقية لمنتجاتنا وخدماتنا تظهر في رضا عملائنا ومدى تأثير أعمالنا على تجربتهم اليومية.'
-                  : 'We believe that the true value of our products and services is shown in our clients.'}
-              </p>
+              <div className="flex items-center gap-4 text-sm text-gray-500">
+                <div className="flex items-center gap-2">
+                  <Users size={16} className="text-gold" />
+                  <span>{isRTL ? '50+ عميل سعيد' : '50+ Happy Clients'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Award size={16} className="text-gold" />
+                  <span>{isRTL ? 'جودة مضمونة' : 'Quality Guaranteed'}</span>
+                </div>
+              </div>
             </ScrollObserver>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <ScrollObserver animation="fade-up" threshold={0.1} className="py-20 bg-gold text-white">
-        <div className="container-custom mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            {isRTL ? 'هل أنت جاهز لإضافة لمسة من الفخامة؟' : 'Ready to Add a Touch of Luxury?'}
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            {isRTL
-              ? 'تواصل معنا اليوم للحصول على استشارة مجانية واكتشف كيف يمكننا تحويل مساحتك.'
-              : 'Contact us today for a free consultation and discover how we can transform your space.'}
-          </p>
-          <button className="bg-white text-gold px-8 py-3 rounded-md font-bold hover:bg-charcoal hover:text-white transition-all duration-300 transform hover:scale-105">
-            {isRTL ? 'تواصل معنا' : 'Contact Us'}
-          </button>
-
-        </div>
+      {/* Call to Action - Faster animation */}
+      <ScrollObserver animation="fade-up" threshold={0.05} delay={200}>
+        <section className="py-12 md:py-16 bg-gradient-to-r from-gold via-gold/95 to-gold/90 text-white relative">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="container-custom mx-auto text-center relative z-10">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+              {isRTL ? 'هل أنت جاهز لإضافة لمسة من الفخامة؟' : 'Ready to Add a Touch of Luxury?'}
+            </h2>
+            <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
+              {isRTL
+                ? 'تواصل معنا اليوم للحصول على استشارة مجانية واكتشف كيف يمكننا تحويل مساحتك'
+                : 'Contact us today for a free consultation and discover how we can transform your space'}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="bg-white text-gold px-8 py-3 rounded-lg font-bold hover:bg-charcoal hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                {isRTL ? 'تواصل معنا' : 'Contact Us'}
+              </button>
+              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-gold transition-all duration-300 transform hover:scale-105">
+                {isRTL ? 'معرض الأعمال' : 'View Portfolio'}
+              </button>
+            </div>
+          </div>
+        </section>
       </ScrollObserver>
     </div>
   );

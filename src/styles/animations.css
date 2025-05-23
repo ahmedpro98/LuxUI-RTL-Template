@@ -345,3 +345,123 @@
         transform: translate3d(0, -3px, 0);
     }
 }
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes goldShimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.service-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.gold-line {
+    position: relative;
+    overflow: hidden;
+}
+
+.gold-line::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    transform: translateX(-100%) translateY(-50%);
+    transition: transform 0.6s ease;
+}
+
+.group:hover .gold-line::before {
+    transform: translateX(100%) translateY(-50%);
+}
+
+.enhanced-service-card {
+    background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.enhanced-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+    transition: left 0.6s ease;
+}
+
+.enhanced-service-card:hover::before {
+    left: 100%;
+}
+
+.enhanced-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.floating-dots {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(45deg, #D4AF37, #F4D03F);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.floating-dots:nth-child(1) {
+    top: 20%;
+    right: 15%;
+    animation-delay: 0.1s;
+}
+
+.floating-dots:nth-child(2) {
+    bottom: 30%;
+    left: 10%;
+    animation-delay: 0.3s;
+}
+
+.enhanced-service-card:hover .floating-dots {
+    opacity: 1;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
