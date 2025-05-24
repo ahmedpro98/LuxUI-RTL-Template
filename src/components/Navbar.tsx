@@ -8,12 +8,17 @@ import {
   SheetContent,
   SheetTrigger,
 } from './ui/sheet';
-import { X, Menu } from 'lucide-react';
+import { X, Menu, ChevronDown, ChevronUp } from 'lucide-react';
+import { ProjectsDropdown } from './ProjectsDropdown';
+import { MobileProjectsMenu } from './MobileProjectsMenu';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(true);
   const [sheetOpen, setSheetOpen] = useState(false);
-  const { isRTL } = useLanguage(); // استخدام isRTL فقط
+  const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
+  const [showProjectsDropdown, setShowProjectsDropdown] = useState(false);
+  const { isRTL } = useLanguage();
   const location = useLocation();
   const isMobile = useIsMobile();
 
@@ -46,13 +51,25 @@ const Navbar: React.FC = () => {
     setSheetOpen(false);
   }, [location.pathname]);
 
+  // Handle closing dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setShowProjectsDropdown(false);
+    };
+
+    if (showProjectsDropdown) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showProjectsDropdown]);
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container-custom mx-auto flex justify-between items-center">
-        <Link
-          to="/"
-          className="text-charcoal hover:text-gold transition-colors duration-300 flex items-center gap-2"
-        >
+        <Link to="/" className="text-charcoal hover:text-gold transition-colors duration-300 flex items-center gap-2">
           <img
             src="/Logo_and_identity/logo.png"
             alt={isRTL ? 'هبات أيست' : 'Hebat East'}
@@ -76,6 +93,30 @@ const Navbar: React.FC = () => {
               {item.name}
             </Link>
           ))}
+
+          {/* Projects Dropdown - Desktop */}
+          <div className="relative">
+            <div
+              className={`flex items-center gap-1 cursor-pointer ${location.pathname.includes('/projects') ? 'text-gold' : 'text-charcoal'} hover:text-gold transition-colors duration-300`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowProjectsDropdown(!showProjectsDropdown);
+              }}
+            >
+              <span>{isRTL ? 'مشروعاتنا' : 'Our Projects'}</span>
+              <motion.div
+                animate={{ rotate: showProjectsDropdown ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="relative"
+              >
+                <ChevronDown className="w-4 h-4" />
+              </motion.div>
+            </div>
+            <AnimatePresence>
+              {showProjectsDropdown && <ProjectsDropdown />}
+            </AnimatePresence>
+          </div>
+
           <div className="ml-6">
             <LanguageSwitcher />
           </div>
@@ -105,7 +146,7 @@ const Navbar: React.FC = () => {
                     alt={isRTL ? 'هبات أيست' : 'Hebat East'}
                     className="w-8 h-8 object-contain"
                   />
-                  <h2 className={`text-xl font-bold ${isRTL ? 'font-cairo' : 'font-playfair'}`}>
+                  <h2 className={`text-xl font-bold ${isRTL ? 'font-tajawal' : 'font-playfair'}`}>
                     {isRTL ? 'هبات أيست' : 'Hebat East'}
                   </h2>
                 </div>
@@ -136,11 +177,51 @@ const Navbar: React.FC = () => {
                       {item.name}
                     </Link>
                   ))}
+
+                  {/* Projects Dropdown - Mobile */}
+                  <div className="w-full">
+                    <button
+                      onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
+                      className={`flex items-center justify-between w-full px-4 py-3 rounded-md transition-colors duration-300
+                        ${location.pathname.includes('/projects')
+                          ? 'bg-gold text-white hover:bg-gold-dark'
+                          : 'text-charcoal hover:bg-gold/10 hover:text-gold'
+                        }
+                        ${isRTL ? 'text-right' : 'text-left'}
+                      `}
+                    >
+                      <span>{isRTL ? 'مشروعاتنا' : 'Our Projects'}</span>
+                      <motion.div
+                        animate={{ rotate: mobileProjectsOpen ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {mobileProjectsOpen ? (
+                          <ChevronUp className="h-4 w-4" />
+                        ) : (
+                          <ChevronDown className="h-4 w-4" />
+                        )}
+                      </motion.div>
+                    </button>
+
+                    <AnimatePresence>
+                      {mobileProjectsOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <MobileProjectsMenu setSheetOpen={setSheetOpen} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
               </div>
 
-              <div className={`mt-auto p-4 border-t text-sm text-gray-500 ${isRTL ? 'text-right font-tajawal' : 'text-left font-roboto'}`}>
-                <p>{isRTL ? 'هبات أيست - خبرة في الإضاءة منذ 1995' : 'Hebat East - Lighting Expertise Since 1995'}</p>
+              <div className={`mt-auto p-4 border-t text-sm text-gray-500 ${isRTL ? 'text-right' : 'text-left'}`}>
+                <p>{isRTL ? 'هبات أيست - خبرة في الإضاءة والتركيبات الفاخرة' : 'Hebat East - Lighting Expertise '}</p>
               </div>
             </SheetContent>
           </Sheet>

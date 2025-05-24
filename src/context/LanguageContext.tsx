@@ -24,9 +24,15 @@ export const LanguageProvider = ({
   transitionDuration = 800
 }: LanguageProviderProps) => {
   const [language, setLanguageState] = useState<Language>(() => {
+    // فحص وجود window بشكل آمن
     if (typeof window !== 'undefined') {
-      const savedLanguage = localStorage.getItem('language');
-      return (savedLanguage === 'en' || savedLanguage === 'ar') ? savedLanguage : 'ar';
+      try {
+        const savedLanguage = localStorage.getItem('language');
+        return (savedLanguage === 'en' || savedLanguage === 'ar') ? savedLanguage : 'ar';
+      } catch (error) {
+        console.warn('Cannot access localStorage:', error);
+        return 'ar';
+      }
     }
     return 'ar';
   });
@@ -39,6 +45,9 @@ export const LanguageProvider = ({
 
   // Initialize document settings on mount
   useEffect(() => {
+    // التأكد من وجود document
+    if (typeof document === 'undefined') return;
+
     // إضافة CSS classes للتحكم في الخطوط والاتجاه
     document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', language);
@@ -55,19 +64,26 @@ export const LanguageProvider = ({
     document.documentElement.classList.toggle('font-arabic', isRTL);
     document.documentElement.classList.toggle('font-english', !isRTL);
 
+    // حفظ اللغة في localStorage بشكل آمن
     if (typeof window !== 'undefined') {
-      localStorage.setItem('language', language);
+      try {
+        localStorage.setItem('language', language);
+      } catch (error) {
+        console.warn('Cannot save to localStorage:', error);
+      }
     }
-  }, []);
+  }, [language, isRTL]); // إضافة dependencies مهمة
 
   const setLanguage = useCallback((newLanguage: Language) => {
     if (newLanguage !== language && transitionState === 'idle') {
       setPreviousLanguage(language);
       setTransitionState('start');
 
-      document.documentElement.classList.add('language-transition');
-      document.documentElement.setAttribute('data-prev-lang', language);
-      document.documentElement.setAttribute('data-new-lang', newLanguage);
+      if (typeof document !== 'undefined') {
+        document.documentElement.classList.add('language-transition');
+        document.documentElement.setAttribute('data-prev-lang', language);
+        document.documentElement.setAttribute('data-new-lang', newLanguage);
+      }
 
       setTimeout(() => {
         setTransitionState('changing');
@@ -78,6 +94,8 @@ export const LanguageProvider = ({
 
   useEffect(() => {
     if (transitionState === 'changing') {
+      if (typeof document === 'undefined') return;
+
       const newIsRTL = language === 'ar';
 
       // تحديث جميع الخصائص
@@ -96,8 +114,13 @@ export const LanguageProvider = ({
       document.documentElement.classList.toggle('font-arabic', newIsRTL);
       document.documentElement.classList.toggle('font-english', !newIsRTL);
 
+      // حفظ اللغة بشكل آمن
       if (typeof window !== 'undefined') {
-        localStorage.setItem('language', language);
+        try {
+          localStorage.setItem('language', language);
+        } catch (error) {
+          console.warn('Cannot save to localStorage:', error);
+        }
       }
 
       setTransitionState('complete');
@@ -107,9 +130,11 @@ export const LanguageProvider = ({
   useEffect(() => {
     if (transitionState === 'complete') {
       const completeTimeout = setTimeout(() => {
-        document.documentElement.classList.remove('language-transition');
-        document.documentElement.removeAttribute('data-prev-lang');
-        document.documentElement.removeAttribute('data-new-lang');
+        if (typeof document !== 'undefined') {
+          document.documentElement.classList.remove('language-transition');
+          document.documentElement.removeAttribute('data-prev-lang');
+          document.documentElement.removeAttribute('data-new-lang');
+        }
 
         setTransitionState('idle');
         setPreviousLanguage(null);

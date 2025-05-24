@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useMemo } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import LazyImage from '../components/LazyImage';
 import ScrollObserver from '../components/home-index/ScrollObserver';
+import VideoPlayer from '../components/VideoPlayer';
 import {
   Card,
   CardContent
@@ -10,7 +11,6 @@ import { AspectRatio } from '../components/ui/aspect-ratio';
 import { useIsMobile } from '../hooks/use-mobile';
 import {
   Quote,
-  Play,
   Star,
   Users,
   Award,
@@ -39,7 +39,7 @@ const Testimonials = () => {
       content: isRTL
         ? 'الثريات التي وفرتها الشركة أضافت لمسة من الفخامة والأناقة إلى قصرنا. جودة المنتجات والتركيب الاحترافي فاقت توقعاتنا.'
         : 'The chandeliers provided by the company added a touch of luxury and elegance to our palace. The quality of the products and professional installation exceeded our expectations.',
-      image: "/testimonials/client1.jpg",
+      image: "/Clients/cl1.webp",
       rating: 5
     },
     {
@@ -48,7 +48,7 @@ const Testimonials = () => {
       content: isRTL
         ? 'تعاملنا معهم في مشروع تجديد الفندق، وكانت تجربة رائعة. الاهتمام بالتفاصيل والمهنية العالية جعلت المشروع يسير بسلاسة تامة.'
         : 'We worked with them on our hotel renovation project, and it was an amazing experience. The attention to detail and high professionalism made the project run very smoothly.',
-      image: "/testimonials/client2.jpg",
+      image: "/Clients/cl2.jpg",
       rating: 5
     },
     {
@@ -57,7 +57,7 @@ const Testimonials = () => {
       content: isRTL
         ? 'اختيار التصاميم المناسبة وتنفيذها بهذه الدقة ساهم في خلق أجواء استثنائية في المجمع. أنصح بشدة بالتعامل معهم.'
         : 'The selection of appropriate designs and their implementation with such precision contributed to creating an exceptional atmosphere in the complex. I highly recommend working with them.',
-      image: "/testimonials/client3.jpg",
+      image: "/Clients/cl3.jpg",
       rating: 5
     }
   ], [isRTL]);
@@ -134,12 +134,12 @@ const Testimonials = () => {
           </ScrollObserver>
 
           <ScrollObserver animation="fade-up" threshold={0.1} delay={200} className="mb-16">
-            <Card className="bg-gradient-to-br from-gold/5 via-white to-charcoal/5 shadow-xl border-0">
+            <Card className="bg-gradient-to-br from-gold/5 via-white to-charcoal/5 shadow-xl border-0 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
                 <div className="lg:col-span-2 h-full">
-                  <AspectRatio ratio={isMobile ? 16 / 9 : 4 / 5} className="h-full">
+                  <AspectRatio ratio={isMobile ? 1 : 4 / 5} className="h-full">
                     <LazyImage
-                      src="/testimonials/featured-client.jpg"
+                      src="/Clients/mainCL.jpg"
                       alt="Featured Client"
                       className="w-full h-full object-cover"
                     />
@@ -184,7 +184,7 @@ const Testimonials = () => {
                 delay={100 * (index + 1)}
               >
                 <Card className={`h-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 bg-white border-0 ${isRTL ? 'text-right' : 'text-left'}`}>
-                  <div className="h-40 md:h-48">
+                  <div className="h-56 md:h-64 sm:h-48">
                     <LazyImage
                       src={testimonial.image}
                       alt={testimonial.name}
@@ -260,61 +260,8 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Video Section - Optimized layout */}
-      <section className="py-12 md:py-16">
-        <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            <ScrollObserver
-              animation={isRTL ? "fade-left" : "fade-right"}
-              threshold={0.1}
-              delay={200}
-              className={`${isRTL ? 'order-2' : 'order-1'}`}
-            >
-              <div className="relative rounded-xl shadow-2xl group">
-                <AspectRatio ratio={16 / 9} className="bg-gray-100">
-                  <LazyImage
-                    src="/testimonials/video-thumbnail.jpg"
-                    alt="Video Testimonial"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <button className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gold/90 backdrop-blur-sm text-white flex items-center justify-center hover:bg-gold transition-all duration-300 transform hover:scale-110 group-hover:shadow-2xl">
-                      <Play size={20} className="ml-1" fill="white" />
-                    </button>
-                  </div>
-                </AspectRatio>
-              </div>
-            </ScrollObserver>
-
-            <ScrollObserver
-              animation={isRTL ? "fade-right" : "fade-left"}
-              threshold={0.1}
-              delay={300}
-              className={`${isRTL ? 'order-1 text-right' : 'order-2 text-left'}`}
-            >
-              <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-6">
-                {isRTL ? 'شاهد قصص نجاحنا' : 'Watch Our Success Stories'}
-              </h2>
-              <p className="text-gray-600 mb-6 text-lg leading-relaxed">
-                {isRTL
-                  ? 'استمع إلى تجارب عملائنا مباشرة واكتشف كيف ساهمت حلولنا في تحويل مساحاتهم إلى تحف فنية من خلال الإضاءة الاستثنائية.'
-                  : 'Listen to our clients experiences directly and discover how our solutions have helped transform their spaces into works of art through exceptional lighting.'}
-              </p>
-              <div className="flex items-center gap-4 text-sm text-gray-500">
-                <div className="flex items-center gap-2">
-                  <Users size={16} className="text-gold" />
-                  <span>{isRTL ? '50+ عميل سعيد' : '50+ Happy Clients'}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Award size={16} className="text-gold" />
-                  <span>{isRTL ? 'جودة مضمونة' : 'Quality Guaranteed'}</span>
-                </div>
-              </div>
-            </ScrollObserver>
-          </div>
-        </div>
-      </section>
+      {/* Video Section - Now using the separate VideoPlayer component */}
+      <VideoPlayer />
 
       {/* Call to Action - Faster animation */}
       <ScrollObserver animation="fade-up" threshold={0.05} delay={200}>

@@ -30,7 +30,7 @@ const About = () => {
       bio: isRTL
         ? 'خبرة 20 عامًا في مجال الإضاءة الفاخرة والتركيب الداخلي. وادارة المشروعات الضخمة'
         : '20 years of experience in luxury lighting and interior design.',
-      image: "/team/ashraf.jpg"
+      image: "/team/ashraf_magicstudio.png"
     },
     {
       name: isRTL ? 'أ/ ابراهيم محمد السيد' : 'Mr / Ibrahim Muhammad Al-Sayed',

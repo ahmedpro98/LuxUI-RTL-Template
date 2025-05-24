@@ -32,6 +32,11 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
 
     // Setup the intersection observer
     const setupObserver = useCallback(() => {
+        // التأكد من وجود IntersectionObserver
+        if (typeof window === 'undefined' || !window.IntersectionObserver) {
+            return;
+        }
+
         // Clean up existing observer
         if (observerRef.current && elementRef.current) {
             observerRef.current.unobserve(elementRef.current);
@@ -45,11 +50,8 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
                     setIsVisible(true);
                     setWasEverVisible(true);
 
-                    // If once is false, we want to hide the element when it's out of view
-                    if (!once) {
-                        // Do nothing here, handled below
-                    } else if (elementRef.current) {
-                        // If once is true, we disconnect the observer once the element is visible
+                    // If once is true, we disconnect the observer once the element is visible
+                    if (once && elementRef.current) {
                         observerRef.current?.disconnect();
                     }
                 } else if (!once) {
@@ -93,7 +95,7 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
                 // If element was already visible or should show once when visible,
                 // check if it's in viewport now
                 if (wasEverVisible || !once) {
-                    if (elementRef.current) {
+                    if (elementRef.current && typeof window !== 'undefined') {
                         const rect = elementRef.current.getBoundingClientRect();
                         const isInViewport =
                             rect.top < window.innerHeight &&
@@ -127,14 +129,31 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
 
     // Handle staggered children
     const renderChildren = () => {
-        if (!staggerChildren || !React.isValidElement(children)) {
+        if (!staggerChildren) {
             return children;
         }
 
-        // Clone the children element to add stagger class
-        return React.cloneElement(children, {
-            // className: `${children.props.className || ''} stagger-list`,
-        });
+        // إذا كان children عبارة عن React element، أضف stagger class
+        if (React.isValidElement(children)) {
+            const existingClassName = (children.props as any).className || '';
+            return React.cloneElement(children, {
+                className: `${existingClassName} stagger-list`,
+            } as any);
+        }
+
+        return children;
+    };
+
+    // إنشاء style object بطريقة صحيحة
+    const elementStyle: React.CSSProperties = {
+        transitionDelay: delay > 0 ? `${delay}ms` : '0ms',
+    };
+
+    // إنشاء data attributes
+    const dataAttributes = {
+        'data-visible': isVisible ? 'true' : 'false',
+        'data-animation': animation,
+        'data-language': language,
     };
 
     return (
@@ -146,13 +165,9 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
                 ${isVisible ? 'visible' : ''}
                 ${stagger ? 'stagger-item' : ''}
                 ${isLanguageChanging ? 'language-transitioning' : ''}
-            `}
-            style={{
-                transitionDelay: delay > 0 ? `${delay}ms` : '0ms',
-                ['data-visible' as any]: isVisible ? 'true' : 'false',
-                ['data-animation' as any]: animation,
-                ['data-language' as any]: language,
-            }}
+            `.trim().replace(/\s+/g, ' ')}
+            style={elementStyle}
+            {...dataAttributes}
         >
             {renderChildren()}
         </div>

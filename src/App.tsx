@@ -1,10 +1,9 @@
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "./components/ui/toaster";
+import { Toaster as Sonner } from "./components/ui/sonner";
+import { TooltipProvider } from "./components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 // Pages
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -12,6 +11,8 @@ import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
+import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
 
 // Components
@@ -40,6 +41,8 @@ const App = () => (
               <Route path="/services" element={<Services />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/testimonials" element={<Testimonials />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:projectId" element={<ProjectDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

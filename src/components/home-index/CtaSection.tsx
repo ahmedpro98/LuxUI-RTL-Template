@@ -23,7 +23,7 @@ const CtaSection = () => {
                         <p></p>
                         <Link
                             to="/projects"
-                            className="inline-block bg-gold-dark border-2 border-gold text-white px-6 py-3 md:px-8 md:py-4 rounded-md hover:bg-gold hover:text-white transition-colors duration-300"
+                            className="inline-block bg-trasparnt border-2 border-white text-white px-6 py-3 md:px-8 md:py-4 rounded-md hover:bg-white hover:text-black transition-colors duration-300"
                         >
                             {isRTL ? 'تصفح مشاريعنا' : 'Browse Our Projects'}
                         </Link>
