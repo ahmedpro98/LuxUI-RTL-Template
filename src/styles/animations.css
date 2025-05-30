@@ -377,11 +377,6 @@
     transform: translateY(30px);
 }
 
-.gold-line {
-    position: relative;
-    overflow: hidden;
-}
-
 .gold-line::before {
     content: '';
     position: absolute;
@@ -389,7 +384,7 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    background: linear-gradient(90deg, transparent, theme('colors.gold.DEFAULT'), transparent);
     transform: translateX(-100%) translateY(-50%);
     transition: transform 0.6s ease;
 }
@@ -400,7 +395,7 @@
 
 .enhanced-service-card {
     background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
-    border: 1px solid rgba(212, 175, 55, 0.1);
+    border: 1px solid theme('colors.gold.DEFAULT / 10%');
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
@@ -413,7 +408,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+    background: linear-gradient(90deg, transparent, theme('colors.gold.DEFAULT / 5%'), transparent);
     transition: left 0.6s ease;
 }
 
@@ -423,15 +418,15 @@
 
 .enhanced-service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
-    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 20px 40px theme('colors.gold.DEFAULT / 15%');
+    border-color: theme('colors.gold.DEFAULT / 30%');
 }
 
 .floating-dots {
     position: absolute;
     width: 4px;
     height: 4px;
-    background: linear-gradient(45deg, #D4AF37, #F4D03F);
+    background: linear-gradient(45deg, theme('colors.gold.DEFAULT'), theme('colors.gold.light'));
     border-radius: 50%;
     opacity: 0;
     transition: all 0.3s ease;

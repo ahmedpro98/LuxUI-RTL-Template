@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         {/* Logo and Description */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-6`}>
           <div className="group">
-            <h2 className="text-heading-4 font-bold text-white text-2xl  space-y-6 transition-all duration-500 
+            <h2 className="text-heading-4 font-bold text-white text-2xl space-y-6 transition-all duration-500 
                          group-hover:text-gold">
               {
                 isRTL
@@ -22,11 +22,11 @@ const Footer: React.FC = () => {
                   : "Hebat East"
               }
             </h2>
-            <div className="relative mt-2 h-1 w-8 bg-[#d4af37] rounded-full transition-all duration-700 group-hover:w-32 
+            <div className="relative mt-2 h-1 w-8 bg-gold rounded-full transition-all duration-700 group-hover:w-32 
               bg-gradient-to-r from-gold to-gold-light"></div>
 
           </div>
-          <p className="text-base text-white ">
+          <p className="text-base text-white">
             {isRTL
               ? 'نحول مساحتك إلى تحفة فنية مع أرقى الثريات وأنظمة الإضاءة المستوحاة من التصاميم العالمية.'
               : 'Transforming your space into a masterpiece with the finest chandeliers and luxury lighting inspired by global designs.'}
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
 
         {/* Quick Links */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-4`}>
-          <h3 className="text-heading-4 font-semibold text-[#d4af37]">
+          <h3 className="text-heading-4 font-semibold text-gold">
             {isRTL ? 'روابط سريعة' : 'Quick Links'}
           </h3>
           <ul className="text-base text-white space-y-2">
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
               <li key={item.key}>
                 <Link
                   to={`/${item.key === 'home' ? '' : item.key}`}
-                  className="transition-all duration-300 hover:text-[#d4af37] hover:translate-x-1 inline-block"
+                  className="transition-all duration-300 hover:text-gold hover:translate-x-1 inline-block"
                 >
                   {item.label}
                 </Link>
@@ -60,22 +60,22 @@ const Footer: React.FC = () => {
 
         {/* Contact Info */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-4`}>
-          <h3 className="text-heading-4 font-semibold text-[#d4af37]">
+          <h3 className="text-heading-4 font-semibold text-gold">
             {isRTL ? 'معلومات التواصل' : 'Contact Info'}
           </h3>
           <div className="text-base text-white space-y-3">
             <div className="flex items-start gap-3">
-              <MapPin size={18} className="text-[#d4af37]" />
+              <MapPin size={18} className="text-gold" />
               <span>
                 {isRTL ? 'شارع الملك فيصل، جدة، السعودية' : 'King Faisal St, Jeddah, Saudi Arabia'}
               </span>
             </div>
             <div className="flex items-start gap-3">
-              <Phone size={18} className="text-[#d4af37]" />
+              <Phone size={18} className="text-gold" />
               <span>+966 50 000 0000</span>
             </div>
             <div className="flex items-start gap-3">
-              <Mail size={18} className="text-[#d4af37]" />
+              <Mail size={18} className="text-gold" />
               <span>info@hebateast.com</span>
             </div>
           </div>
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
 
         {/* Newsletter */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-4`}>
-          <h3 className="text-heading-4 font-semibold text-[#d4af37]">
+          <h3 className="text-heading-4 font-semibold text-gold">
             {isRTL ? 'النشرة البريدية' : 'Newsletter'}
           </h3>
           <p className="text-base text-white">
@@ -93,9 +93,9 @@ const Footer: React.FC = () => {
             <input
               type="email"
               placeholder={isRTL ? 'البريد الإلكتروني' : 'Email address'}
-              className="bg-white/10 border border-[#d4af37] text-white px-4 py-2 flex-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] rounded-l-md transition"
+              className="bg-white/10 border border-gold text-white px-4 py-2 flex-1 focus:outline-none focus:ring-2 focus:ring-gold rounded-l-md transition"
             />
-            <button className="bg-[#d4af37] hover:bg-[#c79e2f] text-white px-4 py-2 rounded-r-md transition-all hover:scale-105">
+            <button className="bg-gold hover:bg-gold-dark text-white px-4 py-2 rounded-r-md transition-all hover:scale-105">
               {isRTL ? 'اشتراك' : 'Subscribe'}
             </button>
           </div>
@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
               <a
                 key={index}
                 href="#"
-                className="text-white hover:text-[#d4af37] transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+                className="text-white hover:text-gold transition-all duration-300 hover:scale-110 hover:-translate-y-1"
               >
                 <Icon size={22} />
               </a>
@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
         <p>{isRTL ? `© ${currentYear} هبات أيست. جميع الحقوق محفوظة.` : `© ${currentYear} Hebat East. All rights reserved.`}</p>
         <p className="mt-1 cursor-pointer">
           {isRTL ? 'تصميم بواسطة' : 'Designed by'}{' '}
-          <span className="text-[#d4af37] font-semibold hover:tracking-wide transition-all duration-200">
+          <span className="text-gold font-semibold hover:tracking-wide transition-all duration-200">
             Ahmad Abdulwahid
           </span>
         </p>

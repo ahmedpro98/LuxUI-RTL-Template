@@ -62,18 +62,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
+
+				}, //  THE COLOR // 
 				gold: {
-					DEFAULT: '#D4AF37',
-					light: '#F5EFD8',
-					dark: '#A38728'
+					DEFAULT: '#D4AF37',//Main Color for text and Basic identity ,CTA page , border , inputs
+					light: '#F5EFD8', //secondary color for gradient
+					dark: '#A38728' //marginal color of identity
 				},
 				charcoal: {
-					DEFAULT: '#222222',
-					light: '#444444',
-					dark: '#111111'
+					DEFAULT: '#222222', // MAIN texts throughout the site , Headings (H1, H2, H3) , Home index CTA Section , label
+					light: '#444444',// For header pages bg , Secondary texts in some sections , text in projects pages , 
+					dark: '#111111' //footer bg .
 				},
-				cream: '#F5F5F0'
+				cream: '#F5F5F0' // Secondary Section Backgrounds , Secondary Card Backgrounds ,Soft Contrast with White or the main back ground ,sapces
 			},
 			fontFamily: {
 				'playfair': ['Playfair Display', 'serif'],
