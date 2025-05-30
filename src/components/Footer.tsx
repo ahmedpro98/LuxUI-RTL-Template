@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-charcoal-dark text-white pt-20 pb-10 px-6 font-cairo motion-safe:animate-fade-in">
+    <footer className="bg-charcoal text-white pt-20 pb-10 px-6 font-cairo motion-safe:animate-fade-in">
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
         {/* Logo and Description */}

@@ -110,10 +110,10 @@ const FeaturedCollection: React.FC = () => {
   }, [isMobile, isTransitioning]);
 
   return (
-    <section className="py-16 md:py-20 bg-gray-50">
+    <section className="py-20 md:py-24 mt-12 mb-8 ">
       <div className="container-custom mx-auto">
         <div className={`text-center mb-10 md:mb-16 ${isRTL ? 'rtl' : ''}`}>
-          <h2 className={`text-2xl md:text-3xl font-bold text-charcoal mb-3 md:mb-4`}>
+          <h2 className={`text-3xl md:text-4xl font-bold text-charcoal mb-3 md:mb-4`}>
             {isRTL ? 'تشكيلة أعمالنا' : 'Our Collection'}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">

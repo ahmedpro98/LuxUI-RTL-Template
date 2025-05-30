@@ -221,7 +221,7 @@ const FeaturedTestimonials: React.FC = () => {
                         language === 'ar' ? testimonial.nameAr : testimonial.nameEn
                       );
                     }}
-                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white shadow-md transition-all duration-300 hover:bg-red-50"
+                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full  shadow-md transition-all duration-300 hover:bg-red-50"
                     aria-label={isRTL ? "إعجاب" : "Like"}
                   >
                     <Heart
@@ -489,10 +489,10 @@ const FeaturedTestimonials: React.FC = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section className="py-16 md:py-20  bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="container-custom mx-auto">
         <div className={`text-center mb-8 md:mb-12 ${isRTL ? 'rtl' : ''}`}>
-          <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-3 md:mb-4 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-3 md:mb-4 animate-fade-in">
             {isRTL ? 'آراء عملائنا' : 'Customer Testimonials'}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in">

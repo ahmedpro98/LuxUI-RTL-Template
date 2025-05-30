@@ -70,7 +70,7 @@ const ServicesSection = () => {
 
     return (
         <>
-            <section className="py-16 md:py-20 bg-white relative" ref={servicesRef}>
+            <section className="py-20 md:py-24 bg-cream relative " ref={servicesRef}>
                 {/* Background decorative elements */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-10 left-10 w-16 h-16 border border-gold/10 rounded-full"></div>
@@ -82,7 +82,7 @@ const ServicesSection = () => {
                 <div className="container-custom mx-auto relative z-10">
                     <div className={`text-center mb-12 md:mb-16 ${isRTL ? 'rtl' : ''}`}>
                         <div className="relative inline-block">
-                            <h2 className={`text-2xl md:text-3xl font-bold text-charcoal mb-4 md:mb-6 relative`}>
+                            <h2 className={`text-3xl md:text-4xl font-bold text-charcoal mb-4 md:mb-6 relative`}>
                                 {isRTL ? 'خدماتنا' : 'Our Services'}
                                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
                             </h2>

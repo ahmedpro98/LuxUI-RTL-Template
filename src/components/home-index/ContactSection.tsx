@@ -33,14 +33,14 @@ const ContactSection = () => {
     }, []);
 
     return (
-        <section className="py-16 md:py-20" ref={contactRef}>
+        <section className="py-20 md:py-24 mt-16 mb-20" ref={contactRef}>
             <div className="container-custom mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
                     {/* Contact Info */}
                     <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
                         <ScrollObserver animation={isRTL ? "fade-left" : "fade-right"}>
-                            <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-4">
+                            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-6">
                                 {isRTL ? 'تواصل معنا' : 'Contact Us'}
                             </h2>
                             <p className="text-gray-600 mb-6">
@@ -67,7 +67,7 @@ const ContactSection = () => {
                                 </div>
                             </ScrollObserver>
 
-                            <ScrollObserver animation="fade-up" delay={200}>
+                            <ScrollObserver animation="fade-up" delay={150}>
                                 <div className={`flex items-start gap-3 ${isRTL ? 'flex-row' : ''}`}>
                                     <div className="text-gold bg-gold/10 p-2 rounded-full mt-1 shrink-0">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

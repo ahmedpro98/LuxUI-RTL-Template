@@ -8,7 +8,7 @@ const PartnersSection = () => {
     const partnersRef = useRef<HTMLDivElement>(null);
 
     return (
-        <section className="py-12 md:py-16 bg-white relative overflow-hidden" ref={partnersRef}>
+        <section className="py-20 md:py-20 mb-12 relative bg-white overflow-hidden " ref={partnersRef}>
 
 
 
