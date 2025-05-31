@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => ({
   base: './',
   server: {
     host: "::",
-    port: 1998, //My Brith Day Dont Care
+    port: 10000, //My Brith Day Dont Care
   },
   plugins: [ // you can put your plug here or create one 
     react(),

@@ -63,7 +63,9 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 
-				}, //  THE COLOR // 
+				},
+
+				//  THE COLOR // 
 				gold: {
 					DEFAULT: '#D4AF37',//Main Color for text and Basic identity ,CTA page , border , inputs
 					light: '#F5EFD8', //secondary color for gradient
@@ -75,6 +77,7 @@ export default {
 					dark: '#111111' //footer bg .
 				},
 				cream: '#F5F5F0' // Secondary Section Backgrounds , Secondary Card Backgrounds ,Soft Contrast with White or the main back ground ,sapces
+
 			},
 			fontFamily: {
 				'playfair': ['Playfair Display', 'serif'],
