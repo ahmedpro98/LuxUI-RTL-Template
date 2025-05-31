@@ -25,7 +25,7 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-				primary: {
+				pre: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
@@ -74,9 +74,9 @@ export default {
 				neutral: {
 					DEFAULT: '#222222', // MAIN texts throughout the site , Headings (H1, H2, H3) , Home index CTA Section , label
 					light: '#444444',// For header pages bg , Secondary texts in some sections , text in projects pages , 
-					dark: '#111111' //footer bg .
+					dark: '#0F0F0F' //footer bg .
 				},
-				surface: '#F5F5F0' // Secondary Section Backgrounds , Secondary Card Backgrounds ,Soft Contrast with White or the main back ground ,sapces
+				surface: '#FAFAF8' // Secondary Section Backgrounds , Secondary Card Backgrounds ,Soft Contrast with White or the main back ground ,sapces
 
 			},
 			fontFamily: {

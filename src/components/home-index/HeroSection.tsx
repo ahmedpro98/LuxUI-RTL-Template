@@ -32,16 +32,16 @@ const HeroSection: React.FC = () => {
               } ${isMobile ? 'text-center' : ''}`}
           >
             {isRTL
-              ? 'حلول الإضاءة والثريات الفاخرة'
-              : 'Luxury Chandeliers & Lighting Solutions'}
+              ? 'التصميم الداخلي الفاخر للفلل والقصور'
+              : 'Luxury Interior Design for Villas & Palaces'}
           </h1>
           <p
             className={`text-lg md:text-xl text-gray-200 mb-6 md:mb-8 transition-all duration-1000 ease-out delay-300 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               } ${isMobile ? 'text-center' : ''}`}
           >
             {isRTL
-              ? 'ارتقِ بمساحتك مع مجموعتنا الفاخرة من الثريات'
-              : 'Elevate your space with our exquisite chandelier collection'}
+              ? 'نحوّل مساحاتك إلى تحف فنية بديكورات فاخرة وتصاميم استثنائية'
+              : 'Transform your spaces into artistic masterpieces with luxury decor and exceptional designs'}
           </p>
           <div
             className={`flex flex-wrap gap-3 md:gap-4 ${isMobile ? 'justify-center' : isRTL ? 'justify-end' : 'justify-start'} transition-all duration-1000 ease-out delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -49,22 +49,22 @@ const HeroSection: React.FC = () => {
           >
             <Link
               to="/gallery"
-              className="bg-primary text-white px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-primary-dark transition-all duration-300 inline-block transform hover:scale-105 hover:shadow-lg text-sm md:text-base"
+              className="bg-gold text-white px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-gold-dark transition-all duration-300 inline-block transform hover:scale-105 hover:shadow-lg text-sm md:text-base"
             >
-              {isRTL ? 'شاهد تشكيلتنا الفاخرة' : 'View Our Collection'}
+              {isRTL ? 'شاهد أعمالنا الفاخرة' : 'View Our Portfolio'}
             </Link>
             <Link
               to="/contact"
-              className="bg-transparent border-2 border-white text-white px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-white hover:text-neutral transition-all duration-300 inline-block transform hover:scale-105 hover:shadow-lg text-sm md:text-base"
+              className="bg-transparent border-2 border-white text-white px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-white hover:text-charcoal transition-all duration-300 inline-block transform hover:scale-105 hover:shadow-lg text-sm md:text-base"
             >
-              {isRTL ? 'احصل على استشارة مجانية' : 'Free Consultation'}
+              {isRTL ? 'احصل على استشارة تصميم مجانية' : 'Free Design Consultation'}
             </Link>
           </div>
         </div>
       </div>
 
       {/* Decorative Gold Bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 md:h-2 primary-gradient"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-1 md:h-2 gold-gradient"></div>
     </section>
   );
 };

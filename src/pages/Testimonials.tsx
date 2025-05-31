@@ -34,29 +34,29 @@ const Testimonials = () => {
   // Memoize testimonials data to prevent recreation on every render
   const testimonials = useMemo(() => [
     {
-      name: isRTL ? 'محمد الغامدي' : 'Mohammed Al-Ghamdi',
-      role: isRTL ? 'مالك القصر الملكي' : 'Royal Palace Owner',
+      name: isRTL ? 'أحمد العبدالله' : 'Ahmed Al-Abdullah',
+      role: isRTL ? 'مالك فيلا فاخرة' : 'Luxury Villa Owner',
       content: isRTL
-        ? 'الثريات التي وفرتها الشركة أضافت لمسة من الفخامة والأناقة إلى قصرنا. جودة المنتجات والتركيب الاحترافي فاقت توقعاتنا.'
-        : 'The chandeliers provided by the company added a touch of luxury and elegance to our palace. The quality of the products and professional installation exceeded our expectations.',
+        ? 'التصميم الداخلي الذي قدمته هوم إيست حول فيلتنا إلى تحفة فنية. الذوق الراقي والاهتمام بالتفاصيل في كل ركن جعل المكان يعكس شخصيتنا بأناقة.'
+        : 'The interior design provided by Home East transformed our villa into an artistic masterpiece. The refined taste and attention to detail in every corner made the place reflect our personality with elegance.',
       image: "/Clients/cl1.webp",
       rating: 5
     },
     {
-      name: isRTL ? 'سارة العتيبي' : 'Sarah Al-Otaibi',
-      role: isRTL ? 'مديرة تصميم فندق الرياض' : 'Design Manager at Riyadh Hotel',
+      name: isRTL ? 'نورا المطيري' : 'Nora Al-Mutairi',
+      role: isRTL ? 'مصممة ديكور - منتجع جدة' : 'Interior Designer - Jeddah Resort',
       content: isRTL
-        ? 'تعاملنا معهم في مشروع تجديد الفندق، وكانت تجربة رائعة. الاهتمام بالتفاصيل والمهنية العالية جعلت المشروع يسير بسلاسة تامة.'
-        : 'We worked with them on our hotel renovation project, and it was an amazing experience. The attention to detail and high professionalism made the project run very smoothly.',
+        ? 'تعاملنا مع هوم إيست في تصميم المنتجع، وكانت النتيجة مبهرة. إبداعهم في دمج الطابع العربي الأصيل مع اللمسات العصرية أضاف قيمة استثنائية للمشروع.'
+        : 'We worked with Home East on the resort design, and the result was stunning. Their creativity in blending authentic Arabian character with modern touches added exceptional value to the project.',
       image: "/Clients/cl2.jpg",
       rating: 5
     },
     {
-      name: isRTL ? 'فهد السعدي' : 'Fahad Al-Saadi',
-      role: isRTL ? 'مالك مجمع تجاري' : 'Commercial Complex Owner',
+      name: isRTL ? 'خالد الشمري' : 'Khalid Al-Shamri',
+      role: isRTL ? 'مالك قصر - الرياض' : 'Palace Owner - Riyadh',
       content: isRTL
-        ? 'اختيار التصاميم المناسبة وتنفيذها بهذه الدقة ساهم في خلق أجواء استثنائية في المجمع. أنصح بشدة بالتعامل معهم.'
-        : 'The selection of appropriate designs and their implementation with such precision contributed to creating an exceptional atmosphere in the complex. I highly recommend working with them.',
+        ? 'التصاميم الداخلية الفاخرة التي نفذتها هوم إيست في قصرنا تجاوزت كل التوقعات. كل تفصيلة تحكي قصة من الفخامة والذوق الرفيع.'
+        : 'The luxury interior designs executed by Home East in our palace exceeded all expectations. Every detail tells a story of luxury and refined taste.',
       image: "/Clients/cl3.jpg",
       rating: 5
     }
@@ -65,26 +65,26 @@ const Testimonials = () => {
   // Memoize stats data
   const stats = useMemo(() => [
     {
-      value: '500+',
-      label: isRTL ? 'مشروع مكتمل' : 'Completed Projects',
+      value: '300+',
+      label: isRTL ? 'مشروع تصميم مكتمل' : 'Design Projects Completed',
       icon: Award,
       color: 'text-blue-400'
     },
     {
-      value: '95%',
-      label: isRTL ? 'عملاء راضون' : 'Satisfied Clients',
+      value: '98%',
+      label: isRTL ? 'عملاء راضون عن التصميم' : 'Satisfied Design Clients',
       icon: Users,
       color: 'text-green-400'
     },
     {
-      value: '20+',
-      label: isRTL ? 'سنوات خبرة' : 'Years of Experience',
+      value: '15+',
+      label: isRTL ? 'سنوات في التصميم الداخلي' : 'Years in Interior Design',
       icon: TrendingUp,
       color: 'text-purple-400'
     },
     {
-      value: '50+',
-      label: isRTL ? 'تصميم حصري' : 'Exclusive Designs',
+      value: '80+',
+      label: isRTL ? 'تصميم فاخر حصري' : 'Exclusive Luxury Designs',
       icon: Star,
       color: 'text-yellow-400'
     }
@@ -112,8 +112,8 @@ const Testimonials = () => {
             </h1>
             <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
               {isRTL
-                ? 'آراء عملائنا الكرام حول تجربتهم مع منتجاتنا وخدماتنا المميزة'
-                : 'Discover what our valued clients say about their exceptional experience with our products and services'}
+                ? 'آراء عملائنا الكرام حول تجربتهم مع تصاميمنا الداخلية الفاخرة وخدماتنا المتميزة'
+                : 'Discover what our valued clients say about their exceptional experience with our luxury interior designs and premium services'}
             </p>
           </div>
         </div>
@@ -128,8 +128,8 @@ const Testimonials = () => {
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               {isRTL
-                ? 'تجارب حقيقية من عملائنا المميزين'
-                : 'Real experiences from our distinguished clients'}
+                ? 'تجارب حقيقية من عملائنا المميزين في عالم التصميم الداخلي الفاخر'
+                : 'Real experiences from our distinguished clients in the world of luxury interior design'}
             </p>
           </ScrollObserver>
 
@@ -151,18 +151,18 @@ const Testimonials = () => {
                   </div>
                   <p className={`text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 leading-relaxed ${isRTL ? 'text-right' : 'text-left'}`}>
                     {isRTL
-                      ? 'لقد كان التعامل مع الشركة تجربة متميزة من البداية للنهاية. الاحترافية العالية، والاهتمام بأدق التفاصيل، والتصاميم الاستثنائية التي تناسب رؤيتنا تمامًا.'
-                      : 'Working with the company has been an outstanding experience from start to finish. The high professionalism, attention to detail, and exceptional designs that perfectly match our vision.'}
+                      ? 'لقد كان التعامل مع هوم إيست تجربة متميزة من البداية للنهاية. خبرتهم في التصميم الداخلي الفاخر، والاهتمام بأدق التفاصيل، والتصاميم الاستثنائية جعلت قصرنا تحفة فنية حقيقية.'
+                      : 'Working with Home East has been an outstanding experience from start to finish. Their expertise in luxury interior design, attention to detail, and exceptional designs made our palace a true artistic masterpiece.'}
                   </p>
                   <div className={`flex items-center gap-2 mb-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
                     {renderStars(5)}
                   </div>
                   <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
                     <h3 className="text-lg md:text-xl font-bold text-neutral">
-                      {isRTL ? 'الأمير عبدالله آل سعود' : 'Prince Abdullah Al Saud'}
+                      {isRTL ? 'الأميرة فاطمة آل سعود' : 'Princess Fatima Al Saud'}
                     </h3>
                     <p className="text-primary font-medium">
-                      {isRTL ? 'قصر الأمراء، الرياض' : 'Princes Palace, Riyadh'}
+                      {isRTL ? 'قصر الأميرات، الرياض' : 'Princess Palace, Riyadh'}
                     </p>
                   </div>
                 </div>
@@ -222,12 +222,12 @@ const Testimonials = () => {
         <div className="container-custom mx-auto">
           <ScrollObserver animation="fade-up" threshold={0.05} delay={100} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-              {isRTL ? 'بالأرقام' : 'By The Numbers'}
+              {isRTL ? 'إنجازاتنا بالأرقام' : 'Our Achievements By Numbers'}
             </h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
               {isRTL
-                ? 'نفخر بما حققناه على مدار السنوات الماضية'
-                : 'We take pride in what we have achieved over the past years'}
+                ? 'نفخر بما حققناه في مجال التصميم الداخلي على مدار السنوات الماضية'
+                : 'We take pride in what we have achieved in interior design over the past years'}
             </p>
           </ScrollObserver>
 
@@ -269,19 +269,19 @@ const Testimonials = () => {
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="container-custom mx-auto text-center relative z-10">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-              {isRTL ? 'هل أنت جاهز لإضافة لمسة من الفخامة؟' : 'Ready to Add a Touch of Luxury?'}
+              {isRTL ? 'هل أنت جاهز لتحويل مساحتك إلى تحفة فنية؟' : 'Ready to Transform Your Space into an Artistic Masterpiece?'}
             </h2>
             <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
               {isRTL
-                ? 'تواصل معنا اليوم للحصول على استشارة مجانية واكتشف كيف يمكننا تحويل مساحتك'
-                : 'Contact us today for a free consultation and discover how we can transform your space'}
+                ? 'تواصل مع هوم إيست اليوم للحصول على استشارة مجانية في التصميم الداخلي واكتشف كيف يمكننا إضافة لمسة الفخامة لمنزلك'
+                : 'Contact Home East today for a free interior design consultation and discover how we can add a touch of luxury to your home'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button className="bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-neutral hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                {isRTL ? 'تواصل معنا' : 'Contact Us'}
+                {isRTL ? 'استشارة مجانية' : 'Free Consultation'}
               </button>
               <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
-                {isRTL ? 'معرض الأعمال' : 'View Portfolio'}
+                {isRTL ? 'معرض التصاميم' : 'Design Portfolio'}
               </button>
             </div>
           </div>

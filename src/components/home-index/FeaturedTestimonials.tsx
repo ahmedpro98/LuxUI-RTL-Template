@@ -26,18 +26,18 @@ const FeaturedTestimonials: React.FC = () => {
       nameEn: "Mohammed Al-Amri",
       roleAr: "مالك فندق",
       roleEn: "Hotel Owner",
-      textAr: "تم تركيب أكثر من 15 ثريا في فندقنا. كانت الجودة استثنائية والخدمة احترافية للغاية. أوصي بشدة بخدماتهم.",
-      textEn: "They installed more than 15 chandeliers in our hotel. The quality was exceptional and the service was highly professional.",
+      textAr: "قامت هوم ايست بتصميم وتنفيذ ديكورات أكثر من 25 غرفة في فندقنا. كانت الجودة استثنائية والخدمة احترافية للغاية. أوصي بشدة بخدماتهم في التصميم الداخلي الفاخر.",
+      textEn: "Home East designed and executed decorations for more than 25 rooms in our hotel. The quality was exceptional and the service was highly professional. I highly recommend their luxury interior design services.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
       id: 2,
       nameAr: "سارة الفيصل",
       nameEn: "Sarah Al-Faisal",
-      roleAr: "مصممة داخلية",
-      roleEn: "Interior Designer",
-      textAr: "أتعامل معهم في كل مشاريعي. يقدمون ثريات فاخرة بتصاميم فريدة وخدمة تركيب محترفة. شريك موثوق للمشاريع الراقية.",
-      textEn: "I work with them on all my projects. They provide luxury chandeliers with unique designs and professional ",
+      roleAr: "مالكة فيلا",
+      roleEn: "Villa Owner",
+      textAr: "تعاونت مع هوم ايست في تصميم قصري. يقدمون تصاميم داخلية فاخرة وأنيقة بأسلوب فريد وخدمة تنفيذ محترفة. شريك موثوق للمشاريع الراقية والفلل الفاخرة.",
+      textEn: "I collaborated with Home East in designing my palace. They provide luxury and elegant interior designs with a unique style and professional execution service. A trusted partner for high-end projects and luxury villas.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
@@ -46,8 +46,8 @@ const FeaturedTestimonials: React.FC = () => {
       nameEn: "Khalid Al-Otaibi",
       roleAr: "صاحب قصر",
       roleEn: "Palace Owner",
-      textAr: "ثريات استثنائية وخدمة لا مثيل لها. قاموا بتصميم وتركيب الثريات في جميع أنحاء القصر بدقة واحترافية عالية.",
-      textEn: "Exceptional chandeliers and unmatched service. They designed and installed chandeliers .",
+      textAr: "تصاميم داخلية استثنائية وخدمة لا مثيل لها. قام فريق هوم ايست بتصميم وتنفيذ ديكورات جميع قاعات القصر بدقة واحترافية عالية وذوق رفيع.",
+      textEn: "Exceptional interior designs and unmatched service. The Home East team designed and executed decorations for all palace halls with high precision, professionalism and refined taste.",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
     },
     {
@@ -56,8 +56,8 @@ const FeaturedTestimonials: React.FC = () => {
       nameEn: "Noura Al-Shammari",
       roleAr: "مديرة مركز تجاري",
       roleEn: "Mall Manager",
-      textAr: "كان التعاون مع هبات أيست تجربة رائعة. قدموا لنا حلولاً مبتكرة لإضاءة المركز التجاري بأكمله، ونالت إعجاب جميع الزوار.",
-      textEn: "Collaborating with Hebat East was a wonderful experience. They provided innovative lighting solutions .",
+      textAr: "كان التعاون مع هوم ايست تجربة رائعة. قدموا لنا حلولاً مبتكرة في التصميم الداخلي للمركز التجاري بأكمله، ونالت إعجاب جميع الزوار والعملاء بالأناقة والفخامة.",
+      textEn: "Collaborating with Home East was a wonderful experience. They provided us with innovative interior design solutions for the entire shopping center, and all visitors and customers admired the elegance and luxury.",
       image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
@@ -66,8 +66,8 @@ const FeaturedTestimonials: React.FC = () => {
       nameEn: "Fahad Al-Qahtani",
       roleAr: "مطور عقاري",
       roleEn: "Real Estate Developer",
-      textAr: "نقدر الاحترافية التي أظهرها فريق هبات أيست في تنفيذ مشروعنا. تم تسليم الثريات في الموعد المحدد وبمستوى جودة يفوق التوقعات.",
-      textEn: "We appreciate the professionalism shown by the Hebat East team in executing our project.",
+      textAr: "نقدر الاحترافية التي أظهرها فريق هوم ايست في تنفيذ مشروع التصميم الداخلي لمجمعنا السكني الفاخر. تم تسليم جميع التصاميم في الموعد المحدد وبمستوى جودة يفوق التوقعات.",
+      textEn: "We appreciate the professionalism shown by the Home East team in executing the interior design project for our luxury residential complex. All designs were delivered on time and with a quality level that exceeded expectations.",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     }
   ];
@@ -221,7 +221,7 @@ const FeaturedTestimonials: React.FC = () => {
                         language === 'ar' ? testimonial.nameAr : testimonial.nameEn
                       );
                     }}
-                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full  shadow-md transition-all duration-300 hover:bg-red-50"
+                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white shadow-md transition-all duration-300 hover:bg-red-50"
                     aria-label={isRTL ? "إعجاب" : "Like"}
                   >
                     <Heart
@@ -248,7 +248,7 @@ const FeaturedTestimonials: React.FC = () => {
               setAutoplayEnabled(false);
               setTimeout(() => setAutoplayEnabled(true), 3000);
             }}
-            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white"
+            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white"
             disabled={isTransitioning}
             aria-label={isRTL ? "السابق" : "Previous"}
           >
@@ -274,7 +274,7 @@ const FeaturedTestimonials: React.FC = () => {
                   }
                 }}
                 className={`transition-all duration-300 rounded-full ${index === activeIndex
-                  ? 'w-6 h-2 bg-primary' // Elongated active indicator
+                  ? 'w-6 h-2 bg-gold' // Elongated active indicator
                   : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
                   }`}
                 aria-label={`Go to testimonial ${index + 1}`}
@@ -290,7 +290,7 @@ const FeaturedTestimonials: React.FC = () => {
               setAutoplayEnabled(false);
               setTimeout(() => setAutoplayEnabled(true), 3000);
             }}
-            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white"
+            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white"
             disabled={isTransitioning}
             aria-label={isRTL ? "التالي" : "Next"}
           >
@@ -348,6 +348,7 @@ const FeaturedTestimonials: React.FC = () => {
       setActiveIndex(index);
       setTimeout(() => setIsTransitioning(false), 600);
     };
+
 
     // Calculate the maximum number of pages based on visible cards
     const maxPages = Math.max(1, testimonials.length - visibleCards + 1);

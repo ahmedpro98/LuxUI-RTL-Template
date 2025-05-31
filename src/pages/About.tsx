@@ -28,8 +28,8 @@ const About = () => {
       name: isRTL ? 'م/اشرف محمد السيد' : 'Eng / Ashraf Mohamed El-Sayed ',
       role: isRTL ? 'المدير التنفيذي' : 'CEO & Founder',
       bio: isRTL
-        ? 'خبرة 20 عامًا في مجال الإضاءة الفاخرة والتركيب الداخلي. وادارة المشروعات الضخمة'
-        : '20 years of experience in luxury lighting and interior design.',
+        ? 'خبرة 20 عامًا في مجال التصميم الداخلي والديكورات الفاخرة للفلل والقصور'
+        : '20 years of experience in luxury interior design and decoration for villas and palaces.',
       image: "/team/ashraf_magicstudio.png"
     },
     {
@@ -42,10 +42,10 @@ const About = () => {
     },
     {
       name: isRTL ? 'م/خالد الراشد' : 'Eng / Khalid Al-Rashid',
-      role: isRTL ? 'مدير التركيب' : 'Installation Manager',
+      role: isRTL ? 'مدير التصميم والتنفيذ' : 'Design & Implementation Manager',
       bio: isRTL
-        ? 'خبير تقني بخبرة 15 عامًا في تركيب الإضاءة الفاخرة.'
-        : 'Technical expert with 15 years of experience in luxury lighting installation.',
+        ? 'خبير تقني بخبرة 15 عامًا في تصميم وتنفيذ الديكورات الداخلية الفاخرة.'
+        : 'Technical expert with 15 years of experience in luxury interior design and implementation.',
       image: "/team/khalid.jpg"
     }
   ];
@@ -88,7 +88,7 @@ const About = () => {
             </ScrollObserver>
             <ScrollObserver animation="fade-up" delay={50} className="text-xl text-gray-300">
               <p>
-                {isRTL ? 'هبات أيست' : 'section-about-subtitle'}
+                {isRTL ? 'هوم ايست - شركة رائدة في التصميم الداخلي والديكورات الفاخرة' : 'Home East - Leading company in luxury interior design and decoration'}
               </p>
             </ScrollObserver>
           </div>
@@ -106,13 +106,13 @@ const About = () => {
               </h2>
               <p className="text-gray-600 mb-4">
                 {isRTL
-                  ? 'تأسست شركتنا في عام 2005 بهدف واحد: تقديم أفضل الثريات الفاخرة للمساحات المميزة. بدأنا كمتجر صغير في قلب المدينة، وسرعان ما توسعت أعمالنا لتشمل الاستشارات وخدمات التركيب.'
-                  : 'Our company was founded in 2005 with one goal: providing the finest luxury chandeliers for distinguished spaces. We started as a small shop in the heart of the city, and quickly expanded our business to include consultation and installation services.'}
+                  ? 'تأسست شركة هوم ايست في عام 2005 بهدف واحد: تقديم أفضل حلول التصميم الداخلي والديكورات الفاخرة للفلل والقصور. بدأنا كشركة صغيرة متخصصة في التصميم الداخلي، وسرعان ما توسعت أعمالنا لتشمل الاستشارات وخدمات التنفيذ الشاملة.'
+                  : 'Home East was founded in 2005 with one goal: providing the finest luxury interior design and decoration solutions for villas and palaces. We started as a small company specializing in interior design, and quickly expanded our business to include consultation and comprehensive implementation services.'}
               </p>
               <p className="text-gray-600">
                 {isRTL
-                  ? 'على مدار السنوات، أصبحنا المزود الرئيسي للثريات الفاخرة للفنادق والقصور والمساحات التجارية الراقية في المملكة. نحن نفخر بتقديم الجودة والأناقة في كل تفاصيل عملنا.'
-                  : 'Over the years, we have become the premier provider of luxury chandeliers for hotels, palaces, and upscale commercial spaces in the Kingdom. We take pride in delivering quality and elegance in every detail of our work.'}
+                  ? 'على مدار السنوات، أصبحنا المزود الرئيسي لخدمات التصميم الداخلي والديكورات الفاخرة للقصور والفلل والمساحات السكنية الراقية في المملكة. نحن نفخر بتقديم الجودة والأناقة في كل تفاصيل عملنا.'
+                  : 'Over the years, we have become the premier provider of luxury interior design and decoration services for palaces, villas, and upscale residential spaces in the Kingdom. We take pride in delivering quality and elegance in every detail of our work.'}
               </p>
             </ScrollObserver>
             <ScrollObserver animation="fade-left" threshold={0.2} delay={200}
@@ -147,8 +147,8 @@ const About = () => {
                   </h3>
                   <p className="text-gray-600">
                     {isRTL
-                      ? 'مهمتنا هي إضاءة المساحات بتصاميم فريدة وأنيقة تتجاوز التوقعات. نحن نهدف إلى تحويل أي مكان إلى تحفة فنية من خلال الإضاءة الاستثنائية والتفاصيل الدقيقة، مع التزامنا المطلق بالجودة والخدمة.'
-                      : 'Our mission is to illuminate spaces with unique and elegant designs that exceed expectations. We aim to transform any place into a work of art through exceptional lighting and meticulous details, with our absolute commitment to quality and service.'}
+                      ? 'مهمتنا هي تحويل المساحات السكنية إلى تحف فنية بتصاميم داخلية فريدة وأنيقة تتجاوز التوقعات. نحن نهدف إلى تحويل أي منزل أو قصر إلى مكان استثنائي من خلال الديكورات الفاخرة والتفاصيل الدقيقة، مع التزامنا المطلق بالجودة والخدمة.'
+                      : 'Our mission is to transform residential spaces into artistic masterpieces with unique and elegant interior designs that exceed expectations. We aim to transform any home or palace into an exceptional place through luxury decorations and meticulous details, with our absolute commitment to quality and service.'}
                   </p>
                 </CardContent>
               </Card>
@@ -169,8 +169,8 @@ const About = () => {
                   </h3>
                   <p className="text-gray-600">
                     {isRTL
-                      ? 'نتطلع إلى أن نكون الخيار الأول في مجال الإضاءة الفاخرة، معروفين بالابتكار والتفرد. نسعى لتوسيع بصمتنا عالميًا وإلهام الناس من خلال الجمع بين الحرفية التقليدية والتصميم المعاصر.'
-                      : 'We aspire to be the first choice in luxury lighting, known for innovation and uniqueness. We seek to expand our global footprint and inspire people by combining traditional craftsmanship with contemporary design.'}
+                      ? 'نتطلع إلى أن نكون الخيار الأول في مجال التصميم الداخلي والديكورات الفاخرة، معروفين بالابتكار والتفرد. نسعى لتوسيع بصمتنا عالميًا وإلهام الناس من خلال الجمع بين الحرفية التقليدية والتصميم المعاصر في إنشاء مساحات سكنية استثنائية.'
+                      : 'We aspire to be the first choice in luxury interior design and decoration, known for innovation and uniqueness. We seek to expand our global footprint and inspire people by combining traditional craftsmanship with contemporary design in creating exceptional residential spaces.'}
                   </p>
                 </CardContent>
               </Card>
@@ -188,8 +188,8 @@ const About = () => {
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               {isRTL
-                ? 'تعرف على الخبراء الذين يقفون وراء تصاميمنا وتركيباتنا الاستثنائية'
-                : 'Meet the experts behind our exceptional designs and installations'}
+                ? 'تعرف على الخبراء الذين يقفون وراء تصاميمنا الداخلية وديكوراتنا الاستثنائية'
+                : 'Meet the experts behind our exceptional interior designs and decorations'}
             </p>
           </ScrollObserver>
 

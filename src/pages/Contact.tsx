@@ -25,7 +25,7 @@ const Contact = () => {
             {isRTL ? "تواصل معنا" : "Contact Us"}
           </h1>
           <p className="text-lg md:text-2xl font-light text-neutral-light">
-            {isRTL ? "للاستشارات وحلول الإنارة الفاخرة للمشاريع العملاقة." : "For luxury lighting solutions for prestigious projects."}
+            {isRTL ? "للديكورات الفاخرة والتصميم الداخلي للفلل والقصور." : "For luxury decorations and interior design for villas and palaces."}
           </p>
         </div>
       </section>
@@ -93,8 +93,8 @@ const Contact = () => {
                 <span className="block text-base font-bold mb-1 text-primary">
                   {isRTL ? "استفسارات عامة" : "General Inquiries"}
                 </span>
-                <a href="mailto:info@hibateast.com" className="text-neutral hover:text-primary transition font-medium">
-                  info@hibateast.com
+                <a href="mailto:info@homeeast.com" className="text-neutral hover:text-primary transition font-medium">
+                  info@homeeast.com
                 </a>
               </div>
             </div>
@@ -108,8 +108,8 @@ const Contact = () => {
                 <span className="block text-base font-bold mb-1 text-primary">
                   {isRTL ? "خدمة العملاء" : "Customer Support"}
                 </span>
-                <a href="mailto:support@hibateast.com" className="text-neutral hover:text-primary transition font-medium">
-                  support@hibateast.com
+                <a href="mailto:support@homeeast.com" className="text-neutral hover:text-primary transition font-medium">
+                  support@homeeast.com
                 </a>
               </div>
             </div>

@@ -50,24 +50,24 @@ const Services = () => {
   const services = [
     {
       icon: serviceIcons[0],
-      titleEN: 'Luxury Chandelier Installation',
-      titleAR: 'تركيب الثريات الفاخرة',
-      descEN: 'Professional installation by certified experts ensuring perfection and safety for chandeliers of all sizes.',
-      descAR: 'تركيب احترافي بواسطة خبراء معتمدين يضمنون الكمال والسلامة للثريات من جميع الأحجام.'
+      titleEN: 'Luxury Interior Design',
+      titleAR: 'التصميم الداخلي الفاخر',
+      descEN: 'Complete interior design solutions for villas and palaces with sophisticated elegance and premium finishes.',
+      descAR: 'حلول تصميم داخلي شاملة للفلل والقصور بأناقة راقية ولمسات نهائية فاخرة.'
     },
     {
       icon: serviceIcons[1],
-      titleEN: 'Lighting Consultation',
-      titleAR: 'استشارات الإضاءة',
-      descEN: 'Personalized advice to select the perfect lighting solutions that enhance your space and reflect your style.',
-      descAR: 'نصائح مخصصة لاختيار حلول الإضاءة المثالية التي تعزز مساحتك وتعكس أسلوبك.'
+      titleEN: 'Design Consultation',
+      titleAR: 'استشارات التصميم',
+      descEN: 'Expert consultation to create personalized design concepts that reflect your taste and lifestyle.',
+      descAR: 'استشارات خبراء لإنشاء مفاهيم تصميم شخصية تعكس ذوقك وأسلوب حياتك.'
     },
     {
       icon: serviceIcons[2],
-      titleEN: 'Custom Design',
-      titleAR: 'تصميم مخصص',
-      descEN: 'Create unique lighting pieces tailored to your vision and space requirements with our design experts.',
-      descAR: 'إنشاء قطع إضاءة فريدة مصممة وفقًا لرؤيتك ومتطلبات المساحة مع خبراء التصميم لدينا.'
+      titleEN: 'Custom Decoration',
+      titleAR: 'ديكورات مخصصة',
+      descEN: 'Bespoke decoration solutions crafted to transform your space into a luxurious living environment.',
+      descAR: 'حلول ديكورات مخصصة مصممة لتحويل مساحتك إلى بيئة معيشة فاخرة.'
     }
   ];
 
@@ -135,7 +135,7 @@ const Services = () => {
                 {isRTL ? 'خدماتنا' : 'Our Services'}
               </h1>
               <p className={`text-xl text-gray-300 ${isRTL ? 'text-right' : 'text-left'}`}>
-                {isRTL ? 'حلول إضاءة فاخرة مصممة لمساحتك' : 'Luxury lighting solutions designed for your space'}
+                {isRTL ? 'حلول ديكورات وتصميم داخلي فاخرة للفلل والقصور' : 'Luxury decoration and interior design solutions for villas and palaces'}
               </p>
             </div>
           </div>
@@ -151,7 +151,7 @@ const Services = () => {
                 {isRTL ? 'خدماتنا المتميزة' : 'Our Premium Services'}
               </h2>
               <p className="text-body-large text-neutral-light max-w-2xl leading-relaxed">
-                {isRTL ? 'نقدم حلول إضاءة متكاملة تناسب جميع الاحتياجات' : 'We provide comprehensive lighting solutions for all your needs'}
+                {isRTL ? 'نقدم حلول ديكورات وتصميم داخلي متكاملة تناسب جميع الاحتياجات' : 'We provide comprehensive decoration and interior design solutions for all your needs'}
               </p>
             </div>
           </ScrollObserver>
@@ -242,7 +242,7 @@ const Services = () => {
 
           <div className={`container mx-auto px-6 max-w-6xl ${isRTL ? 'text-right' : 'text-center'} relative z-10`}>
             <h2 className="text-heading-2 md:text-3xl font-bold mb-6 font-playfair">
-              {isRTL ? 'جاهز لإضاءة مساحتك؟' : 'Ready to Illuminate Your Space?'}
+              {isRTL ? 'جاهز لتحويل مساحتك؟' : 'Ready to Transform Your Space?'}
             </h2>
             <p className="text-white/90 max-w-xl mx-auto mb-10 text-body-large leading-relaxed">
               {isRTL ? 'تواصل معنا اليوم للحصول على استشارة مجانية' : 'Contact us today for a free consultation'}

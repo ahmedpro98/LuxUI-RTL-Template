@@ -83,12 +83,12 @@ const ServicesSection = () => {
                     <div className={`text-center mb-12 md:mb-16 ${isRTL ? 'rtl' : ''}`}>
                         <div className="relative inline-block">
                             <h2 className={`text-3xl md:text-4xl font-bold text-neutral mb-4 md:mb-6 relative`}>
-                                {isRTL ? 'خدماتنا' : 'Our Services'}
+                                {isRTL ? 'خدماتنا المتخصصة' : 'Our Specialized Services'}
                                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
                             </h2>
                         </div>
                         <p className="text-lg text-neutral-light max-w-2xl mx-auto text-center">
-                            {isRTL ? 'نقدم مجموعة متنوعة من الخدمات المتخصصة لتلبية احتياجاتك' : 'We provide a variety of specialized services to meet your needs'}
+                            {isRTL ? 'نقدم حلول التصميم الداخلي الشاملة من التخطيط إلى التنفيذ' : 'We provide comprehensive interior design solutions from planning to execution'}
                         </p>
                     </div>
 
@@ -107,11 +107,11 @@ const ServicesSection = () => {
 
                                     <div className="space-y-3">
                                         <h3 className="text-lg md:text-xl font-semibold text-neutral group-hover:text-primary transition-colors duration-300">
-                                            {isRTL ? 'تركيب الثريات' : 'Chandelier Installation'}
+                                            {isRTL ? 'التصميم الداخلي الفاخر' : 'Luxury Interior Design'}
                                         </h3>
 
                                         <p className="text-sm text-neutral-light leading-relaxed text-center max-w-sm mx-auto">
-                                            {isRTL ? 'خدمة تركيب احترافية للثريات والإضاءة الفاخرة في منزلك أو مكان عملك' : 'Professional installation service for chandeliers and luxury lighting in your home or workplace'}
+                                            {isRTL ? 'نصمم مساحات داخلية فاخرة تجمع بين الأناقة والوظيفية لتناسب ذوقكم الراقي وأسلوب حياتكم' : 'We design luxury interior spaces that combine elegance and functionality to match your refined taste and lifestyle'}
                                         </p>
                                     </div>
                                 </div>
@@ -132,11 +132,11 @@ const ServicesSection = () => {
 
                                     <div className="space-y-3">
                                         <h3 className="text-lg md:text-xl font-semibold text-neutral group-hover:text-primary transition-colors duration-300">
-                                            {isRTL ? 'الاستشارات' : 'Consultation Services'}
+                                            {isRTL ? 'الاستشارات التصميمية' : 'Design Consultation'}
                                         </h3>
 
                                         <p className="text-sm text-neutral-light leading-relaxed text-center max-w-sm mx-auto">
-                                            {isRTL ? 'استشارات متخصصة في اختيار الثريات والإضاءة المناسبة لمساحتك وأسلوبك' : 'Specialized consultation in selecting chandeliers and lighting suitable for your space and style'}
+                                            {isRTL ? 'استشارات متخصصة من خبراء التصميم لاختيار أفضل الحلول التصميمية والديكورية لمشروعكم' : 'Specialized consultations from design experts to choose the best design and decorative solutions for your project'}
                                         </p>
                                     </div>
                                 </div>
@@ -157,11 +157,11 @@ const ServicesSection = () => {
 
                                     <div className="space-y-3">
                                         <h3 className="text-lg md:text-xl font-semibold text-neutral group-hover:text-primary transition-colors duration-300">
-                                            {isRTL ? 'الصيانة والتنظيف' : 'Maintenance & Cleaning'}
+                                            {isRTL ? 'التنفيذ والإشراف' : 'Execution & Supervision'}
                                         </h3>
 
                                         <p className="text-sm text-neutral-light leading-relaxed text-center max-w-sm mx-auto">
-                                            {isRTL ? 'خدمات صيانة وتنظيف دورية للحفاظ على رونق ثرياتك وإطالة عمرها' : 'Regular maintenance and cleaning services to maintain the elegance of your chandeliers and extend their lifespan'}
+                                            {isRTL ? 'تنفيذ المشاريع بأعلى معايير الجودة مع إشراف مباشر لضمان تحقيق رؤيتكم التصميمية' : 'Project execution with the highest quality standards and direct supervision to ensure your design vision is realized'}
                                         </p>
                                     </div>
                                 </div>

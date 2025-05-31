@@ -3,13 +3,13 @@ import { ProjectType } from '../hooks/project';
 const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
   return {
     'luxury-villa': {
-      title: isRTL ? 'مسجد الرحمة' : 'Al-Rahma Mosque',
+      title: isRTL ? 'فيلا فاخرة' : 'Luxury Villa',
       subtitle: isRTL ? 'جدة, المملكة العربية السعودية' : 'Jeddah, KSA',
       description: isRTL
-        ? ' مشروع اضاءة لمسجد الرحمة في جدة شامل الديكورات وتركيب الهلال وانارة المسجدة وتركيب عدد 6 نجفات كلاسيكية اسلامية فاخرة .'
-        : 'Al-Rahma Mosque lighting project, including decorations, installation of the crescent, illumination of the mosque, and installation of 6 chandeliers.',
+        ? 'مشروع تصميم داخلي وديكور فاخر لفيلا في جدة يجمع بين الأناقة العصرية والفخامة الكلاسيكية. تم التركيز على خلق مساحات معيشة مريحة وأنيقة تعكس ذوق المالك الرفيع.'
+        : 'Luxury interior design and decoration project for a villa in Jeddah that combines modern elegance with classic luxury. The focus was on creating comfortable and elegant living spaces that reflect the owner\'s refined taste.',
       year: '2023',
-      category: isRTL ? 'مساجد' : 'Mosque',
+      category: isRTL ? 'فيلا فاخرة' : 'Luxury Villa',
       client: isRTL ? 'دار المعمار' : 'darmamar.',
       location: isRTL ? 'جدة, المملكة العربية السعودية' : 'Jeddah, KSA',
       mainImage: '/projects-page/mosque/into-cover.jpg',
@@ -23,32 +23,32 @@ const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
       ],
       details: [
         {
-          title: isRTL ? 'التصميم المعماري' : 'Architectural Design',
+          title: isRTL ? 'التصميم المعماري الداخلي' : 'Interior Architectural Design',
           content: isRTL
-            ? 'تم تصميم نظام الإضاءة بما يتناغم مع الطابع الإسلامي الفريد للمسجد، مع إبراز العناصر الزخرفية والمعمارية التقليدية مثل الأقواس والقباب والمقرنصات. الهدف كان تعزيز روحانية المكان وإبراز جماليته المعمارية بطريقة راقية ومهيبة.'
-            : 'The lighting was designed to highlight the unique architectural elements of the villa, focusing on clean lines and precise angles.'
+            ? 'تم تصميم المساحات الداخلية بما يتناغم مع الطابع المعماري الفريد للفيلا، مع إبراز العناصر الزخرفية والتفاصيل الجمالية. الهدف كان تعزيز الفخامة والراحة مع إبراز الجمال المعماري بطريقة راقية ومهيبة.'
+            : 'The interior spaces were designed to harmonize with the unique architectural character of the villa, highlighting decorative elements and aesthetic details. The goal was to enhance luxury and comfort while showcasing architectural beauty in an elegant and majestic way.'
         },
         {
-          title: isRTL ? 'إضاءة الواجهة' : 'Facade Lighting',
+          title: isRTL ? 'ديكور الصالة الرئيسية' : 'Main Living Room Decor',
           content: isRTL
-            ? 'استخدمنا مزيجاً من الإضاءة الجدارية والإضاءة المخفية لتسليط الضوء على النقوش الإسلامية والتفاصيل الحجرية الدقيقة'
-            : 'We used a combination of linear and point lighting to highlight architectural details and create visual depth.'
+            ? 'استخدمنا مزيجاً من الأثاث الفاخر والألوان الدافئة والمواد الطبيعية لخلق مساحة معيشة أنيقة ومريحة تعكس الذوق الرفيع.'
+            : 'We used a combination of luxury furniture, warm colors, and natural materials to create an elegant and comfortable living space that reflects refined taste.'
         },
         {
-          title: isRTL ? 'إضاءة داخلية' : 'Interior Lighting',
-          content: isRTL ? " الإضاءة الداخلية وُزعت بطريقة مدروسة لتوفير جو روحاني هادئ أثناء الصلاة، مع التركيز على قاعة الصلاة الرئيسية، تم اختيار نجف إسلامي فخم يعكس روح الأصالة والفن الإسلامي، مع مراعاة التوازن بين الجمال والوظيف"
-            : 'A luxurious Islamic chandelier was chosen that reflects the spirit of originality and Islamic art, taking into account the balance between beauty and function.'
+          title: isRTL ? 'التصميم الداخلي للغرف' : 'Bedroom Interior Design',
+          content: isRTL ? 'تم تصميم الغرف بعناية فائقة لتوفير جو من الهدوء والاسترخاء، مع اختيار أثاث فاخر وألوان هادئة، مع مراعاة التوازن بين الجمال والوظيفة والراحة المطلقة.'
+            : 'The bedrooms were carefully designed to provide an atmosphere of tranquility and relaxation, with luxury furniture and calm colors, balancing beauty, function, and absolute comfort.'
         }
       ]
     },
     'commercial-plaza': {
-      title: isRTL ? 'بلازا تجارية' : 'Commercial Plaza',
+      title: isRTL ? 'مجمع تجاري فاخر' : 'Luxury Commercial Complex',
       subtitle: isRTL ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Saudi Arabia',
       description: isRTL
-        ? 'مشروع إضاءة لبلازا تجارية في الرياض، يركز على خلق تجربة تسوق مميزة من خلال الإضاءة الذكية والمبتكرة. تم تصميم الإضاءة لتعزيز هوية العلامة التجارية وخلق بيئة جذابة للزوار.'
-        : 'A lighting project for a commercial plaza in Riyadh, focusing on creating a distinctive shopping experience through smart and innovative lighting. The lighting was designed to enhance brand identity and create an attractive environment for visitors.',
+        ? 'مشروع تصميم داخلي وديكور لمجمع تجاري فاخر في الرياض، يركز على خلق تجربة تسوق مميزة من خلال التصميم الداخلي المبتكر والديكورات الراقية. تم تصميم المساحات لتعزيز هوية العلامة التجارية وخلق بيئة جذابة للزوار.'
+        : 'Interior design and decoration project for a luxury commercial complex in Riyadh, focusing on creating a distinctive shopping experience through innovative interior design and elegant decorations. The spaces were designed to enhance brand identity and create an attractive environment for visitors.',
       year: '2024',
-      category: isRTL ? 'تجاري' : 'Commercial',
+      category: isRTL ? 'تجاري فاخر' : 'Luxury Commercial',
       client: isRTL ? 'مجموعة الاستثمار العقاري' : 'Real Estate Investment Group',
       location: isRTL ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Saudi Arabia',
       mainImage: '/projects-page/mall/landpage.jpg',
@@ -62,33 +62,33 @@ const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
       ],
       details: [
         {
-          title: isRTL ? 'إضاءة الواجهة' : 'Facade Lighting',
+          title: isRTL ? 'ديكور المداخل الرئيسية' : 'Main Entrance Decor',
           content: isRTL
-            ? 'تم تصميم إضاءة الواجهة لجذب الانتباه وإبراز الهوية المعمارية للمبنى، مع استخدام تقنيات الإضاءة الديناميكية.'
-            : 'The facade lighting was designed to attract attention and highlight the architectural identity of the building, using dynamic lighting techniques.'
+            ? 'تم تصميم ديكور المداخل الرئيسية لجذب الانتباه وإبراز الهوية المعمارية للمبنى، مع استخدام عناصر ديكورية فاخرة ومواد عالية الجودة.'
+            : 'The main entrance decor was designed to attract attention and highlight the architectural identity of the building, using luxury decorative elements and high-quality materials.'
         },
         {
-          title: isRTL ? 'إضاءة المناطق العامة' : 'Common Area Lighting',
+          title: isRTL ? 'تصميم المناطق العامة' : 'Common Area Design',
           content: isRTL
-            ? 'تم تصميم إضاءة المناطق العامة لخلق تجربة تسوق مريحة وممتعة، مع التركيز على سهولة التنقل وجاذبية المكان.'
-            : 'Common area lighting was designed to create a comfortable and enjoyable shopping experience, focusing on ease of navigation and attractiveness.'
+            ? 'تم تصميم المناطق العامة لخلق تجربة تسوق مريحة وممتعة، مع التركيز على سهولة التنقل وجاذبية المكان من خلال الديكورات الأنيقة.'
+            : 'Common areas were designed to create a comfortable and enjoyable shopping experience, focusing on ease of navigation and attractiveness through elegant decorations.'
         },
         {
-          title: isRTL ? 'التحكم في الإضاءة' : 'Lighting Control',
+          title: isRTL ? 'التصميم الداخلي للمتاجر' : 'Shop Interior Design',
           content: isRTL
-            ? 'تم تركيب نظام تحكم متقدم في الإضاءة للسماح بتغيير مستويات الإضاءة والألوان لمناسبات وأحداث مختلفة.'
-            : 'An advanced lighting control system was installed to allow for changing lighting levels and colors for different occasions and events.'
+            ? 'تم وضع معايير تصميمية موحدة للمتاجر تحافظ على الطابع الفاخر للمجمع مع السماح بالتميز الفردي لكل علامة تجارية.'
+            : 'Unified design standards were established for shops that maintain the luxury character of the complex while allowing individual distinction for each brand.'
         }
       ]
     },
     'hotel-lobby': {
-      title: isRTL ? 'بهو فندق' : 'Hotel Lobby',
+      title: isRTL ? 'بهو فندق فاخر' : 'Luxury Hotel Lobby',
       subtitle: isRTL ? 'جدة، المملكة العربية السعودية' : 'Jeddah, Saudi Arabia',
       description: isRTL
-        ? 'مشروع إضاءة لبهو فندق فاخر في جدة، يركز على خلق انطباع أول مذهل للضيوف. تم استخدام ثريات كريستالية مخصصة وإضاءة جدارية فنية لخلق أجواء فاخرة ودافئة.'
-        : 'A lighting project for a luxury hotel lobby in Jeddah, focusing on creating a stunning first impression for guests. Custom crystal chandeliers and artistic wall lighting were used to create a luxurious and warm atmosphere.',
+        ? 'مشروع تصميم داخلي وديكور لبهو فندق فاخر في جدة، يركز على خلق انطباع أول مذهل للضيوف. تم استخدام عناصر ديكورية مخصصة وتصميم داخلي فني لخلق أجواء فاخرة ودافئة تعكس الضيافة العربية الأصيلة.'
+        : 'Interior design and decoration project for a luxury hotel lobby in Jeddah, focusing on creating a stunning first impression for guests. Custom decorative elements and artistic interior design were used to create a luxurious and warm atmosphere that reflects authentic Arabian hospitality.',
       year: '2025',
-      category: isRTL ? 'ضيافة' : 'Hospitality',
+      category: isRTL ? 'ضيافة فاخرة' : 'Luxury Hospitality',
       client: isRTL ? 'مجموعة فنادق الشرق' : 'East Hotels Group',
       location: isRTL ? 'جدة، المملكة العربية السعودية' : 'Jeddah, Saudi Arabia',
       mainImage: '/projects-page/hotel/IMG_7388-1-scaled.jpg',
@@ -104,35 +104,35 @@ const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
       ],
       details: [
         {
-          title: isRTL ? 'الثريات المركزية' : 'Central Chandeliers',
+          title: isRTL ? 'التصميم المركزي للبهو' : 'Central Lobby Design',
           content: isRTL
-            ? 'تم تصميم وتنفيذ ثريات كريستالية مخصصة لتكون نقطة محورية في البهو، مما يعكس فخامة وأناقة الفندق.'
-            : 'Custom crystal chandeliers were designed and implemented to be a focal point in the lobby, reflecting the luxury and elegance of the hotel.'
+            ? 'تم تصميم وتنفيذ منطقة استقبال مركزية مخصصة لتكون نقطة محورية في البهو، مما يعكس فخامة وأناقة الفندق من خلال التصميم الداخلي المتميز.'
+            : 'A custom central reception area was designed and implemented to be a focal point in the lobby, reflecting the luxury and elegance of the hotel through distinguished interior design.'
         },
         {
-          title: isRTL ? 'إضاءة الجدران' : 'Wall Lighting',
+          title: isRTL ? 'ديكور الجدران والأسقف' : 'Wall and Ceiling Decor',
           content: isRTL
-            ? 'تم استخدام إضاءة جدارية فنية لخلق عمق وإضافة لمسات من الدفء والفخامة إلى المساحة.'
-            : 'Artistic wall lighting was used to create depth and add touches of warmth and luxury to the space.'
+            ? 'تم استخدام ديكورات جدارية وسقفية فنية لخلق عمق وإضافة لمسات من الدفء والفخامة إلى المساحة مع مراعاة الطابع المعماري.'
+            : 'Artistic wall and ceiling decorations were used to create depth and add touches of warmth and luxury to the space while respecting the architectural character.'
         },
         {
-          title: isRTL ? 'إضاءة غير مباشرة' : 'Indirect Lighting',
+          title: isRTL ? 'تصميم مناطق الجلوس' : 'Seating Area Design',
           content: isRTL
-            ? 'تم استخدام الإضاءة غير المباشرة لتحسين الارتفاع وإضافة طبقات من الضوء، مما يخلق أجواء دافئة ومريحة.'
-            : 'Indirect lighting was used to enhance height and add layers of light, creating a warm and comfortable atmosphere.'
+            ? 'تم تصميم مناطق جلوس متنوعة ومريحة تلبي احتياجات النزلاء المختلفة، مع اختيار أثاث فاخر وترتيب يخلق أجواء دافئة ومريحة.'
+            : 'Various and comfortable seating areas were designed to meet different guest needs, with luxury furniture selection and arrangement that creates a warm and comfortable atmosphere.'
         }
       ]
     },
     'interior-design': {
-      title: isRTL ? 'التصميم الداخلي' : 'Interior Design',
-      subtitle: isRTL ? 'السعودية , نيوم' : 'Neom, Saudi Arabia',
+      title: isRTL ? 'قصر ملكي فاخر' : 'Royal Luxury Palace',
+      subtitle: isRTL ? 'نيوم، المملكة العربية السعودية' : 'Neom, Saudi Arabia',
       description: isRTL
-        ? 'مشروع تصميم داخلي لمنزل فاخر في الدوحة يجمع بين الأناقة العصرية والعناصر التقليدية. تم التركيز على استخدام مواد طبيعية فاخرة وإضاءة متخصصة لإبراز جمال المساحات المختلفة.'
-        : 'An interior design project for a luxury home in Neom that combines modern elegance with traditional elements. The focus was on using premium natural materials and specialized lighting to enhance the beauty of different spaces.',
+        ? 'مشروع تصميم داخلي وديكور لقصر ملكي فاخر في نيوم يجمع بين الأناقة العصرية والعناصر التراثية الأصيلة. تم التركيز على استخدام مواد طبيعية فاخرة وتصميم داخلي متخصص لإبراز جمال وفخامة المساحات المختلفة.'
+        : 'Interior design and decoration project for a royal luxury palace in Neom that combines modern elegance with authentic heritage elements. The focus was on using premium natural materials and specialized interior design to enhance the beauty and luxury of different spaces.',
       year: '2024',
-      category: isRTL ? 'سكني' : 'Residential',
-      client: isRTL ? 'عائلة محمد' : 'Mohammed Family',
-      location: isRTL ? 'نيوم الجديدة ' : 'Neom, The lINE',
+      category: isRTL ? 'قصر ملكي' : 'Royal Palace',
+      client: isRTL ? 'العائلة الملكية' : 'Royal Family',
+      location: isRTL ? 'نيوم، ذا لاين' : 'Neom, The LINE',
       mainImage: '/projects-page/Interior/incover.jpg',
       gallery: [
         '/projects-page/Interior/incover.jpg',
@@ -145,22 +145,22 @@ const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
       ],
       details: [
         {
-          title: isRTL ? 'المواد الطبيعية' : 'Natural Materials',
+          title: isRTL ? 'المواد الفاخرة والطبيعية' : 'Luxury Natural Materials',
           content: isRTL
-            ? 'تم استخدام مجموعة متنوعة من المواد الطبيعية مثل الرخام والخشب والحجر لإضفاء الدفء والأصالة على المساحات.'
-            : 'A variety of natural materials such as marble, wood, and stone were used to add warmth and authenticity to the spaces.'
+            ? 'تم استخدام مجموعة متنوعة من المواد الطبيعية الفاخرة مثل الرخام الإيطالي والخشب النادر والأحجار الكريمة لإضفاء الفخامة والأصالة على كافة المساحات.'
+            : 'A variety of luxury natural materials such as Italian marble, rare wood, and precious stones were used to add luxury and authenticity to all spaces.'
         },
         {
-          title: isRTL ? 'تصميم الإضاءة' : 'Lighting Design',
+          title: isRTL ? 'التصميم الداخلي المتكامل' : 'Integrated Interior Design',
           content: isRTL
-            ? 'تم تصميم نظام إضاءة متعدد الطبقات يجمع بين الإضاءة المحيطة والمهام والتأكيد لإنشاء مساحات جذابة ووظيفية.'
-            : 'A multi-layered lighting system was designed combining ambient, task, and accent lighting to create appealing and functional spaces.'
+            ? 'تم تصميم نظام تصميم داخلي متكامل يجمع بين الأثاث المخصص والديكورات الفنية والتفاصيل المعمارية لإنشاء مساحات ملكية جذابة ووظيفية.'
+            : 'An integrated interior design system was designed combining custom furniture, artistic decorations, and architectural details to create appealing and functional royal spaces.'
         },
         {
-          title: isRTL ? 'اللمسات الثقافية' : 'Cultural Touches',
+          title: isRTL ? 'التراث والحداثة' : 'Heritage and Modernity',
           content: isRTL
-            ? 'تم دمج العناصر الثقافية التقليدية مع التصميم العصري لإنشاء مساحة تعكس هوية المالك مع الحفاظ على الأناقة العصرية.'
-            : 'Traditional cultural elements were integrated with modern design to create a space that reflects the owner\'s identity while maintaining contemporary elegance.'
+            ? 'تم دمج العناصر التراثية السعودية الأصيلة مع التصميم العصري المتطور لإنشاء مساحة تعكس هوية المملكة العريقة مع الحفاظ على الفخامة العصرية المطلقة.'
+            : 'Authentic Saudi heritage elements were integrated with advanced modern design to create a space that reflects the Kingdom\'s ancient identity while maintaining absolute contemporary luxury.'
         }
       ]
     }

@@ -18,8 +18,8 @@ const Footer: React.FC = () => {
                          group-hover:text-primary">
               {
                 isRTL
-                  ? "هبات أيست"
-                  : "Hebat East"
+                  ? "هوم إيست"
+                  : "Home East"
               }
             </h2>
             <div className="relative mt-2 h-1 w-8 bg-primary rounded-full transition-all duration-700 group-hover:w-32 
@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
           </div>
           <p className="text-base text-white">
             {isRTL
-              ? 'نحول مساحتك إلى تحفة فنية مع أرقى الثريات وأنظمة الإضاءة المستوحاة من التصاميم العالمية.'
-              : 'Transforming your space into a masterpiece with the finest chandeliers and luxury lighting inspired by global designs.'}
+              ? 'نحول مساحتك إلى تحفة معمارية أنيقة مع أرقى التصاميم الداخلية والديكورات الفاخرة للفلل والقصور.'
+              : 'Transforming your space into an elegant architectural masterpiece with the finest interior designs and luxury decorations for villas and palaces.'}
           </p>
         </div>
 
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
               { key: 'home', label: isRTL ? 'الرئيسية' : 'Home' },
               { key: 'about', label: isRTL ? 'من نحن' : 'About Us' },
               { key: 'services', label: isRTL ? 'خدماتنا' : 'Services' },
-              { key: 'gallery', label: isRTL ? 'معرض الأعمال' : 'Gallery' },
+              { key: 'gallery', label: isRTL ? 'معرض التصاميم' : 'Design Gallery' },
               { key: 'contact', label: isRTL ? 'اتصل بنا' : 'Contact Us' }
             ].map((item) => (
               <li key={item.key}>
@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
             {isRTL ? 'النشرة البريدية' : 'Newsletter'}
           </h3>
           <p className="text-base text-white">
-            {isRTL ? 'اشترك للحصول على آخر العروض والتحديثات' : 'Subscribe for latest offers and updates'}
+            {isRTL ? 'اشترك للحصول على آخر التصاميم والعروض' : 'Subscribe for latest designs and offers'}
           </p>
           <div className={`flex ${isRTL ? 'flex-row-reverse' : ''}`}>
             <input
@@ -116,8 +116,8 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-12 border-t border-neutral-light pt-6 text-center text-base text-white">
-        <p>{isRTL ? `© ${currentYear} هبات أيست. جميع الحقوق محفوظة.` : `© ${currentYear} Hebat East. All rights reserved.`}</p>
+      <div className="mt-12 border-t border-charcoal-light pt-6 text-center text-base text-white">
+        <p>{isRTL ? `© ${currentYear} هوم إيست. جميع الحقوق محفوظة.` : `© ${currentYear} Home East. All rights reserved.`}</p>
         <p className="mt-1 cursor-pointer">
           {isRTL ? 'تصميم بواسطة' : 'Designed by'}{' '}
           <span className="text-primary font-semibold hover:tracking-wide transition-all duration-200">

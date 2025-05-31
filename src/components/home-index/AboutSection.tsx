@@ -19,18 +19,18 @@ const AboutSection = () => {
                         threshold={0.15}
                         delay={105}
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-neutral mb-4 md:mb-8">
-                            {isRTL ? 'هبات أيست' : 'Hebat East'}
+                        <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-4 md:mb-6">
+                            {isRTL ? 'هوم إيست' : 'Home East'}
                         </h2>
+                        <p className="text-gray-600 mb-4 md:mb-6">
+                            {isRTL
+                                ? 'متخصصون في التصميم الداخلي والديكورات الفاخرة للفلل والقصور والمشاريع الكبرى، لنحولها إلى تحف معمارية أنيقة.'
+                                : 'We specialize in luxury interior design and decorations for villas, palaces, and grand projects – transforming them into elegant architectural masterpieces.'}
+                        </p>
                         <p className="text-gray-600 mb-4 md:mb-8">
                             {isRTL
-                                ? 'متخصصون في النجف المودرن والثريات الفاخرة للمشاريع الكبرى كالفنادق والقصور والقاعات، لنحولها لأيقونات فنية.'
-                                : 'We specialize in modern luxury chandeliers for grand projects – turning hotels, palaces, and halls into artistic icons.'}
-                        </p>
-                        <p className="text-gray-600 mb-4 md:mb-10">
-                            {isRTL
-                                ? 'بخبرة وأناقة، يقدم فريقنا تركيبات مبهرة تجمع بين الفن والابتكار.'
-                                : 'With experience and elegance, our expert team delivers stunning installations that blend art and innovation.'}
+                                ? 'بخبرة وإبداع، يقدم فريقنا تصاميم مبهرة تجمع بين الفخامة والوظيفة والجمال.'
+                                : 'With experience and creativity, our expert team delivers stunning designs that blend luxury, functionality, and beauty.'}
                         </p>
                         <Link
                             to="/about"

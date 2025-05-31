@@ -9,33 +9,33 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const collectionItems = [
   {
     id: 1,
-    titleAr: "نجفة شلالية",
-    titleEn: "Waterfall Chandelier",
-    price: "54,500 SAR",
+    titleAr: " قاعة استقبال ملكية",
+    titleEn: "Royal Reception Hall Design",
+    price: "154,500 SAR",
     image: "/gallery/Waterfall2.jpg",
     hoverImage: "/gallery/Waterfall1.jpg"
   },
   {
     id: 2,
-    titleAr: "نجفة حلقية",
-    titleEn: "Modern Ring Chandelier",
-    price: "18,750 SAR",
+    titleAr: " غرفة معيشة فاخرة",
+    titleEn: "Luxury Living Room Design",
+    price: "89,750 SAR",
     image: "/gallery/2-ring.jpeg",
     hoverImage: "/gallery/1-ring.jpeg"
   },
   {
     id: 3,
-    titleAr: "فانوس اسلامي فاخر",
-    titleEn: "Islamic Lanterns",
-    price: "1999 SAR",
+    titleAr: " مجلس عربي أصيل",
+    titleEn: "Authentic Arabian Majlis Design",
+    price: "67,999 SAR",
     image: "/gallery/Lantern-left.jpg",
     hoverImage: "/gallery/Lantern-right.jpg"
   },
   {
     id: 4,
-    titleAr: "هلال جامع",
-    titleEn: "Hilal Mosque",
-    price: "7,800 SAR",
+    titleAr: " قاعة طعام ملكية",
+    titleEn: "Royal Dining Hall Design",
+    price: "95,800 SAR",
     image: "/gallery/halal-Mosque.jpg",
     hoverImage: "/gallery/hover-hala.jpg"
   }
@@ -114,12 +114,12 @@ const FeaturedCollection: React.FC = () => {
       <div className="container-custom mx-auto">
         <div className={`text-center mb-10 md:mb-16 ${isRTL ? 'rtl' : ''}`}>
           <h2 className={`text-3xl md:text-4xl font-bold text-neutral mb-3 md:mb-4`}>
-            {isRTL ? 'تشكيلة أعمالنا' : 'Our Collection'}
+            {isRTL ? 'تشكيلة تصاميمنا الفاخرة' : 'Our Collection'}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             {isRTL
-              ? 'تصفح مجموعتنا المميزة من الثريات والإضاءات الفاخرة المناسبة لكل الأذواق والديكورات'
-              : 'Browse our distinguished collection of chandeliers and luxury lighting suitable for all tastes and decorations'}
+              ? 'استكشف مجموعتنا المميزة من التصاميم الداخلية الفاخرة للفلل والقصور المناسبة لكل الأذواق والطلبات'
+              : 'Explore our distinguished collection of luxury interior designs for villas and palaces suitable for all tastes and requirements'}
           </p>
         </div>
 

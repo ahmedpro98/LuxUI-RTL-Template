@@ -10,46 +10,46 @@ const Projects = () => {
     const projects = [
         {
             id: 'luxury-villa',
-            title: isRTL ? 'مسجد الرحمة' : 'Al-Rahma Mosque',
+            title: isRTL ? 'فيلا فاخرة - الرياض' : 'Luxury Villa - Riyadh',
             description: isRTL
-                ? 'تصميم وتركيب النجف والهلال اعلي الماذنة وابضا ديكورات اضاءة كلاسيكية اسلامية'
-                : 'Design and installation of the chandelier and the crescent above the minaret, as well as classical Islamic lighting decorations',
+                ? 'تصميم داخلي فاخر لفيلا تجمع بين الأناقة العصرية والطابع الكلاسيكي مع ديكورات راقية'
+                : 'Luxurious interior design for a villa combining modern elegance with classical character and sophisticated decorations',
             image: '/projects-page/mosque/WhatsApp-Image-2025-02-28-at-20.30.59_2323b763.jpg',
             path: '/projects/luxury-villa',
-            category: isRTL ? 'مسجد' : 'mosque',
+            category: isRTL ? 'فيلا فاخرة' : 'Luxury Villa',
             year: '2023'
         },
         {
             id: 'commercial-plaza',
-            title: isRTL ? 'بلازا المول التجاري' : 'Commercial Plaza',
+            title: isRTL ? 'قصر ملكي - جدة' : 'Royal Palace - Jeddah',
             description: isRTL
-                ? 'تصميم إضاءة متطور لمركز تجاري يجمع بين الوظيفة والجمال'
-                : 'Advanced lighting design for a commercial center that combines functionality and beauty',
+                ? 'تصميم داخلي راقي لقصر ملكي يتميز بالفخامة والديكورات الكلاسيكية المميزة'
+                : 'Sophisticated interior design for a royal palace featuring luxury and distinctive classical decorations',
             image: '/projects-page/mall/443527896_1564884910745038_3758099768104307627_n.jpg',
             path: '/projects/commercial-plaza',
-            category: isRTL ? 'تجاري' : 'Commercial',
+            category: isRTL ? 'قصر ملكي' : 'Royal Palace',
             year: '2025'
         },
         {
             id: 'hotel-lobby',
-            title: isRTL ? 'بهو فندق' : 'Hotel Lobby',
+            title: isRTL ? 'منتجع فاخر - الخبر' : 'Luxury Resort - Al Khobar',
             description: isRTL
-                ? 'إضاءة بهو فندق فخم مع تركيز على الثريات الكريستالية وإضاءة الجدران'
-                : 'Lighting for a luxurious hotel lobby with focus on crystal chandeliers and wall lighting',
+                ? 'تصميم داخلي لمنتجع فاخر مع التركيز على الديكورات العصرية والأثاث الراقي'
+                : 'Interior design for a luxury resort with focus on modern decorations and sophisticated furniture',
             image: '/projects-page/hotel/WhatsApp-Image-2025-04-20-at-8.59.21-PM.jpg',
             path: '/projects/hotel-lobby',
-            category: isRTL ? 'ضيافة' : 'Hospitality',
+            category: isRTL ? 'منتجع فاخر' : 'Luxury Resort',
             year: '2024'
         },
         {
             id: 'interior-design',
-            title: isRTL ? 'التصميم الداخلي' : 'Interior Design',
+            title: isRTL ? 'بنتهاوس عصري - دبي' : 'Modern Penthouse - Dubai',
             description: isRTL
-                ? 'مشروع تصميم داخلي فاخر يجمع بين الأناقة العصرية والعناصر التقليدية'
-                : 'A luxury villa project in jadah featuring artistic lighting that reflects opulence and elegance',
+                ? 'تصميم داخلي عصري لبنتهاوس فاخر يجمع بين الأناقة والحداثة مع لمسات ديكورية مميزة'
+                : 'Modern interior design for a luxury penthouse combining elegance and modernity with distinctive decorative touches',
             image: 'projects-page/Interior/Interior5.jpg',
             path: '/projects/interior-design',
-            category: isRTL ? 'سكني' : 'Residential',
+            category: isRTL ? 'بنتهاوس' : 'Penthouse',
             year: '2024'
         }
     ];
@@ -87,8 +87,8 @@ const Projects = () => {
                     <div className="w-20 h-1 primary-gradient mx-auto mb-6"></div>
                     <p className="text-lg max-w-3xl mx-auto text-neutral-light">
                         {isRTL
-                            ? 'استكشف مجموعة من المشاريع المميزة التي قمنا بتنفيذها، تبرز خبرتنا في تصميم الإضاءة وتنفيذها'
-                            : 'Explore our collection of distinctive projects that showcase our expertise in lighting design and implementation'
+                            ? 'استكشف مجموعة من المشاريع المميزة التي قمنا بتنفيذها، تبرز خبرتنا في التصميم الداخلي والديكورات الفاخرة'
+                            : 'Explore our collection of distinctive projects that showcase our expertise in interior design and luxury decorations'
                         }
                     </p>
                 </div>
@@ -153,8 +153,8 @@ const Projects = () => {
                         </h2>
                         <p className="max-w-2xl mx-auto mb-6 text-neutral-light">
                             {isRTL
-                                ? 'نحن نقدم حلول إضاءة مبتكرة تناسب متطلبات مشروعك. اتصل بنا اليوم لمناقشة أفكارك.'
-                                : 'We offer innovative lighting solutions tailored to your project requirements. Contact us today to discuss your ideas.'
+                                ? 'نحن نقدم حلول تصميم داخلي مبتكرة وديكورات فاخرة تناسب متطلبات مشروعك. اتصل بنا اليوم لمناقشة أفكارك.'
+                                : 'We offer innovative interior design solutions and luxury decorations tailored to your project requirements. Contact us today to discuss your ideas.'
                             }
                         </p>
                         <Link
