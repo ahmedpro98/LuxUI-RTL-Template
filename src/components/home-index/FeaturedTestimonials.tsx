@@ -248,7 +248,7 @@ const FeaturedTestimonials: React.FC = () => {
               setAutoplayEnabled(false);
               setTimeout(() => setAutoplayEnabled(true), 3000);
             }}
-            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white"
+            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white"
             disabled={isTransitioning}
             aria-label={isRTL ? "السابق" : "Previous"}
           >
@@ -274,7 +274,7 @@ const FeaturedTestimonials: React.FC = () => {
                   }
                 }}
                 className={`transition-all duration-300 rounded-full ${index === activeIndex
-                  ? 'w-6 h-2 bg-gold' // Elongated active indicator
+                  ? 'w-6 h-2 bg-primary' // Elongated active indicator
                   : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
                   }`}
                 aria-label={`Go to testimonial ${index + 1}`}
@@ -290,7 +290,7 @@ const FeaturedTestimonials: React.FC = () => {
               setAutoplayEnabled(false);
               setTimeout(() => setAutoplayEnabled(true), 3000);
             }}
-            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white"
+            className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white"
             disabled={isTransitioning}
             aria-label={isRTL ? "التالي" : "Next"}
           >
@@ -427,7 +427,7 @@ const FeaturedTestimonials: React.FC = () => {
                 setAutoplayEnabled(false);
                 setTimeout(() => setAutoplayEnabled(true), 3000);
               }}
-              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
+              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white transform hover:scale-110"
               disabled={isTransitioning}
               aria-label={isRTL ? "السابق" : "Previous"}
             >
@@ -439,7 +439,7 @@ const FeaturedTestimonials: React.FC = () => {
             <div className="flex-grow max-w-md mx-4 self-center">
               <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                 <div
-                  className="bg-gold h-full rounded-full transition-all duration-500 ease-out"
+                  className="bg-primary h-full rounded-full transition-all duration-500 ease-out"
                   style={{ width: `${(activeIndex / (maxPages - 1)) * 100}%` }}
                 ></div>
               </div>
@@ -458,7 +458,7 @@ const FeaturedTestimonials: React.FC = () => {
                       }
                     }}
                     className={`transition-all duration-300 rounded-full ${index === activeIndex
-                      ? 'w-8 h-2 bg-gold' // Elongated active indicator
+                      ? 'w-8 h-2 bg-primary' // Elongated active indicator
                       : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
                       }`}
                     aria-label={`Go to page ${index + 1}`}
@@ -475,7 +475,7 @@ const FeaturedTestimonials: React.FC = () => {
                 setAutoplayEnabled(false);
                 setTimeout(() => setAutoplayEnabled(true), 3000);
               }}
-              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-gold hover:text-white transform hover:scale-110"
+              className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white transform hover:scale-110"
               disabled={isTransitioning}
               aria-label={isRTL ? "التالي" : "Next"}
             >
@@ -492,7 +492,7 @@ const FeaturedTestimonials: React.FC = () => {
     <section className="py-16 md:py-20  bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="container-custom mx-auto">
         <div className={`text-center mb-8 md:mb-12 ${isRTL ? 'rtl' : ''}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-3 md:mb-4 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral mb-3 md:mb-4 animate-fade-in">
             {isRTL ? 'آراء عملائنا' : 'Customer Testimonials'}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in">
@@ -511,7 +511,7 @@ const FeaturedTestimonials: React.FC = () => {
         <div className="text-center mt-8 md:mt-10">
           <Link
             to="/testimonials"
-            className="inline-block bg-transparent border-2 border-gold text-gold px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-gold hover:text-white transition-colors duration-300 transform hover:scale-105 transition-transform duration-300"
+            className="inline-block bg-transparent border-2 border-primary text-primary px-5 py-2 md:px-6 md:py-3 rounded-md hover:bg-primary hover:text-white transition-colors duration-300 transform hover:scale-105 transition-transform duration-300"
           >
             {isRTL ? 'المزيد من آراء العملاء' : 'More Testimonials'}
           </Link>

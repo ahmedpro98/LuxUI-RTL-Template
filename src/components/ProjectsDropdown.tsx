@@ -62,11 +62,11 @@ export const ProjectsDropdown: React.FC = () => {
                     >
                         <Link
                             to={project.path}
-                            className="block px-4 py-3 text-sm text-charcoal hover:bg-cream hover:text-gold transition-colors duration-200"
+                            className="block px-4 py-3 text-sm text-neutral hover:bg-surface hover:text-primary transition-colors duration-200"
                             role="menuitem"
                         >
                             <div className="flex items-center space-x-2">
-                                <span className={`w-1.5 h-1.5 rounded-full bg-gold ${isRTL ? 'order-last mr-2' : 'order-first'}`}></span>
+                                <span className={`w-1.5 h-1.5 rounded-full bg-primary ${isRTL ? 'order-last mr-2' : 'order-first'}`}></span>
                                 <span className={isRTL ? 'mr-0' : 'ml-0'}>{project.title}</span>
                             </div>
                         </Link>
@@ -87,7 +87,7 @@ export const ProjectsDropdown: React.FC = () => {
                 >
                     <Link
                         to="/projects"
-                        className="block px-4 py-3 text-sm text-gold hover:bg-gold hover:text-white transition-colors duration-200 font-medium"
+                        className="block px-4 py-3 text-sm text-primary hover:bg-primary hover:text-white transition-colors duration-200 font-medium"
                         role="menuitem"
                     >
                         {isRTL ? 'عرض كل المشروعات' : 'View All Projects'}

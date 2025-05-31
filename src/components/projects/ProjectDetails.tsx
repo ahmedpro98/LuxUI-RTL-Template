@@ -31,8 +31,8 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ details, projectInfo, i
         <div className="space-y-8">
           {details.map((detail, index) => (
             <div key={index} className={isRTL ? 'text-right' : ''}>
-              <h4 className="text-xl font-semibold text-gold mb-2">{detail.title}</h4>
-              <p className="text-charcoal-light">{detail.content}</p>
+              <h4 className="text-xl font-semibold text-primary mb-2">{detail.title}</h4>
+              <p className="text-neutral-light">{detail.content}</p>
             </div>
           ))}
         </div>
@@ -48,19 +48,19 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ details, projectInfo, i
         </h3>
         <div className={`space-y-4 ${isRTL ? 'text-right' : ''}`}>
           <div className="flex justify-between border-b border-gray-200 py-2">
-            <span className="text-charcoal-light">{isRTL ? 'العميل:' : 'Client:'}</span>
+            <span className="text-neutral-light">{isRTL ? 'العميل:' : 'Client:'}</span>
             <span className="font-medium">{projectInfo.client}</span>
           </div>
           <div className="flex justify-between border-b border-gray-200 py-2">
-            <span className="text-charcoal-light">{isRTL ? 'الموقع:' : 'Location:'}</span>
+            <span className="text-neutral-light">{isRTL ? 'الموقع:' : 'Location:'}</span>
             <span className="font-medium">{projectInfo.location}</span>
           </div>
           <div className="flex justify-between border-b border-gray-200 py-2">
-            <span className="text-charcoal-light">{isRTL ? 'الفئة:' : 'Category:'}</span>
+            <span className="text-neutral-light">{isRTL ? 'الفئة:' : 'Category:'}</span>
             <span className="font-medium">{projectInfo.category}</span>
           </div>
           <div className="flex justify-between border-b border-gray-200 py-2">
-            <span className="text-charcoal-light">{isRTL ? 'السنة:' : 'Year:'}</span>
+            <span className="text-neutral-light">{isRTL ? 'السنة:' : 'Year:'}</span>
             <span className="font-medium">{projectInfo.year}</span>
           </div>
         </div>

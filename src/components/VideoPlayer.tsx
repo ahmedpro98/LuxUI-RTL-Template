@@ -150,7 +150,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                                             onClick={handleVideoToggle}
                                             className="absolute inset-0 flex items-center justify-center cursor-pointer z-10"
                                         >
-                                            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gold/90 backdrop-blur-sm text-white flex items-center justify-center hover:bg-gold transition-all duration-300 transform hover:scale-110 group-hover:shadow-2xl">
+                                            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/90 backdrop-blur-sm text-white flex items-center justify-center hover:bg-primary transition-all duration-300 transform hover:scale-110 group-hover:shadow-2xl">
                                                 <Play size={20} className="ml-1" fill="white" />
                                             </div>
                                         </button>
@@ -186,7 +186,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                             delay={300}
                             className={`${isRTL ? 'order-1 text-right' : 'order-2 text-left'}`}
                         >
-                            <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-6">
+                            <h2 className="text-2xl md:text-3xl font-bold text-neutral mb-6">
                                 {isRTL ? 'شاهد قصص نجاحنا' : 'Watch Our Success Stories'}
                             </h2>
                             <p className="text-gray-600 mb-6 text-lg leading-relaxed">
@@ -196,11 +196,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                             </p>
                             <div className="flex items-center gap-4 text-sm text-gray-500">
                                 <div className="flex items-center gap-2">
-                                    <Users size={16} className="text-gold" />
+                                    <Users size={16} className="text-primary" />
                                     <span>{isRTL ? '50+ عميل سعيد' : '50+ Happy Clients'}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Award size={16} className="text-gold" />
+                                    <Award size={16} className="text-primary" />
                                     <span>{isRTL ? 'جودة مضمونة' : 'Quality Guaranteed'}</span>
                                 </div>
                             </div>

@@ -173,7 +173,7 @@ const Gallery = () => {
   return (
     <div className="pt-24">
       {/* Header - Updated title */}
-      <section className="bg-charcoal text-white py-20">
+      <section className="bg-neutral text-white py-20">
         <div className="container-custom mx-auto">
           <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
             <motion.h1
@@ -216,8 +216,8 @@ const Gallery = () => {
                   setVisibleItems(9);
                 }}
                 className={`px-6 py-2 rounded-full transition-colors duration-300 ${activeCategory === category.id
-                  ? 'bg-gold text-white'
-                  : 'bg-gray-100 text-charcoal hover:bg-gray-200'
+                  ? 'bg-primary text-white'
+                  : 'bg-gray-100 text-neutral hover:bg-gray-200'
                   }`}
                 initial={{ opacity: 0, x: isRTL ? -20 : 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -252,10 +252,10 @@ const Gallery = () => {
                   />
                 </div>
                 <div className={`p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
-                  <h3 className="text-xl font-bold text-charcoal mb-1">
+                  <h3 className="text-xl font-bold text-neutral mb-1">
                     {isRTL ? item.titleAR : item.titleEN}
                   </h3>
-                  <p className="text-gold">
+                  <p className="text-primary">
                     {isRTL ? item.locationAR : item.locationEN}
                   </p>
                 </div>
@@ -273,7 +273,7 @@ const Gallery = () => {
             >
               <motion.button
                 onClick={loadMore}
-                className="inline-block bg-transparent border-2 border-gold text-gold px-6 py-3 rounded-md hover:bg-gold hover:text-white transition-colors duration-300"
+                className="inline-block bg-transparent border-2 border-primary text-primary px-6 py-3 rounded-md hover:bg-primary hover:text-white transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

@@ -61,13 +61,13 @@ export const MobileProjectsMenu: React.FC<MobileProjectsMenuProps> = ({ setSheet
                     <Link
                         to={project.path}
                         className={`block w-full px-4 py-2 rounded-md transition-all duration-300
-              text-charcoal hover:bg-gold/10 hover:text-gold hover:translate-x-1
+              text-neutral hover:bg-primary/10 hover:text-primary hover:translate-x-1
               ${isRTL ? 'text-right hover:-translate-x-1 hover:translate-x-0' : 'text-left'}
             `}
                         onClick={() => setSheetOpen(false)}
                     >
                         <div className="flex items-center">
-                            <span className={`w-1.5 h-1.5 rounded-full bg-gold mr-2 ${isRTL ? 'order-last' : 'order-first'}`}></span>
+                            <span className={`w-1.5 h-1.5 rounded-full bg-primary mr-2 ${isRTL ? 'order-last' : 'order-first'}`}></span>
                             <span>{project.title}</span>
                         </div>
                     </Link>
@@ -78,7 +78,7 @@ export const MobileProjectsMenu: React.FC<MobileProjectsMenuProps> = ({ setSheet
                 <Link
                     to="/projects"
                     className={`block w-full px-4 py-2 rounded-md transition-all duration-300
-            font-medium text-gold hover:bg-gold/10 hover:translate-x-1
+            font-medium text-primary hover:bg-primary/10 hover:translate-x-1
             ${isRTL ? 'text-right hover:-translate-x-1 hover:translate-x-0' : 'text-left'}
           `}
                     onClick={() => setSheetOpen(false)}

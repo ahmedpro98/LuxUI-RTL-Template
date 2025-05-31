@@ -15,11 +15,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, isR
       itemType="https://schema.org/Service"
     >
       <div className={`flex flex-col ${isRTL ? 'items-end text-right' : 'items-start text-left'}`}>
-        <div className="mb-4 text-gold bg-gold/10 p-3 rounded-full transform transition-transform duration-300 hover:scale-110">
+        <div className="mb-4 text-primary bg-primary/10 p-3 rounded-full transform transition-transform duration-300 hover:scale-110">
           {icon}
         </div>
         <h3
-          className="text-lg md:text-xl font-semibold text-charcoal mb-2"
+          className="text-lg md:text-xl font-semibold text-neutral mb-2"
           itemProp="name"
         >
           {title}

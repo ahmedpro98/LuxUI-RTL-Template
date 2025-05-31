@@ -109,7 +109,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`text-heading-4 font-playfair text-charcoal mb-6 ${isRTL ? 'text-right font-cairo' : ''}`}
+        className={`text-heading-4 font-playfair text-neutral mb-6 ${isRTL ? 'text-right font-cairo' : ''}`}
       >
         {isRTL ? 'معرض المشروع' : 'Project Gallery'}
       </motion.h3>
@@ -121,10 +121,10 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
         onMouseLeave={() => setIsAutoPlaying(true)}
       >
         {/* Main Image Container */}
-        <div className="relative h-48 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem] overflow-hidden rounded-lg bg-cream border border-gray-200 shadow-sm">          {/* Loading State */}
+        <div className="relative h-48 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem] overflow-hidden rounded-lg bg-surface border border-gray-200 shadow-sm">          {/* Loading State */}
           {!imageLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center bg-cream">
-              <div className="w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin"></div>
+            <div className="absolute inset-0 flex items-center justify-center bg-surface">
+              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
             </div>
           )}
 
@@ -153,13 +153,13 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
               />
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-charcoal bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-neutral bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   whileHover={{ scale: 1, opacity: 1 }}
                   className="bg-white bg-opacity-95 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
                 >
-                  <Maximize2 className="w-5 h-5 text-charcoal" />
+                  <Maximize2 className="w-5 h-5 text-neutral" />
                 </motion.div>
               </div>
             </motion.div>
@@ -174,7 +174,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
               whileTap={{ scale: 0.95 }}
               onClick={isRTL ? goToNext : goToPrevious}
               className={`absolute top-1/2 -translate-y-1/2 ${isRTL ? 'right-3' : 'left-3'} 
-                bg-white hover:bg-gold text-charcoal hover:text-white
+                bg-white hover:bg-primary text-neutral hover:text-white
                 w-9 h-9 rounded-full shadow-md hover:shadow-lg border border-gray-200
                 transition-all duration-200 z-10
                 flex items-center justify-center`}
@@ -187,7 +187,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
               whileTap={{ scale: 0.95 }}
               onClick={isRTL ? goToPrevious : goToNext}
               className={`absolute top-1/2 -translate-y-1/2 ${isRTL ? 'left-3' : 'right-3'} 
-                bg-white hover:bg-gold text-charcoal hover:text-white
+                bg-white hover:bg-primary text-neutral hover:text-white
                 w-9 h-9 rounded-full shadow-md hover:shadow-lg border border-gray-200
                 transition-all duration-200 z-10
                 flex items-center justify-center`}
@@ -198,7 +198,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
         )}
 
         {/* Image Counter */}
-        <div className="absolute bottom-3 right-3 bg-charcoal bg-opacity-75 text-white px-2 py-1 rounded text-body-small font-roboto">
+        <div className="absolute bottom-3 right-3 bg-neutral bg-opacity-75 text-white px-2 py-1 rounded text-body-small font-roboto">
           {currentIndex + 1} / {totalImages}
         </div>
       </div>
@@ -213,8 +213,8 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
               whileTap={{ scale: 0.98 }}
               onClick={() => handleThumbnailClick(index)}
               className={`flex-shrink-0 w-14 h-14 rounded-md overflow-hidden border-2 transition-all duration-300 ${index === currentIndex
-                ? 'border-gold shadow-md ring-2 ring-gold ring-opacity-30'
-                : 'border-gray-200 hover:border-gold-light'
+                ? 'border-primary shadow-md ring-2 ring-primary ring-opacity-30'
+                : 'border-gray-200 hover:border-primary-light'
                 }`}
             >
               <img
@@ -237,8 +237,8 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
               whileTap={{ scale: 0.9 }}
               onClick={() => handleThumbnailClick(index)}
               className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === currentIndex
-                ? 'bg-gold scale-125'
-                : 'bg-gray-300 hover:bg-gold-light'
+                ? 'bg-primary scale-125'
+                : 'bg-gray-300 hover:bg-primary-light'
                 }`}
             />
           ))}
@@ -253,7 +253,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-charcoal bg-opacity-95 z-50 flex items-center justify-center backdrop-blur-sm"
+            className="fixed inset-0 bg-neutral bg-opacity-95 z-50 flex items-center justify-center backdrop-blur-sm"
             onClick={closeLightbox}
           >
             {/* Close Button */}
@@ -261,7 +261,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
               onClick={closeLightbox}
-              className="absolute top-6 right-6 text-white hover:text-gold transition-colors duration-200 z-60"
+              className="absolute top-6 right-6 text-white hover:text-primary transition-colors duration-200 z-60"
             >
               <X className="w-7 h-7" />
             </motion.button>
@@ -282,7 +282,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
               />
 
               {/* Lightbox Counter */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-charcoal bg-opacity-75 text-white px-3 py-1 rounded-full text-body-small font-roboto">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-neutral bg-opacity-75 text-white px-3 py-1 rounded-full text-body-small font-roboto">
                 {lightboxIndex + 1} / {totalImages}
               </div>
             </motion.div>
@@ -298,7 +298,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
                     isRTL ? goToNextLightbox() : goToPreviousLightbox();
                   }}
                   className={`absolute top-1/2 transform -translate-y-1/2 ${isRTL ? 'right-6' : 'left-6'} 
-                    text-white hover:text-gold transition-colors duration-200`}
+                    text-white hover:text-primary transition-colors duration-200`}
                 >
                   <ChevronLeft className={`w-8 h-8 ${isRTL ? 'rotate-180' : ''}`} />
                 </motion.button>
@@ -311,7 +311,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, isRTL }) => {
                     isRTL ? goToPreviousLightbox() : goToNextLightbox();
                   }}
                   className={`absolute top-1/2 transform -translate-y-1/2 ${isRTL ? 'left-6' : 'right-6'} 
-                    text-white hover:text-gold transition-colors duration-200`}
+                    text-white hover:text-primary transition-colors duration-200`}
                 >
                   <ChevronRight className={`w-8 h-8 ${isRTL ? 'rotate-180' : ''}`} />
                 </motion.button>

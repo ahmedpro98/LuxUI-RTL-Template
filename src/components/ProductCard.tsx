@@ -59,14 +59,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <div className="absolute inset-0 flex items-center justify-between p-2 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
             <button
               onClick={prevImage}
-              className="w-8 h-8 rounded-full bg-white/70 flex items-center justify-center text-gray-800 hover:bg-gold hover:text-white transition-colors"
+              className="w-8 h-8 rounded-full bg-white/70 flex items-center justify-center text-gray-800 hover:bg-primary hover:text-white transition-colors"
               aria-label={isRTL ? "الصورة السابقة" : "Previous image"}
             >
               {isRTL ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
             </button>
             <button
               onClick={nextImage}
-              className="w-8 h-8 rounded-full bg-white/70 flex items-center justify-center text-gray-800 hover:bg-gold hover:text-white transition-colors"
+              className="w-8 h-8 rounded-full bg-white/70 flex items-center justify-center text-gray-800 hover:bg-primary hover:text-white transition-colors"
               aria-label={isRTL ? "الصورة التالية" : "Next image"}
             >
               {isRTL ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
@@ -92,9 +92,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
       {/* Product info */}
       <div className={`p-4 flex flex-col flex-grow ${isRTL ? 'text-right' : 'text-left'}`}>
-        <h3 className="text-lg font-bold text-charcoal mb-1">{title}</h3>
+        <h3 className="text-lg font-bold text-neutral mb-1">{title}</h3>
         <div className="mt-auto pt-2">
-          <span className="text-gold font-semibold">{price}</span>
+          <span className="text-primary font-semibold">{price}</span>
         </div>
       </div>
     </div>

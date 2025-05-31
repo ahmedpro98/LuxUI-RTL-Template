@@ -14,33 +14,33 @@ const Services = () => {
   const serviceIcons = [
     (
       <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-gold/10 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-        <div className="relative bg-white rounded-full p-3 shadow-lg border border-gold/20">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+        <div className="relative bg-white rounded-full p-3 shadow-lg border border-primary/20">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.5 6L11 7.5M11 7.5L9.5 9M11 7.5H6M14.5 13L13 11.5M13 11.5L14.5 10M13 11.5H18M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold" />
+            <path d="M9.5 6L11 7.5M11 7.5L9.5 9M11 7.5H6M14.5 13L13 11.5M13 11.5L14.5 10M13 11.5H18M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary" />
           </svg>
         </div>
       </div>
     ),
     (
       <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-gold/10 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-        <div className="relative bg-white rounded-full p-3 shadow-lg border border-gold/20">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+        <div className="relative bg-white rounded-full p-3 shadow-lg border border-primary/20">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 10H16M8 14H12M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold" />
+            <path d="M8 10H16M8 14H12M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary" />
           </svg>
         </div>
       </div>
     ),
     (
       <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-gold/10 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-        <div className="relative bg-white rounded-full p-3 shadow-lg border border-gold/20">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+        <div className="relative bg-white rounded-full p-3 shadow-lg border border-primary/20">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 3H5C3.89543 3 3 3.89543 3 5V9C3 10.1046 3.89543 11 5 11H9C10.1046 11 11 10.1046 11 9V5C11 3.89543 10.1046 3 9 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold" />
-            <path d="M19 3H15C13.8954 3 13 3.89543 13 5V9C13 10.1046 13.8954 11 15 11H19C20.1046 11 21 10.1046 21 9V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold" />
-            <path d="M9 13H5C3.89543 13 3 13.8954 3 15V19C3 20.1046 3.89543 21 5 21H9C10.1046 21 11 20.1046 11 19V15C11 13.8954 10.1046 13 9 13Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold" />
-            <path d="M19 13H15C13.8954 13 13 13.8954 13 15V19C13 20.1046 13.8954 21 15 21H19C20.1046 21 21 20.1046 21 19V15C21 13.8954 20.1046 13 19 13Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold" />
+            <path d="M9 3H5C3.89543 3 3 3.89543 3 5V9C3 10.1046 3.89543 11 5 11H9C10.1046 11 11 10.1046 11 9V5C11 3.89543 10.1046 3 9 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary" />
+            <path d="M19 3H15C13.8954 3 13 3.89543 13 5V9C13 10.1046 13.8954 11 15 11H19C20.1046 11 21 10.1046 21 9V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary" />
+            <path d="M9 13H5C3.89543 13 3 13.8954 3 15V19C3 20.1046 3.89543 21 5 21H9C10.1046 21 11 20.1046 11 19V15C11 13.8954 10.1046 13 9 13Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary" />
+            <path d="M19 13H15C13.8954 13 13 13.8954 13 15V19C13 20.1046 13.8954 21 15 21H19C20.1046 21 21 20.1046 21 19V15C21 13.8954 20.1046 13 19 13Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary" />
           </svg>
         </div>
       </div>
@@ -128,7 +128,7 @@ const Services = () => {
     <div className="pt-24">
       {/* Header with improved layout - النص يسار/يمين حسب اللغة */}
       <ScrollObserver animation="fade-up" threshold={0.2}>
-        <section className="bg-charcoal text-white py-20">
+        <section className="bg-neutral text-white py-20">
           <div className="container mx-auto px-6 max-w-6xl">
             <div className={`text-center max-w-7xl mx-auto ${isRTL ? 'rtl' : 'ltr'}`}>
               <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${isRTL ? 'text-right' : 'text-left'}`}>
@@ -143,14 +143,14 @@ const Services = () => {
       </ScrollObserver>
 
       {/* Services Section */}
-      <section className="py-20 bg-cream">
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-6 max-w-6xl">
           <ScrollObserver animation="fade-up" threshold={0.2} delay={100}>
             <div className={`mb-16 ${isRTL ? 'text-right' : 'text-left'}`}>
-              <h2 className="text-heading-2 md:text-4xl font-bold text-charcoal mb-4 font-playfair">
+              <h2 className="text-heading-2 md:text-4xl font-bold text-neutral mb-4 font-playfair">
                 {isRTL ? 'خدماتنا المتميزة' : 'Our Premium Services'}
               </h2>
-              <p className="text-body-large text-charcoal-light max-w-2xl leading-relaxed">
+              <p className="text-body-large text-neutral-light max-w-2xl leading-relaxed">
                 {isRTL ? 'نقدم حلول إضاءة متكاملة تناسب جميع الاحتياجات' : 'We provide comprehensive lighting solutions for all your needs'}
               </p>
             </div>
@@ -168,13 +168,13 @@ const Services = () => {
                   <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
                   </div>
-                  <h3 className="text-heading-4 font-semibold mb-4 text-charcoal group-hover:text-gold transition-colors duration-300 font-cairo">
+                  <h3 className="text-heading-4 font-semibold mb-4 text-neutral group-hover:text-primary transition-colors duration-300 font-cairo">
                     {isRTL ? service.titleAR : service.titleEN}
                   </h3>
-                  <p className="text-body text-charcoal-light leading-relaxed">
+                  <p className="text-body text-neutral-light leading-relaxed">
                     {isRTL ? service.descAR : service.descEN}
                   </p>
-                  <div className="mt-6 w-12 h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-transparent group-hover:via-gold transition-colors duration-300"></div>
+                  <div className="mt-6 w-12 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent group-hover:via-primary transition-colors duration-300"></div>
                 </div>
               </ScrollObserver>
             ))}
@@ -187,10 +187,10 @@ const Services = () => {
         <div className="container mx-auto px-6 max-w-6xl">
           <ScrollObserver animation="fade-up" threshold={0.2}>
             <div className={`mb-16 ${isRTL ? 'text-right' : 'text-left'}`}>
-              <h2 className="text-heading-2 md:text-4xl font-bold text-charcoal mb-4 font-playfair">
+              <h2 className="text-heading-2 md:text-4xl font-bold text-neutral mb-4 font-playfair">
                 {isRTL ? 'كيف نعمل' : 'Our Process'}
               </h2>
-              <p className="text-body-large text-charcoal-light max-w-xl leading-relaxed">
+              <p className="text-body-large text-neutral-light max-w-xl leading-relaxed">
                 {isRTL ? 'نهج بسيط وفعال لتحقيق نتائج استثنائية' : 'A simple yet effective approach to achieve exceptional results'}
               </p>
             </div>
@@ -207,21 +207,21 @@ const Services = () => {
                 <div className={`flex flex-col items-center ${isRTL ? 'text-right' : 'text-center'} group`}>
                   {/* Improved step indicator */}
                   <div className="relative mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gold to-gold-dark rounded-xl flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
                       <div className="text-white">
                         {step.icon}
                       </div>
                     </div>
                     {/* Step number badge */}
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-charcoal rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-neutral rounded-full flex items-center justify-center text-white text-sm font-semibold">
                       {step.number}
                     </div>
                   </div>
 
-                  <h3 className="text-heading-5 font-semibold text-charcoal mb-3 group-hover:text-gold transition-colors duration-300 font-cairo">
+                  <h3 className="text-heading-5 font-semibold text-neutral mb-3 group-hover:text-primary transition-colors duration-300 font-cairo">
                     {isRTL ? step.titleAR : step.titleEN}
                   </h3>
-                  <p className="text-body text-charcoal-light leading-relaxed">
+                  <p className="text-body text-neutral-light leading-relaxed">
                     {isRTL ? step.descAR : step.descEN}
                   </p>
                 </div>
@@ -233,7 +233,7 @@ const Services = () => {
 
       {/* Improved CTA Contact */}
       <ScrollObserver animation="fade-up" threshold={0.3}>
-        <section className="py-20 bg-gradient-to-r from-gold to-gold-dark text-white relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-r from-primary to-primary-dark text-white relative overflow-hidden">
           {/* Subtle background elements */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full blur-2xl"></div>
@@ -250,7 +250,7 @@ const Services = () => {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
               <Link
                 to="/contact"
-                className="inline-flex items-center bg-white text-gold px-8 py-3 rounded-xl hover:bg-gray-50 font-semibold text-body-large transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+                className="inline-flex items-center bg-white text-primary px-8 py-3 rounded-xl hover:bg-gray-50 font-semibold text-body-large transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
               >
                 <span>{isRTL ? 'احصل على استشارة مجانية' : 'Get Free Consultation'}</span>
                 <svg className={`w-4 h-4 ${isRTL ? 'mr-3' : 'ml-3'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -259,7 +259,7 @@ const Services = () => {
               </Link>
               <Link
                 to="/projects"
-                className="inline-flex items-center bg-transparent border-2 border-white text-white px-8 py-3 rounded-xl hover:bg-white hover:text-gold font-semibold text-body-large transition-all duration-300 transform hover:-translate-y-1"
+                className="inline-flex items-center bg-transparent border-2 border-white text-white px-8 py-3 rounded-xl hover:bg-white hover:text-primary font-semibold text-body-large transition-all duration-300 transform hover:-translate-y-1"
               >
                 <span>{isRTL ? 'شاهد مشاريعنا' : 'View Our Projects'}</span>
               </Link>

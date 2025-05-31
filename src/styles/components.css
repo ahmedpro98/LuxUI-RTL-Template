@@ -1,6 +1,6 @@
 @layer components {
-    .gold-gradient {
-        @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light;
+    .primary-gradient {
+        @apply bg-gradient-to-r from-primary-dark via-primary to-primary-light;
     }
 
     .elegant-shadow {
@@ -13,7 +13,7 @@
 
     .section-title::after {
         content: "";
-        @apply absolute bottom-0 left-0 h-1 w-16 gold-gradient;
+        @apply absolute bottom-0 left-0 h-1 w-16 primary-gradient;
     }
 
     [dir="rtl"] .section-title::after {

@@ -108,13 +108,13 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
     switch (variant) {
       case 'modern':
-        return `${baseClasses} relative overflow-hidden bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-white py-2 px-4 rounded-lg shadow-md transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-opacity-50`;
+        return `${baseClasses} relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 px-4 rounded-lg shadow-md transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50`;
 
       case 'minimal':
-        return `${baseClasses} bg-transparent text-gold hover:underline focus:outline-none`;
+        return `${baseClasses} bg-transparent text-primary hover:underline focus:outline-none`;
 
       default: // standard
-        return `${baseClasses} bg-transparent border-gold text-gold hover:bg-gold hover:text-white shadow-sm text-sm md:text-base py-1.5 px-3 md:px-4 rounded-md`;
+        return `${baseClasses} bg-transparent border-primary text-primary hover:bg-primary hover:text-white shadow-sm text-sm md:text-base py-1.5 px-3 md:px-4 rounded-md`;
     }
   };
 

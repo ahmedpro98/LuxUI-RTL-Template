@@ -78,7 +78,7 @@ const About = () => {
   return (
     <div className="pt-24 overflow-x-hidden">
       {/* Header with ScrollObserver */}
-      <ScrollObserver animation="fade-up" threshold={0} className="bg-charcoal text-white py-20">
+      <ScrollObserver animation="fade-up" threshold={0} className="bg-neutral text-white py-20">
         <div className="container-custom mx-auto">
           <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
             <ScrollObserver animation="fade-up" delay={25} className="mb-6">
@@ -101,7 +101,7 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollObserver animation="fade-right" threshold={0.3} delay={300}
               className={`${isRTL ? 'order-2 text-right' : 'order-1 text-left'}`}>
-              <h2 className="text-3xl font-bold text-charcoal mb-6">
+              <h2 className="text-3xl font-bold text-neutral mb-6">
                 {isRTL ? 'قصتنا' : 'Our Story'}
               </h2>
               <p className="text-gray-600 mb-4">
@@ -137,12 +137,12 @@ const About = () => {
             <ScrollObserver animation="fade-up" threshold={0.1} delay={100}>
               <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <CardContent className="p-8">
-                  <div className="bg-gold text-white w-14 h-14 flex items-center justify-center rounded-full mb-6 transform transition-transform duration-500 hover:scale-110">
+                  <div className="bg-primary text-white w-14 h-14 flex items-center justify-center rounded-full mb-6 transform transition-transform duration-500 hover:scale-110">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12 2L4 6V12C4 15.31 7.58 20 12 22C16.42 20 20 15.31 20 12V6L12 2Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-charcoal mb-4">
+                  <h3 className="text-2xl font-bold text-neutral mb-4">
                     {isRTL ? 'مهمتنا' : 'Our Mission'}
                   </h3>
                   <p className="text-gray-600">
@@ -158,13 +158,13 @@ const About = () => {
             <ScrollObserver animation="fade-up" threshold={0.2} delay={200}>
               <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <CardContent className="p-8">
-                  <div className="bg-gold text-white w-14 h-14 flex items-center justify-center rounded-full mb-6 transform transition-transform duration-500 hover:scale-110">
+                  <div className="bg-primary text-white w-14 h-14 flex items-center justify-center rounded-full mb-6 transform transition-transform duration-500 hover:scale-110">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-charcoal mb-4">
+                  <h3 className="text-2xl font-bold text-neutral mb-4">
                     {isRTL ? 'رؤيتنا' : 'Our Vision'}
                   </h3>
                   <p className="text-gray-600">
@@ -183,7 +183,7 @@ const About = () => {
       <section className="py-20 bg-gray-50">
         <div className="container-custom mx-auto">
           <ScrollObserver animation="fade-up" threshold={0.1} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral mb-4">
               {isRTL ? 'فريقنا' : 'Our Team'}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -214,18 +214,18 @@ const About = () => {
                       className="w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-110"
                     />
                     {/* Enhanced hover overlay with smoother transition */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-gold/90 via-gold/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out flex items-end justify-center pb-6">
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out flex items-end justify-center pb-6">
                       <div className="translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-in-out delay-100 flex flex-col items-center">
                         <div className="flex space-x-4 mb-4">
                           <div className="flex items-center justify-between gap-4">
                             {/* Social icons with staggered animations */}
-                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
+                            <button className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center hover:bg-neutral hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
                               <Linkedin size={18} />
                             </button>
-                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
+                            <button className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center hover:bg-neutral hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
                               <Twitter size={18} />
                             </button>
-                            <button className="w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center hover:bg-charcoal hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
+                            <button className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center hover:bg-neutral hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
                               <Mail size={18} />
                             </button>
                           </div>
@@ -235,10 +235,10 @@ const About = () => {
                     </div>
                   </div>
                   <CardContent className={`p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
-                    <h3 className="text-xl font-bold text-charcoal mb-1">
+                    <h3 className="text-xl font-bold text-neutral mb-1">
                       {member.name}
                     </h3>
-                    <p className="text-gold mb-3">
+                    <p className="text-primary mb-3">
                       {member.role}
                     </p>
                     <p className="text-gray-600">

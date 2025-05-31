@@ -54,7 +54,7 @@ const BackToTopButton: React.FC = () => {
         flex items-center justify-center group
         ${positionClass}
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12 pointer-events-none'} 
-        bg-gradient-to-r from-gold to-amber-500  hover:brightness-110
+        bg-gradient-to-r from-primary to-amber-500  hover:brightness-110
         text-white`}
       aria-label={language === 'ar' ? 'العودة إلى الأعلى' : 'Back to top'}
       title={language === 'ar' ? 'العودة إلى الأعلى' : 'Back to top'}

@@ -113,7 +113,7 @@ const FeaturedCollection: React.FC = () => {
     <section className="py-20 md:py-24 mt-12 mb-8 ">
       <div className="container-custom mx-auto">
         <div className={`text-center mb-10 md:mb-16 ${isRTL ? 'rtl' : ''}`}>
-          <h2 className={`text-3xl md:text-4xl font-bold text-charcoal mb-3 md:mb-4`}>
+          <h2 className={`text-3xl md:text-4xl font-bold text-neutral mb-3 md:mb-4`}>
             {isRTL ? 'تشكيلة أعمالنا' : 'Our Collection'}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -149,14 +149,14 @@ const FeaturedCollection: React.FC = () => {
                     </div>
 
                     <div className={`bg-white p-5 h-[120px] flex flex-col justify-center ${isRTL ? 'text-right' : 'text-left'}`}>
-                      <h3 className="font-bold text-xl mb-2 text-charcoal">
+                      <h3 className="font-bold text-xl mb-2 text-neutral">
                         {isRTL ? item.titleAr : item.titleEn}
                       </h3>
-                      <p className="text-gold font-semibold">{item.price}</p>
+                      <p className="text-primary font-semibold">{item.price}</p>
                       <div className="mt-3">
                         <Link
                           to="/gallery"
-                          className="text-sm text-gold hover:text-gold-dark underline-animation"
+                          className="text-sm text-primary hover:text-primary-dark underline-animation"
                         >
                           {isRTL ? 'عرض التفاصيل' : 'View Details'}
                         </Link>
@@ -170,14 +170,14 @@ const FeaturedCollection: React.FC = () => {
               <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-between px-3 pointer-events-none">
                 <button
                   onClick={prevSlide}
-                  className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-lg text-charcoal pointer-events-auto opacity-80 hover:opacity-100 transition-opacity"
+                  className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-lg text-neutral pointer-events-auto opacity-80 hover:opacity-100 transition-opacity"
                   aria-label={isRTL ? "التالي" : "Previous"}
                 >
                   {isRTL ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-lg text-charcoal pointer-events-auto opacity-80 hover:opacity-100 transition-opacity"
+                  className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-lg text-neutral pointer-events-auto opacity-80 hover:opacity-100 transition-opacity"
                   aria-label={isRTL ? "السابق" : "Next"}
                 >
                   {isRTL ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
@@ -198,7 +198,7 @@ const FeaturedCollection: React.FC = () => {
                     }
                   }}
                   className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === activeIndex
-                    ? 'bg-gold w-5' // Make active indicator wider
+                    ? 'bg-primary w-5' // Make active indicator wider
                     : 'bg-gray-300'
                     }`}
                   aria-label={`Go to slide ${index + 1}`}
@@ -221,7 +221,7 @@ const FeaturedCollection: React.FC = () => {
                   <h3 className="font-bold text-lg mb-1">
                     {isRTL ? item.titleAr : item.titleEn}
                   </h3>
-                  <p className="text-gold font-semibold">{item.price}</p>
+                  <p className="text-primary font-semibold">{item.price}</p>
                 </div>
               </div>
             ))}
@@ -231,7 +231,7 @@ const FeaturedCollection: React.FC = () => {
         <div className="text-center mt-10">
           <Link
             to="/gallery"
-            className="inline-block bg-transparent border-2 border-gold text-gold px-5 py-3 rounded-md hover:bg-gold hover:text-white transition-colors duration-300"
+            className="inline-block bg-transparent border-2 border-primary text-primary px-5 py-3 rounded-md hover:bg-primary hover:text-white transition-colors duration-300"
           >
             {isRTL ? 'عرض كافة التشكيلات' : 'View All Collections'}
           </Link>

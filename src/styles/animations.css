@@ -377,25 +377,25 @@
     transform: translateY(30px);
 }
 
-.gold-line::before {
+.primary-line::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, theme('colors.gold.DEFAULT'), transparent);
+    background: linear-gradient(90deg, transparent, theme('colors.primary.DEFAULT'), transparent);
     transform: translateX(-100%) translateY(-50%);
     transition: transform 0.6s ease;
 }
 
-.group:hover .gold-line::before {
+.group:hover .primary-line::before {
     transform: translateX(100%) translateY(-50%);
 }
 
 .enhanced-service-card {
     background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
-    border: 1px solid theme('colors.gold.DEFAULT / 10%');
+    border: 1px solid theme('colors.primary.DEFAULT / 10%');
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
@@ -408,7 +408,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, theme('colors.gold.DEFAULT / 5%'), transparent);
+    background: linear-gradient(90deg, transparent, theme('colors.primary.DEFAULT / 5%'), transparent);
     transition: left 0.6s ease;
 }
 
@@ -418,15 +418,15 @@
 
 .enhanced-service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px theme('colors.gold.DEFAULT / 15%');
-    border-color: theme('colors.gold.DEFAULT / 30%');
+    box-shadow: 0 20px 40px theme('colors.primary.DEFAULT / 15%');
+    border-color: theme('colors.primary.DEFAULT / 30%');
 }
 
 .floating-dots {
     position: absolute;
     width: 4px;
     height: 4px;
-    background: linear-gradient(45deg, theme('colors.gold.DEFAULT'), theme('colors.gold.light'));
+    background: linear-gradient(45deg, theme('colors.primary.DEFAULT'), theme('colors.primary.light'));
     border-radius: 50%;
     opacity: 0;
     transition: all 0.3s ease;

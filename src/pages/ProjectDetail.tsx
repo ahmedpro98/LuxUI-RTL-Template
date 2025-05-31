@@ -33,7 +33,7 @@ const ProjectDetail = () => {
                     <h2 className="text-2xl font-bold mb-4">
                         {isRTL ? 'المشروع غير موجود' : 'Project Not Found'}
                     </h2>
-                    <Link to="/projects" className="text-gold hover:underline">
+                    <Link to="/projects" className="text-primary hover:underline">
                         {isRTL ? 'العودة إلى المشاريع' : 'Back to Projects'}
                     </Link>
                 </div>

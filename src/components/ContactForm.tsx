@@ -43,7 +43,7 @@ const ContactForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className={`w-full max-w-xl mx-auto ${formDirection}`} dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="mb-4">
-        <label htmlFor="name" className="block text-charcoal mb-2">
+        <label htmlFor="name" className="block text-neutral mb-2">
           {isRTL ? 'الاسم' : 'Name'}
         </label>
         <input
@@ -52,13 +52,13 @@ const ContactForm: React.FC = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded contact-form-custom focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded contact-form-custom focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           required
           dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="email" className="block text-charcoal mb-2">
+        <label htmlFor="email" className="block text-neutral mb-2">
           {isRTL ? 'البريد الإلكتروني' : 'Email'}
         </label>
         <input
@@ -67,13 +67,13 @@ const ContactForm: React.FC = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           required
           dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="phone" className="block text-charcoal mb-2">
+        <label htmlFor="phone" className="block text-neutral mb-2">
           {isRTL ? 'رقم الهاتف' : 'Phone'}
         </label>
         <input
@@ -82,13 +82,13 @@ const ContactForm: React.FC = () => {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           required
           dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
       <div className="mb-6">
-        <label htmlFor="message" className="block text-charcoal mb-2">
+        <label htmlFor="message" className="block text-neutral mb-2">
           {isRTL ? 'رسالتك' : 'Message'}
         </label>
         <textarea
@@ -97,7 +97,7 @@ const ContactForm: React.FC = () => {
           value={formData.message}
           onChange={handleChange}
           rows={5}
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           required
           dir={isRTL ? 'rtl' : 'ltr'}
         />
@@ -105,7 +105,7 @@ const ContactForm: React.FC = () => {
       <button
         type="submit"
         disabled={loading}
-        className="bg-gold text-white py-3 px-6 rounded hover:bg-gold-dark transition-colors duration-300 w-full"
+        className="bg-primary text-white py-3 px-6 rounded hover:bg-primary-dark transition-colors duration-300 w-full"
       >
         {loading ? (
           <span className="flex items-center justify-center">

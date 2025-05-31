@@ -19,7 +19,7 @@ const AboutSection = () => {
                         threshold={0.15}
                         delay={105}
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4 md:mb-8">
+                        <h2 className="text-3xl md:text-4xl font-bold text-neutral mb-4 md:mb-8">
                             {isRTL ? 'هبات أيست' : 'Hebat East'}
                         </h2>
                         <p className="text-gray-600 mb-4 md:mb-8">
@@ -34,7 +34,7 @@ const AboutSection = () => {
                         </p>
                         <Link
                             to="/about"
-                            className="inline-block bg-gold text-white px-8 py-4 md:px-6 md:py-3 rounded-md hover:bg-gold-dark transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                            className="inline-block bg-primary text-white px-8 py-4 md:px-6 md:py-3 rounded-md hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                         >
                             {isRTL ? 'اقرأ المزيد عنا' : 'Read More About Us'}
                         </Link>
@@ -56,10 +56,10 @@ const AboutSection = () => {
                             />
 
                             {/* Down Square */}
-                            <div className="absolute -bottom-4 -right-4 w-14 h-14 md:w-20 md:h-20 gold-gradient rounded-lg z-10 overflow-hidden"></div>
+                            <div className="absolute -bottom-4 -right-4 w-14 h-14 md:w-20 md:h-20 primary-gradient rounded-lg z-10 overflow-hidden"></div>
 
                             {/* Up Square */}
-                            <div className="absolute -top-3 -left-4 w-14 h-14 md:w-20 md:h-20 border-4 border-gold rounded-lg z-10 overflow-hidden"></div>
+                            <div className="absolute -top-3 -left-4 w-14 h-14 md:w-20 md:h-20 border-4 border-primary rounded-lg z-10 overflow-hidden"></div>
                         </div>
                     </ScrollObserver>
                 </div>

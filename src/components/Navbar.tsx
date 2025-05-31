@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container-custom mx-auto flex justify-between items-center">
-        <Link to="/" className="text-charcoal hover:text-gold transition-colors duration-300 flex items-center gap-2">
+        <Link to="/" className="text-neutral hover:text-primary transition-colors duration-300 flex items-center gap-2">
           <img
             src="/Logo_and_identity/logo.png"
             alt={isRTL ? 'هبات أيست' : 'Hebat East'}
@@ -87,8 +87,8 @@ const Navbar: React.FC = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`${location.pathname === item.path ? 'text-gold' : 'text-charcoal'
-                } hover:text-gold transition-colors duration-300 ${isRTL ? 'font-tajawal' : 'font-roboto'}`}
+              className={`${location.pathname === item.path ? 'text-primary' : 'text-neutral'
+                } hover:text-primary transition-colors duration-300 ${isRTL ? 'font-tajawal' : 'font-roboto'}`}
             >
               {item.name}
             </Link>
@@ -97,7 +97,7 @@ const Navbar: React.FC = () => {
           {/* Projects Dropdown - Desktop */}
           <div className="relative">
             <div
-              className={`flex items-center gap-1 cursor-pointer ${location.pathname.includes('/projects') ? 'text-gold' : 'text-charcoal'} hover:text-gold transition-colors duration-300`}
+              className={`flex items-center gap-1 cursor-pointer ${location.pathname.includes('/projects') ? 'text-primary' : 'text-neutral'} hover:text-primary transition-colors duration-300`}
               onClick={(e) => {
                 e.stopPropagation();
                 setShowProjectsDropdown(!showProjectsDropdown);
@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
           <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
             <SheetTrigger asChild>
               <button
-                className={`${isRTL ? 'mr-4' : 'ml-4'} text-charcoal hover:text-gold transition-colors duration-300 p-2 rounded-md hover:bg-gray-100`}
+                className={`${isRTL ? 'mr-4' : 'ml-4'} text-neutral hover:text-primary transition-colors duration-300 p-2 rounded-md hover:bg-gray-100`}
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -167,8 +167,8 @@ const Navbar: React.FC = () => {
                       to={item.path}
                       className={`block w-full px-4 py-3 rounded-md transition-colors duration-300 ${isRTL ? 'font-tajawal' : 'font-roboto'}
                         ${location.pathname === item.path
-                          ? 'bg-gold text-white hover:bg-gold-dark'
-                          : 'text-charcoal hover:bg-gold/10 hover:text-gold'
+                          ? 'bg-primary text-white hover:bg-primary-dark'
+                          : 'text-neutral hover:bg-primary/10 hover:text-primary'
                         }
                         ${isRTL ? 'text-right' : 'text-left'}
                       `}
@@ -184,8 +184,8 @@ const Navbar: React.FC = () => {
                       onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
                       className={`flex items-center justify-between w-full px-4 py-3 rounded-md transition-colors duration-300
                         ${location.pathname.includes('/projects')
-                          ? 'bg-gold text-white hover:bg-gold-dark'
-                          : 'text-charcoal hover:bg-gold/10 hover:text-gold'
+                          ? 'bg-primary text-white hover:bg-primary-dark'
+                          : 'text-neutral hover:bg-primary/10 hover:text-primary'
                         }
                         ${isRTL ? 'text-right' : 'text-left'}
                       `}

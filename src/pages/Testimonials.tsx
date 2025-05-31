@@ -95,7 +95,7 @@ const Testimonials = () => {
       <Star
         key={i}
         size={16}
-        className={`${i < rating ? 'text-gold fill-current' : 'text-gray-300'}`}
+        className={`${i < rating ? 'text-primary fill-current' : 'text-gray-300'}`}
       />
     ));
   }, []);
@@ -103,7 +103,7 @@ const Testimonials = () => {
   return (
     <div className="pt-16">
       {/* Header Section - Reduced padding for faster loading */}
-      <section className="bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90 text-white py-12 md:py-16 relative">
+      <section className="bg-gradient-to-br from-neutral via-neutral/95 to-neutral/90 text-white py-12 md:py-16 relative">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="container-custom mx-auto relative z-10">
           <div className={`max-w-4xl ${isRTL ? 'text-right' : 'text-left'}`}>
@@ -123,7 +123,7 @@ const Testimonials = () => {
       <section className="py-12 md:py-16">
         <div className="container-custom mx-auto">
           <ScrollObserver animation="fade-up" threshold={0.05} delay={100} className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-3">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-neutral mb-3">
               {isRTL ? 'ما يقوله عملاؤنا' : 'What Our Clients Say'}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
@@ -134,7 +134,7 @@ const Testimonials = () => {
           </ScrollObserver>
 
           <ScrollObserver animation="fade-up" threshold={0.1} delay={200} className="mb-16">
-            <Card className="bg-gradient-to-br from-gold/5 via-white to-charcoal/5 shadow-xl border-0 overflow-hidden">
+            <Card className="bg-gradient-to-br from-primary/5 via-white to-neutral/5 shadow-xl border-0 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
                 <div className="lg:col-span-2 h-full">
                   <AspectRatio ratio={isMobile ? 1 : 4 / 5} className="h-full">
@@ -147,7 +147,7 @@ const Testimonials = () => {
                 </div>
                 <div className="lg:col-span-3 p-6 md:p-8 lg:p-12 flex flex-col justify-center">
                   <div className={`mb-6 ${isRTL ? 'text-right' : 'text-left'}`}>
-                    <Quote size={40} className="text-gold/60" />
+                    <Quote size={40} className="text-primary/60" />
                   </div>
                   <p className={`text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 leading-relaxed ${isRTL ? 'text-right' : 'text-left'}`}>
                     {isRTL
@@ -158,10 +158,10 @@ const Testimonials = () => {
                     {renderStars(5)}
                   </div>
                   <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
-                    <h3 className="text-lg md:text-xl font-bold text-charcoal">
+                    <h3 className="text-lg md:text-xl font-bold text-neutral">
                       {isRTL ? 'الأمير عبدالله آل سعود' : 'Prince Abdullah Al Saud'}
                     </h3>
-                    <p className="text-gold font-medium">
+                    <p className="text-primary font-medium">
                       {isRTL ? 'قصر الأمراء، الرياض' : 'Princes Palace, Riyadh'}
                     </p>
                   </div>
@@ -192,7 +192,7 @@ const Testimonials = () => {
                     />
                   </div>
                   <CardContent className="p-6 relative">
-                    <div className={`absolute -top-6 w-12 h-12 bg-gold text-white flex items-center justify-center rounded-full shadow-lg ${isRTL ? 'right-6' : 'left-6'}`}>
+                    <div className={`absolute -top-6 w-12 h-12 bg-primary text-white flex items-center justify-center rounded-full shadow-lg ${isRTL ? 'right-6' : 'left-6'}`}>
                       <Quote size={18} />
                     </div>
                     <div className={`flex items-center gap-1 mb-4 mt-2 ${isRTL ? 'justify-end' : 'justify-start'}`}>
@@ -202,10 +202,10 @@ const Testimonials = () => {
                       {testimonial.content}
                     </p>
                     <div className="border-t border-gray-100 pt-4">
-                      <h3 className="text-lg font-bold text-charcoal mb-1">
+                      <h3 className="text-lg font-bold text-neutral mb-1">
                         {testimonial.name}
                       </h3>
-                      <p className="text-gold text-sm font-medium">
+                      <p className="text-primary text-sm font-medium">
                         {testimonial.role}
                       </p>
                     </div>
@@ -218,7 +218,7 @@ const Testimonials = () => {
       </section>
 
       {/* Stats Section - Enhanced with icons and faster animations */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-charcoal via-charcoal/98 to-charcoal text-white">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-neutral via-neutral/98 to-neutral text-white">
         <div className="container-custom mx-auto">
           <ScrollObserver animation="fade-up" threshold={0.05} delay={100} className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
@@ -242,11 +242,11 @@ const Testimonials = () => {
                   delay={150 * (index + 1)}
                   className="text-center"
                 >
-                  <div className="p-6 md:p-8 bg-white/5 backdrop-blur-sm border border-gold/20 rounded-xl transform transition-all duration-300 hover:scale-105 hover:bg-white/10">
+                  <div className="p-6 md:p-8 bg-white/5 backdrop-blur-sm border border-primary/20 rounded-xl transform transition-all duration-300 hover:scale-105 hover:bg-white/10">
                     <div className="flex justify-center mb-4">
                       <IconComponent size={32} className={`${stat.color}`} />
                     </div>
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gold mb-2">
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
                       {stat.value}
                     </h3>
                     <p className="text-gray-300 text-sm md:text-base">
@@ -265,7 +265,7 @@ const Testimonials = () => {
 
       {/* Call to Action - Faster animation */}
       <ScrollObserver animation="fade-up" threshold={0.05} delay={200}>
-        <section className="py-12 md:py-16 bg-gradient-to-r from-gold via-gold/95 to-gold/90 text-white relative">
+        <section className="py-12 md:py-16 bg-gradient-to-r from-primary via-primary/95 to-primary/90 text-white relative">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="container-custom mx-auto text-center relative z-10">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
@@ -277,10 +277,10 @@ const Testimonials = () => {
                 : 'Contact us today for a free consultation and discover how we can transform your space'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-white text-gold px-8 py-3 rounded-lg font-bold hover:bg-charcoal hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <button className="bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-neutral hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                 {isRTL ? 'تواصل معنا' : 'Contact Us'}
               </button>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-gold transition-all duration-300 transform hover:scale-105">
+              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
                 {isRTL ? 'معرض الأعمال' : 'View Portfolio'}
               </button>
             </div>
