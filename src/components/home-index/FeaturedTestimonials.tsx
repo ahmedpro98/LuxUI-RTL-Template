@@ -26,8 +26,8 @@ const FeaturedTestimonials: React.FC = () => {
       nameEn: "Mohammed Al-Amri",
       roleAr: "مالك فندق",
       roleEn: "Hotel Owner",
-      textAr: "قامت هوم ايست بتصميم وتنفيذ ديكورات أكثر من 25 غرفة في فندقنا. كانت الجودة استثنائية والخدمة احترافية للغاية. أوصي بشدة بخدماتهم في التصميم الداخلي الفاخر.",
-      textEn: "Home East designed and executed decorations for more than 25 rooms in our hotel. The quality was exceptional and the service was highly professional. I highly recommend their luxury interior design services.",
+      textAr: "قامت هوم ايست بتصميم وتنفيذ ديكورات أكثر من 25 غرفة في فندقنا. كانت الجودة استثنائية .",
+      textEn: "Home East designed and executed decorations for more than 25 rooms in our hotel. The quality was exceptional",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
@@ -36,8 +36,8 @@ const FeaturedTestimonials: React.FC = () => {
       nameEn: "Sarah Al-Faisal",
       roleAr: "مالكة فيلا",
       roleEn: "Villa Owner",
-      textAr: "تعاونت مع هوم ايست في تصميم قصري. يقدمون تصاميم داخلية فاخرة وأنيقة بأسلوب فريد وخدمة تنفيذ محترفة. شريك موثوق للمشاريع الراقية والفلل الفاخرة.",
-      textEn: "I collaborated with Home East in designing my palace. They provide luxury and elegant interior designs with a unique style and professional execution service. A trusted partner for high-end projects and luxury villas.",
+      textAr: "تعاونت مع هوم ايست في تصميم قصري. يقدمون تصاميم داخلية فاخرة وأنيقة بأسلوب فريد وخدمة تنفيذ .",
+      textEn: "I collaborated with Home East in designing my palace. They provide luxury and elegant interior designs ",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
@@ -46,8 +46,8 @@ const FeaturedTestimonials: React.FC = () => {
       nameEn: "Khalid Al-Otaibi",
       roleAr: "صاحب قصر",
       roleEn: "Palace Owner",
-      textAr: "تصاميم داخلية استثنائية وخدمة لا مثيل لها. قام فريق هوم ايست بتصميم وتنفيذ ديكورات جميع قاعات القصر بدقة واحترافية عالية وذوق رفيع.",
-      textEn: "Exceptional interior designs and unmatched service. The Home East team designed and executed decorations for all palace halls with high precision, professionalism and refined taste.",
+      textAr: "تصاميم داخلية استثنائية وخدمة لا مثيل لها. قام فريق هوم ايست بتصميم .",
+      textEn: "Exceptional interior designs and unmatched service. The Home East team designed and executed decorations ",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
     },
     {
@@ -56,8 +56,8 @@ const FeaturedTestimonials: React.FC = () => {
       nameEn: "Noura Al-Shammari",
       roleAr: "مديرة مركز تجاري",
       roleEn: "Mall Manager",
-      textAr: "كان التعاون مع هوم ايست تجربة رائعة. قدموا لنا حلولاً مبتكرة في التصميم الداخلي للمركز التجاري بأكمله، ونالت إعجاب جميع الزوار والعملاء بالأناقة والفخامة.",
-      textEn: "Collaborating with Home East was a wonderful experience. They provided us with innovative interior design solutions for the entire shopping center, and all visitors and customers admired the elegance and luxury.",
+      textAr: "كان التعاون مع هوم ايست تجربة رائعة. قدموا لنا حلولاً مبتكرة في التصميم الداخلي للمركز التجاري بأكمله",
+      textEn: "Collaborating with Home East was a wonderful experience. They provided us ",
       image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
     {
@@ -66,8 +66,8 @@ const FeaturedTestimonials: React.FC = () => {
       nameEn: "Fahad Al-Qahtani",
       roleAr: "مطور عقاري",
       roleEn: "Real Estate Developer",
-      textAr: "نقدر الاحترافية التي أظهرها فريق هوم ايست في تنفيذ مشروع التصميم الداخلي لمجمعنا السكني الفاخر. تم تسليم جميع التصاميم في الموعد المحدد وبمستوى جودة يفوق التوقعات.",
-      textEn: "We appreciate the professionalism shown by the Home East team in executing the interior design project for our luxury residential complex. All designs were delivered on time and with a quality level that exceeded expectations.",
+      textAr: "نقدر الاحترافية التي أظهرها فريق هوم ايست في تنفيذ مشروع التصميم الداخلي لمجمعنا السكني الفاخر.",
+      textEn: "We appreciate the professionalism shown by the Home East team in executing the interior design project ",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     }
   ];

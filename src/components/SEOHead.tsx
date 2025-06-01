@@ -1,5 +1,4 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useLocation } from 'react-router-dom';
 
@@ -89,64 +88,121 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     })
   };
 
-  return (
-    <Helmet>
-      {/* Basic Meta Tags */}
-      <html lang={language} dir={isRTL ? 'rtl' : 'ltr'} />
-      <title>{finalTitle}</title>
-      <meta name="description" content={finalDescription} />
-      <meta name="keywords" content={finalKeywords} />
-      <meta name="author" content={seoData.siteName} />
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow" />
-      <link rel="canonical" href={currentUrl} />
+  // Helper function to safely update meta tags
+  const updateMetaTag = (name: string, content: string, property = false) => {
+    const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+    let meta = document.querySelector(selector) as HTMLMetaElement;
 
-      {/* Open Graph Meta Tags */}
-      <meta property="og:title" content={finalTitle} />
-      <meta property="og:description" content={finalDescription} />
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={currentUrl} />
-      <meta property="og:image" content={image} />
-      <meta property="og:image:alt" content={finalTitle} />
-      <meta property="og:site_name" content={seoData.siteName} />
-      <meta property="og:locale" content={language === 'ar' ? 'ar_SA' : 'en_US'} />
-      <meta property="og:locale:alternate" content={language === 'ar' ? 'en_US' : 'ar_SA'} />
+    if (!meta) {
+      meta = document.createElement('meta');
+      if (property) {
+        meta.setAttribute('property', name);
+      } else {
+        meta.setAttribute('name', name);
+      }
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
+  };
 
-      {/* Twitter Card Meta Tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@hibateast" />
-      <meta name="twitter:creator" content="@hibateast" />
-      <meta name="twitter:title" content={finalTitle} />
-      <meta name="twitter:description" content={finalDescription} />
-      <meta name="twitter:image" content={image} />
-      <meta name="twitter:image:alt" content={finalTitle} />
+  // Helper function to update link tags
+  const updateLinkTag = (rel: string, href: string, additional?: Record<string, string>) => {
+    let link = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
 
-      {/* Additional SEO Meta Tags */}
-      <meta name="theme-color" content="#D4AF37" />
-      <meta name="msapplication-TileColor" content="#D4AF37" />
-      <meta name="application-name" content={seoData.siteName} />
-      <meta name="apple-mobile-web-app-title" content={seoData.siteName} />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="format-detection" content="telephone=no" />
+    if (!link) {
+      link = document.createElement('link');
+      link.setAttribute('rel', rel);
+      document.head.appendChild(link);
+    }
+    link.setAttribute('href', href);
 
-      {/* Hreflang Tags */}
-      <link rel="alternate" hrefLang="ar" href={currentUrl} />
-      <link rel="alternate" hrefLang="en" href={currentUrl} />
-      <link rel="alternate" hrefLang="x-default" href={currentUrl} />
+    if (additional) {
+      Object.entries(additional).forEach(([key, value]) => {
+        link.setAttribute(key, value);
+      });
+    }
+  };
 
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
+  // Helper function to update structured data
+  const updateStructuredData = () => {
+    // Remove existing structured data
+    const existingScript = document.querySelector('script[type="application/ld+json"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
 
-      {/* Preconnect to external domains */}
-      <link rel="preconnect" href="https://images.unsplash.com" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-    </Helmet>
-  );
+    // Add new structured data
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+  };
+
+  useEffect(() => {
+    // Update document title
+    document.title = finalTitle;
+
+    // Update html attributes
+    document.documentElement.setAttribute('lang', language);
+    document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+
+    // Update basic meta tags
+    updateMetaTag('description', finalDescription);
+    updateMetaTag('keywords', finalKeywords);
+    updateMetaTag('author', seoData.siteName);
+    updateMetaTag('robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    updateMetaTag('googlebot', 'index, follow');
+
+    // Update Open Graph meta tags
+    updateMetaTag('og:title', finalTitle, true);
+    updateMetaTag('og:description', finalDescription, true);
+    updateMetaTag('og:type', type, true);
+    updateMetaTag('og:url', currentUrl, true);
+    updateMetaTag('og:image', image, true);
+    updateMetaTag('og:image:alt', finalTitle, true);
+    updateMetaTag('og:site_name', seoData.siteName, true);
+    updateMetaTag('og:locale', language === 'ar' ? 'ar_SA' : 'en_US', true);
+    updateMetaTag('og:locale:alternate', language === 'ar' ? 'en_US' : 'ar_SA', true);
+
+    // Update Twitter Card meta tags
+    updateMetaTag('twitter:card', 'summary_large_image');
+    updateMetaTag('twitter:site', '@hibateast');
+    updateMetaTag('twitter:creator', '@hibateast');
+    updateMetaTag('twitter:title', finalTitle);
+    updateMetaTag('twitter:description', finalDescription);
+    updateMetaTag('twitter:image', image);
+    updateMetaTag('twitter:image:alt', finalTitle);
+
+    // Update additional SEO meta tags
+    updateMetaTag('theme-color', '#D4AF37');
+    updateMetaTag('msapplication-TileColor', '#D4AF37');
+    updateMetaTag('application-name', seoData.siteName);
+    updateMetaTag('apple-mobile-web-app-title', seoData.siteName);
+    updateMetaTag('apple-mobile-web-app-capable', 'yes');
+    updateMetaTag('apple-mobile-web-app-status-bar-style', 'default');
+    updateMetaTag('mobile-web-app-capable', 'yes');
+    updateMetaTag('format-detection', 'telephone=no');
+
+    // Update canonical link
+    updateLinkTag('canonical', currentUrl);
+
+    // Update hreflang links
+    updateLinkTag('alternate', currentUrl, { hreflang: 'ar' });
+    updateLinkTag('alternate', currentUrl, { hreflang: 'en' });
+    updateLinkTag('alternate', currentUrl, { hreflang: 'x-default' });
+
+    // Update preconnect links
+    updateLinkTag('preconnect', 'https://images.unsplash.com');
+    updateLinkTag('preconnect', 'https://fonts.googleapis.com');
+    updateLinkTag('preconnect', 'https://fonts.gstatic.com', { crossorigin: 'anonymous' });
+
+    // Update structured data
+    updateStructuredData();
+
+  }, [finalTitle, finalDescription, finalKeywords, currentUrl, language, isRTL, seoData.siteName, image, type, structuredData]);
+
+  // This component doesn't render anything visible
+  return null;
 };
 
 export default SEOHead;

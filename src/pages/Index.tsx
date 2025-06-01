@@ -10,7 +10,6 @@ import CtaSection from '../components/home-index/CtaSection';
 import ScrollObserver from '../components/home-index/ScrollObserver';
 import TransitionEffect from '../components/anmition/TransitionEffect';
 import { useLanguage } from '../context/LanguageContext';
-import SEOHead from '../components/SEOHead';
 
 const Index = () => {
   const { language } = useLanguage();
@@ -21,13 +20,6 @@ const Index = () => {
 
   return (
     <>
-      <SEOHead
-        schemaType="LocalBusiness"
-        breadcrumbs={[
-          { name: language === 'ar' ? 'الرئيسية' : 'Home', url: '/' }
-        ]}
-      />
-
       {/* Modern page transition effect */}
       <TransitionEffect type="circle" />
 

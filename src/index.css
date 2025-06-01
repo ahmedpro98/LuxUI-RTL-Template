@@ -10,3 +10,26 @@
 /*  Remaining Unique Styles */
 /* ============================ */
 
+/* Embla Carousel viewport fix */
+.embla__viewport {
+    overflow: hidden;
+}
+
+/* Embla Carousel slide behavior */
+.embla__slide {
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 100%;
+}
+
+@media (min-width: 768px) {
+    .embla__slide {
+        min-width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .embla__slide {
+        min-width: 33.333%;
+    }
+}

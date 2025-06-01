@@ -72,12 +72,12 @@ const Navbar: React.FC = () => {
         <Link to="/" className="text-neutral hover:text-primary transition-colors duration-300 flex items-center gap-2">
           <img
             src="/Logo_and_identity/logo.png"
-            alt={isRTL ? 'هبات أيست' : 'Hebat East'}
-            className="w-10 h-10 object-contain"
+            alt={isRTL ? 'هوم أيست' : 'Home East'}
+            className="w-11 h-11 object-contain"
           />
           {/* إضافة classes للتحكم في الخطوط */}
           <h1 className={`text-2xl font-bold ${isRTL ? 'font-cairo' : 'font-playfair'}`}>
-            {isRTL ? 'هبات أيست' : 'Hebat East'}
+            {isRTL ? 'هوم أيست' : 'Home East'}
           </h1>
         </Link>
 
@@ -143,11 +143,11 @@ const Navbar: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <img
                     src="/Logo_and_identity/logo.png"
-                    alt={isRTL ? 'هبات أيست' : 'Hebat East'}
-                    className="w-8 h-8 object-contain"
+                    alt={isRTL ? 'هوم أيست' : 'Home East'}
+                    className="w-11 h-11 object-contain"
                   />
                   <h2 className={`text-xl font-bold ${isRTL ? 'font-tajawal' : 'font-playfair'}`}>
-                    {isRTL ? 'هبات أيست' : 'Hebat East'}
+                    {isRTL ? 'هوم أيست' : 'Home East'}
                   </h2>
                 </div>
                 <button
@@ -221,7 +221,7 @@ const Navbar: React.FC = () => {
               </div>
 
               <div className={`mt-auto p-4 border-t text-sm text-gray-500 ${isRTL ? 'text-right' : 'text-left'}`}>
-                <p>{isRTL ? 'هبات أيست - خبرة في الإضاءة والتركيبات الفاخرة' : 'Hebat East - Lighting Expertise '}</p>
+                <p>{isRTL ? 'هوم أيست - خبرة في التصميم الإضاءة الفاخرة منذ 1995' : 'Home East - Design Expertise since 1995'}</p>
               </div>
             </SheetContent>
           </Sheet>
