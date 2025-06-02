@@ -22,7 +22,6 @@ const Navbar: React.FC = () => {
   const location = useLocation();
   const isMobile = useIsMobile();
 
-  // الترجمات محلياً باستخدام isRTL
   const navItems = [
     { name: isRTL ? 'الرئيسية' : 'Home', path: '/' },
     { name: isRTL ? 'من نحن' : 'About Us', path: '/about' },
@@ -67,7 +66,7 @@ const Navbar: React.FC = () => {
   }, [showProjectsDropdown]);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50  transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2.5' : 'bg-transparent py-4'}`}>
       <div className="container-custom mx-auto flex justify-between items-center">
         <Link to="/" className="text-neutral hover:text-primary transition-colors duration-300 flex items-center gap-2">
           <img
@@ -75,20 +74,19 @@ const Navbar: React.FC = () => {
             alt={isRTL ? 'هوم أيست' : 'Home East'}
             className="w-11 h-11 object-contain"
           />
-          {/* إضافة classes للتحكم في الخطوط */}
           <h1 className={`text-2xl font-bold ${isRTL ? 'font-cairo' : 'font-playfair'}`}>
             {isRTL ? 'هوم أيست' : 'Home East'}
           </h1>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className={`hidden lg:flex items-center ${isRTL ? 'space-x-reverse' : ''} space-x-6`}>
+        <div className={`hidden lg:flex items-center justify-center flex-1 ${isRTL ? 'space-x-reverse' : ''} space-x-8`}>
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
               className={`${location.pathname === item.path ? 'text-primary' : 'text-neutral'
-                } hover:text-primary transition-colors duration-300 ${isRTL ? 'font-tajawal' : 'font-roboto'}`}
+                } hover:text-primary whitespace-nowrap transition-colors duration-300 ${isRTL ? 'font-tajawal' : 'font-roboto'} text-l`}
             >
               {item.name}
             </Link>
@@ -97,7 +95,7 @@ const Navbar: React.FC = () => {
           {/* Projects Dropdown - Desktop */}
           <div className="relative">
             <div
-              className={`flex items-center gap-1 cursor-pointer ${location.pathname.includes('/projects') ? 'text-primary' : 'text-neutral'} hover:text-primary transition-colors duration-300`}
+              className={`flex items-center gap-1 cursor-pointer ${location.pathname.includes('/projects') ? 'text-primary' : 'text-neutral'} hover:text-primary transition-colors duration-300 text-l`}
               onClick={(e) => {
                 e.stopPropagation();
                 setShowProjectsDropdown(!showProjectsDropdown);
@@ -116,10 +114,10 @@ const Navbar: React.FC = () => {
               {showProjectsDropdown && <ProjectsDropdown />}
             </AnimatePresence>
           </div>
+        </div>
 
-          <div className="ml-6">
-            <LanguageSwitcher />
-          </div>
+        <div className="hidden lg:block">
+          <LanguageSwitcher />
         </div>
 
         {/* Mobile Navigation */}
