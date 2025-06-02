@@ -4,10 +4,10 @@ import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 
 // Import components
-import ProjectHeader from '../components/projects/ProjectHeader';
 import ProjectGallery from '../components/projects/ProjectGallery';
 import ProjectDetails from '../components/projects/ProjectDetails';
 import SimilarProjects from '../components/projects/SimilarProjects';
+import ProjectHeader from '../components/projects/ProjectHeader';
 
 // Import data
 import getProjectsData from './/projectsData';

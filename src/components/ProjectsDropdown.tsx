@@ -9,18 +9,8 @@ export const ProjectsDropdown: React.FC = () => {
     const projects = [
         {
             id: 'luxury-villa',
-            title: isRTL ? 'تصاميم مسجد' : 'Mosque design',
+            title: isRTL ? 'تصميم فيلا فاخرة' : 'Luxury villa',
             path: '/projects/luxury-villa',
-        },
-        {
-            id: 'commercial-plaza',
-            title: isRTL ? 'بلازا تجارية' : 'Commercial Plaza',
-            path: '/projects/commercial-plaza',
-        },
-        {
-            id: 'hotel-lobby',
-            title: isRTL ? 'بهو فندق' : 'Hotel Lobby',
-            path: '/projects/hotel-lobby',
         },
         {
             id: 'Interior',

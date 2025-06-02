@@ -14,42 +14,20 @@ const Projects = () => {
             description: isRTL
                 ? 'تصميم داخلي فاخر لفيلا تجمع بين الأناقة العصرية والطابع الكلاسيكي مع ديكورات راقية'
                 : 'Luxurious interior design for a villa combining modern elegance with classical character and sophisticated decorations',
-            image: '/projects-page/mosque/WhatsApp-Image-2025-02-28-at-20.30.59_2323b763.jpg',
+            image: '/projects-page/vila/outro.webp',
             path: '/projects/luxury-villa',
             category: isRTL ? 'فيلا فاخرة' : 'Luxury Villa',
             year: '2023'
         },
         {
-            id: 'commercial-plaza',
-            title: isRTL ? 'قصر ملكي - جدة' : 'Royal Palace - Jeddah',
-            description: isRTL
-                ? 'تصميم داخلي راقي لقصر ملكي يتميز بالفخامة والديكورات الكلاسيكية المميزة'
-                : 'Sophisticated interior design for a royal palace featuring luxury and distinctive classical decorations',
-            image: '/projects-page/mall/443527896_1564884910745038_3758099768104307627_n.jpg',
-            path: '/projects/commercial-plaza',
-            category: isRTL ? 'قصر ملكي' : 'Royal Palace',
-            year: '2025'
-        },
-        {
-            id: 'hotel-lobby',
-            title: isRTL ? 'منتجع فاخر - الخبر' : 'Luxury Resort - Al Khobar',
-            description: isRTL
-                ? 'تصميم داخلي لمنتجع فاخر مع التركيز على الديكورات العصرية والأثاث الراقي'
-                : 'Interior design for a luxury resort with focus on modern decorations and sophisticated furniture',
-            image: '/projects-page/hotel/WhatsApp-Image-2025-04-20-at-8.59.21-PM.jpg',
-            path: '/projects/hotel-lobby',
-            category: isRTL ? 'منتجع فاخر' : 'Luxury Resort',
-            year: '2024'
-        },
-        {
             id: 'interior-design',
-            title: isRTL ? 'بنتهاوس عصري - دبي' : 'Modern Penthouse - Dubai',
+            title: isRTL ? 'فيلا فاخرة' : 'Royal vila',
             description: isRTL
-                ? 'تصميم داخلي عصري لبنتهاوس فاخر يجمع بين الأناقة والحداثة مع لمسات ديكورية مميزة'
-                : 'Modern interior design for a luxury penthouse combining elegance and modernity with distinctive decorative touches',
-            image: 'projects-page/Interior/Interior5.jpg',
+                ? 'مشروع تصميم داخلي وديكور لقصر ملكي فاخر في نيوم يجمع بين الأناقة العصرية والعناصر التراثية الأصيلة.'
+                : 'Interior design and decoration project for a royal luxury palace in Neom that combines modern elegance with authentic heritage elements.',
+            image: '/projects-page/Interior/outro.jpg',
             path: '/projects/interior-design',
-            category: isRTL ? 'بنتهاوس' : 'Penthouse',
+            category: isRTL ? 'قصر ملكي' : 'Royal Palace',
             year: '2024'
         }
     ];

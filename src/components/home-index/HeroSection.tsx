@@ -20,15 +20,15 @@ const HeroSection: React.FC = () => {
   return (
     <section className="min-h-[90vh] md:min-h-screen flex items-center relative overflow-hidden">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 bg-cover overlay bg-center bg-no-repeat" style={{ backgroundImage: 'url(/Logo_and_identity/landpage.jpg)' }}>
-        <div className="absolute inset-0 bg-black opacity-25"></div>
+      <div className="absolute inset-0 bg-cover overlay bg-center bg-no-repeat" style={{ backgroundImage: 'url(/Logo_and_identity/hero.webp)' }}>
+        <div className="absolute inset-0 bg-black opacity-40"></div>
       </div>
 
       {/* Content */}
       <div className="container-custom mx-auto relative z-10 pt-16 md:pt-24 px-4 md:px-6">
         <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'} mx-auto md:mx-0`}>
           <h1
-            className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white/85 mb-4 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               } ${isMobile ? 'text-center' : ''}`}
           >
             {isRTL

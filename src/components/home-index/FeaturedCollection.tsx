@@ -12,15 +12,15 @@ const collectionItems = [
     titleAr: " قاعة استقبال ملكية",
     titleEn: "Royal Reception Hall Design",
     price: "154,500 SAR",
-    image: "/gallery/Waterfall2.jpg",
-    hoverImage: "/gallery/Waterfall1.jpg"
+    image: "/gallery/Islamic-Palace3.jpg",
+    hoverImage: "/gallery/Islamic-Palace3.jpg"
   },
   {
     id: 2,
     titleAr: " غرفة معيشة فاخرة",
     titleEn: "Luxury Living Room Design",
     price: "89,750 SAR",
-    image: "/gallery/2-ring.jpeg",
+    image: "/gallery/light1.jpg",
     hoverImage: "/gallery/1-ring.jpeg"
   },
   {
@@ -28,16 +28,16 @@ const collectionItems = [
     titleAr: " مجلس عربي أصيل",
     titleEn: "Authentic Arabian Majlis Design",
     price: "67,999 SAR",
-    image: "/gallery/Lantern-left.jpg",
-    hoverImage: "/gallery/Lantern-right.jpg"
+    image: "/gallery/Islamic-Palace2.webp",
+    hoverImage: "/gallery/Islamic-Palace2.webp"
   },
   {
     id: 4,
     titleAr: " قاعة طعام ملكية",
     titleEn: "Royal Dining Hall Design",
     price: "95,800 SAR",
-    image: "/gallery/halal-Mosque.jpg",
-    hoverImage: "/gallery/hover-hala.jpg"
+    image: "/gallery/Islamic-Palace1.webp",
+    hoverImage: "/gallery/Islamic-Palace1.webp"
   }
 ];
 

@@ -17,16 +17,6 @@ export const MobileProjectsMenu: React.FC<MobileProjectsMenuProps> = ({ setSheet
             path: '/projects/luxury-villa',
         },
         {
-            id: 'commercial-plaza',
-            title: isRTL ? 'بلازا تجارية' : 'Commercial Plaza',
-            path: '/projects/commercial-plaza',
-        },
-        {
-            id: 'hotel-lobby',
-            title: isRTL ? 'بهو فندق' : 'Hotel Lobby',
-            path: '/projects/hotel-lobby',
-        },
-        {
             id: 'Interior',
             title: isRTL ? "تصماميم داخلية" : 'Interior Design',
             path: '/projects/interior-design',

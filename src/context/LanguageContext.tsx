@@ -10,6 +10,7 @@ interface LanguageContextType {
   isRTL: boolean;
   isLanguageChanging: boolean;
   transitionState: TransitionState;
+  isTransitioning: boolean;
 }
 
 interface LanguageProviderProps {
@@ -24,7 +25,6 @@ export const LanguageProvider = ({
   transitionDuration = 800
 }: LanguageProviderProps) => {
   const [language, setLanguageState] = useState<Language>(() => {
-    // فحص وجود window بشكل آمن
     if (typeof window !== 'undefined') {
       try {
         const savedLanguage = localStorage.getItem('language');
@@ -37,47 +37,18 @@ export const LanguageProvider = ({
     return 'ar';
   });
 
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [previousLanguage, setPreviousLanguage] = useState<Language | null>(null);
   const [transitionState, setTransitionState] = useState<TransitionState>('idle');
 
   const isLanguageChanging = transitionState !== 'idle';
   const isRTL = language === 'ar';
 
-  // Initialize document settings on mount
-  useEffect(() => {
-    // التأكد من وجود document
-    if (typeof document === 'undefined') return;
-
-    // إضافة CSS classes للتحكم في الخطوط والاتجاه
-    document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
-    document.documentElement.setAttribute('lang', language);
-
-    // إضافة language classes للتحكم في الخطوط
-    document.documentElement.classList.add(language);
-    document.documentElement.classList.remove(language === 'ar' ? 'en' : 'ar');
-
-    // إضافة RTL/LTR classes
-    document.documentElement.classList.toggle('rtl', isRTL);
-    document.documentElement.classList.toggle('ltr', !isRTL);
-
-    // إضافة font classes بناءً على اللغة
-    document.documentElement.classList.toggle('font-arabic', isRTL);
-    document.documentElement.classList.toggle('font-english', !isRTL);
-
-    // حفظ اللغة في localStorage بشكل آمن
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.setItem('language', language);
-      } catch (error) {
-        console.warn('Cannot save to localStorage:', error);
-      }
-    }
-  }, [language, isRTL]); // إضافة dependencies مهمة
-
   const setLanguage = useCallback((newLanguage: Language) => {
     if (newLanguage !== language && transitionState === 'idle') {
       setPreviousLanguage(language);
       setTransitionState('start');
+      setIsTransitioning(true);
 
       if (typeof document !== 'undefined') {
         document.documentElement.classList.add('language-transition');
@@ -98,23 +69,18 @@ export const LanguageProvider = ({
 
       const newIsRTL = language === 'ar';
 
-      // تحديث جميع الخصائص
       document.documentElement.setAttribute('dir', newIsRTL ? 'rtl' : 'ltr');
       document.documentElement.setAttribute('lang', language);
 
-      // تحديث language classes
       document.documentElement.classList.add(language);
       document.documentElement.classList.remove(language === 'ar' ? 'en' : 'ar');
 
-      // تحديث RTL/LTR classes
       document.documentElement.classList.toggle('rtl', newIsRTL);
       document.documentElement.classList.toggle('ltr', !newIsRTL);
 
-      // تحديث font classes
       document.documentElement.classList.toggle('font-arabic', newIsRTL);
       document.documentElement.classList.toggle('font-english', !newIsRTL);
 
-      // حفظ اللغة بشكل آمن
       if (typeof window !== 'undefined') {
         try {
           localStorage.setItem('language', language);
@@ -138,6 +104,7 @@ export const LanguageProvider = ({
 
         setTransitionState('idle');
         setPreviousLanguage(null);
+        setIsTransitioning(false);
       }, transitionDuration);
 
       return () => clearTimeout(completeTimeout);
@@ -152,6 +119,7 @@ export const LanguageProvider = ({
       isRTL,
       isLanguageChanging,
       transitionState,
+      isTransitioning,
     }}>
       {children}
     </LanguageContext.Provider>
