@@ -9,11 +9,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const collectionItems = [
   {
     id: 1,
-    titleAr: " قاعة استقبال ملكية",
-    titleEn: "Royal Reception Hall Design",
-    price: "154,500 SAR",
-    image: "/gallery/Islamic-Palace3.jpg",
-    hoverImage: "/gallery/Islamic-Palace3.jpg"
+    titleAr: " قاعة استقبال ",
+    titleEn: " Reception Hall Design",
+    price: "54,500 SAR",
+    image: "/gallery/NPP-luxury-home-interiors.png",
+    hoverImage: "/gallery/blog_5.webp"
   },
   {
     id: 2,

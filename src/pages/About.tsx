@@ -25,20 +25,20 @@ const About = () => {
 
   const teamMembers = [
     {
-      name: isRTL ? 'م/اشرف محمد السيد' : 'Eng / Ashraf Mohamed El-Sayed ',
+      name: isRTL ? 'م/اشرف محمد ' : 'Eng / Ashraf Mohamed ',
       role: isRTL ? 'المدير التنفيذي' : 'CEO & Founder',
       bio: isRTL
         ? 'خبرة 20 عامًا في مجال التصميم الداخلي والديكورات الفاخرة للفلل والقصور'
         : '20 years of experience in luxury interior design and decoration for villas and palaces.',
-      image: "/team/ashraf_magicstudio.png"
+      image: "/team/prof1.webp"
     },
     {
-      name: isRTL ? 'أ/ ابراهيم محمد السيد' : 'Mr / Ibrahim Muhammad Al-Sayed',
-      role: isRTL ? 'المدير التشغيلي' : 'Operational manager',
+      name: isRTL ? 'أ/ نورة السيد' : 'Mrs / Nora Al-Sayed',
+      role: isRTL ? 'مديرة العلاقات' : 'relationship manager',
       bio: isRTL
-        ? 'خبرة في إدارة سلسلة التوريد، تحسين العمليات، وضمان التكلفة والجودة وقيادة الفرق التشغيلية'
-        : 'Experience in supply chain management, process optimization, and ensuring cost efficiency & quality control',
-      image: "/team/Ibrahim.jpg"
+        ? 'خبرة في إدارة العلاقات، بناء الشراكات الاستراتيجية، وتحسين تجربة العملاء وتعزيز الولاء المؤسسية'
+        : 'Experience in relationship management, building strategic partnerships, enhancing customer experience, and driving corporate loyalty.',
+      image: "/team/prof2.avif"
     },
     {
       name: isRTL ? 'م/خالد الراشد' : 'Eng / Khalid Al-Rashid',

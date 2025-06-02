@@ -50,7 +50,7 @@ const AboutSection = () => {
                         <div className="relative group">
                             {/* Self Image */}
                             <LazyImage
-                                src='/Logo_and_identity/main.jpg'
+                                src='/Logo_and_identity/109038.3.-Go-for-Gold.webp'
                                 alt="Luxury Chandelier"
                                 className="rounded-lg shadow-xl w-full h-auto transform group-hover:scale-105 transition-transform duration-700"
                             />

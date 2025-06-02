@@ -159,10 +159,10 @@ const Testimonials = () => {
                   </div>
                   <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
                     <h3 className="text-lg md:text-xl font-bold text-neutral">
-                      {isRTL ? 'الأميرة فاطمة آل سعود' : 'Princess Fatima Al Saud'}
+                      {isRTL ? 'الامير محمد آل سعود' : 'Princes Moamud Al Saud'}
                     </h3>
                     <p className="text-primary font-medium">
-                      {isRTL ? 'قصر الأميرات، الرياض' : 'Princess Palace, Riyadh'}
+                      {isRTL ? 'قصر الأمير، الرياض' : 'Princes Palace, Riyadh'}
                     </p>
                   </div>
                 </div>

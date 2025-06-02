@@ -22,13 +22,13 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({
   children,
-  transitionDuration = 800
+  transitionDuration = 777
 }: LanguageProviderProps) => {
   const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
       try {
         const savedLanguage = localStorage.getItem('language');
-        return (savedLanguage === 'en' || savedLanguage === 'ar') ? savedLanguage : 'ar';
+        return (savedLanguage === 'en' || savedLanguage === 'ar') ? savedLanguage : 'en'; // Here you can put the defuild langauge
       } catch (error) {
         console.warn('Cannot access localStorage:', error);
         return 'ar';
