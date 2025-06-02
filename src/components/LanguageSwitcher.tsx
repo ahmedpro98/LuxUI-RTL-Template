@@ -8,6 +8,30 @@ interface LanguageSwitcherProps {
   showIcon?: boolean;
 }
 
+// Simple Language Icon Component
+const LanguageIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    {/* Globe outline */}
+    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" fill="none" />
+
+    {/* Latitude lines */}
+    <path d="M2 12h20" stroke="currentColor" strokeWidth="1" />
+    <path d="M2 8h20" stroke="currentColor" strokeWidth="0.8" opacity="0.6" />
+    <path d="M2 16h20" stroke="currentColor" strokeWidth="0.8" opacity="0.6" />
+
+    {/* Longitude lines */}
+    <path d="M12 2c-2.5 0-4.5 4.5-4.5 10s2 10 4.5 10" stroke="currentColor" strokeWidth="1" fill="none" />
+    <path d="M12 2c2.5 0 4.5 4.5 4.5 10s-2 10-4.5 10" stroke="currentColor" strokeWidth="1" fill="none" />
+  </svg>
+);
+
 const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   variant = 'standard',
   showIcon = true
@@ -22,7 +46,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Ripple effect (modern variant only)
+  // Simple ripple effect (modern variant only)
   const createRipple = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (variant !== 'modern' || isLanguageChanging) return;
 
@@ -73,13 +97,10 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     if (!showIcon) return null;
 
     return (
-      <span className="language-icon mr-2">
-        {language === 'en' ? (
-          <span role="img" aria-label="Arabic">🌍</span>
-        ) : (
-          <span role="img" aria-label="English">🇺🇸</span>
-        )}
-      </span>
+      <LanguageIcon
+        className={`transition-transform duration-200 ${language === 'ar' ? 'mr-2' : 'ml-2'
+          }`}
+      />
     );
   };
 
@@ -88,11 +109,31 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
     switch (variant) {
       case 'modern':
-        return `${baseClasses} relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 px-4 rounded-lg shadow-md transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50`;
+        return `${baseClasses} relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 px-4 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50`;
       case 'minimal':
         return `${baseClasses} bg-transparent text-primary hover:underline focus:outline-none`;
       default:
-        return `${baseClasses} bg-transparent border-primary text-primary hover:bg-primary hover:text-white shadow-sm text-sm md:text-base py-1.5 px-3 md:px-4 rounded-md`;
+        return `${baseClasses} bg-transparent border-primary text-primary hover:bg-primary hover:text-white shadow-sm text-sm md:text-base py-2 px-4 md:px-5 rounded-md`;
+    }
+  };
+
+  const getTextOrder = () => {
+    if (language === 'ar') {
+      // Arabic: text first, then icon (on left in RTL)
+      return (
+        <>
+          <span>{isLanguageChanging ? '...' : buttonText}</span>
+          {showIcon && renderIcon()}
+        </>
+      );
+    } else {
+      // English: text first, then icon (on right in LTR)
+      return (
+        <>
+          <span>{isLanguageChanging ? '...' : buttonText}</span>
+          {showIcon && renderIcon()}
+        </>
+      );
     }
   };
 
@@ -106,18 +147,24 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
         disabled={isLanguageChanging || isTransitioning}
         className={`${getButtonClasses()} ${isLanguageChanging ? 'opacity-70 cursor-not-allowed' : ''}`}
         aria-label={ariaLabel}
-        style={{ fontFamily: language === 'en' ? 'Cairo, sans-serif' : 'Roboto, sans-serif' }}
+        style={{
+          fontFamily: language === 'en' ? 'Cairo, sans-serif' : 'Roboto, sans-serif',
+          direction: language === 'ar' ? 'rtl' : 'ltr'
+        }}
       >
-        {showIcon && renderIcon()}
-        {isLanguageChanging ? '...' : buttonText}
+        <div className="flex items-center justify-center w-full min-w-0">
+          <div className="flex items-center justify-center">
+            {getTextOrder()}
+          </div>
 
-        {isLanguageChanging && (
-          <span className="loading-indicator ml-3">
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-          </span>
-        )}
+          {isLanguageChanging && (
+            <span className={`loading-indicator ${language === 'ar' ? 'mr-2' : 'ml-2'}`}>
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </span>
+          )}
+        </div>
       </Button>
     </>
   );
