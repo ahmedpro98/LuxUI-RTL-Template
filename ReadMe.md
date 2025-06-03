@@ -1,16 +1,33 @@
-# Hibat East - Technical Documentation
+# Home East - Interior Design Web Template
 
 ## Project Overview
+**A Premium Bilingual Template for Interior Design & Finishing Companies**  
+🚀 Built with React, Vite, and Tailwind CSS – Lightning-fast (Lighthouse Score: 100%)
 
-**Hibat East** is a modern, bilingual website for a luxury chandelier and lighting company, offering installation and maintenance services for homes, hotels, and palaces. The project aims to reflect the brand’s elegance with a premium user experience and scalable code architecture.
+## 📌 Overview
 
-##
+**Hibat East** is a high-performance, fully responsive web template designed specifically for interior design, finishing, and decor companies. Built using modern technologies and a clean architecture, this template offers a premium experience for both Arabic and English audiences – all in one place.
+
+It delivers an elegant and luxurious UI with seamless RTL and LTR language support, optimized SEO, and a flawless UX across devices.
+
+### ✅ Ideal for:
+
+- Luxury interior design studios  
+- lighting and chandelier companies  
+- Decorative wall paneling and cladding suppliers  
+- Premium flooring and parquet providers  
+- Marble, granite & onyx showrooms  
+- Custom luxury furniture manufacturers  
+- Exclusive wallpaper & wall texture brands  
+- High-end curtain & textile decorators  
+- Boutique bathroom & sanitary ware retailers  
+- Artistic home accessories and decor stores
 
 ## Technical Information
 
-- **Version**: 1.0.0 (BETA) 
+- **Version**: 1.0.0 
 - **Framework**: React + TypeScript  
-- **Build Tool**: Vite 5  
+- **Build Tool**: Vite 6  
 - **Styling**: Tailwind CSS  
 - **Languages Supported**: Arabic & English  
 - **Responsive Design**: Fully responsive  
@@ -18,7 +35,7 @@
 
 ## Core Technologies
 
-- React v.18
+- React v.19
 - TypeScript v.5
 - React Router 
 - React Query 
@@ -70,85 +87,68 @@
 
 ## Project Structure
 ## هيكل المشروع
-```
-hibat-east/
-├── public/                   # الملفات الثابتة (الصور، الأيقونات)
-├── src/                      # شيفرة المصدر
-│   ├── components/           # مكونات React القابلة لإعادة الاستخدام
-│   │   ├── ui/               # مكونات واجهة المستخدم الأساسية
-│   │   ├── Navbar.tsx        # شريط التنقل
-│   │   ├── Footer.tsx        # تذييل الصفحة
-│   │   ├── WhatsAppButton.tsx # زر واتساب
-│   │   └── BackToTopButton.tsx # زر العودة للأعلى
-│   ├── context/              # سياقات React
-│   │   └── LanguageContext.tsx # سياق إدارة اللغات
-│   ├── pages/                # صفحات الموقع
-│   │   ├── Index.tsx         # الصفحة الرئيسية
-│   │   ├── About.tsx         # صفحة من نحن
-│   │   ├── Services.tsx      # صفحة الخدمات
-│   │   ├── Gallery.tsx       # معرض الأعمال
-│   │   ├── Testimonials.tsx  # آراء العملاء
-│   │   ├── Contact.tsx       # صفحة الاتصال
-│   │   └── NotFound.tsx      # صفحة 404
-│   ├── App.tsx               # المكون الرئيسي للتطبيق
-│   ├── main.tsx              # نقطة الدخول للتطبيق
-│   └── index.css             # الأنماط العامة والتخصيصات
-├── index.html                # ملف HTML الرئيسي
-├── vite.config.ts            # إعدادات Vite
-├── tailwind.config.ts        # إعدادات Tailwind CSS
-├── tsconfig.json             # إعدادات TypeScript
-└── package.json              # تبعيات المشروع
-```
+src/
+├── App.tsx
+├── index.css
+├── main.tsx
+├── vite-env.d.ts
 
+├── components/
+│   ├── BackToTopButton.tsx
+│   ├── ContactForm.tsx
+│   ├── FadeInImage.tsx
+│   ├── Footer.tsx
+│   ├── LanguageSwitcher.tsx
+│   ├── LanguageTransitionOverlay.tsx
+│   ├── LazyImage.tsx
+│   ├── MobileProjectsMenu.tsx
+│   ├── Navbar.tsx
+│   ├── PartnerSlider.tsx
+│   ├── ProductCard.tsx
+│   ├── ProjectsDropdown.tsx
+│   ├── SEOHead.tsx
+│   ├── ServiceCard.tsx
+│   ├── TestimonialCard.tsx
+│   ├── VideoPlayer.tsx
+│   ├── WhatsAppButton.tsx
+│
+│   ├── anmition/
+│   │   └── TransitionEffect.tsx
+│
+│   ├── home-index/
+│   │   ├── AboutSection.tsx
+│   │   ├── ContactSection.tsx
+│   │   ├── CtaSection.tsx
+│   │   ├── FeaturedCollection.tsx
+│   │   ├── FeaturedTestimonials.tsx
+│   │   ├── HeroSection.tsx
+│   │   ├── PartnersSection.tsx
+│   │   ├── ScrollObserver.tsx
+│   │   └── ServicesSection.tsx
+│
+│   ├── projects/
+│   │   ├── ProjectDetails.tsx
+│   │   ├── ProjectGallery.tsx
+│   │   ├── ProjectHeader.tsx
+│   │   └── SimilarProjects.tsx
 
-## Development Setup for devloper
-## مهم!!  لبدء تطوير او التعديل علي المشروع المشروع
-bash
+├── context/
+│   └── LanguageContext.tsx
 
-```
+├── hooks/
+│   ├── project.ts
+│   └── use-mobile.tsx
 
-1- git clone https://github.com/ahmedpro98/Hebat-East-Web-App.git
+├── pages/
+│   ├── About.tsx
+│   ├── Contact.tsx
+│   ├── Gallery.tsx
+│   ├── Index.tsx
+│   ├── NotFound.tsx
+│   ├── ProjectDetail.tsx
+│   ├── Projects.tsx
+│   ├── projectsData.ts
+│   ├── Services.tsx
+│   └── Testimonials.tsx
 
-cd hibat-east or near name
-
-2- npm install
-
-3- npm run dev
-
-4- take url  port IS : 'http://192.168.1.11:1998/'
-
-5- FOR deploy npm run built than deploy
-
-```
-
-
-### color
-### تعديل الألوان والسمات
-يمكن تعديل نظام الألوان من خلال ملف `tailwind.config.ts`:
-```typescript
-colors: {
-  gold: {
-    DEFAULT: '#D4AF37',
-    light: '#F5EFD8',
-    dark: '#A38728'
-  },
-  charcoal: {
-    DEFAULT: '#222222',
-    light: '#444444',
-    dark: '#111111'
-  },
-  cream: '#F5F5F0'
-}
-```
-### add page
-### إضافة صفحات جديدة
-لإضافة صفحة جديدة:
-1. إنشاء ملف جديد في مجلد `src/pages/`
-2. إضافة مسار الصفحة في `App.tsx`:
-```tsx
-<Routes>
-  {/* الصفحات + for pages now */}
-  <Route path="/new-page" element={<NewPage />} />
-</Routes>
-```
 
