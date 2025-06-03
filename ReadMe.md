@@ -85,8 +85,14 @@ It delivers an elegant and luxurious UI with seamless RTL and LTR language suppo
 - Tooltips for better UX
 
 
-## Project Structure
-## هيكل المشروع
+Always show details
+
+Copy
+# Create the content in Markdown format
+md_content = """
+# 📁 `src/` Directory Structure
+
+```plaintext
 src/
 ├── App.tsx
 ├── index.css
@@ -150,5 +156,3 @@ src/
 │   ├── projectsData.ts
 │   ├── Services.tsx
 │   └── Testimonials.tsx
-
-
