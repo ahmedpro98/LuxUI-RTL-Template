@@ -10,6 +10,10 @@ interface TestimonialCardProps {
   isRTL?: boolean;
 }
 
+/**
+ * Testimonial card component with hover animations and responsive design
+ * Shows customer feedback with profile image, name, role, and testimonial text
+ */
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   name,
   role,
@@ -29,6 +33,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     >
       <div className={`flex flex-col ${isRTL ? 'text-right' : 'text-left'} h-full`}>
 
+        {/* Quote icon */}
         <div className={`mb-3 md:mb-4 text-primary transition-transform duration-300 
             `}>
 
@@ -36,10 +41,15 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             <path d="M10.667 13.3334H5.33366C5.33366 13.3334 5.33366 8.00004 10.667 8.00004M10.667 8.00004C10.667 8.00004 10.667 5.33337 8.00033 6.66671C5.33366 8.00004 5.33366 13.3334 5.33366 13.3334C5.33366 17.3334 10.667 17.3334 10.667 13.3334V8.00004ZM26.667 13.3334H21.3337C21.3337 13.3334 21.3337 8.00004 26.667 8.00004M26.667 8.00004C26.667 8.00004 26.667 5.33337 24.0003 6.66671C21.3337 8.00004 21.3337 13.3334 21.3337 13.3334C21.3337 17.3334 26.667 17.3334 26.667 13.3334V8.00004Z" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
+
+        {/* Testimonial text with line clamp on mobile, expanded on hover */}
         <p className={`text-gray-600 mb-4 md:mb-6 text-sm md:text-base flex-grow transition-all duration-500 md:group-hover:line-clamp-none line-clamp-4 break-words whitespace-pre-wrap`}>
           {text}
         </p>
+
+        {/* Customer profile section */}
         <div className={`flex items-center ${isRTL ? 'justify-end' : ''} mt-4`}>
+          {/* Profile image with hover effects */}
           <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 transition-all duration-300 ${isHovered ? 'border-primary shadow-primary/30 shadow-lg' : 'border-primary shadow-sm'}`}>
             {image ? (
               <LazyImage
@@ -48,11 +58,14 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
                 className={`w-full h-full object-cover transition-transform duration-500 md:group-hover:scale-110`}
               />
             ) : (
+              // Fallback to initial letter when no image provided
               <div className="w-full h-full flex items-center justify-center bg-primary-light text-primary font-bold">
                 {name.charAt(0)}
               </div>
             )}
           </div>
+
+          {/* Customer name and role */}
           <div className={`${isRTL ? 'mr-3 md:mr-4 ml-0' : 'ml-3 md:ml-4'}`}>
             <h4 className="text-neutral font-semibold text-sm md:text-base">{name}</h4>
             <p className="text-gray-500 text-xs md:text-sm">{role}</p>

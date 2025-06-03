@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 
+/**
+ * Desktop dropdown menu for projects navigation
+ * Displays with smooth animations and RTL/LTR support
+ */
 export const ProjectsDropdown: React.FC = () => {
     const { isRTL } = useLanguage();
 
+    // Available projects with bilingual titles
     const projects = [
         {
             id: 'luxury-villa',
@@ -45,7 +50,7 @@ export const ProjectsDropdown: React.FC = () => {
                             x: 0,
                             transition: {
                                 duration: 0.2,
-                                delay: index * 0.05,
+                                delay: index * 0.05, // Stagger animation
                                 ease: "easeOut"
                             }
                         }}
@@ -56,6 +61,7 @@ export const ProjectsDropdown: React.FC = () => {
                             role="menuitem"
                         >
                             <div className="flex items-center space-x-2">
+                                {/* Project indicator dot */}
                                 <span className={`w-1.5 h-1.5 rounded-full bg-primary ${isRTL ? 'order-last mr-2' : 'order-first'}`}></span>
                                 <span className={isRTL ? 'mr-0' : 'ml-0'}>{project.title}</span>
                             </div>
@@ -63,8 +69,10 @@ export const ProjectsDropdown: React.FC = () => {
                     </motion.div>
                 ))}
 
+                {/* Separator line */}
                 <div className="my-1 border-t border-gray-100"></div>
 
+                {/* View all projects link */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{

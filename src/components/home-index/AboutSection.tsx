@@ -1,3 +1,4 @@
+// * Supports both Arabic (RTL) and English (LTR) layouts
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,7 @@ import LazyImage from '../LazyImage';
 import ScrollObserver from './ScrollObserver';
 
 const AboutSection = () => {
+    // Get RTL direction status from language context
     const { isRTL } = useLanguage();
 
     return (
@@ -12,7 +14,7 @@ const AboutSection = () => {
             <div className="container-custom mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
 
-                    {/* paragraph */}
+                    {/* Company description text */}
                     <ScrollObserver
                         animation={isRTL ? "fade-left" : "fade-right"}
                         className={`${isRTL ? 'order-2 text-right' : 'order-1 text-left'}`}
@@ -40,7 +42,7 @@ const AboutSection = () => {
                         </Link>
                     </ScrollObserver>
 
-                    {/* image with square */}
+                    {/* Image with decorative squares */}
                     <ScrollObserver
                         animation={isRTL ? "fade-right" : "fade-left"}
                         className={`${isRTL ? 'order-1' : 'order-2'} relative`}
@@ -48,17 +50,17 @@ const AboutSection = () => {
                         delay={190}
                     >
                         <div className="relative group">
-                            {/* Self Image */}
+                            {/* Main company image */}
                             <LazyImage
                                 src='/Logo_and_identity/109038.3.-Go-for-Gold.webp'
                                 alt="Luxury Chandelier"
                                 className="rounded-lg shadow-xl w-full h-auto transform group-hover:scale-105 transition-transform duration-700"
                             />
 
-                            {/* Down Square */}
+                            {/* Bottom right decorative square */}
                             <div className="absolute -bottom-4 -right-4 w-14 h-14 md:w-20 md:h-20 primary-gradient rounded-lg z-10 overflow-hidden"></div>
 
-                            {/* Up Square */}
+                            {/* Top left decorative square */}
                             <div className="absolute -top-3 -left-4 w-14 h-14 md:w-20 md:h-20 border-4 border-primary rounded-lg z-10 overflow-hidden"></div>
                         </div>
                     </ScrollObserver>

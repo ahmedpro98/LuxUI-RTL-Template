@@ -13,6 +13,11 @@ interface ScrollObserverProps {
     once?: boolean;
 }
 
+/**
+ * ScrollObserver - Provides scroll-triggered animations with RTL support
+ * Monitors element visibility and applies animations when elements enter viewport
+ * Handles language transitions and re-initialization of observers
+ */
 const ScrollObserver: React.FC<ScrollObserverProps> = ({
     children,
     className = '',
@@ -30,9 +35,12 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
     const [wasEverVisible, setWasEverVisible] = useState(false);
     const { language, isLanguageChanging, transitionState } = useLanguage();
 
-    // Setup the intersection observer
+    /**
+     * Sets up the intersection observer to monitor element visibility
+     * Handles cleanup and re-initialization when configuration changes
+     */
     const setupObserver = useCallback(() => {
-        // التأكد من وجود IntersectionObserver
+        // Ensure IntersectionObserver is available
         if (typeof window === 'undefined' || !window.IntersectionObserver) {
             return;
         }
@@ -43,14 +51,14 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
             observerRef.current.disconnect();
         }
 
-        // Create new observer
+        // Create new observer with visibility tracking
         observerRef.current = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
                     setWasEverVisible(true);
 
-                    // If once is true, we disconnect the observer once the element is visible
+                    // Disconnect observer if animation should only run once
                     if (once && elementRef.current) {
                         observerRef.current?.disconnect();
                     }
@@ -65,13 +73,13 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
             }
         );
 
-        // Start observing
+        // Start observing the element
         if (elementRef.current) {
             observerRef.current.observe(elementRef.current);
         }
     }, [threshold, once]);
 
-    // Initial setup
+    // Initialize observer on component mount
     useEffect(() => {
         setupObserver();
 
@@ -82,7 +90,10 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
         };
     }, [setupObserver]);
 
-    // Handle language changes
+    /**
+     * Handles language changes and re-initialization of animations
+     * Manages visibility state during language transitions
+     */
     useEffect(() => {
         if (transitionState === 'start') {
             // Language transition is starting - prepare elements
@@ -92,8 +103,7 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
         } else if (transitionState === 'complete') {
             // After language change is complete
             const timer = setTimeout(() => {
-                // If element was already visible or should show once when visible,
-                // check if it's in viewport now
+                // Check if element should be visible after language change
                 if (wasEverVisible || !once) {
                     if (elementRef.current && typeof window !== 'undefined') {
                         const rect = elementRef.current.getBoundingClientRect();
@@ -119,7 +129,10 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
         }
     }, [language, transitionState, setupObserver, once, wasEverVisible]);
 
-    // Determine animation class based on props
+    /**
+     * Determines animation class based on props
+     * Returns appropriate CSS class for animation type
+     */
     const getAnimationClass = () => {
         if (animation === 'custom' && customAnimation) {
             return customAnimation;
@@ -127,13 +140,16 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
         return `scroll-animate-${animation}`;
     };
 
-    // Handle staggered children
+    /**
+     * Handles staggered children animations
+     * Clones React elements to add stagger classes
+     */
     const renderChildren = () => {
         if (!staggerChildren) {
             return children;
         }
 
-        // إذا كان children عبارة عن React element، أضف stagger class
+        // Add stagger class to React elements
         if (React.isValidElement(children)) {
             const existingClassName = (children.props as any).className || '';
             return React.cloneElement(children, {
@@ -144,12 +160,12 @@ const ScrollObserver: React.FC<ScrollObserverProps> = ({
         return children;
     };
 
-    // إنشاء style object بطريقة صحيحة
+    // Create style object with transition delay
     const elementStyle: React.CSSProperties = {
         transitionDelay: delay > 0 ? `${delay}ms` : '0ms',
     };
 
-    // إنشاء data attributes
+    // Create data attributes for debugging and styling
     const dataAttributes = {
         'data-visible': isVisible ? 'true' : 'false',
         'data-animation': animation,

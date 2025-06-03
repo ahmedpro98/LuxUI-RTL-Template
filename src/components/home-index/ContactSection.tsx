@@ -1,3 +1,4 @@
+// Uses Intersection Observer for scroll animations and supports RTL/LTR layouts
 import React, { useRef, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { Link } from 'react-router-dom';
@@ -5,16 +6,23 @@ import ScrollObserver from './ScrollObserver';
 
 
 const ContactSection = () => {
+    // Get RTL direction status from language context
     const { isRTL } = useLanguage();
+    // Reference for the main contact section element
     const contactRef = useRef<HTMLDivElement>(null);
 
+    /**
+     * Set up Intersection Observer for scroll animations
+     * Triggers animation when section becomes visible
+     */
     useEffect(() => {
-        // Intersection Observer for scroll animations
+        // Observer configuration
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -50px 0px'
         };
 
+        // Create observer to watch for element visibility
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -24,11 +32,12 @@ const ContactSection = () => {
             });
         }, observerOptions);
 
-        // Observe contact section
+        // Start observing the contact section
         if (contactRef.current) {
             observer.observe(contactRef.current);
         }
 
+        // Clean up observer on component unmount
         return () => observer.disconnect();
     }, []);
 
@@ -37,7 +46,7 @@ const ContactSection = () => {
             <div className="container-custom mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
-                    {/* Contact Info */}
+                    {/* Contact information section */}
                     <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
                         <ScrollObserver animation={isRTL ? "fade-left" : "fade-right"}>
                             <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-4">
@@ -51,6 +60,7 @@ const ContactSection = () => {
                         </ScrollObserver>
 
                         <div className="space-y-4 mb-6">
+                            {/* Phone number contact item */}
                             <ScrollObserver animation="fade-up" delay={100}>
                                 <div className={`flex items-start gap-3 ${isRTL ? 'flex-row' : ''}`}>
                                     <div className="text-gold bg-gold/10 p-2 rounded-full mt-1">
@@ -67,6 +77,7 @@ const ContactSection = () => {
                                 </div>
                             </ScrollObserver>
 
+                            {/* Email contact item */}
                             <ScrollObserver animation="fade-up" delay={200}>
                                 <div className={`flex items-start gap-3 ${isRTL ? 'flex-row' : ''}`}>
                                     <div className="text-gold bg-gold/10 p-2 rounded-full mt-1 shrink-0">
@@ -83,6 +94,7 @@ const ContactSection = () => {
                                 </div>
                             </ScrollObserver>
 
+                            {/* Address contact item */}
                             <ScrollObserver animation="fade-up" delay={300}>
                                 <div className={`flex items-start gap-3 ${isRTL ? 'flex-row ' : ''}`}>
                                     <div className="text-gold bg-gold/10 p-2 rounded-full mt-1">
@@ -105,6 +117,7 @@ const ContactSection = () => {
                             </ScrollObserver>
                         </div>
 
+                        {/* Contact button */}
                         <ScrollObserver animation="fade-up" delay={400}>
                             <div className="mt-8">
                                 <Link
@@ -117,7 +130,7 @@ const ContactSection = () => {
                         </ScrollObserver>
                     </div>
 
-                    {/* Map - Jeddah location */}
+                    {/* Google Maps location embed */}
                     <ScrollObserver animation={isRTL ? "fade-right" : "fade-left"}>
                         <div className="h-64 md:h-80 bg-gray-200 rounded-lg overflow-hidden shadow-md lg:-translate-x-6">
                             <iframe

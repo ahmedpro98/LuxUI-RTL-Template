@@ -6,10 +6,14 @@ interface LanguageTransitionOverlayProps {
     isVisible: boolean;
 }
 
+/**
+ * Full-screen overlay shown during language transitions
+ * Displays animated loading spinner and text while language changes
+ */
 const LanguageTransitionOverlay: React.FC<LanguageTransitionOverlayProps> = ({ isVisible }) => {
     const { language } = useLanguage();
 
-    // نص التحميل حسب اللغة
+    // Loading text in current language
     const loadingText = language === 'en' ? 'Changing language...' : 'جاري تغيير اللغة...';
 
     return (
@@ -28,6 +32,7 @@ const LanguageTransitionOverlay: React.FC<LanguageTransitionOverlayProps> = ({ i
                         className="text-center"
                     >
                         <div className="mb-4">
+                            {/* Rotating globe icon */}
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
@@ -55,6 +60,7 @@ const LanguageTransitionOverlay: React.FC<LanguageTransitionOverlayProps> = ({ i
                             </motion.div>
                         </div>
 
+                        {/* Loading text with slide-up animation */}
                         <motion.p
                             initial={{ y: 10, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}

@@ -1,6 +1,11 @@
-/* Primary button style */
+/**
+ * Button Components - Reusable button styles
+ * Primary button with hover states and transitions
+ */
+
+/** Primary button with brand colors and hover effect */
 .btn-primary {
     @apply bg-primary text-white px-6 py-3 rounded hover:bg-primary-dark transition-colors duration-300;
 }
 
-/* Additional button utilities (if needed, extend here) */
+/** Additional button utilities (extend here for new button variants) */

@@ -1,4 +1,11 @@
+/**
+ * Base Styles - Core CSS variables and foundation styles
+ * Sets up color scheme, typography, and basic element behaviors
+ */
+
 @layer base {
+
+    /** CSS Custom Properties - Design system color tokens */
     :root {
         --background: 50deg 33% 97%;
         --foreground: 0 0% 13%;
@@ -20,25 +27,32 @@
         --input: 0 0% 90%;
         --ring: 46 64% 52%;
         --radius: .6rem;
+        /* Standard border radius */
     }
 
+    /** Global border inheritance */
     * {
         @apply border-border;
     }
 
+    /** Body base styles with overflow control */
     body {
         @apply bg-background text-foreground overflow-x-hidden font-roboto;
     }
 
+    /** Text selection styling */
     ::selection {
         background-color: #cea621f1;
+        /* Primary gold color with opacity */
         color: #fff;
     }
 
+    /** Image loading and transition states */
     img {
         @apply transition-all duration-500 max-w-full;
     }
 
+    /* Lazy loading states */
     img.lazy-load {
         @apply opacity-0;
     }
@@ -47,9 +61,11 @@
         @apply opacity-100;
     }
 
+    /** RTL/LTR language-specific typography */
     [dir="rtl"] {
         font-family: 'Cairo', sans-serif;
         letter-spacing: -0.01em;
+        /* Tighter spacing for Arabic */
         line-height: 1.6;
     }
 
@@ -58,13 +74,16 @@
         line-height: 1.5;
         letter-spacing: 0.01em;
         font-weight: 400;
-
     }
 
+    /** Language visibility control */
     [dir="rtl"] [lang="en"],
     [dir="ltr"] [lang="ar"] {
         display: none;
+        /* Hide opposite language content */
     }
+
+    /** Main content transition for language switching */
 
     #root>main {
         @apply transition-opacity duration-500;

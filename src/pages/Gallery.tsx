@@ -1,4 +1,6 @@
-// الكود محدث بناءً على الهوية الجديدة، بدون أي تغيير في البنية أو التصميم
+/**
+ * Gallery Component - Displays a filterable collection of interior design projects
+ */
 
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
@@ -7,13 +9,19 @@ import LazyImage from '../components/LazyImage';
 
 const Gallery = () => {
   const { isRTL } = useLanguage();
+
+  // State for filtering gallery items by category
   const [activeCategory, setActiveCategory] = useState('all');
+
+  // State for pagination - shows more items when user clicks "Load More"
   const [visibleItems, setVisibleItems] = useState(9);
 
+  // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Category filter options with bilingual names
   const categories = [
     { id: 'all', nameEN: 'All', nameAR: 'الكل' },
     { id: 'modern', nameEN: 'Modern', nameAR: 'عصري' },
@@ -21,6 +29,8 @@ const Gallery = () => {
     { id: 'lighting', nameEN: 'Lighting', nameAR: 'إضاءة' },
     { id: 'custom', nameEN: 'Custom', nameAR: 'مخصص' }
   ];
+
+  // Static gallery data with project details in both languages
   const galleryItems = [
     {
       id: 1,
@@ -132,29 +142,36 @@ const Gallery = () => {
       locationAR: 'قصر النخبة، الدمام'
     },
   ];
+
+  // Filter items based on selected category
   const filteredItems = activeCategory === 'all'
     ? galleryItems
     : galleryItems.filter(item => item.category === activeCategory);
 
+  /**
+   * Load more items handler - increases visible items by 6
+   */
   const loadMore = () => {
     setVisibleItems(prev => Math.min(prev + 6, filteredItems.length));
   };
 
+  // Animation variants for the gallery grid container
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.1, // Animate children one after another
         delayChildren: 0.3
       }
     }
   };
 
+  // Animation variants for individual gallery items
   const itemVariants = {
     hidden: {
       opacity: 0,
-      x: isRTL ? -40 : 40
+      x: isRTL ? -40 : 40 // Slide direction depends on language (RTL/LTR)
     },
     show: {
       opacity: 1,
@@ -169,6 +186,7 @@ const Gallery = () => {
 
   return (
     <div className="pt-24">
+      {/* Hero Section with page title */}
       <section className="bg-neutral text-white py-20">
         <div className="container-custom mx-auto">
           <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
@@ -194,8 +212,10 @@ const Gallery = () => {
         </div>
       </section>
 
+      {/* Main Gallery Section */}
       <section className="py-20">
         <div className="container-custom mx-auto">
+          {/* Category Filter Buttons */}
           <motion.div
             className={`flex flex-wrap gap-4 mb-12 ${isRTL ? 'justify-end' : 'justify-start'}`}
             initial={{ opacity: 0, y: 20 }}
@@ -207,7 +227,7 @@ const Gallery = () => {
                 key={category.id}
                 onClick={() => {
                   setActiveCategory(category.id);
-                  setVisibleItems(9);
+                  setVisibleItems(9); // Reset visible items when changing category
                 }}
                 className={`px-6 py-2 rounded-full transition-colors duration-300 ${activeCategory === category.id
                   ? 'bg-primary text-white'
@@ -224,12 +244,13 @@ const Gallery = () => {
             ))}
           </motion.div>
 
+          {/* Gallery Grid */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            key={activeCategory}
+            key={activeCategory} // Re-animate when category changes
           >
             {filteredItems.slice(0, visibleItems).map((item, index) => (
               <motion.div
@@ -237,6 +258,7 @@ const Gallery = () => {
                 variants={itemVariants}
                 className="bg-white rounded-lg overflow-hidden shadow-lg elegant-shadow group"
               >
+                {/* Project Image with hover effect */}
                 <div className="h-64 overflow-hidden">
                   <LazyImage
                     src={item.imageUrl}
@@ -244,6 +266,8 @@ const Gallery = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
+
+                {/* Project Details */}
                 <div className={`p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
                   <h3 className="text-xl font-bold text-neutral mb-1">
                     {isRTL ? item.titleAR : item.titleEN}
@@ -256,6 +280,7 @@ const Gallery = () => {
             ))}
           </motion.div>
 
+          {/* Load More Button - only show if there are more items */}
           {visibleItems < filteredItems.length && (
             <motion.div
               className="text-center mt-12"

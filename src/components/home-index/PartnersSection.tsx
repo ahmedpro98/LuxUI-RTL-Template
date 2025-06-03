@@ -3,21 +3,24 @@ import { useLanguage } from '../../context/LanguageContext';
 import PartnerSlider from '../PartnerSlider';
 import ScrollObserver from './ScrollObserver';
 
+/**
+ * PartnersSection - Displays global partners and suppliers section
+ * Features animated content with scroll-triggered animations and RTL support
+ */
 const PartnersSection = () => {
     const { isRTL } = useLanguage();
     const partnersRef = useRef<HTMLDivElement>(null);
 
     return (
         <section className="py-12 md:py-16 bg-white relative overflow-hidden" ref={partnersRef}>
-
-
-
             <div className="w-full relative z-10">
+                {/* Section header with fade-up animation */}
                 <ScrollObserver animation="fade-up">
                     <div className={`text-center mb-8 md:mb-12 px-4 ${isRTL ? 'rtl' : ''}`}>
                         <div className="inline-block">
                             <h2 className={`text-3xl md:text-4xl font-bold text-charcoal mb-4 relative`}>
                                 {isRTL ? 'شركاؤنا وموردونا العالميون' : 'Our Global Partners & Suppliers'}
+                                {/* Decorative underline */}
                                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"></div>
                             </h2>
                         </div>
@@ -29,11 +32,12 @@ const PartnersSection = () => {
                     </div>
                 </ScrollObserver>
 
+                {/* Partner slider with trust indicators - delayed animation */}
                 <ScrollObserver animation="fade-up" delay={200}>
                     <div className="relative">
                         <PartnerSlider />
 
-                        {/* Trust indicators */}
+                        {/* Trust indicators with colored dots */}
                         <div className="mt-6 text-center">
                             <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-500">
                                 <div className="flex items-center gap-2">

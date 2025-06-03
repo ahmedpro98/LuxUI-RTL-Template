@@ -17,21 +17,25 @@ import {
   TrendingUp
 } from 'lucide-react';
 
+/**
+ * Testimonials page component displaying client reviews, stats, and call-to-action
+ */
+
 const Testimonials = () => {
   const { isRTL } = useLanguage();
   const isMobile = useIsMobile();
 
-  // Use useCallback to prevent unnecessary re-renders
+  // Smooth scroll to top on component mount
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   useEffect(() => {
-    // Use requestAnimationFrame to prevent blocking the main thread
+    // Use requestAnimationFrame for better performance
     requestAnimationFrame(scrollToTop);
   }, [scrollToTop]);
 
-  // Memoize testimonials data to prevent recreation on every render
+  // Client testimonials data - memoized to prevent re-creation on each render
   const testimonials = useMemo(() => [
     {
       name: isRTL ? 'أحمد العبدالله' : 'Ahmed Al-Abdullah',
@@ -62,7 +66,7 @@ const Testimonials = () => {
     }
   ], [isRTL]);
 
-  // Memoize stats data
+  // Company statistics data - memoized for performance
   const stats = useMemo(() => [
     {
       value: '300+',
@@ -90,6 +94,7 @@ const Testimonials = () => {
     }
   ], [isRTL]);
 
+  // Generate star rating display
   const renderStars = useCallback((rating) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
@@ -102,7 +107,7 @@ const Testimonials = () => {
 
   return (
     <div className="pt-16">
-      {/* Header Section - Reduced padding for faster loading */}
+      {/* Page header with title and description */}
       <section className="bg-gradient-to-br from-neutral via-neutral/95 to-neutral/90 text-white py-12 md:py-16 relative">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="container-custom mx-auto relative z-10">
@@ -119,7 +124,7 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Featured Testimonial - Optimized animation delays */}
+      {/* Featured testimonial with large image and quote */}
       <section className="py-12 md:py-16">
         <div className="container-custom mx-auto">
           <ScrollObserver animation="fade-up" threshold={0.05} delay={100} className="text-center mb-12">
@@ -172,7 +177,7 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Client Testimonials Grid - Faster animations */}
+      {/* Grid of client testimonial cards */}
       <section className="py-12 md:py-16 bg-gray-50">
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -181,7 +186,7 @@ const Testimonials = () => {
                 key={index}
                 animation="fade-up"
                 threshold={0.05}
-                delay={100 * (index + 1)}
+                delay={100 * (index + 1)} // Staggered animation delays
               >
                 <Card className={`h-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 bg-white border-0 ${isRTL ? 'text-right' : 'text-left'}`}>
                   <div className="h-56 md:h-64 sm:h-48">
@@ -192,6 +197,7 @@ const Testimonials = () => {
                     />
                   </div>
                   <CardContent className="p-6 relative">
+                    {/* Quote icon positioned over the image */}
                     <div className={`absolute -top-6 w-12 h-12 bg-primary text-white flex items-center justify-center rounded-full shadow-lg ${isRTL ? 'right-6' : 'left-6'}`}>
                       <Quote size={18} />
                     </div>
@@ -217,7 +223,7 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Stats Section - Enhanced with icons and faster animations */}
+      {/* Company statistics section with icons */}
       <section className="py-12 md:py-16 bg-gradient-to-br from-neutral via-neutral/98 to-neutral text-white">
         <div className="container-custom mx-auto">
           <ScrollObserver animation="fade-up" threshold={0.05} delay={100} className="text-center mb-12">
@@ -239,7 +245,7 @@ const Testimonials = () => {
                   key={index}
                   animation="fade-up"
                   threshold={0.05}
-                  delay={150 * (index + 1)}
+                  delay={150 * (index + 1)} // Staggered animation for each stat
                   className="text-center"
                 >
                   <div className="p-6 md:p-8 bg-white/5 backdrop-blur-sm border border-primary/20 rounded-xl transform transition-all duration-300 hover:scale-105 hover:bg-white/10">
@@ -260,10 +266,10 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Video Section - Now using the separate VideoPlayer component */}
+      {/* Video testimonials section */}
       <VideoPlayer />
 
-      {/* Call to Action - Faster animation */}
+      {/* Call-to-action section with contact buttons */}
       <ScrollObserver animation="fade-up" threshold={0.05} delay={200}>
         <section className="py-12 md:py-16 bg-gradient-to-r from-primary via-primary/95 to-primary/90 text-white relative">
           <div className="absolute inset-0 bg-black/10"></div>

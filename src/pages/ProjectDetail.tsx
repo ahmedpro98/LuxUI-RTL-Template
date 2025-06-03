@@ -12,7 +12,12 @@ import ProjectHeader from '../components/projects/ProjectHeader';
 // Import data
 import getProjectsData from './/projectsData';
 
+/**
+ * ProjectDetail component displays detailed information about a specific project
+ * including images, description, gallery, and similar projects
+ */
 const ProjectDetail = () => {
+    // Get project ID from URL parameters
     const { projectId } = useParams<{ projectId: string }>();
     const { isRTL } = useLanguage();
 
@@ -21,11 +26,11 @@ const ProjectDetail = () => {
         window.scrollTo(0, 0);
     }, [projectId]);
 
-    // Get project data
+    // Get project data based on current language
     const projectsData = getProjectsData(isRTL);
     const project = projectsData[projectId as keyof typeof projectsData];
 
-    // If project not found
+    // Show error message if project not found
     if (!project) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -47,7 +52,7 @@ const ProjectDetail = () => {
                 {/* Project Header */}
                 <ProjectHeader project={project} isRTL={isRTL} />
 
-                {/* Project Main Image */}
+                {/* Project Main Image with animation */}
                 <motion.div
                     className="mb-12 overflow-hidden rounded-lg shadow-lg"
                     initial={{ opacity: 0, y: 20 }}
@@ -61,7 +66,7 @@ const ProjectDetail = () => {
                     />
                 </motion.div>
 
-                {/* Project Details */}
+                {/* Project Details Section */}
                 <ProjectDetails
                     details={project.details}
                     projectInfo={{
@@ -73,10 +78,10 @@ const ProjectDetail = () => {
                     isRTL={isRTL}
                 />
 
-                {/* Project Gallery */}
+                {/* Project Gallery Section */}
                 <ProjectGallery project={project} isRTL={isRTL} />
 
-                {/* Similar Projects */}
+                {/* Similar Projects Section */}
                 <SimilarProjects
                     projectsData={projectsData}
                     currentProjectId={projectId as string}

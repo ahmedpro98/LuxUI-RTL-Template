@@ -1,12 +1,21 @@
+/**
+ * Component Utilities - Reusable UI components and patterns
+ * Includes gradients, shadows, containers, and interactive effects
+ */
+
 @layer components {
+
+    /** Brand gradient using primary color variants */
     .primary-gradient {
         @apply bg-gradient-to-r from-primary-dark via-primary to-primary-light;
     }
 
+    /** Soft shadow with brand color tint */
     .elegant-shadow {
         box-shadow: 0 4px 30px rgba(212, 175, 55, 0.1);
     }
 
+    /** Section title with underline decoration */
     .section-title {
         @apply text-heading-3 md:text-heading-2 font-bold mb-6 relative;
     }
@@ -16,14 +25,17 @@
         @apply absolute bottom-0 left-0 h-1 w-16 primary-gradient;
     }
 
+    /*  RTL positioning for title decoration */
     [dir="rtl"] .section-title::after {
         @apply right-0 left-auto;
     }
 
+    /** Main container with consistent max-width and padding */
     .container-custom {
         @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
     }
 
+    /** Image container with overflow handling and hover zoom */
     .image-container {
         @apply overflow-hidden rounded-lg;
     }
@@ -32,14 +44,17 @@
         @apply w-full h-full object-cover transition-transform duration-500 hover:scale-105;
     }
 
+    /** Content card with soft UI styling */
     .content-card {
         @apply soft-ui-card hover:shadow-soft-lg transition-all duration-300;
     }
 
+    /** Hover lift effect for interactive elements */
     .hover-lift {
         @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg;
     }
 
+    /** Glow effect on hover with brand color */
     .hover-glow {
         @apply transition-all duration-300;
     }
@@ -49,9 +64,9 @@
     }
 }
 
-
-/* تحسينات الظهور التدريجي للعناصر */
-/* apper element  */
+/**
+ * Progressive Element Reveal - Fade-in effects for content
+ */
 
 .fade-in-element {
     @apply opacity-0 transition-all duration-1000 ease-out;
@@ -61,8 +76,10 @@
     @apply opacity-100;
 }
 
-/* تأثيرات ظهور العناصر أثناء التمرير */
-/* scorlling fade reveal  */
+/**
+ * Scroll-triggered Reveal Effects
+ * Base classes for intersection observer animations
+ */
 
 .reveal-on-scroll {
     @apply opacity-0 transform transition-all duration-700;
@@ -72,6 +89,7 @@
     @apply opacity-100 translate-y-0;
 }
 
+/** Directional reveal animations */
 .reveal-on-scroll-up {
     @apply opacity-0 transform translate-y-10 transition-all duration-700 ease-out;
 }

@@ -13,6 +13,10 @@ import { ProjectsDropdown } from './ProjectsDropdown';
 import { MobileProjectsMenu } from './MobileProjectsMenu';
 import { motion, AnimatePresence } from 'framer-motion';
 
+/**
+ * Main navigation component with responsive design
+ * Supports RTL/LTR layouts, scroll effects, and mobile/desktop navigation
+ */
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(true);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -22,6 +26,7 @@ const Navbar: React.FC = () => {
   const location = useLocation();
   const isMobile = useIsMobile();
 
+  // Navigation menu items with bilingual support
   const navItems = [
     { name: isRTL ? 'الرئيسية' : 'Home', path: '/' },
     { name: isRTL ? 'من نحن' : 'About Us', path: '/about' },
@@ -31,6 +36,10 @@ const Navbar: React.FC = () => {
     { name: isRTL ? 'تواصل معنا' : 'Contact Us', path: '/contact' },
   ];
 
+  /**
+   * Handles navbar background changes based on scroll position
+   * Homepage stays transparent at top, other pages always have background
+   */
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -46,11 +55,16 @@ const Navbar: React.FC = () => {
     };
   }, [location.pathname]);
 
+  /**
+   * Closes mobile menu when navigating to new page
+   */
   useEffect(() => {
     setSheetOpen(false);
   }, [location.pathname]);
 
-  // Handle closing dropdown when clicking outside
+  /**
+   * Closes desktop projects dropdown when clicking outside
+   */
   useEffect(() => {
     const handleClickOutside = () => {
       setShowProjectsDropdown(false);
@@ -68,6 +82,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50  transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2.5' : 'bg-transparent py-4'}`}>
       <div className="container-custom mx-auto flex justify-between items-center">
+        {/* Logo and brand name */}
         <Link to="/" className="text-neutral hover:text-primary transition-colors duration-300 flex items-center gap-2">
           <img
             src="/Logo_and_identity/logo.png"
@@ -102,6 +117,7 @@ const Navbar: React.FC = () => {
               }}
             >
               <span>{isRTL ? 'مشروعاتنا' : 'Our Projects'}</span>
+              {/* Animated chevron icon */}
               <motion.div
                 animate={{ rotate: showProjectsDropdown ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
@@ -116,6 +132,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
+        {/* Desktop language switcher */}
         <div className="hidden lg:block">
           <LanguageSwitcher />
         </div>
@@ -137,6 +154,7 @@ const Navbar: React.FC = () => {
               className={`p-0 w-72 ${isRTL ? 'text-right' : 'text-left'}`}
               closeButton={false}
             >
+              {/* Mobile menu header with logo and close button */}
               <div className="flex items-center justify-between p-4 border-b">
                 <div className="flex items-center gap-2">
                   <img
@@ -157,6 +175,7 @@ const Navbar: React.FC = () => {
                 </button>
               </div>
 
+              {/* Mobile menu items */}
               <div className="py-6 px-4">
                 <div className={`flex flex-col space-y-1 ${isRTL ? 'items-end' : 'items-start'}`}>
                   {navItems.map((item) => (
@@ -189,6 +208,7 @@ const Navbar: React.FC = () => {
                       `}
                     >
                       <span>{isRTL ? 'مشروعاتنا' : 'Our Projects'}</span>
+                      {/* Animated chevron for mobile projects menu */}
                       <motion.div
                         animate={{ rotate: mobileProjectsOpen ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
@@ -201,6 +221,7 @@ const Navbar: React.FC = () => {
                       </motion.div>
                     </button>
 
+                    {/* Expandable mobile projects submenu */}
                     <AnimatePresence>
                       {mobileProjectsOpen && (
                         <motion.div
@@ -218,6 +239,7 @@ const Navbar: React.FC = () => {
                 </div>
               </div>
 
+              {/* Mobile menu footer */}
               <div className={`mt-auto p-4 border-t text-sm text-gray-500 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <p>{isRTL ? 'هوم أيست - خبرة في التصميم الإضاءة الفاخرة منذ 1995' : 'Home East - Design Expertise since 1995'}</p>
               </div>

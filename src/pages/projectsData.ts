@@ -2,6 +2,7 @@ import { ProjectType } from '../hooks/project';
 
 const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
   return {
+    // Luxury Villa Project Data
     'luxury-villa': {
       title: isRTL ? 'فيلا فاخرة' : 'Luxury Villa',
       subtitle: isRTL ? 'جدة, المملكة العربية السعودية' : 'Jeddah, KSA',
@@ -13,6 +14,7 @@ const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
       client: isRTL ? 'دار المعمار' : 'darmamar.',
       location: isRTL ? 'جدة, المملكة العربية السعودية' : 'Jeddah, KSA',
       mainImage: '/projects-page/vila/hero.webp',
+      // Gallery images for the project
       gallery: [
         '/projects-page/vila/luxury-1.webp',
         '/projects-page/vila/luxury-3.webp',
@@ -21,6 +23,7 @@ const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
         '/projects-page/vila/outro.webp',
         '/projects-page/vila/luxury-7.webp',
       ],
+      // Detailed sections about the project
       details: [
         {
           title: isRTL ? 'التصميم المعماري الداخلي' : 'Interior Architectural Design',
@@ -41,6 +44,7 @@ const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
         }
       ]
     },
+    // Royal Palace Project Data
     'interior-design': {
       title: isRTL ? 'فيلا فاخرة' : 'Royal vila',
       subtitle: isRTL ? 'نيوم، المملكة العربية السعودية' : 'Neom, Saudi Arabia',
@@ -52,6 +56,7 @@ const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
       client: isRTL ? 'العائلة الملكية' : 'Royal Family',
       location: isRTL ? 'نيوم، ذا لاين' : 'Neom, The LINE',
       mainImage: '/projects-page/Interior/hero.jpg',
+      // Gallery images for the royal palace project
       gallery: [
         '/projects-page/Interior/incover.webp',
         '/projects-page/Interior/Interior2.jpg',
@@ -61,6 +66,7 @@ const getProjectsData = (isRTL: boolean): Record<string, ProjectType> => {
         '/projects-page/Interior/Interior6.webp',
         '/projects-page/Interior/Interior7.webp',
       ],
+      // Detailed sections about the royal palace project
       details: [
         {
           title: isRTL ? 'المواد الفاخرة والطبيعية' : 'Luxury Natural Materials',

@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 const WhatsAppButton: React.FC = () => {
   const { isRTL } = useLanguage();
 
-  const whatsappNumber = "+966500000000"; // ضع رقم واتساب الفعلي هنا
+  const whatsappNumber = "+966500000000"; // PUT WHATS UP NUMBER HERE 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     isRTL
       ? 'مرحبًا، أريد الاستفسار عن خدماتكم للنجف والثريات'

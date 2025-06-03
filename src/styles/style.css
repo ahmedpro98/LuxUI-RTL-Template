@@ -1,23 +1,28 @@
-/*  إعدادات الأساسيات من ألوان ومتغيرات */
+/**
+ * Main CSS Entry Point
+ * Imports all style modules in proper order
+ */
+
+/* Foundation: colors, variables, and CSS custom properties */
 @import './base.css';
 
-/*  تنسيقات النصوص والعناوين */
+/* Text styling and font definitions */
 @import './typography.css';
 
-/*  التنسيقات المتجاوبة */
+/* Mobile-first responsive design */
 @import './responsive.css';
 
-/*  المكونات القابلة لإعادة الاستخدام */
+/* Reusable UI components */
 @import './components.css';
 
-/*  التحريكات والأنيميشن */
+/* Animations and transitions */
 @import './animations.css';
 
-/*  تنسيقات النماذج والإدخالات */
+/* Form controls and input styling */
 @import './form.css';
 
-/*  تنسيقات الأزرار */
+/* Button styles and variants */
 @import './buttons.css';
 
-/*  تصميم وتخطيطات الصفحات */
+/* Page layouts and grid systems */
 @import './layouts.css';

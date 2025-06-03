@@ -1,8 +1,12 @@
+
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { Link } from 'react-router-dom';
 import ScrollObserver from './ScrollObserver';
 
+/**
+ * Supports RTL/LTR layouts and internationalization.
+ */
 const CtaSection = () => {
     const { isRTL } = useLanguage();
 
@@ -14,6 +18,7 @@ const CtaSection = () => {
                         {isRTL ? 'جاهز لتحويل مساحتك إلى تحفة فنية؟' : 'Ready to Transform Your Space Into an Artistic Masterpiece?'}
                     </h2>
                     <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+                        {/* Primary CTA button - Contact */}
                         <Link
                             to="/contact"
                             className="inline-block bg-primary text-white px-6 py-3 md:px-8 md:py-4 rounded-md hover:bg-primary-dark transition-colors duration-300"
@@ -21,6 +26,7 @@ const CtaSection = () => {
                             {isRTL ? 'تواصل معنا الآن' : 'Contact Us Now'}
                         </Link>
                         <p></p>
+                        {/* Secondary CTA button - Browse Projects */}
                         <Link
                             to="/projects"
                             className="inline-block bg-trasparnt border-2 border-white text-white px-6 py-3 md:px-8 md:py-4 rounded-md hover:bg-white hover:text-black transition-colors duration-300"

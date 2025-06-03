@@ -1,15 +1,21 @@
-/* --- تحسينات للأجهزة اللوحية --- */
+/** 
+ * Responsive Design System
+ * Mobile-first approach with breakpoints for tablet and desktop
+ */
+
+/** Tablet optimizations (641px - 1024px) */
 @media (min-width: 641px) and (max-width: 1024px) {
     .container-custom {
         @apply px-6;
     }
 
+    /* Improve Arabic text spacing on tablets */
     [dir="rtl"] {
         letter-spacing: -0.005em;
     }
 }
 
-/* --- تحسينات للجوال --- */
+/** Mobile optimizations (up to 640px) */
 @media (max-width: 640px) {
     .section-title {
         @apply text-heading-4 mb-4;
@@ -19,6 +25,7 @@
         @apply px-4;
     }
 
+    /* Arabic text optimization for mobile */
     [dir="rtl"] {
         letter-spacing: 0;
         font-size: 1.02rem;
@@ -28,6 +35,7 @@
         margin-bottom: .8em;
     }
 
+    /* Responsive heading sizes */
     h1,
     .h1 {
         @apply text-2xl;
@@ -38,6 +46,7 @@
         @apply text-xl;
     }
 
+    /* Touch-friendly button sizing */
     button,
     .button,
     a.button,
@@ -47,9 +56,10 @@
     }
 }
 
-/* --- تحسينات للشاشات الصغيرة جداً --- */
+/** Extra small screens (up to 340px) */
 @media (max-width: 340px) {
 
+    /* Scaled down typography for tiny screens */
     h1,
     .h1 {
         font-size: 1.5rem;
@@ -74,11 +84,13 @@
         font-size: 0.75rem;
     }
 
+    /* Minimal container padding */
     .container-custom {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
 
+    /* Reduced spacing for compact layout */
     .py-20 {
         padding-top: 3rem;
         padding-bottom: 3rem;
@@ -122,6 +134,7 @@
         padding-right: 1.25rem;
     }
 
+    /* Force single column layout */
     .grid-cols-2 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
@@ -130,6 +143,7 @@
         flex-wrap: wrap;
     }
 
+    /* Tighter spacing */
     .gap-6 {
         gap: 1rem;
     }
@@ -138,6 +152,7 @@
         gap: 1.25rem;
     }
 
+    /* Navigation adjustments */
     .navbar-container {
         padding-left: 0.25rem;
         padding-right: 0.25rem;
@@ -147,6 +162,7 @@
         width: 7rem;
     }
 
+    /* Card components full width */
     .testimonial-card,
     .service-card,
     .team-card,
@@ -155,6 +171,7 @@
         margin-right: 0;
     }
 
+    /* Hero section compact styling */
     .hero-content {
         padding: 0.75rem;
     }
@@ -169,14 +186,17 @@
         line-height: 1.5;
     }
 
+    /* Section title underline adjustment */
     [dir="rtl"] .section-title::after {
         width: 3rem;
     }
 
+    /* Carousel full width slides */
     .embla__slide {
         min-width: 100%;
     }
 
+    /* Form inputs compact sizing */
     input,
     textarea,
     select {
@@ -187,41 +207,47 @@
         font-size: 0.875rem;
     }
 
+    /* Social media icons closer spacing */
     .social-icons {
         gap: 0.5rem;
     }
 
+    /* Carousel navigation smaller size */
     .carousel-nav {
         transform: scale(0.75);
     }
 
+    /* Prevent image overflow */
     img {
         max-width: 100%;
     }
 
+    /* Prevent horizontal scroll */
     body {
         overflow-x: hidden;
     }
 }
 
-/* Embla Carousel viewport fix */
+/** Embla Carousel responsive system */
 .embla__viewport {
     overflow: hidden;
 }
 
-/* Embla Carousel slide behavior */
+/* Default: single slide per view */
 .embla__slide {
     position: relative;
     flex: 0 0 auto;
     min-width: 100%;
 }
 
+/* Tablet: two slides per view */
 @media (min-width: 768px) {
     .embla__slide {
         min-width: 50%;
     }
 }
 
+/* Desktop: three slides per view */
 @media (min-width: 1024px) {
     .embla__slide {
         min-width: 33.333%;

@@ -8,7 +8,9 @@ interface LanguageSwitcherProps {
   showIcon?: boolean;
 }
 
-// Simple Language Icon Component
+/**
+ * Globe icon component for language switcher
+ */
 const LanguageIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
   <svg
     width="20"
@@ -32,6 +34,10 @@ const LanguageIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
   </svg>
 );
 
+/**
+ * Language switcher component with multiple styling variants
+ * Handles language switching between English and Arabic with smooth transitions
+ */
 const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   variant = 'standard',
   showIcon = true
@@ -46,7 +52,9 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Simple ripple effect (modern variant only)
+  /**
+   * Creates ripple effect on button click for modern variant
+   */
   const createRipple = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (variant !== 'modern' || isLanguageChanging) return;
 
@@ -56,16 +64,19 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     const radius = diameter / 2;
     const rect = button.getBoundingClientRect();
 
+    // Position ripple at click location
     circle.style.width = circle.style.height = `${diameter}px`;
     circle.style.left = `${event.clientX - rect.left - radius}px`;
     circle.style.top = `${event.clientY - rect.top - radius}px`;
     circle.classList.add('ripple');
 
+    // Remove existing ripple before adding new one
     const ripple = button.getElementsByClassName('ripple')[0];
     if (ripple) ripple.remove();
 
     button.appendChild(circle);
 
+    // Clean up ripple after animation
     setTimeout(() => {
       if (circle.parentNode === button) {
         button.removeChild(circle);
@@ -73,6 +84,9 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     }, 600);
   };
 
+  /**
+   * Handles language toggle with ripple effect
+   */
   const toggleLanguage = (event: React.MouseEvent<HTMLButtonElement>) => {
     createRipple(event);
     if (!isTransitioning && !isLanguageChanging) {
@@ -80,6 +94,9 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     }
   };
 
+  /**
+   * Adds transition styling when language change starts
+   */
   useEffect(() => {
     if (transitionState === 'start' && buttonRef.current) {
       buttonRef.current.classList.add('btn-transitioning');
@@ -90,9 +107,13 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     }
   }, [transitionState]);
 
+  // Display text and accessibility labels based on current language
   const buttonText = language === 'en' ? 'العربية' : 'English';
   const ariaLabel = language === 'en' ? 'Switch to Arabic language' : 'التبديل إلى اللغة الإنجليزية';
 
+  /**
+   * Renders language icon with proper spacing for RTL/LTR
+   */
   const renderIcon = () => {
     if (!showIcon) return null;
 
@@ -104,6 +125,9 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     );
   };
 
+  /**
+   * Returns CSS classes based on selected variant
+   */
   const getButtonClasses = () => {
     const baseClasses = 'transition-all duration-300';
 
@@ -117,6 +141,9 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     }
   };
 
+  /**
+   * Arranges text and icon order for both RTL and LTR layouts
+   */
   const getTextOrder = () => {
     if (language === 'ar') {
       // Arabic: text first, then icon (on left in RTL)
@@ -157,6 +184,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             {getTextOrder()}
           </div>
 
+          {/* Loading indicator with dots animation */}
           {isLanguageChanging && (
             <span className={`loading-indicator ${language === 'ar' ? 'mr-2' : 'ml-2'}`}>
               <span className="dot"></span>

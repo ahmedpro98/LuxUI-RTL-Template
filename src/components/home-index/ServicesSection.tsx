@@ -3,6 +3,10 @@ import { useLanguage } from '../../context/LanguageContext';
 import { Link } from 'react-router-dom';
 import ServiceCard from '../ServiceCard';
 
+/**
+ * ServicesSection - Displays specialized services with animated service cards
+ * Features custom intersection observer for staggered card animations
+ */
 const ServicesSection = () => {
     const { isRTL } = useLanguage();
     const servicesRef = useRef<HTMLDivElement>(null);
@@ -17,7 +21,7 @@ const ServicesSection = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    // Staggered animation for service cards
+                    // Staggered animation for service cards with 150ms delays
                     const cards = entry.target.querySelectorAll('.service-card');
                     cards.forEach((card, cardIndex) => {
                         setTimeout(() => {
@@ -36,6 +40,10 @@ const ServicesSection = () => {
         return () => observer.disconnect();
     }, []);
 
+    /**
+     * Service icons with hover animations and decorative elements
+     * Each icon has scaling effects and animated accent dots
+     */
     const serviceIcons = {
         installation: (
             <div className="relative">
@@ -43,6 +51,7 @@ const ServicesSection = () => {
                     <path d="M9.5 6L11 7.5M11 7.5L9.5 9M11 7.5H6M14.5 13L13 11.5M13 11.5L14.5 10M13 11.5H18M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
                         strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
+                {/* Animated accent dot */}
                 <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-br from-primary-light to-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
         ),
@@ -71,7 +80,7 @@ const ServicesSection = () => {
     return (
         <>
             <section className="py-20 md:py-24 bg-surface relative " ref={servicesRef}>
-                {/* Background decorative elements */}
+                {/* Background decorative elements for visual interest */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-10 left-10 w-16 h-16 border border-primary/10 rounded-full"></div>
                     <div className="absolute bottom-20 right-20 w-12 h-12 border border-primary/10 rounded-full"></div>
@@ -80,10 +89,12 @@ const ServicesSection = () => {
                 </div>
 
                 <div className="container-custom mx-auto relative z-10">
+                    {/* Section header with gradient underline */}
                     <div className={`text-center mb-12 md:mb-16 ${isRTL ? 'rtl' : ''}`}>
                         <div className="relative inline-block">
                             <h2 className={`text-3xl md:text-4xl font-bold text-neutral mb-4 md:mb-6 relative`}>
                                 {isRTL ? 'خدماتنا المتخصصة' : 'Our Specialized Services'}
+                                {/* Gradient underline decoration */}
                                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
                             </h2>
                         </div>
@@ -92,9 +103,12 @@ const ServicesSection = () => {
                         </p>
                     </div>
 
+                    {/* Service cards grid with hover effects */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                        {/* Luxury Interior Design Service */}
                         <div className="service-card group">
                             <div className="enhanced-service-card p-5 md:p-6 rounded-xl h-full relative">
+                                {/* Floating decorative dots */}
                                 <div className="floating-dots"></div>
                                 <div className="floating-dots"></div>
 
@@ -118,6 +132,7 @@ const ServicesSection = () => {
                             </div>
                         </div>
 
+                        {/* Design Consultation Service */}
                         <div className="service-card group">
                             <div className="enhanced-service-card p-5 md:p-6 rounded-xl h-full relative">
                                 <div className="floating-dots"></div>
@@ -143,6 +158,7 @@ const ServicesSection = () => {
                             </div>
                         </div>
 
+                        {/* Execution & Supervision Service */}
                         <div className="service-card group">
                             <div className="enhanced-service-card p-5 md:p-6 rounded-xl h-full relative">
                                 <div className="floating-dots"></div>
@@ -169,12 +185,14 @@ const ServicesSection = () => {
                         </div>
                     </div>
 
+                    {/* Call-to-action button with animated effects */}
                     <div className="text-center mt-12">
                         <Link
                             to="/services"
                             className="inline-block bg-transparent border-2 border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors duration-300 text-base font-semibold relative overflow-hidden group"
                         >
                             <span className="relative z-10">{isRTL ? 'عرض جميع الخدمات' : 'View All Services'}</span>
+                            {/* Animated shimmer effect on hover */}
                             <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         </Link>
                     </div>

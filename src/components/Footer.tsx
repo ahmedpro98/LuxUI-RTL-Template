@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Facebook, Instagram, Twitter, Linkedin, MapPin, Phone, Mail } from 'lucide-react';
 
+/**
+ * Website footer with company info
+ * Supports RTL/LTR layouts and includes social media links
+ */
 const Footer: React.FC = () => {
   const { isRTL } = useLanguage();
   const currentYear = new Date().getFullYear();
@@ -11,7 +15,7 @@ const Footer: React.FC = () => {
     <footer className="bg-neutral text-white pt-20 pb-10 px-6 font-cairo motion-safe:animate-fade-in">
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-        {/* Logo and Description */}
+        {/* Company logo and description section */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-6`}>
           <div className="group">
             <h2 className="text-heading-4 font-bold text-white text-2xl space-y-6 transition-all duration-500 
@@ -22,6 +26,7 @@ const Footer: React.FC = () => {
                   : "Home East"
               }
             </h2>
+            {/* Animated underline that expands on hover */}
             <div className="relative mt-2 h-1 w-8 bg-primary rounded-full transition-all duration-700 group-hover:w-32 
               bg-gradient-to-r from-primary to-primary-light"></div>
 
@@ -33,12 +38,13 @@ const Footer: React.FC = () => {
           </p>
         </div>
 
-        {/* Quick Links */}
+        {/* Navigation links section */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-4`}>
           <h3 className="text-heading-4 font-semibold text-primary">
             {isRTL ? 'روابط سريعة' : 'Quick Links'}
           </h3>
           <ul className="text-base text-white space-y-2">
+            {/* Dynamic navigation menu with bilingual support */}
             {[
               { key: 'home', label: isRTL ? 'الرئيسية' : 'Home' },
               { key: 'about', label: isRTL ? 'من نحن' : 'About Us' },
@@ -58,7 +64,7 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Contact Info */}
+        {/* Contact information section */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-4`}>
           <h3 className="text-heading-4 font-semibold text-primary">
             {isRTL ? 'معلومات التواصل' : 'Contact Info'}
@@ -81,7 +87,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Newsletter */}
+        {/* Newsletter signup and social media section */}
         <div className={`${isRTL ? 'text-right' : 'text-left'} space-y-4`}>
           <h3 className="text-heading-4 font-semibold text-primary">
             {isRTL ? 'النشرة البريدية' : 'Newsletter'}
@@ -89,6 +95,7 @@ const Footer: React.FC = () => {
           <p className="text-base text-white">
             {isRTL ? 'اشترك للحصول على آخر التصاميم والعروض' : 'Subscribe for latest designs and offers'}
           </p>
+          {/* Email subscription form with RTL support */}
           <div className={`flex ${isRTL ? 'flex-row-reverse' : ''}`}>
             <input
               type="email"
@@ -100,7 +107,7 @@ const Footer: React.FC = () => {
             </button>
           </div>
 
-          {/* Social Icons */}
+          {/* Social media icons with hover effects */}
           <div className="flex gap-4 pt-4">
             {[Facebook, Instagram, Twitter, Linkedin].map((Icon, index) => (
               <a
@@ -115,7 +122,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Section */}
+      {/* Copyright and credits section */}
       <div className="mt-12 border-t border-charcoal-light pt-6 text-center text-base text-white">
         <p>{isRTL ? `© ${currentYear} هوم إيست. جميع الحقوق محفوظة.` : `© ${currentYear} Home East. All rights reserved.`}</p>
         <p className="mt-1 cursor-pointer">

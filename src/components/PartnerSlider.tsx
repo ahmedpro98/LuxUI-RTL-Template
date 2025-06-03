@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import { useLanguage } from '../context/LanguageContext';
 
+/**
+ * Partner logo slider component with different layouts for desktop and mobile
+ * Desktop: Smooth infinite scroll marquee with hover pause
+ * Mobile: Clean static grid layout
+ */
 const PartnerSlider: React.FC = () => {
   const isMobile = useIsMobile();
   const { isRTL } = useLanguage();
@@ -11,6 +16,7 @@ const PartnerSlider: React.FC = () => {
   const lastTimeRef = useRef<number>(0);
   const positionRef = useRef<number>(0);
 
+  // Partner logos data
   const partners = [
     {
       name: "Alrajhi Bank",
@@ -46,17 +52,27 @@ const PartnerSlider: React.FC = () => {
     }
   ];
 
-  // Create multiple copies for smoother infinite scroll
+  // Triple the partners array for smooth infinite scrolling
   const allPartners = [...partners, ...partners, ...partners];
 
+  /**
+   * Pauses marquee animation on hover
+   */
   const handleMouseEnter = () => {
     setIsPaused(true);
   };
 
+  /**
+   * Resumes marquee animation when hover ends
+   */
   const handleMouseLeave = () => {
     setIsPaused(false);
   };
 
+  /**
+   * Handles smooth infinite scroll animation for desktop marquee
+   * Uses requestAnimationFrame for smooth 60fps animation
+   */
   useEffect(() => {
     const marqueeElement = marqueeRef.current;
     if (!marqueeElement) return;
@@ -82,7 +98,7 @@ const PartnerSlider: React.FC = () => {
           positionRef.current = 0;
         }
 
-        // Apply transform
+        // Apply transform with RTL support
         const translateX = isRTL ? positionRef.current : -positionRef.current;
         marqueeElement.style.transform = `translateX(${translateX}px)`;
       } else if (isPaused) {
@@ -104,7 +120,7 @@ const PartnerSlider: React.FC = () => {
 
   return (
     <div className="w-full overflow-hidden py-4">
-      {/* Desktop version: Full width Marquee with smooth hover pause */}
+      {/* Desktop version: Infinite scroll marquee with hover effects */}
       <div className="hidden md:block overflow-hidden relative w-full">
         <div className="relative">
           <div
@@ -131,13 +147,13 @@ const PartnerSlider: React.FC = () => {
             ))}
           </div>
 
-          {/* Gradient overlays for smooth edges */}
+          {/* Gradient overlays for smooth fade edges */}
           <div className={`absolute top-0 ${isRTL ? 'right-0' : 'left-0'} w-20 h-full bg-gradient-to-r ${isRTL ? 'from-transparent to-white' : 'from-white to-transparent'} pointer-events-none z-10`}></div>
           <div className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} w-20 h-full bg-gradient-to-l ${isRTL ? 'from-transparent to-white' : 'from-white to-transparent'} pointer-events-none z-10`}></div>
         </div>
       </div>
 
-      {/* Mobile version: Clean Grid View */}
+      {/* Mobile version: Static grid layout */}
       <div className="md:hidden px-4">
         <div className="grid grid-cols-2 gap-4">
           {partners.map((partner, index) => (

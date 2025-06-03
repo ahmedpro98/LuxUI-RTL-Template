@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 
+// Projects component displays a grid of all available projects
+
 const Projects = () => {
     const { isRTL } = useLanguage();
 
-    // Project data
+    // THE project data for display
     const projects = [
         {
             id: 'luxury-villa',
@@ -32,13 +34,13 @@ const Projects = () => {
         }
     ];
 
-    // Animation variants
+    // Animation variants for staggered animations
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.2
+                staggerChildren: 0.2 // Delay between each child animation
             }
         }
     };
@@ -57,7 +59,7 @@ const Projects = () => {
     return (
         <div className="pt-24 pb-20">
             <div className="container-custom">
-                {/* Header */}
+                {/* Page Header */}
                 <div className={`text-center mb-12 ${isRTL ? 'font-tajawal' : 'font-playfair'}`}>
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                         {isRTL ? 'مشروعاتنا' : 'Our Projects'}
@@ -71,7 +73,7 @@ const Projects = () => {
                     </p>
                 </div>
 
-                {/* Projects Grid */}
+                {/* Projects Grid with staggered animations */}
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                     variants={containerVariants}
@@ -86,18 +88,22 @@ const Projects = () => {
                         >
                             <Link to={project.path} className="block">
                                 <div className="overflow-hidden rounded-lg shadow-md hover-lift">
+                                    {/* Project Image with hover effects */}
                                     <div className="relative h-64 overflow-hidden">
                                         <img
                                             src={project.image}
                                             alt={project.title}
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
+                                        {/* Dark overlay on hover */}
                                         <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                                        {/* Category badge */}
                                         <div className="absolute top-4 right-4 bg-primary text-white px-2 py-1 text-xs rounded">
                                             {project.category}
                                         </div>
                                     </div>
 
+                                    {/* Project Information */}
                                     <div className="p-6 bg-white">
                                         <div className="flex justify-between items-center mb-3">
                                             <h3 className="text-xl font-bold text-neutral group-hover:text-primary transition-colors">
@@ -108,6 +114,7 @@ const Projects = () => {
                                         <p className="text-neutral-light text-sm mb-4">
                                             {project.description}
                                         </p>
+                                        {/* View Project Link */}
                                         <div className={`flex ${isRTL ? 'justify-start' : 'justify-end'}`}>
                                             <span className="text-primary font-medium text-sm flex items-center">
                                                 {isRTL ? 'عرض المزيد' : 'View Project'}
@@ -123,7 +130,7 @@ const Projects = () => {
                     ))}
                 </motion.div>
 
-                {/* Other projects banner */}
+                {/* Call to Action Banner */}
                 <div className="mt-16">
                     <div className="bg-surface rounded-lg p-8 md:p-12 text-center">
                         <h2 className="text-2xl md:text-3xl font-bold mb-4">

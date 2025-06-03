@@ -84,7 +84,7 @@ const FeaturedCollection: React.FC = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setActiveIndex((current) => (current + 1) % collectionItems.length);
-    setTimeout(() => setIsTransitioning(false), 500); // Match the transition duration
+    setTimeout(() => setIsTransitioning(false), 500); // Match the transition 
   };
 
   const prevSlide = () => {
@@ -125,7 +125,7 @@ const FeaturedCollection: React.FC = () => {
 
         {isMobile ? (
           <div className="px-4 relative">
-            {/* Improved Mobile Carousel */}
+            {/*  Mobile Carousel */}
             <div
               className="relative overflow-hidden rounded-xl shadow-xl"
               onTouchStart={handleTouchStart}
@@ -144,7 +144,7 @@ const FeaturedCollection: React.FC = () => {
                         alt={isRTL ? item.titleAr : item.titleEn}
                         className="w-full h-full object-cover"
                       />
-                      {/* Elegant pattern overlay */}
+                      {/*  pattern overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     </div>
 
@@ -166,7 +166,7 @@ const FeaturedCollection: React.FC = () => {
                 ))}
               </div>
 
-              {/* Mobile Controls - Positioned outside the carousel for better UX */}
+              {/* Mobile Controls */}
               <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-between px-3 pointer-events-none">
                 <button
                   onClick={prevSlide}

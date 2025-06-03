@@ -7,9 +7,14 @@ interface MobileProjectsMenuProps {
     setSheetOpen: (value: boolean) => void;
 }
 
+/**
+ * Mobile navigation menu for projects section
+ * Shows list of available projects with smooth animations
+ */
 export const MobileProjectsMenu: React.FC<MobileProjectsMenuProps> = ({ setSheetOpen }) => {
     const { isRTL } = useLanguage();
 
+    // Project items with bilingual titles
     const projects = [
         {
             id: 'luxury-villa',
@@ -24,6 +29,7 @@ export const MobileProjectsMenu: React.FC<MobileProjectsMenuProps> = ({ setSheet
 
     ];
 
+    // Animation variants for staggered menu items
     const container = {
         hidden: { opacity: 0 },
         show: {
@@ -57,6 +63,7 @@ export const MobileProjectsMenu: React.FC<MobileProjectsMenuProps> = ({ setSheet
                         onClick={() => setSheetOpen(false)}
                     >
                         <div className="flex items-center">
+                            {/* Project indicator dot */}
                             <span className={`w-1.5 h-1.5 rounded-full bg-primary mr-2 ${isRTL ? 'order-last' : 'order-first'}`}></span>
                             <span>{project.title}</span>
                         </div>
@@ -64,6 +71,7 @@ export const MobileProjectsMenu: React.FC<MobileProjectsMenuProps> = ({ setSheet
                 </motion.div>
             ))}
 
+            {/* View all projects link */}
             <motion.div variants={item}>
                 <Link
                     to="/projects"

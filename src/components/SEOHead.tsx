@@ -12,6 +12,10 @@ interface SEOHeadProps {
   breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
+/**
+ * SEO component that manages meta tags, structured data, and document head elements
+ * Automatically updates based on language and route changes
+ */
 const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
@@ -25,7 +29,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   const location = useLocation();
   const currentUrl = `https://hibateast.com${location.pathname}`;
 
-  // Default SEO data based on language
+  // Default SEO content for both Arabic and English
   const defaultSEO = {
     ar: {
       title: 'هبات ايست - نجف وثريات فاخرة | تركيب وصيانة احترافية',
@@ -46,7 +50,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   const finalDescription = description || seoData.description;
   const finalKeywords = keywords || seoData.keywords;
 
-  // Create structured data
+  // Build JSON-LD structured data for search engines
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': schemaType,
@@ -54,6 +58,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     description: finalDescription,
     url: currentUrl,
     image: image,
+    // Add business-specific data when schema type is LocalBusiness
     ...(schemaType === 'LocalBusiness' && {
       '@type': 'LocalBusiness',
       name: seoData.siteName,
@@ -75,6 +80,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       priceRange: '$$$',
       seriesAreaServed: 'Saudi Arabia'
     }),
+    // Add breadcrumb navigation data when breadcrumbs exist
     ...(breadcrumbs.length > 0 && {
       breadcrumb: {
         '@type': 'BreadcrumbList',
@@ -88,7 +94,12 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     })
   };
 
-  // Helper function to safely update meta tags
+  /**
+   * Creates or updates meta tags in document head
+   * @param name - Meta tag name or property
+   * @param content - Meta tag content
+   * @param property - Whether to use property attribute instead of name
+   */
   const updateMetaTag = (name: string, content: string, property = false) => {
     const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
     let meta = document.querySelector(selector) as HTMLMetaElement;
@@ -105,7 +116,12 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     meta.setAttribute('content', content);
   };
 
-  // Helper function to update link tags
+  /**
+   * Creates or updates link tags in document head
+   * @param rel - Link relationship (canonical, alternate, preconnect, etc.)
+   * @param href - Link URL
+   * @param additional - Additional attributes to set on the link
+   */
   const updateLinkTag = (rel: string, href: string, additional?: Record<string, string>) => {
     let link = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
 
@@ -123,7 +139,10 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     }
   };
 
-  // Helper function to update structured data
+  /**
+   * Updates JSON-LD structured data script in document head
+   * Removes existing script and adds new one to prevent duplicates
+   */
   const updateStructuredData = () => {
     // Remove existing structured data
     const existingScript = document.querySelector('script[type="application/ld+json"]');
@@ -138,22 +157,23 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     document.head.appendChild(script);
   };
 
+  // Update all SEO elements when dependencies change
   useEffect(() => {
-    // Update document title
+    // Update page title
     document.title = finalTitle;
 
-    // Update html attributes
+    // Set document language and direction
     document.documentElement.setAttribute('lang', language);
     document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
 
-    // Update basic meta tags
+    // Update core meta tags
     updateMetaTag('description', finalDescription);
     updateMetaTag('keywords', finalKeywords);
     updateMetaTag('author', seoData.siteName);
     updateMetaTag('robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
     updateMetaTag('googlebot', 'index, follow');
 
-    // Update Open Graph meta tags
+    // Update social media meta tags (Open Graph)
     updateMetaTag('og:title', finalTitle, true);
     updateMetaTag('og:description', finalDescription, true);
     updateMetaTag('og:type', type, true);
@@ -173,7 +193,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     updateMetaTag('twitter:image', image);
     updateMetaTag('twitter:image:alt', finalTitle);
 
-    // Update additional SEO meta tags
+    // Update mobile and app meta tags
     updateMetaTag('theme-color', '#D4AF37');
     updateMetaTag('msapplication-TileColor', '#D4AF37');
     updateMetaTag('application-name', seoData.siteName);
@@ -183,25 +203,25 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     updateMetaTag('mobile-web-app-capable', 'yes');
     updateMetaTag('format-detection', 'telephone=no');
 
-    // Update canonical link
+    // Set canonical URL
     updateLinkTag('canonical', currentUrl);
 
-    // Update hreflang links
+    // Set language alternatives for SEO
     updateLinkTag('alternate', currentUrl, { hreflang: 'ar' });
     updateLinkTag('alternate', currentUrl, { hreflang: 'en' });
     updateLinkTag('alternate', currentUrl, { hreflang: 'x-default' });
 
-    // Update preconnect links
+    // Preconnect to external resources for better performance
     updateLinkTag('preconnect', 'https://images.unsplash.com');
     updateLinkTag('preconnect', 'https://fonts.googleapis.com');
     updateLinkTag('preconnect', 'https://fonts.gstatic.com', { crossorigin: 'anonymous' });
 
-    // Update structured data
+    // Update structured data for search engines
     updateStructuredData();
 
   }, [finalTitle, finalDescription, finalKeywords, currentUrl, language, isRTL, seoData.siteName, image, type, structuredData]);
 
-  // This component doesn't render anything visible
+  // Component renders nothing - only manages document head
   return null;
 };
 

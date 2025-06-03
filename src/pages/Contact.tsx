@@ -1,21 +1,27 @@
+/**
+ * Contact page component for Home East interior design company
+ * Features contact form, company information, and embedded Google Maps
+ */
 import React, { useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { MapPin, Phone, Mail } from "lucide-react";
 import ContactForm from "../components/ContactForm";
 
+// Google Maps embed URL for Jeddah location
 const GOOGLE_MAPS_URL =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!2d3624.3691382716795!2d39.13120681500179!3d21.560906785711793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3cd054224e0b3%3A0xe74edafd7cdb457c!2z2KfZhNmF2Ykg2KfZhNmF2LrYqSDYs9in2YTYudmK2Kkg2KfZhNmF2YjZhNmK2Kcg2KfZhNmF2YjYsdin2YjZhA!5e0!3m2!1sar!2ssa!4v1713869536471!5m2!1sar!2ssa";
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!2d3624.3691382716795!2d39.13120681500179!3d21.560906785711793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3cd054224e0b3%3A0xe74edafd7cdb457c!2z2KfZhNmF2Yog2KfZhNmF2LrYqSDYs9in2YTYudmK2Kkg2KfZhNmF2YjZhNmK2Kcg2KfZhNmF2YjYsdin2YjZhA!5e0!3m2!1sar!2ssa!4v1713869536471!5m2!1sar!2ssa";
 
 const Contact = () => {
   const { isRTL } = useLanguage();
 
+  // Scroll to top when component loads
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="pt-24 min-h-screen bg-gradient-to-br from-surface via-white to-surface animate-fade-in">
-      {/* Header */}
+      {/* Page header with title and subtitle */}
       <section className="py-10 mb-4">
         <div className="container-custom mx-auto text-center">
           <h1
@@ -30,14 +36,14 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Content grid: Form & Info */}
+      {/* Main content grid with contact info and form */}
       <section className="container-custom mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch relative z-10 pb-8">
-        {/* Info Card */}
+        {/* Contact information card */}
         <div
           className="bg-white/95 shadow-xl elegant-shadow border border-primary-light rounded-3xl p-8 flex flex-col justify-between gap-12 animate-fade-in"
           style={{ backdropFilter: "blur(6px)" }}>
           <div className="flex flex-col gap-8">
-            {/* Address */}
+            {/* Company address */}
             <div className="flex items-start gap-5">
               <span className="p-2 rounded-full bg-primary-light shadow">
                 <MapPin size={26} className="text-primary" />
@@ -54,7 +60,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Sales Phone */}
+            {/* Sales phone number */}
             <div className="flex items-start gap-5">
               <span className="p-2 rounded-full bg-primary-light shadow">
                 <Phone size={22} className="text-primary" />
@@ -69,7 +75,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Support Phone */}
+            {/* Customer support phone number */}
             <div className="flex items-start gap-5">
               <span className="p-2 rounded-full bg-primary-light shadow">
                 <Phone size={22} className="text-primary" />
@@ -84,7 +90,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* General Email */}
+            {/* General inquiries email */}
             <div className="flex items-start gap-5">
               <span className="p-2 rounded-full bg-primary-light shadow">
                 <Mail size={22} className="text-primary" />
@@ -99,7 +105,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Support Email */}
+            {/* Customer support email */}
             <div className="flex items-start gap-5">
               <span className="p-2 rounded-full bg-primary-light shadow">
                 <Mail size={22} className="text-primary" />
@@ -114,7 +120,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Working Hours */}
+            {/* Business hours information */}
             <div className="flex items-start gap-5">
               <span className="p-2 rounded-full bg-primary-light shadow">
                 🕒
@@ -134,7 +140,7 @@ const Contact = () => {
 
         </div>
 
-        {/* Contact Form */}
+        {/* Contact form card */}
         <div className="bg-white/95 shadow-xl elegant-shadow border border-primary-light rounded-3xl p-8 flex flex-col justify-center animate-fade-in shadow-2xl">
           <h2
             className={`text-2xl md:text-3xl font-bold mb-6 text-center text-neutral
@@ -146,7 +152,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Google Map section: جدة */}
+      {/* Google Maps embed section for Jeddah location */}
       <section className="md:container-custom px-2 pb-10 pt-2 mt-2 animate-fade-in">
         <div className="rounded-3xl overflow-hidden shadow-xl border border-primary-light bg-surface">
           <iframe

@@ -1,3 +1,6 @@
+/**
+ * About Us page component for Home East interior design company
+ */
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import LazyImage from '../components/LazyImage';
@@ -17,12 +20,15 @@ import {
 const About = () => {
   const { isRTL } = useLanguage();
   const isMobile = useIsMobile();
+  // Track which team member card is being hovered for interactive effects
   const [activeTeamMember, setActiveTeamMember] = useState<number | null>(null);
 
+  // Scroll to top when component loads
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Team member data with bilingual content
   const teamMembers = [
     {
       name: isRTL ? 'م/اشرف محمد ' : 'Eng / Ashraf Mohamed ',
@@ -50,6 +56,10 @@ const About = () => {
     }
   ];
 
+  /**
+   * Dynamic SVG icon component for company values section
+   * Returns different icons based on index parameter
+   */
   const ValuesIcon = ({ index }: { index: number }) => {
     switch (index) {
       case 0:
@@ -77,7 +87,7 @@ const About = () => {
 
   return (
     <div className="pt-24 overflow-x-hidden">
-      {/* Header with ScrollObserver */}
+      {/* Header section with animated page title */}
       <ScrollObserver animation="fade-up" threshold={0} className="bg-neutral text-white py-20">
         <div className="container-custom mx-auto">
           <div className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}>
@@ -95,7 +105,7 @@ const About = () => {
         </div>
       </ScrollObserver>
 
-      {/* Our Story with ScrollObserver */}
+      {/* Company story section with image and text */}
       <section className="py-20">
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -129,11 +139,11 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Mission & Vision with ScrollObserver */}
+      {/* Mission and Vision cards section */}
       <section className="py-20 bg-gray-50">
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Mission */}
+            {/* Mission Card */}
             <ScrollObserver animation="fade-up" threshold={0.1} delay={100}>
               <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <CardContent className="p-8">
@@ -154,7 +164,7 @@ const About = () => {
               </Card>
             </ScrollObserver>
 
-            {/* Vision */}
+            {/* Vision Card */}
             <ScrollObserver animation="fade-up" threshold={0.2} delay={200}>
               <Card className={`h-full shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <CardContent className="p-8">
@@ -179,7 +189,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Team with enhanced animations */}
+      {/* Team showcase section with interactive member cards */}
       <section className="py-20 bg-gray-50">
         <div className="container-custom mx-auto">
           <ScrollObserver animation="fade-up" threshold={0.1} className="text-center mb-16">
@@ -204,6 +214,7 @@ const About = () => {
               >
                 <Card
                   className="overflow-hidden h-full transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+                  // Handle hover events to show/hide social media overlay
                   onMouseEnter={() => setActiveTeamMember(index)}
                   onMouseLeave={() => setActiveTeamMember(null)}
                 >
@@ -213,12 +224,12 @@ const About = () => {
                       alt={member.name}
                       className="w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-110"
                     />
-                    {/* Enhanced hover overlay with smoother transition */}
+                    {/* Social media overlay that appears on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out flex items-end justify-center pb-6">
                       <div className="translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-in-out delay-100 flex flex-col items-center">
                         <div className="flex space-x-4 mb-4">
                           <div className="flex items-center justify-between gap-4">
-                            {/* Social icons with staggered animations */}
+                            {/* Social media icon buttons with hover effects */}
                             <button className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center hover:bg-neutral hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
                               <Linkedin size={18} />
                             </button>
@@ -234,6 +245,7 @@ const About = () => {
                       </div>
                     </div>
                   </div>
+                  {/* Member information card content */}
                   <CardContent className={`p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
                     <h3 className="text-xl font-bold text-neutral mb-1">
                       {member.name}

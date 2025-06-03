@@ -1,4 +1,9 @@
-/* Fade-in animation */
+/**
+ * Animation Utilities - Core animation classes for UI interactions
+ * Provides fade-in, slide, float, and scroll-triggered animations
+ */
+
+/** Basic fade-in animation from bottom */
 @keyframes appear {
     to {
         @apply opacity-100 translate-y-0;
@@ -9,9 +14,10 @@
     @apply opacity-0 translate-y-4;
     animation: appear 0.8s forwards;
     will-change: opacity, transform;
+    /* Performance optimization */
 }
 
-/* Smooth fade-in from bottom */
+/** Smooth fade-in with opacity transition */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -20,6 +26,7 @@
 
     70% {
         opacity: 0.7;
+        /* Gradual opacity increase*/
     }
 
     100% {
@@ -33,7 +40,7 @@
     will-change: opacity, transform;
 }
 
-/* Slide-in from left */
+/** Slide animations from sides */
 @keyframes slideInLeft {
     from {
         opacity: 0;
@@ -51,7 +58,6 @@
     will-change: opacity, transform;
 }
 
-/* Slide-in from right */
 @keyframes slideInRight {
     from {
         opacity: 0;
@@ -69,7 +75,7 @@
     will-change: opacity, transform;
 }
 
-/* Fade-in from bottom with delay */
+/** Transition-based fade up (requires JavaScript trigger) */
 .fade-in-up {
     opacity: 0;
     transform: translateY(20px);
@@ -82,7 +88,7 @@
     transform: translateY(0);
 }
 
-/* Staggered delay for animation effects */
+/** Animation delay utilities for staggered effects */
 .delay-100 {
     animation-delay: 100ms;
 }
@@ -103,8 +109,7 @@
     animation-delay: 500ms;
 }
 
-
-/* Floating up and down effect */
+/** Continuous floating animation */
 @keyframes float {
 
     0%,
@@ -121,7 +126,7 @@
     animation: float 6s ease-in-out infinite;
 }
 
-/* Side slide animation for cards */
+/** Card entrance animation with directional support */
 @keyframes slideInFromSide {
     0% {
         opacity: 0;
@@ -138,6 +143,7 @@
     animation: slideInFromSide .8s ease-out forwards;
 }
 
+/*RTL directional animation*/
 [dir="rtl"] .slide-in-side {
     animation-name: slideInFromSideRTL;
 }
@@ -154,7 +160,7 @@
     }
 }
 
-/* Staggered fade-in for multiple elements */
+/** Staggered animations for multiple elements */
 .stagger-item {
     opacity: 0;
 }
@@ -175,7 +181,7 @@
     }
 }
 
-/* Reveal effect animations */
+/** Reveal effect variations */
 @keyframes reveal {
     from {
         opacity: 0;
@@ -212,10 +218,10 @@
     animation: reveal-smooth 1.2s ease-out forwards;
 }
 
-
-
-/*  في الصفحة الرئيسية فقط .. تحريكات مبنية على مراقب التمرير ومحسنة */
-/* Scrolling improvements */
+/**
+ * Scroll-triggered animations - Optimized for homepage
+ * These require JavaScript intersection observer to add 'visible' class
+ */
 
 .scroll-animate-fade-up {
     opacity: 0;
@@ -261,9 +267,7 @@
     transform: scale(1);
 }
 
-/* تأخيرات لتأثير التتابع */
-/* deley scroling */
-
+/** Scroll animation delays for sequential effects */
 .scroll-delay-100 {
     transition-delay: 100ms;
 }
@@ -284,6 +288,7 @@
     transition-delay: 500ms;
 }
 
+/* Reset styles for all scroll animations*/
 .scroll-animate-fade-up,
 .scroll-animate-fade-right,
 .scroll-animate-fade-left,
@@ -292,7 +297,7 @@
     transition: all 0.8s ease-out;
 }
 
-/* Initial states */
+/** Initial states for scroll animations */
 .scroll-animate-fade-up {
     transform: translateY(50px);
 }
@@ -309,7 +314,7 @@
     transform: scale(0.8);
 }
 
-/* Visible states when elements come into view */
+/** Visible states when elements come into view */
 .scroll-animate-fade-up.visible,
 .scroll-animate-fade-right.visible,
 .scroll-animate-fade-left.visible,
@@ -318,6 +323,7 @@
     transform: translate(0) scale(1);
 }
 
+/** Enhanced bounce animation */
 .animate-bounce {
     animation: bounce 3s infinite;
 }
@@ -346,6 +352,7 @@
     }
 }
 
+/** Quick slide up animation */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -358,6 +365,7 @@
     }
 }
 
+/** Shimmer effect for premium elements */
 @keyframes goldShimmer {
     0% {
         transform: translateX(-100%);
@@ -372,11 +380,13 @@
     animation: slideUp 0.6s ease-out forwards;
 }
 
+/** Service card initial state */
 .service-card {
     opacity: 0;
     transform: translateY(30px);
 }
 
+/** Hover line effect with gradient */
 .primary-line::before {
     content: '';
     position: absolute;
@@ -393,6 +403,10 @@
     transform: translateX(100%) translateY(-50%);
 }
 
+/**
+ * Enhanced service card with premium hover effects
+ * Includes shimmer animation and floating dots
+ */
 .enhanced-service-card {
     background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
     border: 1px solid theme('colors.primary.DEFAULT / 10%');
@@ -400,6 +414,8 @@
     position: relative;
     overflow: hidden;
 }
+
+/* Shimmer effect overlay */
 
 .enhanced-service-card::before {
     content: '';
@@ -422,6 +438,7 @@
     border-color: theme('colors.primary.DEFAULT / 30%');
 }
 
+/** Floating dots decoration */
 .floating-dots {
     position: absolute;
     width: 4px;
@@ -432,6 +449,7 @@
     transition: all 0.3s ease;
 }
 
+/* // Dot positioning */
 .floating-dots:nth-child(1) {
     top: 20%;
     right: 15%;
@@ -461,6 +479,7 @@
     }
 }
 
+/** Alternative scroll animations with faster timing */
 .scroll-animate-fade-up {
     opacity: 0;
     transform: translateY(30px);
@@ -505,6 +524,7 @@
     transform: scale(1);
 }
 
+/** Language switching transition */
 .language-transition {
     transition: all 0.8s ease-in-out;
 }

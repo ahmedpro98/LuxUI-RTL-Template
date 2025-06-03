@@ -1,9 +1,14 @@
-/* Custom container */
+/**
+ * Layout Utilities - Page structure and positioning
+ * Container and image layout components
+ */
+
+/** Custom container with consistent max-width and responsive padding */
 .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-/* Image container with hover zoom */
+/** Image container with hover zoom effect */
 .image-container {
     @apply overflow-hidden rounded-lg;
 }

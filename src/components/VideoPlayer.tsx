@@ -15,14 +15,22 @@ interface VideoPlayerProps {
     className?: string;
 }
 
+/**
+ * Video player component with fullscreen support and bilingual content
+ * Features: play/pause controls, fullscreen mode, RTL language support
+ */
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
     const { isRTL } = useLanguage();
     const videoRef = useRef<HTMLVideoElement>(null);
+
+    // Main video states
     const [isPlaying, setIsPlaying] = useState(false);
     const [showControls, setShowControls] = useState(false);
     const [isFullscreen, setIsFullscreen] = useState(false);
 
-    // Handle video play/pause
+    /**
+     * Toggle video play/pause state
+     */
     const handleVideoToggle = useCallback(() => {
         if (videoRef.current) {
             if (isPlaying) {
@@ -31,21 +39,25 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
             } else {
                 videoRef.current.play();
                 setIsPlaying(true);
-                setShowControls(true);
+                setShowControls(true); // Show controls when video starts
             }
         }
     }, [isPlaying]);
 
-    // Handle video ended
+    /**
+     * Reset player state when video ends
+     */
     const handleVideoEnded = useCallback(() => {
         setIsPlaying(false);
         setShowControls(false);
     }, []);
 
-    // Handle fullscreen toggle
+    /**
+     * Open fullscreen mode and pause main video
+     */
     const handleFullscreenToggle = useCallback(() => {
         if (videoRef.current) {
-            // Pause the original video when opening fullscreen
+            // Stop main video when opening fullscreen
             videoRef.current.pause();
             setIsPlaying(false);
             setShowControls(false);
@@ -53,13 +65,17 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
         setIsFullscreen(!isFullscreen);
     }, [isFullscreen]);
 
-    // Handle closing fullscreen
+    /**
+     * Close fullscreen modal
+     */
     const handleCloseFullscreen = useCallback((e) => {
         e?.stopPropagation();
         setIsFullscreen(false);
     }, []);
 
-    // Handle escape key to close fullscreen
+    /**
+     * Handle keyboard shortcuts and body scroll lock for fullscreen
+     */
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === 'Escape' && isFullscreen) {
@@ -69,19 +85,22 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
 
         if (isFullscreen) {
             document.addEventListener('keydown', handleKeyDown);
-            // Prevent scrolling when fullscreen is open
+            // Lock body scroll in fullscreen
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
         }
 
+        // Cleanup on unmount or state change
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
             document.body.style.overflow = 'unset';
         };
     }, [isFullscreen]);
 
-    // Handle video click to show/hide controls
+    /**
+     * Toggle control visibility when video is clicked during playback
+     */
     const handleVideoClick = useCallback(() => {
         if (isPlaying) {
             setShowControls(!showControls);
@@ -90,7 +109,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
 
     return (
         <div className={className}>
-            {/* Fullscreen Video Modal */}
+            {/* Fullscreen Modal */}
             {isFullscreen && (
                 <div
                     className="fixed inset-0 bg-black z-50 flex items-center justify-center"
@@ -100,6 +119,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                         className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center p-4"
                         onClick={(e) => e.stopPropagation()}
                     >
+                        {/* Close button */}
                         <button
                             onClick={handleCloseFullscreen}
                             className="absolute top-4 right-4 z-60 w-12 h-12 rounded-full bg-black/80 text-white flex items-center justify-center hover:bg-red-600 transition-colors duration-300 border-2 border-white/20 shadow-lg"
@@ -108,6 +128,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                         >
                             <X size={24} />
                         </button>
+
+                        {/* Fullscreen video with native controls */}
                         <video
                             src="/Logo_and_identity/video.mp4"
                             className="w-full h-full object-contain max-w-full max-h-full rounded-lg shadow-2xl"
@@ -119,10 +141,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                 </div>
             )}
 
-            {/* Video Section */}
+            {/* Main Video Section */}
             <section className="py-12 md:py-16">
                 <div className="container-custom mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                        {/* Video Player Column */}
                         <ScrollObserver
                             animation={isRTL ? "fade-left" : "fade-right"}
                             threshold={0.1}
@@ -131,6 +154,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                         >
                             <div className="relative rounded-xl shadow-2xl group">
                                 <AspectRatio ratio={16 / 9} className="bg-gray-100">
+                                    {/* Main video element */}
                                     <video
                                         ref={videoRef}
                                         src="/Logo_and_identity/video.mp4"
@@ -140,11 +164,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                                         onClick={handleVideoClick}
                                     />
 
-                                    {/* Video overlay */}
+                                    {/* Video overlay for visual effect */}
                                     <div className={`absolute inset-0 bg-black/20 transition-all duration-300 rounded-xl ${isPlaying ? 'group-hover:bg-black/10' : 'bg-black/30'
                                         }`}></div>
 
-                                    {/* Play/Pause button - Hide completely when playing */}
+                                    {/* Play button - only visible when video is paused */}
                                     {!isPlaying && (
                                         <button
                                             onClick={handleVideoToggle}
@@ -156,7 +180,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                                         </button>
                                     )}
 
-                                    {/* Control buttons - Only show when video is playing and controls are visible */}
+                                    {/* Control buttons - shown during playback when controls are visible */}
                                     {isPlaying && showControls && (
                                         <>
                                             {/* Pause button */}
@@ -180,20 +204,26 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className = "" }) => {
                             </div>
                         </ScrollObserver>
 
+                        {/* Content Column */}
                         <ScrollObserver
                             animation={isRTL ? "fade-right" : "fade-left"}
                             threshold={0.1}
                             delay={300}
                             className={`${isRTL ? 'order-1 text-right' : 'order-2 text-left'}`}
                         >
+                            {/* Section heading */}
                             <h2 className="text-2xl md:text-3xl font-bold text-neutral mb-6">
                                 {isRTL ? 'شاهد قصص نجاحنا' : 'Watch Our Success Stories'}
                             </h2>
+
+                            {/* Section description */}
                             <p className="text-gray-600 mb-6 text-lg leading-relaxed">
                                 {isRTL
                                     ? 'استمع إلى تجارب عملائنا مباشرة واكتشف كيف ساهمت حلولنا في تحويل مساحاتهم إلى تحف فنية من خلال الإضاءة الاستثنائية.'
                                     : 'Listen to our clients experiences directly and discover how our solutions have helped transform their spaces into works of art through exceptional lighting.'}
                             </p>
+
+                            {/* Stats/features display */}
                             <div className="flex items-center gap-4 text-sm text-gray-500">
                                 <div className="flex items-center gap-2">
                                     <Users size={16} className="text-primary" />
